@@ -1,0 +1,14 @@
+<Project>
+
+  <PropertyGroup>
+    <!--
+      Les intermediaires de compilation sortent du dossier du mod. Sans cela, Source/obj pesait
+      6 Mo sur les 6,4 Mo du mod et serait parti tel quel sur le Workshop, alors que le contenu
+      reellement publiable tient en 300 Ko. Doit rester dans un Directory.Build.props : la
+      restauration NuGet lit cette propriete avant le csproj.
+    -->
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\..\.build\obj\ArchitectStudio\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)..\..\.build\bin\ArchitectStudio\</BaseOutputPath>
+  </PropertyGroup>
+
+</Project>

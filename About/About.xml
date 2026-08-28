@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Architect Studio</name>
+  <author>vbardales</author>
+  <packageId>vbardales.architectstudio</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Organise le menu Architecte depuis le jeu, sans redemarrer.
+
+- Groupes de menus deroulants : creer un groupe, y ranger des batiments, ordonner ses membres, lui imposer une categorie.
+- Categories et sous-categories : en creer, les reordonner, changer leur libelle, leur couleur et leur icone.
+
+Rien n'est ecrit dans les fichiers du jeu ni dans ceux d'un autre mod : tout est enregistre dans les reglages du mod et reapplique au demarrage.
+
+INTEGRATIONS FACULTATIVES (aucune n'est obligatoire, le mod fonctionne seul)
+- Better Architect Menu : sous-categories, et purge de ses caches d'affichage.
+- Architect Icons : choix de l'icone d'une categorie.
+- Float Sub-Menus : sous-categories imbriquees dans les menus de choix.
+- Searchable Menus : ajoute de lui-meme une recherche a ces menus.
+
+Voir ATTRIBUTION.md.</description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>Ludeon.RimWorld.Ideology</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>Ludeon.RimWorld.Anomaly</li>
+    <li>Ludeon.RimWorld.Odyssey</li>
+    <!-- Integrations facultatives : on se greffe dessus, donc on charge apres. -->
+    <li>com.bymarcin.ArchitectIcons</li>
+    <li>ferny.BetterArchitect</li>
+    <li>ferny.categoriesdropdowns</li>
+    <li>kathanon.FloatSubMenu</li>
+    <li>kathanon.SearchableMenus</li>
+  </loadAfter>
+</ModMetaData>

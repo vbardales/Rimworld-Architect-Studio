@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ArchitectStudio.Settings.Intro>Reorganise the Architect menu from inside the game.</ArchitectStudio.Settings.Intro>
+  <ArchitectStudio.Settings.OpenDropdowns>Dropdown groups…</ArchitectStudio.Settings.OpenDropdowns>
+  <ArchitectStudio.Settings.ShowArchitectButton>Button in the Architect menu</ArchitectStudio.Settings.ShowArchitectButton>
+  <ArchitectStudio.Settings.ShowArchitectButtonTip>Adds a row at the bottom of the Architect window to open the editor without a keyboard. Reopen the Architect menu for the change to take effect.</ArchitectStudio.Settings.ShowArchitectButtonTip>
+  <ArchitectStudio.Settings.KeyHint>Keyboard shortcut: {0} — change it in Options → Keyboard configuration.</ArchitectStudio.Settings.KeyHint>
+
+  <ArchitectStudio.ArchitectButton>Organise menus…</ArchitectStudio.ArchitectButton>
+  <ArchitectStudio.ArchitectButtonTip>Opens the dropdown group editor.</ArchitectStudio.ArchitectButtonTip>
+
+  <ArchitectStudio.Dropdowns.Title>Dropdown groups</ArchitectStudio.Dropdowns.Title>
+  <ArchitectStudio.Dropdowns.Intro>Collapse several buildings under a single Architect menu button. Changes apply immediately. Drag a member to reorder it.</ArchitectStudio.Dropdowns.Intro>
+
+  <ArchitectStudio.Dropdowns.GridMenu>Icon grid menu</ArchitectStudio.Dropdowns.GridMenu>
+  <ArchitectStudio.Dropdowns.IconSource>Icons:</ArchitectStudio.Dropdowns.IconSource>
+  <ArchitectStudio.Dropdowns.IconSourceCost>Build material</ArchitectStudio.Dropdowns.IconSourceCost>
+  <ArchitectStudio.Dropdowns.IconSourcePlaced>Placed building</ArchitectStudio.Dropdowns.IconSourcePlaced>
+  <ArchitectStudio.Dropdowns.IconSourceTip>"Placed building" is the safe choice. With "Build material" and the grid menu, a building whose cost cannot be determined vanishes from the menu.</ArchitectStudio.Dropdowns.IconSourceTip>
+  <ArchitectStudio.Dropdowns.ResetOrder>Reset order</ArchitectStudio.Dropdowns.ResetOrder>
+  <ArchitectStudio.Dropdowns.Remove>Remove from group</ArchitectStudio.Dropdowns.Remove>
+
+  <ArchitectStudio.Dropdowns.Groups>Groups</ArchitectStudio.Dropdowns.Groups>
+  <ArchitectStudio.Dropdowns.NewGroup>New group</ArchitectStudio.Dropdowns.NewGroup>
+  <ArchitectStudio.Dropdowns.Custom>Group you created</ArchitectStudio.Dropdowns.Custom>
+  <ArchitectStudio.Dropdowns.GroupNameTitle>Group name</ArchitectStudio.Dropdowns.GroupNameTitle>
+
+  <ArchitectStudio.Dropdowns.Members>Members</ArchitectStudio.Dropdowns.Members>
+  <ArchitectStudio.Dropdowns.MembersOf>Members of {0}</ArchitectStudio.Dropdowns.MembersOf>
+  <ArchitectStudio.Dropdowns.NoSelection>Select a group on the left, or create one.</ArchitectStudio.Dropdowns.NoSelection>
+  <ArchitectStudio.Dropdowns.Rename>Rename</ArchitectStudio.Dropdowns.Rename>
+  <ArchitectStudio.Dropdowns.Delete>Delete</ArchitectStudio.Dropdowns.Delete>
+  <ArchitectStudio.Dropdowns.ConfirmDelete>Delete the group "{0}"? Its buildings will revert to their original group.</ArchitectStudio.Dropdowns.ConfirmDelete>
+
+  <ArchitectStudio.Dropdowns.Add>Add a building</ArchitectStudio.Dropdowns.Add>
+  <ArchitectStudio.Dropdowns.Category>Category:</ArchitectStudio.Dropdowns.Category>
+  <ArchitectStudio.Dropdowns.AllCategories>All categories</ArchitectStudio.Dropdowns.AllCategories>
+  <ArchitectStudio.Dropdowns.MoreResults>…and {0} more. Refine your search.</ArchitectStudio.Dropdowns.MoreResults>
+
+  <ArchitectStudio.Dropdowns.OverrideCount>{0} building(s) moved from their original settings.</ArchitectStudio.Dropdowns.OverrideCount>
+  <ArchitectStudio.Dropdowns.ResetAll>Reset everything</ArchitectStudio.Dropdowns.ResetAll>
+  <ArchitectStudio.Dropdowns.ConfirmReset>Erase every group you created and every building move?</ArchitectStudio.Dropdowns.ConfirmReset>
+
+  <ArchitectStudio.Dropdowns.ConfirmDissolveEmpty>Delete "{0}"? This group belongs to another mod: its def will be recreated on next startup, but it will no longer appear in this list.</ArchitectStudio.Dropdowns.ConfirmDissolveEmpty>
+  <ArchitectStudio.Dropdowns.ConfirmDissolve>Delete "{0}"? Its {1} buildings will become separate buttons again in the Architect menu, and the group will disappear from this list.</ArchitectStudio.Dropdowns.ConfirmDissolve>
+  <ArchitectStudio.Dropdowns.HiddenCount>{0} group(s) deleted.</ArchitectStudio.Dropdowns.HiddenCount>
+  <ArchitectStudio.Dropdowns.RestoreHidden>Restore deleted groups</ArchitectStudio.Dropdowns.RestoreHidden>
+  <ArchitectStudio.Dropdowns.SplitWarning>Group split across {0} categories: the game will make that many separate buttons.</ArchitectStudio.Dropdowns.SplitWarning>
+  <ArchitectStudio.Dropdowns.SplitWarningTip>Categories involved: {0}. A dropdown group is not tied to any category: the game groups category by category.</ArchitectStudio.Dropdowns.SplitWarningTip>
+
+  <ArchitectStudio.Dropdowns.GroupCategory>Category:</ArchitectStudio.Dropdowns.GroupCategory>
+  <ArchitectStudio.Dropdowns.GroupCategoryFree>— none (members stay where they are)</ArchitectStudio.Dropdowns.GroupCategoryFree>
+  <ArchitectStudio.Dropdowns.GroupCategoryTip>Forces a category on the whole group: its members are moved there, and any you add later will follow. Without it, the group appears wherever its members are, and splits into several buttons if they are scattered.</ArchitectStudio.Dropdowns.GroupCategoryTip>
+  <ArchitectStudio.Settings.KeyHintUnbound>No default keyboard shortcut — assign one in Options → Keyboard configuration.</ArchitectStudio.Settings.KeyHintUnbound>
+
+  <ArchitectStudio.Settings.OpenCategories>Categories and subcategories…</ArchitectStudio.Settings.OpenCategories>
+  <ArchitectStudio.ArchitectButtonCategories>Categories</ArchitectStudio.ArchitectButtonCategories>
+  <ArchitectStudio.ArchitectButtonCategoriesTip>Reorder categories and their subcategories.</ArchitectStudio.ArchitectButtonCategoriesTip>
+
+  <ArchitectStudio.Categories.Title>Categories</ArchitectStudio.Categories.Title>
+  <ArchitectStudio.Categories.Intro>The arrows move a category among its siblings. Click its name to change label, colour and icon.</ArchitectStudio.Categories.Intro>
+  <ArchitectStudio.Categories.ResetOrder>Reset order</ArchitectStudio.Categories.ResetOrder>
+  <ArchitectStudio.Categories.ConfirmResetOrder>Put every category back in its original order?</ArchitectStudio.Categories.ConfirmResetOrder>
+
+  <ArchitectStudio.Categories.EmptyTip>Nothing to build here (subcategories included).</ArchitectStudio.Categories.EmptyTip>
+
+  <ArchitectStudio.EditCategory.Title>Appearance: {0}</ArchitectStudio.EditCategory.Title>
+  <ArchitectStudio.EditCategory.Label>Label</ArchitectStudio.EditCategory.Label>
+  <ArchitectStudio.EditCategory.Apply>Apply</ArchitectStudio.EditCategory.Apply>
+  <ArchitectStudio.EditCategory.Color>Colour</ArchitectStudio.EditCategory.Color>
+  <ArchitectStudio.EditCategory.NoColor>None</ArchitectStudio.EditCategory.NoColor>
+  <ArchitectStudio.EditCategory.Icon>Icon</ArchitectStudio.EditCategory.Icon>
+  <ArchitectStudio.EditCategory.DefaultIcon>Default icon</ArchitectStudio.EditCategory.DefaultIcon>
+  <ArchitectStudio.EditCategory.NoArchitectIcons>Architect Icons is not loaded: icon selection is unavailable.</ArchitectStudio.EditCategory.NoArchitectIcons>
+  <ArchitectStudio.EditCategory.ResetThis>Reset all</ArchitectStudio.EditCategory.ResetThis>
+
+  <ArchitectStudio.Categories.New>New category…</ArchitectStudio.Categories.New>
+  <ArchitectStudio.Categories.TopLevel>— top-level category</ArchitectStudio.Categories.TopLevel>
+  <ArchitectStudio.EditCategory.Parent>Parent</ArchitectStudio.EditCategory.Parent>
+  <ArchitectStudio.EditCategory.Delete>Delete this category</ArchitectStudio.EditCategory.Delete>
+  <ArchitectStudio.EditCategory.ConfirmDelete>Delete the category "{0}"? Its buildings will return to their original category.</ArchitectStudio.EditCategory.ConfirmDelete>
+
+  <ArchitectStudio.Categories.NoNesting>Without Better Architect Menu there are no subcategories: the category is created at top level.</ArchitectStudio.Categories.NoNesting>
+
+</LanguageData>
