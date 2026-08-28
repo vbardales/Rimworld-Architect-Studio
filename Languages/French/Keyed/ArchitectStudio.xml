@@ -83,4 +83,10 @@
 
   <ArchitectStudio.Categories.NoNesting>Sans Better Architect Menu, les sous-catégories n&apos;existent pas : la catégorie est créée au premier niveau.</ArchitectStudio.Categories.NoNesting>
 
+  <ArchitectStudio.Settings.Integrations>Intégrations détectées</ArchitectStudio.Settings.Integrations>
+  <ArchitectStudio.Settings.Detected>présent</ArchitectStudio.Settings.Detected>
+  <ArchitectStudio.Settings.NotDetected>absent</ArchitectStudio.Settings.NotDetected>
+  <ArchitectStudio.Settings.ResetEverything>Tout réinitialiser</ArchitectStudio.Settings.ResetEverything>
+  <ArchitectStudio.Settings.ConfirmResetEverything>Effacer tous les réglages d&apos;Architect Studio : groupes, catégories créées, ordres, libellés, couleurs et icônes ?</ArchitectStudio.Settings.ConfirmResetEverything>
+
 </LanguageData>

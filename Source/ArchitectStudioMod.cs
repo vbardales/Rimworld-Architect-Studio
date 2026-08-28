@@ -24,6 +24,13 @@ namespace ArchitectStudio
 
         public override string SettingsCategory() => "Architect Studio";
 
+        private static string IntegrationLine(string name, bool active)
+        {
+            return "   " + name + " : " + (active
+                ? "ArchitectStudio.Settings.Detected".Translate()
+                : "ArchitectStudio.Settings.NotDetected".Translate());
+        }
+
         public override void DoSettingsWindowContents(Rect inRect)
         {
             var listing = new Listing_Standard();
@@ -64,6 +71,28 @@ namespace ArchitectStudio
                 ? "ArchitectStudio.Settings.KeyHint".Translate(keyDef.MainKeyLabel)
                 : "ArchitectStudio.Settings.KeyHintUnbound".Translate());
             GUI.color = Color.white;
+
+            listing.GapLine();
+
+            // Etat des integrations : sans ce recapitulatif, une fonction absente ressemble a un bug
+            // alors qu'il ne manque qu'un mod.
+            listing.Label("ArchitectStudio.Settings.Integrations".Translate());
+            GUI.color = new Color(1f, 1f, 1f, 0.6f);
+            listing.Label(IntegrationLine("Better Architect Menu", BetterArchitectCompat.Active));
+            listing.Label(IntegrationLine("Architect Icons", ArchitectIconsCompat.Available));
+            listing.Label(IntegrationLine("Float Sub-Menus", FloatSubMenuCompat.Available));
+            GUI.color = Color.white;
+
+            listing.Gap();
+
+            if (ArchitectStudioReset.HasAnything &&
+                listing.ButtonText("ArchitectStudio.Settings.ResetEverything".Translate()))
+            {
+                Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(
+                    "ArchitectStudio.Settings.ConfirmResetEverything".Translate(),
+                    ArchitectStudioReset.All,
+                    destructive: true));
+            }
 
             listing.End();
         }

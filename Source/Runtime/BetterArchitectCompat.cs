@@ -35,8 +35,20 @@ namespace ArchitectStudio
         private static bool resolved;
         private static readonly List<MethodInfo> invalidators = new List<MethodInfo>();
 
-        /// <summary>Vrai si Better Architect Menu est charge.</summary>
-        public static bool Active { get; private set; }
+        /// <summary>
+        /// Vrai si Better Architect Menu est charge. Declenche la resolution : lu depuis les reglages,
+        /// il repondrait faux tant qu'aucune purge de cache n'aurait encore eu lieu.
+        /// </summary>
+        public static bool Active
+        {
+            get
+            {
+                Resolve();
+                return active;
+            }
+        }
+
+        private static bool active;
 
         private static void Resolve()
         {
@@ -53,7 +65,7 @@ namespace ArchitectStudio
                 return;
             }
 
-            Active = true;
+            active = true;
 
             var preferred = Resolve(type, PreferredMethod);
             if (preferred != null)
