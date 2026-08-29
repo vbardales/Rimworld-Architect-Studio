@@ -6,7 +6,7 @@ namespace ArchitectStudio
 {
     public class ArchitectStudioMod : Mod
     {
-        public const string HarmonyId = "vbardales.architectstudio";
+        public const string HarmonyId = "nelim.architectstudio";
 
         public static ArchitectStudioMod Instance { get; private set; }
         public static ArchitectStudioSettings Settings { get; private set; }
