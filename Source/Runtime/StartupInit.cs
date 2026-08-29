@@ -15,6 +15,13 @@ namespace ArchitectStudio
         {
             LongEventHandler.ExecuteWhenFinished(delegate
             {
+                // Patches differes jusqu'ici : ces rappels s'executent sur le thread principal - c'est
+                // par le meme mecanisme que le jeu appelle StaticConstructorOnStartupUtility.CallAll -
+                // alors que le constructeur du mod, lui, tourne sur un thread de fond ou toute
+                // ouverture de ressource echoue.
+                ArchitectIconsCompat.ApplyPatch(ArchitectStudioMod.HarmonyInstance);
+                CategoryColorPainter.ApplyPatch(ArchitectStudioMod.HarmonyInstance);
+
                 // Les categories creees doivent exister avant tout le reste : l'ordre, les libelles
                 // et les groupes peuvent les referencer.
                 CustomCategoryRuntime.EnsureDefs();

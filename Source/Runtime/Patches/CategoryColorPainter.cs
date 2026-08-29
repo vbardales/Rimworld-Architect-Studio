@@ -41,7 +41,27 @@ namespace ArchitectStudio
             pending = null;
         }
 
-        [HarmonyPatch(typeof(Widgets), nameof(Widgets.Label), typeof(Rect), typeof(string))]
+        /// <summary>
+        /// Pose le patch. Volontairement pas d'attribut [HarmonyPatch] : PatchAll s'execute depuis le
+        /// constructeur du mod, sur un thread de fond. Or patcher une methode force le JIT a la
+        /// compiler, ce qui declenche le constructeur statique de son type - et celui de
+        /// <c>Verse.Widgets</c> charge des textures, ce qu'Unity interdit hors du thread principal.
+        /// </summary>
+        public static void ApplyPatch(Harmony harmony)
+        {
+            var target = AccessTools.Method(typeof(Widgets), nameof(Widgets.Label),
+                new[] { typeof(Rect), typeof(string) });
+
+            if (target == null)
+            {
+                return;
+            }
+
+            harmony.Patch(target,
+                prefix: new HarmonyMethod(typeof(Widgets_Label_Patch), nameof(Widgets_Label_Patch.Prefix)),
+                postfix: new HarmonyMethod(typeof(Widgets_Label_Patch), nameof(Widgets_Label_Patch.Postfix)));
+        }
+
         public static class Widgets_Label_Patch
         {
             public static void Prefix()

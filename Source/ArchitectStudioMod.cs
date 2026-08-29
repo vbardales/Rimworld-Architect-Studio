@@ -18,8 +18,12 @@ namespace ArchitectStudio
             Settings = GetSettings<ArchitectStudioSettings>();
 
             HarmonyInstance = new Harmony(HarmonyId);
+
+            // Uniquement les patches dont le type cible n'a pas de constructeur statique chargeant des
+            // ressources : ce constructeur-ci tourne sur un thread de fond, et patcher une methode y
+            // declenche le constructeur statique de son type. Le reste est pose dans StartupInit,
+            // sur le thread principal.
             HarmonyInstance.PatchAll();
-            ArchitectIconsCompat.ApplyPatch(HarmonyInstance);
         }
 
         public override string SettingsCategory() => "Architect Studio";
