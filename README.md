@@ -13,7 +13,7 @@ settings and reapplied on startup. The mod can be added to or removed from a gam
 Designed to stay usable without a keyboard, with the Steam Deck in mind: every action is reachable
 with a pointer, and no feature is keyboard-only.
 
-## Optional integrations
+## Works with
 
 None is required — the mod works on its own, and the settings screen shows which ones were
 detected. All are resolved by reflection; no third-party assembly is referenced at build time.
@@ -24,6 +24,20 @@ detected. All are resolved by reflection; no third-party assembly is referenced 
 | [Architect Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067) | Category icon picking |
 | [Float Sub-Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430) | Nested subcategories in the pick menus |
 | [Searchable Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119) | Adds a search field to those menus by itself |
+
+## Also recommended
+
+Not integrated with, but they pair well — the icon packs feed the picker, and the dropdown packs
+give you groups worth editing.
+
+| Mod | Why |
+|---|---|
+| [Architect Icons: Improved](https://steamcommunity.com/sharedfiles/filedetails/?id=2879451234) | More icons for the picker to offer |
+| [Optional Icons for Architect Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=1966995052) | More again |
+| [Bradson's Main Button Icons (Forked + Expanded)](https://steamcommunity.com/sharedfiles/filedetails/?id=3532359201) | The same treatment for the bottom bar |
+| [Basic Dropdowns](https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827) | ~100 ready-made dropdown groups, which this mod lets you edit |
+| [Basic Dropdowns - Extended](https://steamcommunity.com/sharedfiles/filedetails/?id=3562304092) | More of them |
+| [Even More Linkables Dropdown Patch](https://steamcommunity.com/sharedfiles/filedetails/?id=3150535403) | Dropdowns for linkable buildings |
 
 ## Building
 

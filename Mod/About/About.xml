@@ -30,12 +30,21 @@ Nothing is written to the game's def files, nor to another mod's: everything is 
 
 Interface in English and French. Designed to stay usable without a keyboard, with the Steam Deck in mind.
 
-OPTIONAL INTEGRATIONS (none required, the mod works on its own)
+WORKS WITH
+
+Detected automatically, none required — the settings screen shows which ones were found.
 
 - Better Architect Menu: subcategories, and invalidation of its display caches.
 - Architect Icons: category icon picking.
 - Float Sub-Menus: nested subcategories in the pick menus.
 - Searchable Menus: adds a search field to those menus by itself.
+
+ALSO RECOMMENDED
+
+- Architect Icons: Improved, and Optional Icons for Architect Icons — more icons for the picker to offer, since it browses whatever your active mods have loaded.
+- Bradson's Main Button Icons (Forked + Expanded) — the same treatment for the bottom bar.
+- Basic Dropdowns, and Basic Dropdowns - Extended — around a hundred ready-made dropdown groups, which this mod then lets you edit, extend or take apart.
+- Even More Linkables Dropdown Patch — dropdowns for linkable buildings.
 
 AI-GENERATED
 
