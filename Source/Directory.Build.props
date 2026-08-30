@@ -2,13 +2,14 @@
 
   <PropertyGroup>
     <!--
-      Les intermediaires de compilation sortent du dossier du mod. Sans cela, Source/obj pesait
-      6 Mo sur les 6,4 Mo du mod et serait parti tel quel sur le Workshop, alors que le contenu
-      reellement publiable tient en 300 Ko. Doit rester dans un Directory.Build.props : la
-      restauration NuGet lit cette propriete avant le csproj.
+      Les intermediaires de compilation restent a la racine du depot, hors du dossier Mod/.
+      Ce dossier part tel quel sur le Workshop - SteamUGC.SetItemContent y envoie le repertoire
+      entier, sans aucun filtrage - donc rien d'autre que le mod ne doit s'y trouver.
+      Doit rester dans un Directory.Build.props : la restauration NuGet lit cette propriete
+      avant le csproj.
     -->
-    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\..\.build\obj\ArchitectStudio\</BaseIntermediateOutputPath>
-    <BaseOutputPath>$(MSBuildThisFileDirectory)..\..\.build\bin\ArchitectStudio\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\.build\obj\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)..\.build\bin\</BaseOutputPath>
   </PropertyGroup>
 
 </Project>

@@ -34,22 +34,27 @@ needed to compile.
 dotnet build Source/ArchitectStudio.csproj -c Release
 ```
 
-The assembly is written straight into `Assemblies/`. Build intermediates are sent **outside** the
-mod folder by `Source/Directory.Build.props`, into a `.build/` directory one level above the
-repository — the published folder must stay free of `obj/`, which would otherwise weigh several
-megabytes on every subscriber's download.
+The assembly is written straight into `Mod/Assemblies/`.
 
-For a quick iteration loop, make `RimWorld/Mods/ArchitectStudio` an NTFS junction pointing at this
-repository: a rebuild then lands in the game with nothing to copy.
+For a quick iteration loop, make `RimWorld/Mods/ArchitectStudio` an NTFS junction pointing at
+**`Mod/`** — not at the repository root: a rebuild then lands in the game with nothing to copy.
 
 ## Layout
 
+Only `Mod/` is published. RimWorld's uploader hands Steam the mod directory as-is
+(`SteamUGC.SetItemContent` on `ModMetaData.RootDir`, with no filtering whatsoever), so anything
+sitting in that folder is downloaded by every subscriber. Sources and build intermediates
+therefore live outside it.
+
 ```
-About/          metadata, Workshop preview and mod icon
-Assemblies/     the built assembly
-Defs/           key binding definition
-Languages/      English and French
-Source/         C# sources
+Mod/            <- the published mod, and the junction target
+  About/          metadata, Workshop preview and mod icon
+  Assemblies/     the built assembly
+  Defs/           key binding definition
+  Languages/      English and French
+  LICENSE         MIT requires the notice to travel with the distribution
+Source/         C# sources, never published
+.build/         build intermediates, git-ignored, never published
 ```
 
 ## Licence
