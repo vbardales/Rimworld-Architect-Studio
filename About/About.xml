@@ -19,7 +19,18 @@ INTEGRATIONS FACULTATIVES (aucune n'est obligatoire, le mod fonctionne seul)
 - Float Sub-Menus : sous-categories imbriquees dans les menus de choix.
 - Searchable Menus : ajoute de lui-meme une recherche a ces menus.
 
-Voir ATTRIBUTION.md.</description>
+GENERE PAR IA
+
+Le code de ce mod a ete ecrit avec Claude Code (Anthropic) et ses images generees avec DALL-E (OpenAI), sous direction, relecture et test humains. C'est assume : concevoir avec ces outils est mon metier.
+
+REMERCIEMENTS
+
+Claude Code (Anthropic) et DALL-E (OpenAI).
+ferny (fernyrepos) pour Better Architect Menu et Colored Categories, sous licence MIT, dont l'etude a permis de trouver les bons points d'accroche.
+bymarcin pour Architect Icons, kathanon pour Float Sub-Menus et Searchable Menus.
+Andreas Pardeike pour Harmony.
+
+Voir ATTRIBUTION.md. Ce mod est sous licence MIT.</description>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>
