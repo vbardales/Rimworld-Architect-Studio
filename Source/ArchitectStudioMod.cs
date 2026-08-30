@@ -68,6 +68,17 @@ namespace ArchitectStudio
 
             listing.Gap();
 
+            var showLocked = Settings.showResearchLocked;
+            listing.CheckboxLabeled("ArchitectStudio.Settings.ShowResearchLocked".Translate(), ref showLocked,
+                "ArchitectStudio.Settings.ShowResearchLockedTip".Translate());
+            if (showLocked != Settings.showResearchLocked)
+            {
+                Settings.showResearchLocked = showLocked;
+                WriteSettings();
+            }
+
+            listing.Gap();
+
             GUI.color = new Color(1f, 1f, 1f, 0.6f);
             var keyDef = ArchitectStudioKeyBindingDefOf.ArchitectStudio_OpenDropdowns;
             var bound = keyDef != null && keyDef.MainKey != KeyCode.None;

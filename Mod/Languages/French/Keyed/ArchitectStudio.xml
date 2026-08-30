@@ -92,4 +92,8 @@
   <ArchitectStudio.Common.CategoryPath>{0} > {1}</ArchitectStudio.Common.CategoryPath>
   <ArchitectStudio.Common.RemoveGlyph>x</ArchitectStudio.Common.RemoveGlyph>
 
+  <ArchitectStudio.Settings.ShowResearchLocked>Montrer ce que la recherche verrouille</ArchitectStudio.Settings.ShowResearchLocked>
+  <ArchitectStudio.Settings.ShowResearchLockedTip>Fait apparaître les bâtiments et les catégories qu&apos;une technologie non recherchée cache encore. Ils restent grisés et non constructibles : c&apos;est pour ranger, pas pour contourner la recherche.</ArchitectStudio.Settings.ShowResearchLockedTip>
+  <ArchitectStudio.ResearchLocked.Reason>Technologie non recherchée</ArchitectStudio.ResearchLocked.Reason>
+
 </LanguageData>

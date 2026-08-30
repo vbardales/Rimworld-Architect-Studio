@@ -92,4 +92,8 @@
   <ArchitectStudio.Common.CategoryPath>{0} > {1}</ArchitectStudio.Common.CategoryPath>
   <ArchitectStudio.Common.RemoveGlyph>x</ArchitectStudio.Common.RemoveGlyph>
 
+  <ArchitectStudio.Settings.ShowResearchLocked>Show what research still locks</ArchitectStudio.Settings.ShowResearchLocked>
+  <ArchitectStudio.Settings.ShowResearchLockedTip>Reveals the buildings and categories still hidden behind unfinished research. They stay greyed out and cannot be built: this is for organising, not for bypassing research.</ArchitectStudio.Settings.ShowResearchLockedTip>
+  <ArchitectStudio.ResearchLocked.Reason>Research not completed</ArchitectStudio.ResearchLocked.Reason>
+
 </LanguageData>

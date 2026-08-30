@@ -53,6 +53,12 @@ namespace ArchitectStudio
         /// la leur, et le groupe se retrouve la ou ils sont, quitte a se scinder en plusieurs boutons.
         /// </summary>
         public Dictionary<string, string> groupCategories = new Dictionary<string, string>();
+        /// <summary>
+        /// Affiche les batiments et categories que la recherche verrouille encore, grises et non
+        /// constructibles, pour pouvoir les ranger avant de les debloquer.
+        /// </summary>
+        public bool showResearchLocked;
+
 
         /// <summary>
         /// Groupes fournis par le jeu ou par un mod que l'utilisateur a supprimes. On ne peut pas
@@ -66,6 +72,7 @@ namespace ArchitectStudio
             base.ExposeData();
             Scribe_Values.Look(ref schemaVersion, "schemaVersion", 1);
             Scribe_Values.Look(ref showArchitectButton, "showArchitectButton", true);
+            Scribe_Values.Look(ref showResearchLocked, "showResearchLocked", false);
             Scribe_Collections.Look(ref customGroups, "customGroups", LookMode.Deep);
             Scribe_Collections.Look(ref dropdownAssignments, "dropdownAssignments", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref groupOrders, "groupOrders", LookMode.Deep);

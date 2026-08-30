@@ -28,6 +28,8 @@ Première version. RimWorld 1.6.
 
 ### Divers
 
+- Option pour montrer les bâtiments et catégories que la recherche verrouille encore, grisés et non constructibles, afin de pouvoir les ranger avant de les débloquer.
+
 - Bouton d'accès dans la fenêtre Architecte, plus une entrée dans les réglages du mod.
 - Raccourci clavier non assigné par défaut, à définir soi-même.
 - Récapitulatif des intégrations détectées dans les réglages.
