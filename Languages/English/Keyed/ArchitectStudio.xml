@@ -89,4 +89,7 @@
   <ArchitectStudio.Settings.ResetEverything>Reset everything</ArchitectStudio.Settings.ResetEverything>
   <ArchitectStudio.Settings.ConfirmResetEverything>Erase every Architect Studio setting: groups, created categories, orders, labels, colours and icons?</ArchitectStudio.Settings.ConfirmResetEverything>
 
+  <ArchitectStudio.Common.CategoryPath>{0} > {1}</ArchitectStudio.Common.CategoryPath>
+  <ArchitectStudio.Common.RemoveGlyph>x</ArchitectStudio.Common.RemoveGlyph>
+
 </LanguageData>

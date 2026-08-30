@@ -76,7 +76,9 @@ namespace ArchitectStudio
                 foreach (var child in ordered)
                 {
                     var captured = child;
-                    options.Add(new FloatMenuOption(label + " > " + captured.LabelCap, () => onPick(captured)));
+                    options.Add(new FloatMenuOption(
+                        "ArchitectStudio.Common.CategoryPath".Translate(label, captured.LabelCap),
+                        () => onPick(captured)));
                 }
             }
 

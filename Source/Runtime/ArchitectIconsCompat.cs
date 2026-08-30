@@ -61,8 +61,8 @@ namespace ArchitectStudio
             var target = AccessTools.Method(resourcesType, "FindArchitectTabCategoryIcon", new[] { typeof(string) });
             if (target == null)
             {
-                Log.Warning("[Architect Studio] Architect Icons est charge mais sa recherche d'icone n'a pas " +
-                            "ete reconnue : le choix d'icone de categorie sera sans effet.");
+                Log.Warning("[Architect Studio] Architect Icons is loaded but its icon lookup was not " +
+                            "recognised: choosing a category icon will have no effect.");
                 return;
             }
 

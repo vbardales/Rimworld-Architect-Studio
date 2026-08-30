@@ -89,4 +89,7 @@
   <ArchitectStudio.Settings.ResetEverything>Tout réinitialiser</ArchitectStudio.Settings.ResetEverything>
   <ArchitectStudio.Settings.ConfirmResetEverything>Effacer tous les réglages d&apos;Architect Studio : groupes, catégories créées, ordres, libellés, couleurs et icônes ?</ArchitectStudio.Settings.ConfirmResetEverything>
 
+  <ArchitectStudio.Common.CategoryPath>{0} > {1}</ArchitectStudio.Common.CategoryPath>
+  <ArchitectStudio.Common.RemoveGlyph>x</ArchitectStudio.Common.RemoveGlyph>
+
 </LanguageData>

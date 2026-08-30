@@ -6,31 +6,48 @@
   <supportedVersions>
     <li>1.6</li>
   </supportedVersions>
-  <description>Organise le menu Architecte depuis le jeu, sans redemarrer.
+  <description>Organise the Architect menu from inside the game, without restarting.
 
-- Groupes de menus deroulants : creer un groupe, y ranger des batiments, ordonner ses membres, lui imposer une categorie.
-- Categories et sous-categories : en creer, les reordonner, changer leur libelle, leur couleur et leur icone.
+DROPDOWN GROUPS
 
-Rien n'est ecrit dans les fichiers du jeu ni dans ceux d'un autre mod : tout est enregistre dans les reglages du mod et reapplique au demarrage.
+- Create a group, put buildings into it, take them out.
+- Order the members of a group, by dragging or with up/down arrows.
+- Force a category on a whole group: its members are moved there, and any you add later follow. Without this, a group has no category of its own and splits into one button per category its members happen to sit in.
+- Grid or list menu, and choice of icon source.
+- Delete a group. Groups provided by another mod are dissolved and hidden instead, since their def is recreated on every startup; a button restores them.
+- Warns when a group is spread across several categories, where the game silently produces several separate buttons.
 
-INTEGRATIONS FACULTATIVES (aucune n'est obligatoire, le mod fonctionne seul)
-- Better Architect Menu : sous-categories, et purge de ses caches d'affichage.
-- Architect Icons : choix de l'icone d'une categorie.
-- Float Sub-Menus : sous-categories imbriquees dans les menus de choix.
-- Searchable Menus : ajoute de lui-meme une recherche a ces menus.
+CATEGORIES AND SUBCATEGORIES
 
-GENERE PAR IA
+- Create a category, or a subcategory when Better Architect Menu is present.
+- Reorder with up/down buttons, among siblings.
+- Change the label, colour and icon of any category, vanilla ones included.
+- Icon picker browsing every icon already loaded by your active mods.
+- Empty categories greyed out, with a building count that includes their subcategories.
 
-Le code de ce mod a ete ecrit avec Claude Code (Anthropic) et ses images generees avec DALL-E (OpenAI), sous direction, relecture et test humains. C'est assume : concevoir avec ces outils est mon metier.
+Nothing is written to the game's def files, nor to another mod's: everything is stored in the mod settings and reapplied on startup. The mod can be added to or removed from a game in progress.
 
-REMERCIEMENTS
+Interface in English and French. Designed to stay usable without a keyboard, with the Steam Deck in mind.
 
-Claude Code (Anthropic) et DALL-E (OpenAI).
-ferny (fernyrepos) pour Better Architect Menu et Colored Categories, sous licence MIT, dont l'etude a permis de trouver les bons points d'accroche.
-bymarcin pour Architect Icons, kathanon pour Float Sub-Menus et Searchable Menus.
-Andreas Pardeike pour Harmony.
+OPTIONAL INTEGRATIONS (none required, the mod works on its own)
 
-Voir ATTRIBUTION.md. Ce mod est sous licence MIT.</description>
+- Better Architect Menu: subcategories, and invalidation of its display caches.
+- Architect Icons: category icon picking.
+- Float Sub-Menus: nested subcategories in the pick menus.
+- Searchable Menus: adds a search field to those menus by itself.
+
+AI-GENERATED
+
+This mod's code was written with Claude Code (Anthropic) and its images generated with DALL-E (OpenAI), under human direction, review and testing. Stated openly: designing with these tools is my job.
+
+THANKS
+
+Claude Code (Anthropic) and DALL-E (OpenAI).
+ferny (fernyrepos) for Better Architect Menu and Colored Categories, MIT licensed, whose study showed where the right hooks were.
+bymarcin for Architect Icons, kathanon for Float Sub-Menus and Searchable Menus.
+Andreas Pardeike for Harmony.
+
+See ATTRIBUTION.md. This mod is MIT licensed.</description>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>
@@ -47,7 +64,7 @@ Voir ATTRIBUTION.md. Ce mod est sous licence MIT.</description>
     <li>Ludeon.RimWorld.Biotech</li>
     <li>Ludeon.RimWorld.Anomaly</li>
     <li>Ludeon.RimWorld.Odyssey</li>
-    <!-- Integrations facultatives : on se greffe dessus, donc on charge apres. -->
+    <!-- Optional integrations: we hook onto them, so we load after. -->
     <li>com.bymarcin.ArchitectIcons</li>
     <li>ferny.BetterArchitect</li>
     <li>ferny.categoriesdropdowns</li>

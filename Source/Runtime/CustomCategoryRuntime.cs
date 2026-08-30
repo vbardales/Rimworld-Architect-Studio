@@ -186,8 +186,8 @@ namespace ArchitectStudio
             }
             catch (Exception ex)
             {
-                Log.Warning($"[Architect Studio] La categorie '{category.defName}' n'a pas pu etre retiree " +
-                            $"de la base de defs ({ex.Message}) : elle disparaitra au prochain demarrage.");
+                Log.Warning($"[Architect Studio] Category '{category.defName}' could not be removed from " +
+                            $"the def database ({ex.Message}): it will disappear on the next restart.");
             }
 
             Refresh();

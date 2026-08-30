@@ -161,8 +161,8 @@ namespace ArchitectStudio
             // et on garde l'affectation au cas ou le mod reviendrait.
             if (warnedMissingGroups.Add(groupId))
             {
-                Log.Warning($"[Architect Studio] Groupe de menu deroulant introuvable : '{groupId}'. " +
-                            "Les batiments concernes reprennent leur groupe d'origine.");
+                Log.Warning($"[Architect Studio] Dropdown group not found: '{groupId}'. The buildings " +
+                            "assigned to it revert to their original group.");
             }
 
             return originalGroups.TryGetValue(key, out var fallback) ? fallback : null;

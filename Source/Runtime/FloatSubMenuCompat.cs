@@ -59,8 +59,8 @@ namespace ArchitectStudio
 
             if (constructor == null)
             {
-                Log.Warning("[Architect Studio] Float Sub-Menus est charge mais son constructeur n'a pas " +
-                            "ete reconnu : les categories seront listees a plat.");
+                Log.Warning("[Architect Studio] Float Sub-Menus is loaded but its constructor was not " +
+                            "recognised: categories will be listed flat.");
             }
         }
 
@@ -85,7 +85,7 @@ namespace ArchitectStudio
             }
             catch (Exception ex)
             {
-                Log.Warning($"[Architect Studio] Creation d'un sous-menu impossible : {ex.Message}");
+                Log.Warning($"[Architect Studio] Could not create a sub-menu: {ex.Message}");
                 return null;
             }
         }

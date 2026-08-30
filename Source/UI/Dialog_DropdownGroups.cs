@@ -601,7 +601,7 @@ namespace ArchitectStudio
                 }
 
                 TooltipHandler.TipRegion(removeRect, "ArchitectStudio.Dropdowns.Remove".Translate());
-                if (Widgets.ButtonText(removeRect, "x"))
+                if (Widgets.ButtonText(removeRect, "ArchitectStudio.Common.RemoveGlyph".Translate()))
                 {
                     Assign(def, null);
                     break;
@@ -743,7 +743,7 @@ namespace ArchitectStudio
         {
             var parent = BetterArchitectCompat.ParentCategoryOf(category);
             return parent != null
-                ? parent.LabelCap + " > " + category.LabelCap
+                ? "ArchitectStudio.Common.CategoryPath".Translate(parent.LabelCap, category.LabelCap).ToString()
                 : category.LabelCap.ToString();
         }
 

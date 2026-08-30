@@ -96,9 +96,9 @@ namespace ArchitectStudio
 
             if (invalidators.Count == 0)
             {
-                Log.Warning("[Architect Studio] Better Architect Menu est charge, mais aucun de ses points " +
-                            "de purge de cache n'a ete reconnu. Les modifications de groupes deroulants " +
-                            "risquent de ne s'afficher qu'apres un redemarrage.");
+                Log.Warning("[Architect Studio] Better Architect Menu is loaded, but none of its cache " +
+                            "invalidation entry points were recognised. Dropdown group changes may only " +
+                            "show up after a restart.");
             }
         }
 
@@ -202,8 +202,8 @@ namespace ArchitectStudio
             }
             catch (Exception ex)
             {
-                Log.Warning($"[Architect Studio] Purge de l'arborescence de Better Architect Menu " +
-                            $"impossible : {ex.Message}");
+                Log.Warning("[Architect Studio] Could not invalidate Better Architect Menu's category " +
+                            $"tree: {ex.Message}");
             }
         }
 
@@ -240,8 +240,8 @@ namespace ArchitectStudio
                 }
                 catch (Exception ex)
                 {
-                    Log.Warning($"[Architect Studio] Echec de la purge du cache '{method.Name}' de " +
-                                $"Better Architect Menu : {ex.Message}");
+                    Log.Warning($"[Architect Studio] Better Architect Menu's '{method.Name}' cache " +
+                                $"invalidation failed: {ex.Message}");
                 }
             }
         }
