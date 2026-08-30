@@ -7,7 +7,7 @@
   <ArchitectStudio.Settings.ShowArchitectButtonTip>Ajoute une rangée en bas de la fenêtre Architecte pour ouvrir l'éditeur sans clavier. Rouvre le menu Architecte pour que le changement prenne effet.</ArchitectStudio.Settings.ShowArchitectButtonTip>
   <ArchitectStudio.Settings.KeyHint>Raccourci clavier : {0} — modifiable dans Options → Configuration du clavier.</ArchitectStudio.Settings.KeyHint>
 
-  <ArchitectStudio.ArchitectButton>Organiser les menus…</ArchitectStudio.ArchitectButton>
+  <ArchitectStudio.ArchitectButton>Groupes…</ArchitectStudio.ArchitectButton>
   <ArchitectStudio.ArchitectButtonTip>Ouvre l'éditeur de groupes de menus déroulants.</ArchitectStudio.ArchitectButtonTip>
 
   <ArchitectStudio.Dropdowns.Title>Groupes de menus déroulants</ArchitectStudio.Dropdowns.Title>
@@ -22,7 +22,7 @@
   <ArchitectStudio.Dropdowns.Remove>Retirer du groupe</ArchitectStudio.Dropdowns.Remove>
 
   <ArchitectStudio.Dropdowns.Groups>Groupes</ArchitectStudio.Dropdowns.Groups>
-  <ArchitectStudio.Dropdowns.NewGroup>Nouveau groupe</ArchitectStudio.Dropdowns.NewGroup>
+  <ArchitectStudio.Dropdowns.NewGroup>Nouveau groupe…</ArchitectStudio.Dropdowns.NewGroup>
   <ArchitectStudio.Dropdowns.Custom>Groupe créé par toi</ArchitectStudio.Dropdowns.Custom>
   <ArchitectStudio.Dropdowns.GroupNameTitle>Nom du groupe</ArchitectStudio.Dropdowns.GroupNameTitle>
 
@@ -55,7 +55,7 @@
   <ArchitectStudio.Settings.KeyHintUnbound>Aucun raccourci clavier par défaut — assignable dans Options → Configuration du clavier.</ArchitectStudio.Settings.KeyHintUnbound>
 
   <ArchitectStudio.Settings.OpenCategories>Catégories et sous-catégories…</ArchitectStudio.Settings.OpenCategories>
-  <ArchitectStudio.ArchitectButtonCategories>Catégories</ArchitectStudio.ArchitectButtonCategories>
+  <ArchitectStudio.ArchitectButtonCategories>Catégories…</ArchitectStudio.ArchitectButtonCategories>
   <ArchitectStudio.ArchitectButtonCategoriesTip>Réordonner les catégories et leurs sous-catégories.</ArchitectStudio.ArchitectButtonCategoriesTip>
 
   <ArchitectStudio.Categories.Title>Catégories</ArchitectStudio.Categories.Title>

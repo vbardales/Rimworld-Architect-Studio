@@ -7,7 +7,7 @@
   <ArchitectStudio.Settings.ShowArchitectButtonTip>Adds a row at the bottom of the Architect window to open the editor without a keyboard. Reopen the Architect menu for the change to take effect.</ArchitectStudio.Settings.ShowArchitectButtonTip>
   <ArchitectStudio.Settings.KeyHint>Keyboard shortcut: {0} — change it in Options → Keyboard configuration.</ArchitectStudio.Settings.KeyHint>
 
-  <ArchitectStudio.ArchitectButton>Organise menus…</ArchitectStudio.ArchitectButton>
+  <ArchitectStudio.ArchitectButton>Groups…</ArchitectStudio.ArchitectButton>
   <ArchitectStudio.ArchitectButtonTip>Opens the dropdown group editor.</ArchitectStudio.ArchitectButtonTip>
 
   <ArchitectStudio.Dropdowns.Title>Dropdown groups</ArchitectStudio.Dropdowns.Title>
@@ -22,7 +22,7 @@
   <ArchitectStudio.Dropdowns.Remove>Remove from group</ArchitectStudio.Dropdowns.Remove>
 
   <ArchitectStudio.Dropdowns.Groups>Groups</ArchitectStudio.Dropdowns.Groups>
-  <ArchitectStudio.Dropdowns.NewGroup>New group</ArchitectStudio.Dropdowns.NewGroup>
+  <ArchitectStudio.Dropdowns.NewGroup>New group…</ArchitectStudio.Dropdowns.NewGroup>
   <ArchitectStudio.Dropdowns.Custom>Group you created</ArchitectStudio.Dropdowns.Custom>
   <ArchitectStudio.Dropdowns.GroupNameTitle>Group name</ArchitectStudio.Dropdowns.GroupNameTitle>
 
@@ -55,7 +55,7 @@
   <ArchitectStudio.Settings.KeyHintUnbound>No default keyboard shortcut — assign one in Options → Keyboard configuration.</ArchitectStudio.Settings.KeyHintUnbound>
 
   <ArchitectStudio.Settings.OpenCategories>Categories and subcategories…</ArchitectStudio.Settings.OpenCategories>
-  <ArchitectStudio.ArchitectButtonCategories>Categories</ArchitectStudio.ArchitectButtonCategories>
+  <ArchitectStudio.ArchitectButtonCategories>Categories…</ArchitectStudio.ArchitectButtonCategories>
   <ArchitectStudio.ArchitectButtonCategoriesTip>Reorder categories and their subcategories.</ArchitectStudio.ArchitectButtonCategoriesTip>
 
   <ArchitectStudio.Categories.Title>Categories</ArchitectStudio.Categories.Title>
