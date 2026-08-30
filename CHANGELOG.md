@@ -3,11 +3,10 @@
 Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/).
 Ce fichier sert au dépôt et à rédiger les notes de version Steam ; RimWorld ne l'affiche pas en jeu.
 
-## [1.0.0] — non publié
-
-À la publication : créer le tag `v1.0.0` et la release GitHub correspondante.
+## [1.0.0] — 2026-08-30
 
 Première version. RimWorld 1.6.
+Item Steam Workshop : [3792784018](https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018).
 
 ### Groupes de menus déroulants
 
