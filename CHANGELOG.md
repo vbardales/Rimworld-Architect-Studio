@@ -1,41 +1,41 @@
-# Journal des modifications
+# Changelog
 
-Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/).
-Ce fichier sert au dépôt et à rédiger les notes de version Steam ; RimWorld ne l'affiche pas en jeu.
+Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+This file serves the repository and the writing of Steam patch notes; RimWorld does not display it in game.
 
 ## [1.0.0] — 2026-08-30
 
-Première version. RimWorld 1.6.
-Item Steam Workshop : [3792784018](https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018).
+First version. RimWorld 1.6.
+Steam Workshop item: [3792784018](https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018).
 
-### Groupes de menus déroulants
+### Dropdown groups
 
-- Créer un groupe, y ranger des bâtiments, en retirer.
-- Ordonner les membres d'un groupe, par glisser-déposer ou par flèches haut/bas.
-- Imposer une catégorie à un groupe entier : ses membres y sont déplacés, et ceux ajoutés ensuite suivent.
-- Menu en grille ou en liste, et choix de la source des icônes.
-- Supprimer un groupe. Ceux fournis par un autre mod sont dissous et retirés de la liste, puisque leur def revient à chaque démarrage ; un bouton les restaure.
-- Avertissement quand un groupe s'étale sur plusieurs catégories, cas où le jeu en fait silencieusement plusieurs boutons.
+- Create a group, put buildings in it, take them out.
+- Order the members of a group, by drag and drop or with up/down arrows.
+- Force a category on a whole group: its members are moved there, and ones added later follow.
+- Grid or list menu, and a choice of icon source.
+- Delete a group. Ones supplied by another mod are dissolved and removed from the list, since their def comes back on every start; a button restores them.
+- A warning when a group spreads across several categories, a case where the game silently makes several buttons out of it.
 
-### Catégories et sous-catégories
+### Categories and subcategories
 
-- Créer une catégorie, ou une sous-catégorie quand Better Architect Menu est présent.
-- Réordonner par flèches haut/bas, au sein de la fratrie.
-- Changer le libellé, la couleur et l'icône de n'importe quelle catégorie, y compris celles du jeu de base.
-- Sélecteur d'icônes parcourant celles déjà chargées par les mods actifs.
-- Catégories sans contenu grisées, avec le compte des bâtiments.
+- Create a category, or a subcategory when Better Architect Menu is present.
+- Reorder with up/down arrows, within the sibling set.
+- Change the label, colour and icon of any category, including the base game's.
+- An icon picker that walks the icons already loaded by the active mods.
+- Empty categories greyed out, with a building count.
 
-### Divers
+### Miscellaneous
 
-- Option pour montrer les bâtiments et catégories que la recherche verrouille encore, grisés et non constructibles, afin de pouvoir les ranger avant de les débloquer.
+- An option to show buildings and categories that research still locks, greyed out and unbuildable, so you can organise them before unlocking them.
 
-- Bouton d'accès dans la fenêtre Architecte, plus une entrée dans les réglages du mod.
-- Raccourci clavier non assigné par défaut, à définir soi-même.
-- Récapitulatif des intégrations détectées dans les réglages.
-- Remise à zéro globale, et remises à zéro ciblées par écran.
-- Français et anglais.
+- An access button in the Architect window, plus an entry in the mod settings.
+- A key binding, unassigned by default, for you to set.
+- A summary of detected integrations in the settings.
+- A global reset, plus targeted per-screen resets.
+- French and English.
 
 ### Notes
 
-- Rien n'est écrit dans les defs sur disque : tout est enregistré dans les réglages du mod et réappliqué au démarrage.
-- Intégrations facultatives, résolues par réflexion : Better Architect Menu, Architect Icons, Float Sub-Menus, Searchable Menus. Aucune n'est requise.
+- Nothing is written to defs on disk: everything is saved in the mod settings and reapplied on start.
+- Optional integrations, resolved by reflection: Better Architect Menu, Architect Icons, Float Sub-Menus, Searchable Menus. None is required.

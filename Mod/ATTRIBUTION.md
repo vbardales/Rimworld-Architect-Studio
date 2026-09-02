@@ -1,32 +1,32 @@
 # Attributions
 
-## Mods etudies
+## Mods studied
 
-Aucun code n'a ete recopie. Les mods ci-dessous ont servi a comprendre les points d'accroche de
-l'API du menu Architecte ; les implementations d'Architect Studio sont ecrites a neuf.
+No code was copied. The mods below served to understand the hooks in the Architect menu API;
+Architect Studio's implementations are written from scratch.
 
-Sous licence **MIT**, par **fernyrepos** (auteur : ferny ; C# : Taranchuk, StreetKing) :
+Under the **MIT** licence, by **fernyrepos** (author: ferny; C#: Taranchuk, StreetKing):
 
-- [Colored Categories](https://github.com/fernyrepos/Colored-Categories) - a montre que
-  `MainTabWindow_Architect.DoCategoryButton` est le point ou teinter un bouton de categorie.
-  Architect Studio y pose un simple prefixe Harmony, la ou l'original emploie un transpileur et un
-  remplacement d'atlas.
-- [Better Architect Menu](https://github.com/fernyrepos/Better-Architect-Menu) - a servi a
-  identifier ses propres caches d'affichage et son extension d'imbrication, avec lesquels
-  Architect Studio dialogue par reflexion.
+- [Colored Categories](https://github.com/fernyrepos/Colored-Categories) - showed that
+  `MainTabWindow_Architect.DoCategoryButton` is where a category button gets tinted.
+  Architect Studio puts a plain Harmony prefix there, where the original uses a transpiler and an
+  atlas replacement.
+- [Better Architect Menu](https://github.com/fernyrepos/Better-Architect-Menu) - used to identify
+  its own display caches and its nesting extension, which Architect Studio talks to by reflection.
 
-Le texte complet de leur licence est reproduit dans `LICENSE-fernyrepos.txt`
+The full text of their licence is reproduced in `LICENSE-fernyrepos.txt`
 (MIT License, Copyright (c) 2025 fernyrepos).
 
-**Category Manager** (Moriarty) a ete consulte pour comparer les approches de selection d'icone.
-Rien n'en a ete repris : ce mod est retire du Workshop, livre sans source ni fichier de licence.
-Architect Studio lit les textures deja chargees par RimWorld plutot que de parcourir le disque.
+**Category Manager** (Moriarty) was consulted to compare icon-selection approaches. Nothing was
+taken from it: that mod is withdrawn from the Workshop and shipped with neither source nor a
+licence file. Architect Studio reads the textures RimWorld has already loaded rather than walking
+the disk.
 
-## Integrations par reflexion
+## Integrations by reflection
 
-Aucun assembly tiers n'est reference a la compilation ; tout est resolu au runtime et le mod
-fonctionne si ces mods sont absents.
+No third-party assembly is referenced at compile time; everything is resolved at runtime and the
+mod works if these mods are absent.
 
-- **Better Architect Menu** (ferny) - sous-categories, purge des caches d'affichage.
-- **Architect Icons** (bymarcin) - recherche et choix de l'icone d'une categorie.
-- **Float Sub-Menus** (kathanon) - sous-menus imbriques dans les menus de choix.
+- **Better Architect Menu** (ferny) - subcategories, display cache purging.
+- **Architect Icons** (bymarcin) - searching for and choosing a category icon.
+- **Float Sub-Menus** (kathanon) - nested submenus in float menus.
