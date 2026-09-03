@@ -3,6 +3,20 @@
 Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This file serves the repository and the writing of Steam patch notes; RimWorld does not display it in game.
 
+## [Unreleased]
+
+### Fixed
+
+- Dragging a group member downwards dropped it one slot too high. `ReorderableWidget` hands the
+  callback an insertion index computed before removal, not a final position — vanilla inserts
+  first, then removes.
+
+### Changed
+
+- The category and member arrows now use RimWorld's own `ReorderUp` / `ReorderDown` textures
+  instead of a rotated horizontal arrow, removing all matrix maths from the mod. An inactive
+  arrow no longer places a clickable area at all, so it cannot swallow a click at the end of a list.
+
 ## [1.0.1] — 2026-08-30
 
 ### Fixed

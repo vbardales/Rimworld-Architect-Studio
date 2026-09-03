@@ -553,10 +553,17 @@ namespace ArchitectStudio
                     // l'action est invoquee bien apres le Repaint qui l'a enregistree.
                     (from, to) =>
                     {
-                        if (selectedGroup != null)
+                        if (selectedGroup == null)
                         {
-                            ReorderMember(selectedGroup, from, to);
+                            return;
                         }
+
+                        // ReorderableWidget donne un index d'INSERTION calcule avant retrait, pas
+                        // une position finale : vanilla insere puis retire (ModsConfig.TryReorder,
+                        // Page_ConfigureStartingPawns). ReorderMember, lui, retire puis insere. Sans
+                        // cette conversion, un glisser vers le bas atterrit un cran trop haut - et
+                        // seulement vers le bas, ce qui se diagnostique mal.
+                        ReorderMember(selectedGroup, from, from < to ? to - 1 : to);
                     },
                     ReorderableDirection.Vertical,
                     viewRect);
