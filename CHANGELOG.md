@@ -3,6 +3,12 @@
 Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This file serves the repository and the writing of Steam patch notes; RimWorld does not display it in game.
 
+## [Non publié]
+
+### Corrigé
+
+- Les flèches haut/bas des catégories se déplaçaient hors de leur bouton dès que l'échelle d'interface dépassait 100 %.
+
 ## [1.0.0] — 2026-08-30
 
 First version. RimWorld 1.6.
