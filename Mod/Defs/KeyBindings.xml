@@ -5,8 +5,8 @@
     <defName>ArchitectStudio_OpenDropdowns</defName>
     <label>Architect Studio: dropdown groups</label>
     <category>Game</category>
-    <!-- Aucune touche par defaut : F1 a F11 sont toutes prises par les onglets principaux, et
-         l'acces normal est le bouton du menu Architecte. A assigner soi-meme si on en veut une. -->
+    <!-- No default key: F1 to F11 are all taken by the main tabs, and the normal way in is the
+         button in the Architect menu. Assign one yourself if you want it. -->
     <defaultKeyCodeA>None</defaultKeyCodeA>
   </KeyBindingDef>
 

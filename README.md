@@ -71,6 +71,9 @@ Source/         C# sources, never published
 .build/         build intermediates, git-ignored, never published
 ```
 
+What has been played and what has only been compiled is recorded in
+[TESTING.md](TESTING.md), scenario by scenario.
+
 ## Licence
 
 MIT — see [LICENSE](LICENSE).
