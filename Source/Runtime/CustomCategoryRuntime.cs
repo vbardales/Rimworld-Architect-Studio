@@ -7,8 +7,8 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Categories creees par l'utilisateur. Le def n'existe qu'en memoire et est reconstruit a chaque
-    /// demarrage : rien n'est ecrit dans les fichiers du jeu ni d'un autre mod.
+    /// Categories created by the user. The def only exists in memory and is rebuilt at every
+    /// startup: nothing is written into the game's files nor into another mod's.
     /// </summary>
     public static class CustomCategoryRuntime
     {
@@ -18,7 +18,7 @@ namespace ArchitectStudio
                    ArchitectStudioMod.Settings.customCategories.Any(e => e.id == category.defName);
         }
 
-        /// <summary>Recree les defs manquants et realigne libelle et parente sur la configuration.</summary>
+        /// <summary>Recreates the missing defs and realigns label and parent on the configuration.</summary>
         public static void EnsureDefs()
         {
             foreach (var entry in ArchitectStudioMod.Settings.customCategories)
@@ -31,7 +31,7 @@ namespace ArchitectStudio
                     {
                         defName = entry.id,
                         modContentPack = ArchitectStudioMod.Instance?.Content,
-                        // Sans au moins ces deux ordres, une categorie neuve est une page morte.
+                        // Without at least these two orders, a brand new category is a dead page.
                         specialDesignatorClasses = new List<Type>
                         {
                             typeof(Designator_Cancel),
@@ -40,7 +40,7 @@ namespace ArchitectStudio
                     };
 
                     DefDatabase<DesignationCategoryDef>.Add(def);
-                    // Add() renomme en cas de collision : on se realigne sur le defName retenu.
+                    // Add() renames on collision: we realign on the defName it kept.
                     entry.id = def.defName;
 
                     def.ResolveReferences();
@@ -54,9 +54,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Le jeu ne fabrique le <see cref="KeyBindingCategoryDef"/> d'une categorie qu'a la generation
-        /// des defs, au demarrage. Une categorie creee en cours de partie l'aurait a null : on refait
-        /// ici ce que fait <c>KeyBindingDefGenerator</c>.
+        /// The game only builds a category's <see cref="KeyBindingCategoryDef"/> when defs are
+        /// generated, at startup. A category created during a game would have it null: we redo here
+        /// what <c>KeyBindingDefGenerator</c> does.
         /// </summary>
         private static void EnsureKeyBindingCategory(DesignationCategoryDef category)
         {
@@ -147,9 +147,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Supprime une categorie creee. On efface d'abord tout ce qui la designe, puis on reapplique
-        /// les groupes - ce qui renvoie ses batiments dans leur categorie d'origine - et seulement
-        /// ensuite on retire le def, pour ne jamais laisser une reference pendante.
+        /// Deletes a created category. We first erase everything that names it, then reapply the
+        /// groups - which sends its buildings back to their original category - and only then
+        /// remove the def, so as never to leave a dangling reference.
         /// </summary>
         public static void Delete(DesignationCategoryDef category)
         {

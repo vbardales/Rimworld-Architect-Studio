@@ -6,9 +6,9 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Ordre des categories et des sous-categories. Tout passe par
-    /// <see cref="DesignationCategoryDef.order"/> : le menu vanilla trie dessus, et les listes de
-    /// sous-categories de Better Architect Menu aussi. Un seul champ a reecrire pour les deux niveaux.
+    /// Order of categories and subcategories. Everything goes through
+    /// <see cref="DesignationCategoryDef.order"/>: the vanilla menu sorts on it, and so do Better
+    /// Architect Menu's subcategory lists. One field to rewrite for both levels.
     /// </summary>
     public static class CategoryRuntime
     {
@@ -60,8 +60,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Categories de meme niveau : celles qui partagent la meme parente, ou toutes les
-        /// categories racines. Rangees dans l'ordre d'affichage, du haut vers le bas.
+        /// Categories of the same level: those sharing the same parent, or every root category.
+        /// Sorted in display order, top to bottom.
         /// </summary>
         public static List<DesignationCategoryDef> SiblingsOf(DesignationCategoryDef category)
         {
@@ -82,7 +82,7 @@ namespace ArchitectStudio
             return index >= 0 && target >= 0 && target < siblings.Count;
         }
 
-        /// <summary>Deplace une categorie d'un cran parmi ses soeurs. delta -1 = vers le haut.</summary>
+        /// <summary>Moves a category one step among its siblings. delta -1 = upwards.</summary>
         public static bool Move(DesignationCategoryDef category, int delta)
         {
             var siblings = SiblingsOf(category);
@@ -97,8 +97,8 @@ namespace ArchitectStudio
             siblings.RemoveAt(index);
             siblings.Insert(target, category);
 
-            // On renumerote toute la fratrie : ne changer que les deux concernees laisserait des
-            // egalites d'ordre, que le tri departagerait ensuite par libelle.
+            // We renumber the whole sibling set: changing only the two concerned would leave order
+            // ties, which the sort would then break by label.
             var overrides = ArchitectStudioMod.Settings.categoryOrders;
             for (var i = 0; i < siblings.Count; i++)
             {
@@ -110,14 +110,14 @@ namespace ArchitectStudio
             return true;
         }
 
-        // ---------------------------------------------------------------- contenu des categories
+        // ---------------------------------------------------------------- category contents
 
         private static Dictionary<string, int> ownCounts;
         private static Dictionary<string, int> totalCounts;
 
         /// <summary>
-        /// A rappeler des qu'un batiment change de categorie. Sans cache, chaque ligne de la fenetre
-        /// relirait les ~30 000 defs a chaque frame.
+        /// To be called back as soon as a building changes category. Without a cache, every row of
+        /// the window would re-read the ~30,000 defs on every frame.
         /// </summary>
         public static void InvalidateCounts()
         {
@@ -145,8 +145,8 @@ namespace ArchitectStudio
                 ownCounts[category.defName] = count + 1;
             }
 
-            // Une categorie parente est souvent vide en propre - tout est dans ses sous-categories.
-            // La griser serait faux, donc son total inclut celui de ses enfants.
+            // A parent category is often empty in its own right - everything sits in its
+            // subcategories. Greying it out would be wrong, so its total includes its children's.
             totalCounts = new Dictionary<string, int>(ownCounts);
             foreach (var category in DefDatabase<DesignationCategoryDef>.AllDefsListForReading)
             {
@@ -162,7 +162,7 @@ namespace ArchitectStudio
             }
         }
 
-        /// <summary>Nombre de batiments visibles dans cette categorie, sous-categories comprises.</summary>
+        /// <summary>Number of buildings visible in this category, subcategories included.</summary>
         public static int ContentCountOf(DesignationCategoryDef category)
         {
             EnsureCounts();
@@ -180,7 +180,7 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Arborescence a afficher : chaque categorie racine suivie de ses sous-categories.
+        /// Tree to display: each root category followed by its subcategories.
         /// </summary>
         public static List<CategoryRow> BuildTree()
         {
@@ -210,9 +210,9 @@ namespace ArchitectStudio
                 }
             }
 
-            // Rien ne garantit que l'imbrication s'arrete a deux niveaux : une categorie dont la
-            // parente est elle-meme imbriquee n'est ni une racine ni l'enfant d'une racine, et
-            // disparaitrait de la liste. On la rattrape ici plutot que de la rendre inaccessible.
+            // Nothing guarantees nesting stops at two levels: a category whose parent is itself
+            // nested is neither a root nor the child of a root, and would vanish from the list. We
+            // catch it here rather than leave it unreachable.
             var orphans = DefDatabase<DesignationCategoryDef>.AllDefsListForReading
                 .Where(c => !placed.Contains(c))
                 .OrderByDescending(c => c.order)

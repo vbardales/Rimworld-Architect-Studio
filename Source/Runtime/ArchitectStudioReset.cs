@@ -6,8 +6,8 @@ namespace ArchitectStudio
     public static class ArchitectStudioReset
     {
         /// <summary>
-        /// Remet tout a zero. Les categories creees passent par leur suppression normale, pour que
-        /// leurs batiments soient rendus a leur categorie d'origine avant que le def ne disparaisse.
+        /// Resets everything. Created categories go through their normal deletion, so that their
+        /// buildings are handed back to their original category before the def disappears.
         /// </summary>
         public static void All()
         {

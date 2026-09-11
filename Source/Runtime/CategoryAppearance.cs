@@ -7,19 +7,19 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Libelle, icone et couleur des categories. Rien n'est ecrit sur disque : les libelles sont
-    /// reappliques sur les defs au demarrage, l'icone est interceptee a la lecture, la couleur est
-    /// posee au dessin.
+    /// Label, icon and colour of categories. Nothing is written to disk: labels are reapplied to
+    /// the defs at startup, the icon is intercepted as it is read, the colour is laid down as it is
+    /// drawn.
     /// </summary>
     public static class CategoryAppearance
     {
         private static readonly Dictionary<string, string> originalLabels = new Dictionary<string, string>();
         private static bool labelsCaptured;
 
-        /// <summary>Couleurs analysees, pour ne pas reparser une chaine a chaque frame.</summary>
+        /// <summary>Parsed colours, so a string is not re-parsed on every frame.</summary>
         private static readonly Dictionary<string, Color?> colorCache = new Dictionary<string, Color?>();
 
-        // ---------------------------------------------------------------- libelles
+        // ---------------------------------------------------------------- labels
 
         private static void CaptureLabels()
         {
@@ -80,7 +80,7 @@ namespace ArchitectStudio
             BetterArchitectCompat.InvalidateCaches();
         }
 
-        // ---------------------------------------------------------------- icones
+        // ---------------------------------------------------------------- icons
 
         public static string IconPathOf(DesignationCategoryDef category)
         {
@@ -104,13 +104,13 @@ namespace ArchitectStudio
 
             ArchitectStudioMod.Instance.WriteSettings();
 
-            // Architect Icons memorise l'icone d'une categorie definitivement : sans eviction, le
-            // changement n'apparaitrait qu'au prochain demarrage.
+            // Architect Icons remembers a category's icon for good: without eviction, the change
+            // would only show at the next startup.
             ArchitectIconsCompat.InvalidateIcon(category.defName);
             BetterArchitectCompat.InvalidateCaches();
         }
 
-        // ---------------------------------------------------------------- couleurs
+        // ---------------------------------------------------------------- colours
 
         public static Color? ColorOf(DesignationCategoryDef category)
         {
@@ -178,7 +178,7 @@ namespace ArchitectStudio
             return new Color(values[0] / 255f, values[1] / 255f, values[2] / 255f);
         }
 
-        /// <summary>Palette proposee dans l'editeur. Choisir au pointeur, sans saisir de RGB.</summary>
+        /// <summary>Palette offered in the editor. Pick with the pointer, no RGB to type.</summary>
         public static readonly Color[] Palette =
         {
             new Color(0.85f, 0.30f, 0.30f), new Color(0.90f, 0.50f, 0.25f),

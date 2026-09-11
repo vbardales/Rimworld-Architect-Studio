@@ -3,10 +3,10 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Applique la config une fois les defs charges. On passe par ExecuteWhenFinished pour se placer
-    /// apres les ResolveDesignators que le jeu met lui-meme en file pendant ResolveReferences.
-    /// L'ordre reste sans consequence : on mute le champ du def, donc toute re-resolution ulterieure,
-    /// la notre ou celle du jeu, produit le meme resultat.
+    /// Applies the configuration once the defs are loaded. ExecuteWhenFinished puts us after the
+    /// ResolveDesignators calls the game queues itself during ResolveReferences. The order carries
+    /// no consequence: we mutate the def's field, so any later re-resolution, ours or the game's,
+    /// produces the same result.
     /// </summary>
     [StaticConstructorOnStartup]
     public static class StartupInit
@@ -15,15 +15,15 @@ namespace ArchitectStudio
         {
             LongEventHandler.ExecuteWhenFinished(delegate
             {
-                // Patches differes jusqu'ici : ces rappels s'executent sur le thread principal - c'est
-                // par le meme mecanisme que le jeu appelle StaticConstructorOnStartupUtility.CallAll -
-                // alors que le constructeur du mod, lui, tourne sur un thread de fond ou toute
-                // ouverture de ressource echoue.
+                // Patches deferred until here: these callbacks run on the main thread - it is the
+                // same mechanism the game uses to call StaticConstructorOnStartupUtility.CallAll -
+                // whereas the mod constructor runs on a background thread, where opening any
+                // resource fails.
                 ArchitectIconsCompat.ApplyPatch(ArchitectStudioMod.HarmonyInstance);
                 CategoryColorPainter.ApplyPatch(ArchitectStudioMod.HarmonyInstance);
 
-                // Les categories creees doivent exister avant tout le reste : l'ordre, les libelles
-                // et les groupes peuvent les referencer.
+                // Created categories must exist before anything else: ordering, labels and groups
+                // can all reference them.
                 CustomCategoryRuntime.EnsureDefs();
                 CategoryAppearance.ApplyLabels();
                 CategoryRuntime.Apply();

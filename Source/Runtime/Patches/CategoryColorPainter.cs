@@ -5,13 +5,13 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Couleur des sous-categories dessinees par Better Architect Menu.
+    /// Colour of the subcategories Better Architect Menu draws.
     ///
-    /// Il ne les dessine pas comme des boutons mais avec un <c>Widgets.Label</c> nu : aucun point
-    /// d'accroche propre. En revanche, juste avant chaque ligne, il demande l'icone de la categorie.
-    /// On profite de cet appel pour armer la couleur, et on la consomme au premier libellé dessine
-    /// ensuite - celui de la categorie. L'armement est a usage unique et la couleur remise a blanc
-    /// aussitot, pour ne jamais deteindre sur le reste de l'interface.
+    /// It draws them not as buttons but with a bare <c>Widgets.Label</c>: no hook of their own. On
+    /// the other hand, just before each row, it asks for the category's icon. We take advantage of
+    /// that call to arm the colour, and consume it on the first label drawn afterwards - the
+    /// category's. Arming is single-use and the colour is reset to white at once, so it never
+    /// bleeds onto the rest of the interface.
     /// </summary>
     public static class CategoryColorPainter
     {
@@ -19,9 +19,9 @@ namespace ArchitectStudio
         private static bool applied;
 
         /// <summary>
-        /// Coupe l'armement pendant nos propres lectures d'icone : sans cela, la fenetre Catategories
-        /// armerait la couleur en interrogeant l'icone d'une ligne, et le libelle suivant, sans
-        /// rapport, la recevrait.
+        /// Suppresses arming during our own icon reads: without this, the Categories window would
+        /// arm the colour by asking for a row's icon, and the next, unrelated label would receive
+        /// it.
         /// </summary>
         public static bool Suppressed { get; set; }
 
@@ -42,10 +42,10 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Pose le patch. Volontairement pas d'attribut [HarmonyPatch] : PatchAll s'execute depuis le
-        /// constructeur du mod, sur un thread de fond. Or patcher une methode force le JIT a la
-        /// compiler, ce qui declenche le constructeur statique de son type - et celui de
-        /// <c>Verse.Widgets</c> charge des textures, ce qu'Unity interdit hors du thread principal.
+        /// Applies the patch. Deliberately no [HarmonyPatch] attribute: PatchAll runs from the mod
+        /// constructor, on a background thread. Patching a method forces the JIT to compile it,
+        /// which triggers its type's static constructor - and <c>Verse.Widgets</c>' loads textures,
+        /// which Unity forbids off the main thread.
         /// </summary>
         public static void ApplyPatch(Harmony harmony)
         {

@@ -3,23 +3,23 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Un groupe de menu deroulant cree par l'utilisateur. Les groupes fournis par le jeu ou par
-    /// d'autres mods ne sont pas decrits ici : on les reference directement par leur defName.
+    /// A dropdown group created by the user. Groups shipped by the game or by other mods are not
+    /// described here: they are referenced directly by their defName.
     /// </summary>
     public class DropdownGroupEntry : IExposable
     {
-        /// <summary>defName du <see cref="DesignatorDropdownGroupDef"/> recree a chaque demarrage.</summary>
+        /// <summary>defName of the <see cref="DesignatorDropdownGroupDef"/> rebuilt at every startup.</summary>
         public string id;
 
         public string label;
 
-        /// <summary>Menu en grille d'icones plutot qu'en liste, comme les groupes de sols vanilla.</summary>
+        /// <summary>Icon grid menu rather than a list, like the vanilla floor groups.</summary>
         public bool useGridMenu;
 
         /// <summary>
-        /// Quelle icone represente chaque entree du menu. On prend <c>Placed</c> par defaut, et non
-        /// le <c>Cost</c> de vanilla : en mode grille, une entree dont le cout est indeterminable est
-        /// silencieusement retiree du menu, alors que l'icone du batiment pose existe toujours.
+        /// Which icon stands for each menu entry. We take <c>Placed</c> by default rather than
+        /// vanilla's <c>Cost</c>: in grid mode, an entry whose cost cannot be determined is
+        /// silently dropped from the menu, whereas the placed building's icon always exists.
         /// </summary>
         public DesignatorDropdownGroupDef.IconSource iconSource = DesignatorDropdownGroupDef.IconSource.Placed;
 

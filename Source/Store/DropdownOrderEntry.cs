@@ -4,16 +4,16 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Ordre d'affichage voulu a l'interieur d'un groupe. Vaut aussi bien pour un groupe cree par
-    /// l'utilisateur que pour un groupe fourni par le jeu ou par un mod, d'ou le stockage separe
-    /// de <see cref="DropdownGroupEntry"/>.
+    /// Wanted display order inside a group. It applies just as well to a group created by the user
+    /// as to one shipped by the game or by a mod, hence storing it apart from
+    /// <see cref="DropdownGroupEntry"/>.
     /// </summary>
     public class DropdownOrderEntry : IExposable
     {
-        /// <summary>defName du <see cref="DesignatorDropdownGroupDef"/> concerne.</summary>
+        /// <summary>defName of the <see cref="DesignatorDropdownGroupDef"/> concerned.</summary>
         public string groupId;
 
-        /// <summary>Cles de batiments (voir <see cref="DropdownRuntime.KeyOf"/>), dans l'ordre voulu.</summary>
+        /// <summary>Building keys (see <see cref="DropdownRuntime.KeyOf"/>), in the wanted order.</summary>
         public List<string> memberKeys = new List<string>();
 
         public DropdownOrderEntry()

@@ -6,8 +6,8 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Ajoute un bouton d'ouverture directement dans la fenetre Architecte. Indispensable sans
-    /// clavier - sur Steam Deck notamment - ou le raccourci n'est pas accessible.
+    /// Adds an opening button straight into the Architect window. Indispensable without a keyboard
+    /// - on the Steam Deck notably - where the shortcut is out of reach.
     /// </summary>
     public static class ArchitectStudioButton
     {
@@ -47,8 +47,8 @@ namespace ArchitectStudio
     }
 
     /// <summary>
-    /// Reserve la hauteur du bouton. Tout le reste de la fenetre - position du panneau d'info,
-    /// haut du volet - derive de WinHeight, donc l'ajustement se propage tout seul.
+    /// Reserves the button's height. Everything else in the window - the info panel's position, the
+    /// top of the pane - derives from WinHeight, so the adjustment propagates on its own.
     /// </summary>
     [HarmonyPatch(typeof(MainTabWindow_Architect), nameof(MainTabWindow_Architect.WinHeight), MethodType.Getter)]
     public static class MainTabWindow_Architect_WinHeight_Patch
@@ -63,7 +63,7 @@ namespace ArchitectStudio
     }
 
     /// <summary>
-    /// Dessine le bouton dans la rangee reservee, sous la barre de recherche vanilla.
+    /// Draws the button in the row reserved for it, under the vanilla search bar.
     /// </summary>
     [HarmonyPatch(typeof(MainTabWindow_Architect), nameof(MainTabWindow_Architect.DoWindowContents))]
     public static class MainTabWindow_Architect_DoWindowContents_Patch
@@ -74,8 +74,8 @@ namespace ArchitectStudio
         }
     }
     /// <summary>
-    /// Couleur de categorie. Meme point d'accroche que Colored Categories : on teinte GUI.color
-    /// juste avant que le bouton ne soit dessine, et on le remet apres.
+    /// Category colour. Same hook as Colored Categories: we tint GUI.color just before the button
+    /// is drawn, and put it back afterwards.
     /// </summary>
     [HarmonyPatch(typeof(MainTabWindow_Architect), "DoCategoryButton")]
     public static class MainTabWindow_Architect_DoCategoryButton_Patch

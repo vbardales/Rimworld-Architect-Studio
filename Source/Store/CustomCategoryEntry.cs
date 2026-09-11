@@ -3,15 +3,15 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Une categorie creee par l'utilisateur. Le def n'existe qu'en memoire : il est reconstruit a
-    /// chaque demarrage a partir de cette fiche.
+    /// A category created by the user. The def only exists in memory: it is rebuilt at every
+    /// startup from this record.
     /// </summary>
     public class CustomCategoryEntry : IExposable
     {
         public string id;
         public string label;
 
-        /// <summary>defName de la categorie parente, ou vide pour une categorie de premier niveau.</summary>
+        /// <summary>defName of the parent category, or empty for a top-level category.</summary>
         public string parentId;
 
         public CustomCategoryEntry()

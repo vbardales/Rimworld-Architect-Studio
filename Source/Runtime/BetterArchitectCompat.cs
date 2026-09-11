@@ -7,27 +7,26 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Better Architect Menu ne se contente pas de patcher le menu Architecte : il le redessine et
-    /// met ses designators en cache. Nos reconstructions de categorie sont donc invisibles tant que
-    /// ses caches ne sont pas purges - la modification serait bien appliquee au modele, mais
-    /// n'apparaitrait qu'apres un redemarrage.
+    /// Better Architect Menu does not merely patch the Architect menu: it redraws it and caches its
+    /// designators. Our category rebuilds are therefore invisible until its caches are purged - the
+    /// change would be applied to the model all right, but would only show after a restart.
     ///
-    /// Dependance souple : on resout tout par reflexion, le mod fonctionne sans BAM.
+    /// Soft dependency: everything is resolved by reflection, the mod works without BAM.
     /// </summary>
     public static class BetterArchitectCompat
     {
         private const string PatchTypeName = "BetterArchitect.ArchitectCategoryTab_DesignationTabOnGUI_Patch";
 
         /// <summary>
-        /// <c>InvalidateResearchSensitiveCaches</c> est exactement ce qu'il nous faut : BAM l'appelle
-        /// quand une recherche debloque des batiments, c'est-a-dire quand le contenu des categories
-        /// change. Elle vide le cache de designators, celui de tri, les correspondances de recherche
-        /// et les overrides de selection - sans remettre a zero le defilement ni la sous-categorie
-        /// ouverte, ce que ferait son <c>Reset()</c> public.
+        /// <c>InvalidateResearchSensitiveCaches</c> is exactly what we need: BAM calls it when
+        /// research unlocks buildings, that is, when the contents of the categories change. It
+        /// clears the designator cache, the sort cache, the search matches and the selection
+        /// overrides - without resetting the scroll position or the open subcategory, which its
+        /// public <c>Reset()</c> would do.
         ///
-        /// Les deux suivantes sont un repli si elle disparait : elles ne couvrent que le cache de
-        /// designators et celui de tri, ce qui suffit a un simple regroupement mais pas a un
-        /// changement de categorie.
+        /// The two below are a fallback should it disappear: they only cover the designator cache
+        /// and the sort cache, which is enough for a plain regrouping but not for a change of
+        /// category.
         /// </summary>
         private const string PreferredMethod = "InvalidateResearchSensitiveCaches";
         private static readonly string[] FallbackMethods = { "InvalidateDesignatorDataCache", "ClearSortCache" };
@@ -36,8 +35,8 @@ namespace ArchitectStudio
         private static readonly List<MethodInfo> invalidators = new List<MethodInfo>();
 
         /// <summary>
-        /// Vrai si Better Architect Menu est charge. Declenche la resolution : lu depuis les reglages,
-        /// il repondrait faux tant qu'aucune purge de cache n'aurait encore eu lieu.
+        /// True if Better Architect Menu is loaded. Triggers resolution: read from the settings, it
+        /// would answer false as long as no cache purge had happened yet.
         /// </summary>
         public static bool Active
         {
@@ -74,7 +73,7 @@ namespace ArchitectStudio
             }
             else
             {
-                // Les deux replis se completent : il faut les deux, pas l'une ou l'autre.
+                // The two fallbacks complement each other: both are needed, not one or the other.
                 foreach (var name in FallbackMethods)
                 {
                     var fallback = Resolve(type, name);
@@ -109,9 +108,9 @@ namespace ArchitectStudio
         private static FieldInfo parentCategoryField;
 
         /// <summary>
-        /// Categorie parente d'une sous-categorie de Better Architect Menu, ou null. Ses sous-categories
-        /// sont de vraies DesignationCategoryDef portant une extension : sans lire le parent, deux
-        /// sous-categories homonymes seraient impossibles a distinguer dans une liste.
+        /// Parent category of a Better Architect Menu subcategory, or null. Its subcategories are
+        /// real DesignationCategoryDefs carrying an extension: without reading the parent, two
+        /// subcategories sharing a label would be impossible to tell apart in a list.
         /// </summary>
         public static DesignationCategoryDef ParentCategoryOf(DesignationCategoryDef category)
         {
@@ -137,15 +136,15 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Vrai si les sous-categories sont possibles. Vanilla n'a aucun mecanisme d'imbrication :
-        /// sans Better Architect Menu, toute categorie est forcement de premier niveau, et l'interface
-        /// doit le dire plutot que de creer une categorie racine en silence.
+        /// True if subcategories are possible. Vanilla has no nesting mechanism whatsoever: without
+        /// Better Architect Menu every category is necessarily top-level, and the interface has to
+        /// say so rather than silently create a root category.
         /// </summary>
         public static bool SubcategoriesSupported => ResolveNested();
 
         /// <summary>
-        /// Greffe l'extension d'imbrication de BAM, ce qui fait d'une categorie la sous-categorie
-        /// d'une autre. Renvoie faux si BAM n'est pas la - il n'y a alors pas de sous-categories.
+        /// Grafts BAM's nesting extension on, which makes one category the subcategory of another.
+        /// Returns false if BAM is not there - there are no subcategories at all then.
         /// </summary>
         public static bool TryAttachParent(DesignationCategoryDef category, DesignationCategoryDef parent)
         {
@@ -188,8 +187,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Purge l'arborescence parent/enfant de BAM. Necessaire quand une categorie apparait ou
-        /// disparait : ses caches de hierarchie sont construits une fois et ne se revalident pas seuls.
+        /// Purges BAM's parent/child tree. Needed whenever a category appears or disappears: its
+        /// hierarchy caches are built once and do not revalidate themselves.
         /// </summary>
         public static void InvalidateEditModeCaches()
         {

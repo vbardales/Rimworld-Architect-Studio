@@ -7,10 +7,10 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Editeur des groupes de menus deroulants : trois colonnes - les groupes, les batiments du
-    /// groupe selectionne, et de quoi en ajouter. Chaque modification est appliquee immediatement.
-    /// La fenetre n'est volontairement ni modale ni bloquante, pour qu'on voie le menu Architecte
-    /// se reorganiser en direct derriere.
+    /// Dropdown group editor: three columns - the groups, the buildings of the selected group, and
+    /// the means to add more. Every change is applied immediately. The window is deliberately
+    /// neither modal nor blocking, so the Architect menu can be seen reorganising itself live
+    /// behind it.
     /// </summary>
     public class Dialog_DropdownGroups : Window
     {
@@ -27,9 +27,9 @@ namespace ArchitectStudio
         private string addSearch = "";
 
         /// <summary>
-        /// Filtre de categorie de la colonne d'ajout. Tant que l'utilisateur n'a rien choisi
-        /// explicitement, il suit la categorie du groupe selectionne - et retombe sur "toutes"
-        /// quand le groupe est encore vide.
+        /// Category filter of the adding column. As long as the user has chosen nothing explicitly,
+        /// it follows the selected group's category - and falls back to "all" when the group is
+        /// still empty.
         /// </summary>
         private DesignationCategoryDef addCategoryFilter;
         private bool addCategoryFilterSet;
@@ -42,15 +42,15 @@ namespace ArchitectStudio
         private Dictionary<DesignatorDropdownGroupDef, List<BuildableDef>> membersCache;
 
         /// <summary>
-        /// Identifiant du groupe de reordonnancement. Il doit vivre dans un champ, pas dans une
-        /// variable locale : <c>NewGroup</c> ne renvoie une valeur qu'au Repaint et -1 partout
-        /// ailleurs, or <c>Reorderable</c> memorise cet identifiant au MouseDown pour decider, au
-        /// Repaint suivant, si le drag demarre. Avec une locale, il enregistrerait -1 et le
-        /// glisser-deposer ne partirait jamais. Meme montage que Page_ConfigureStartingPawns.
+        /// Identifier of the reordering group. It has to live in a field, not in a local variable:
+        /// <c>NewGroup</c> only returns a value on Repaint and -1 everywhere else, yet
+        /// <c>Reorderable</c> memorises that identifier on MouseDown to decide, at the next Repaint,
+        /// whether the drag starts. With a local it would record -1 and drag-and-drop would never
+        /// begin. Same arrangement as Page_ConfigureStartingPawns.
         /// </summary>
         private int memberReorderGroup = -1;
 
-        /// <summary>Bornee a l'ecran : sur un 1280x800 de Steam Deck, une taille fixe deborderait.</summary>
+        /// <summary>Bounded to the screen: on a Steam Deck's 1280x800, a fixed size would overflow.</summary>
         public override Vector2 InitialSize => new Vector2(
             Mathf.Min(1120f, UI.screenWidth - 40f),
             Mathf.Min(740f, UI.screenHeight - 80f));
@@ -74,9 +74,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Un groupe supprime reste dans la DefDatabase - son mod le recree a chaque demarrage - mais
-        /// disparait de la liste. Il ressort si jamais il retrouve des membres, pour qu'une suppression
-        /// oubliee ne masque pas silencieusement du contenu ajoute plus tard par un mod.
+        /// A deleted group stays in the DefDatabase - its mod recreates it at every startup - but
+        /// disappears from the list. It comes back out should it ever find members again, so that a
+        /// forgotten deletion does not silently hide content a mod adds later.
         /// </summary>
         private static bool IsHidden(DesignatorDropdownGroupDef group)
         {
@@ -115,7 +115,7 @@ namespace ArchitectStudio
                     list.Add(def);
                 }
 
-                // On trie une fois a la construction : l'affichage doit refleter l'ordre reel du menu.
+                // We sort once when building: the display must reflect the menu's real order.
                 foreach (var group in membersCache.Keys.ToList())
                 {
                     membersCache[group] = DropdownOrderRuntime.SortMembers(group.defName, membersCache[group]);
@@ -150,8 +150,8 @@ namespace ArchitectStudio
         // ---------------------------------------------------------------- mutations
 
         /// <summary>
-        /// Affecte un batiment a un groupe. Repasser a la valeur d'origine supprime l'override
-        /// plutot que de l'enregistrer, pour que la config ne retienne que les vrais ecarts.
+        /// Assigns a building to a group. Going back to the original value removes the override
+        /// rather than record it, so the configuration only keeps real departures.
         /// </summary>
         private void Assign(BuildableDef def, DesignatorDropdownGroupDef group)
         {
@@ -240,7 +240,7 @@ namespace ArchitectStudio
             InvalidateCaches();
         }
 
-        /// <summary>Change une option d'affichage du groupe et rafraichit les menus concernes.</summary>
+        /// <summary>Changes a display option of the group and refreshes the menus concerned.</summary>
         private void UpdateGroupOptions(DesignatorDropdownGroupDef group, Action<DropdownGroupEntry> mutate)
         {
             var entry = CustomEntry(group);
@@ -258,8 +258,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Supprime un groupe cree par l'utilisateur. Ses batiments reprennent leur groupe d'origine :
-        /// on retire leurs overrides plutot que de les laisser pointer dans le vide.
+        /// Deletes a user-created group. Its buildings take their original group back: we remove
+        /// their overrides rather than leave them pointing into the void.
         /// </summary>
         private void DeleteGroup(DesignatorDropdownGroupDef group)
         {
@@ -288,9 +288,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Supprime un groupe qu'on ne possede pas. Le def appartient a un autre mod et reviendra au
-        /// prochain demarrage : on le vide de ses membres, ce qui suffit a le faire disparaitre du menu
-        /// Architecte, et on retient qu'il ne doit plus s'afficher ici.
+        /// Deletes a group we do not own. The def belongs to another mod and will come back at the
+        /// next startup: we empty it of its members, which is enough to make it disappear from the
+        /// Architect menu, and remember that it must no longer show up here.
         /// </summary>
         private void DissolveGroup(DesignatorDropdownGroupDef group)
         {
@@ -333,7 +333,7 @@ namespace ArchitectStudio
             InvalidateCaches();
         }
 
-        // ---------------------------------------------------------------- rendu
+        // ---------------------------------------------------------------- drawing
 
         public override void DoWindowContents(Rect inRect)
         {
@@ -523,7 +523,7 @@ namespace ArchitectStudio
 
             y = DrawSplitWarning(inner, y, group);
 
-            // Le pied de colonne s'empile depuis le bas : la liste prend ce qui reste.
+            // The column footer stacks from the bottom: the list takes what is left.
             var footerY = inner.yMax;
             Rect? resetOrderRow = null;
 
@@ -544,13 +544,13 @@ namespace ArchitectStudio
 
             Widgets.BeginScrollView(listRect, ref memberScroll, viewRect);
 
-            // NewGroup et Reorderable convertissent en coordonnees ecran, donc le glisser-deposer
-            // fonctionne tel quel a l'interieur de la zone defilante.
+            // NewGroup and Reorderable convert to screen coordinates, so drag-and-drop works as it
+            // stands inside the scrolling area.
             if (Event.current.type == EventType.Repaint)
             {
                 memberReorderGroup = ReorderableWidget.NewGroup(
-                    // On relit selectedGroup au declenchement plutot que de capturer 'group' :
-                    // l'action est invoquee bien apres le Repaint qui l'a enregistree.
+                    // We re-read selectedGroup when it fires rather than capture 'group': the
+                    // action is invoked well after the Repaint that registered it.
                     (from, to) =>
                     {
                         if (selectedGroup == null)
@@ -558,11 +558,11 @@ namespace ArchitectStudio
                             return;
                         }
 
-                        // ReorderableWidget donne un index d'INSERTION calcule avant retrait, pas
-                        // une position finale : vanilla insere puis retire (ModsConfig.TryReorder,
-                        // Page_ConfigureStartingPawns). ReorderMember, lui, retire puis insere. Sans
-                        // cette conversion, un glisser vers le bas atterrit un cran trop haut - et
-                        // seulement vers le bas, ce qui se diagnostique mal.
+                        // ReorderableWidget gives an INSERTION index computed before removal, not a
+                        // final position: vanilla inserts then removes (ModsConfig.TryReorder,
+                        // Page_ConfigureStartingPawns). ReorderMember, for its part, removes then
+                        // inserts. Without this conversion a downward drag lands one slot too high
+                        // - and only downwards, which makes it hard to diagnose.
                         ReorderMember(selectedGroup, from, from < to ? to - 1 : to);
                     },
                     ReorderableDirection.Vertical,
@@ -582,9 +582,9 @@ namespace ArchitectStudio
                     Widgets.DrawHighlight(row);
                 }
 
-                // Trois boutons a droite : monter, descendre, retirer. Le glisser-deposer reste
-                // disponible, mais il n'est pas le seul chemin - viser une cible de depot au
-                // pointeur d'un Steam Deck est penible.
+                // Three buttons on the right: up, down, remove. Drag-and-drop stays available, but
+                // it is not the only path - aiming at a drop target with a Steam Deck's pointer is
+                // a chore.
                 var upRect = new Rect(row.xMax - 3f * RemoveButtonSize - 8f, row.y + 4f, RemoveButtonSize, RemoveButtonSize);
                 var downRect = new Rect(row.xMax - 2f * RemoveButtonSize - 5f, row.y + 4f, RemoveButtonSize, RemoveButtonSize);
                 var removeRect = new Rect(row.xMax - RemoveButtonSize - 2f, row.y + 4f, RemoveButtonSize, RemoveButtonSize);
@@ -592,8 +592,8 @@ namespace ArchitectStudio
                 DrawBuildableLabel(new Rect(row.x, row.y, upRect.x - row.x - 4f, row.height),
                     def, showCategory: true);
 
-                // Toute mutation invalide l'instantane : on arrete de dessiner, la frame suivante
-                // repart d'une liste a jour.
+                // Any mutation invalidates the snapshot: we stop drawing, and the next frame starts
+                // again from an up-to-date list.
                 var index = i;
                 if (ArchitectStudioWidgets.ArrowButton(upRect, up: true, index > 0))
                 {
@@ -658,9 +658,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Un groupe n'est rattache a aucune categorie : le jeu regroupe categorie par categorie. Des
-        /// membres repartis sur plusieurs categories produisent donc autant de boutons separes, sans
-        /// que rien ne le signale en jeu.
+        /// A group belongs to no category: the game groups category by category. Members spread
+        /// over several categories therefore produce as many separate buttons, with nothing in game
+        /// to point it out.
         /// </summary>
         private float DrawSplitWarning(Rect inner, float y, DesignatorDropdownGroupDef group)
         {
@@ -698,9 +698,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Categorie du groupe. Sans elle, un groupe n'a pas de place a lui : il apparait la ou sont
-        /// ses membres, et se scinde en plusieurs boutons s'ils sont disperses. La choisir deplace
-        /// tous les membres d'un coup, et les suivants suivront.
+        /// Category of the group. Without it a group has no place of its own: it appears wherever
+        /// its members are, and splits into several buttons if they are scattered. Choosing it
+        /// moves every member at once, and later ones will follow.
         /// </summary>
         private float DrawGroupCategory(Rect inner, float y, DesignatorDropdownGroupDef group)
         {
@@ -754,7 +754,7 @@ namespace ArchitectStudio
                 : category.LabelCap.ToString();
         }
 
-        /// <summary>Options d'affichage d'un groupe cree par l'utilisateur. Renvoie le nouveau y.</summary>
+        /// <summary>Display options of a user-created group. Returns the new y.</summary>
         private float DrawGroupOptions(Rect inner, float y, DesignatorDropdownGroupDef group)
         {
             var entry = CustomEntry(group);
@@ -874,8 +874,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Categorie effectivement filtree : celle choisie par l'utilisateur, sinon celle du groupe.
-        /// Un groupe encore vide n'impose rien, donc on n'affiche pas de filtre implicite.
+        /// Category actually filtered on: the one the user chose, otherwise the group's. A group
+        /// that is still empty forces nothing, so we show no implicit filter.
         /// </summary>
         private DesignationCategoryDef EffectiveAddCategory()
         {
@@ -884,8 +884,8 @@ namespace ArchitectStudio
                 return addCategoryFilter;
             }
 
-            // Un groupe qui impose sa categorie deplacera ce qu'on y ajoute : filtrer sur elle
-            // masquerait justement tout ce qu'on cherche a faire venir.
+            // A group that forces its category will move whatever we add to it: filtering on that
+            // category would hide precisely everything we are trying to bring in.
             if (selectedGroup != null && DropdownRuntime.TargetCategoryOf(selectedGroup.defName) != null)
             {
                 return null;
@@ -895,8 +895,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Selecteur de categorie. C'est le chemin sans clavier : sur Steam Deck, taper une recherche
-        /// impose d'ouvrir le clavier virtuel, alors qu'ici tout se fait au pointeur.
+        /// Category picker. This is the keyboard-free path: on a Steam Deck, typing a search means
+        /// opening the virtual keyboard, whereas here everything is done with the pointer.
         /// </summary>
         private float DrawCategoryFilter(Rect inner, float y, DesignationCategoryDef current)
         {

@@ -6,64 +6,64 @@ namespace ArchitectStudio
 {
     public class ArchitectStudioSettings : ModSettings
     {
-        /// <summary>Version du schema de configuration, pour migrer sans casser les reglages existants.</summary>
+        /// <summary>Configuration schema version, to migrate without breaking existing settings.</summary>
         public int schemaVersion = 1;
 
         /// <summary>
-        /// Affiche un bouton d'ouverture dans la fenetre Architecte. Active par defaut : sans clavier,
-        /// c'est le seul acces a l'editeur en cours de partie.
+        /// Shows an opening button in the Architect window. On by default: without a keyboard, it
+        /// is the only way into the editor during a game.
         /// </summary>
         public bool showArchitectButton = true;
 
-        /// <summary>Groupes de menus deroulants crees par l'utilisateur.</summary>
+        /// <summary>Dropdown groups created by the user.</summary>
         public List<DropdownGroupEntry> customGroups = new List<DropdownGroupEntry>();
 
         /// <summary>
-        /// Cle de batiment (voir <see cref="DropdownRuntime.KeyOf"/>) vers defName du groupe.
-        /// Une chaine vide signifie explicitement "aucun groupe" ; une cle absente signifie
-        /// "laisser la valeur d'origine du def".
+        /// Building key (see <see cref="DropdownRuntime.KeyOf"/>) to group defName.
+        /// An empty string explicitly means "no group"; a missing key means "leave the def's
+        /// original value alone".
         /// </summary>
         public Dictionary<string, string> dropdownAssignments = new Dictionary<string, string>();
 
-        /// <summary>Ordre d'affichage voulu a l'interieur de certains groupes.</summary>
+        /// <summary>Wanted display order inside some groups.</summary>
         public List<DropdownOrderEntry> groupOrders = new List<DropdownOrderEntry>();
         /// <summary>
-        /// Ordre impose a certaines categories : defName vers valeur de <c>DesignationCategoryDef.order</c>.
-        /// Les boutons haut/bas reecrivent ce champ, que le menu vanilla comme les listes de
-        /// sous-categories de Better Architect Menu utilisent pour trier.
+        /// Order forced on some categories: defName to <c>DesignationCategoryDef.order</c> value.
+        /// The up/down buttons rewrite this field, which both the vanilla menu and Better Architect
+        /// Menu's subcategory lists use to sort.
         /// </summary>
         public Dictionary<string, int> categoryOrders = new Dictionary<string, int>();
-        /// <summary>Categories creees par l'utilisateur, recreees a chaque demarrage.</summary>
+        /// <summary>Categories created by the user, recreated at every startup.</summary>
         public List<CustomCategoryEntry> customCategories = new List<CustomCategoryEntry>();
 
-        /// <summary>Libelle de remplacement d'une categorie : defName vers libelle.</summary>
+        /// <summary>Replacement label for a category: defName to label.</summary>
         public Dictionary<string, string> categoryLabels = new Dictionary<string, string>();
 
-        /// <summary>Icone choisie pour une categorie : defName vers chemin de texture.</summary>
+        /// <summary>Icon chosen for a category: defName to texture path.</summary>
         public Dictionary<string, string> categoryIcons = new Dictionary<string, string>();
 
-        /// <summary>Couleur choisie pour une categorie : defName vers "r,g,b" en 0-255.</summary>
+        /// <summary>Colour chosen for a category: defName to "r,g,b" in 0-255.</summary>
         public Dictionary<string, string> categoryColors = new Dictionary<string, string>();
 
 
 
         /// <summary>
-        /// Categorie imposee a un groupe entier : defName du groupe vers defName de la categorie.
-        /// Sans cette entree, un groupe n'a pas de categorie propre - ce sont ses membres qui portent
-        /// la leur, et le groupe se retrouve la ou ils sont, quitte a se scinder en plusieurs boutons.
+        /// Category forced on a whole group: group defName to category defName. Without this entry
+        /// a group has no category of its own - its members carry theirs, and the group ends up
+        /// wherever they are, splitting across several buttons if need be.
         /// </summary>
         public Dictionary<string, string> groupCategories = new Dictionary<string, string>();
         /// <summary>
-        /// Affiche les batiments et categories que la recherche verrouille encore, grises et non
-        /// constructibles, pour pouvoir les ranger avant de les debloquer.
+        /// Shows the buildings and categories research still locks, greyed out and not buildable,
+        /// so they can be sorted before being unlocked.
         /// </summary>
         public bool showResearchLocked;
 
 
         /// <summary>
-        /// Groupes fournis par le jeu ou par un mod que l'utilisateur a supprimes. On ne peut pas
-        /// effacer le def lui-meme : il est relu de son XML a chaque demarrage. On le vide donc de
-        /// ses membres et on retient ici qu'il ne doit plus apparaitre.
+        /// Groups shipped by the game or by a mod that the user has deleted. The def itself cannot
+        /// be erased: it is read back from its XML at every startup. So we empty it of its members
+        /// and remember here that it must no longer appear.
         /// </summary>
         public List<string> hiddenGroupIds = new List<string>();
 

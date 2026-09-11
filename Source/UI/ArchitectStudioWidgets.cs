@@ -6,9 +6,10 @@ namespace ArchitectStudio
     public static class ArchitectStudioWidgets
     {
         /// <summary>
-        /// Bouton fleche haut ou bas. Le jeu ne fournit que des fleches horizontales
-        /// (<c>TexUI.ArrowTexRight</c>) : on les fait pivoter au dessin plutot que de dependre d'un
-        /// glyphe Unicode, que la police du jeu ne rend pas forcement.
+        /// Up or down arrow button. The game ships these two textures ready to use, under
+        /// <c>Verse.TexButton</c> and not <c>RimWorld.TexButton</c>: drawing a rotated horizontal
+        /// arrow instead costs a pivot that has to be multiplied by <c>Prefs.UIScale</c>, and gets
+        /// it wrong at any scale other than 100%.
         /// </summary>
         public static bool ArrowButton(Rect rect, bool up, bool enabled)
         {
@@ -17,8 +18,8 @@ namespace ArchitectStudio
 
             if (!enabled)
             {
-                // Pas de ButtonImage du tout : une fleche inactive ne doit poser aucune zone
-                // cliquable, sinon elle avale le clic et joue son son au bout de la liste.
+                // No ButtonImage at all: a disabled arrow must define no clickable area, otherwise
+                // it swallows the click and plays its sound at the end of the list.
                 var color = GUI.color;
                 GUI.color = new Color(color.r, color.g, color.b, 0.3f);
                 GUI.DrawTexture(inner, texture);

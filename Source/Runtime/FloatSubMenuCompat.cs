@@ -9,9 +9,9 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Sous-menus imbriques via le mod bibliotheque Float Sub-Menus de kathanon. Dependance souple :
-    /// sans lui, on retombe sur une liste plate. Searchable Menus, du meme auteur, greffe de son cote
-    /// un champ de recherche sur tout menu d'au moins quinze entrees, sans rien nous demander.
+    /// Nested submenus through kathanon's Float Sub-Menus library mod. Soft dependency: without it,
+    /// we fall back to a flat list. Searchable Menus, by the same author, separately grafts a search
+    /// field onto any menu of at least fifteen entries, without asking us anything.
     /// </summary>
     public static class FloatSubMenuCompat
     {
@@ -65,7 +65,7 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Entree de menu ouvrant un sous-menu, ou null si Float Sub-Menus n'est pas la.
+        /// Menu entry opening a submenu, or null if Float Sub-Menus is not there.
         /// </summary>
         public static FloatMenuOption TryCreateSubMenu(string label, List<FloatMenuOption> subOptions)
         {

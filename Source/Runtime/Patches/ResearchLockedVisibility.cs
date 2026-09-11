@@ -6,13 +6,13 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Affiche les batiments et les categories que la recherche verrouille encore, pour pouvoir les
-    /// ranger avant de les debloquer.
+    /// Shows the buildings and categories research still locks, so they can be sorted before being
+    /// unlocked.
     ///
-    /// <c>Designator_Build.Visible</c> est le seul verrou : rien ne revalide la recherche au moment
-    /// de poser un plan. Se contenter de rendre le designator visible permettrait donc de construire
-    /// sans avoir cherche la technologie. On le marque desactive dans le meme mouvement : il
-    /// s'affiche en grise, et un clic repond par un message au lieu de le selectionner.
+    /// <c>Designator_Build.Visible</c> is the only lock: nothing revalidates research at the moment
+    /// a blueprint is placed. Merely making the designator visible would therefore allow building
+    /// without having researched the technology. We mark it disabled in the same move: it shows
+    /// greyed out, and a click answers with a message instead of selecting it.
     /// </summary>
     public static class ResearchLockedVisibility
     {
@@ -29,8 +29,8 @@ namespace ArchitectStudio
             {
                 if (__result)
                 {
-                    // Deja visible : on retire notre desactivation si c'est nous qui l'avions posee,
-                    // par exemple quand la recherche vient d'aboutir.
+                    // Already visible: we remove our disabling if we are the ones who set it, for
+                    // instance when the research has just completed.
                     ClearOurDisable(__instance);
                     return;
                 }
@@ -40,8 +40,8 @@ namespace ArchitectStudio
                     return;
                 }
 
-                // Le niveau technologique de la faction est un autre verrou, qui n'a rien a voir avec
-                // la recherche : on le laisse cacher ce qu'il cache.
+                // The faction's tech level is another lock, unrelated to research: we let it hide
+                // what it hides.
                 var techLevel = Faction.OfPlayer?.def?.techLevel ?? TechLevel.Undefined;
                 if (def.minTechLevelToBuild != TechLevel.Undefined && techLevel < def.minTechLevelToBuild)
                 {
@@ -69,8 +69,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Une categorie entiere peut etre verrouillee par la recherche. Sans cela, ses batiments
-        /// seraient visibles mais son onglet resterait inaccessible.
+        /// A whole category can be locked by research. Without this, its buildings would be visible
+        /// but its tab would stay out of reach.
         /// </summary>
         [HarmonyPatch(typeof(DesignationCategoryDef), nameof(DesignationCategoryDef.Visible), MethodType.Getter)]
         public static class DesignationCategoryDef_Visible_Patch
@@ -82,7 +82,7 @@ namespace ArchitectStudio
                     return;
                 }
 
-                // Le palier de monolithe d'Anomaly est un verrou distinct : on ne le leve pas.
+                // Anomaly's monolith tier is a separate lock: we do not lift it.
                 if (ModsConfig.AnomalyActive && Find.Anomaly != null &&
                     Find.Anomaly.HighestLevelReached < __instance.minMonolithLevel && Find.Anomaly.GenerateMonolith)
                 {

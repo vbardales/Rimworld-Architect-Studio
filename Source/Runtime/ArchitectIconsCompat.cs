@@ -9,11 +9,11 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Interception de l'icone de categorie d'Architect Icons. Sa recherche est publique et son cache
-    /// aussi, donc pas besoin de recopier des PNG : on repond avant lui, et on evince l'entree du
-    /// cache quand le choix change.
+    /// Interception of Architect Icons' category icon. Its lookup is public and so is its cache, so
+    /// there is no need to copy PNGs around: we answer ahead of it, and evict the cache entry when
+    /// the choice changes.
     ///
-    /// Dependance souple : sans Architect Icons, le choix d'icone est simplement indisponible.
+    /// Soft dependency: without Architect Icons, picking an icon is simply unavailable.
     /// </summary>
     public static class ArchitectIconsCompat
     {
@@ -49,7 +49,7 @@ namespace ArchitectStudio
             }
         }
 
-        /// <summary>Branche le prefixe. Appele depuis le constructeur du mod, assemblies deja chargees.</summary>
+        /// <summary>Hooks the prefix up. Called from the mod constructor, assemblies already loaded.</summary>
         public static void ApplyPatch(Harmony harmony)
         {
             Resolve();
@@ -69,11 +69,11 @@ namespace ArchitectStudio
             harmony.Patch(target, prefix: new HarmonyMethod(typeof(ArchitectIconsCompat), nameof(FindIconPrefix)));
         }
 
-        /// <summary>Repond a la place d'Architect Icons quand une icone a ete choisie.</summary>
+        /// <summary>Answers in place of Architect Icons when an icon has been chosen.</summary>
         private static bool FindIconPrefix(string categoryDefName, ref Texture2D __result)
         {
-            // Cet appel precede immediatement le dessin d'une ligne de sous-categorie chez Better
-            // Architect Menu : c'est notre seule occasion d'en teinter le libelle.
+            // This call comes immediately before Better Architect Menu draws a subcategory row:
+            // it is our only chance to tint that label.
             CategoryColorPainter.Arm(categoryDefName);
 
             if (categoryDefName.NullOrEmpty() ||
@@ -104,9 +104,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Chemins de toutes les icones de categorie disponibles. On lit ce que RimWorld a deja charge
-        /// pour les mods actifs, plutot que de parcourir le disque : pas d'E/S, et jamais d'icone
-        /// proposee qui ne serait pas reellement chargeable.
+        /// Paths of every available category icon. We read what RimWorld has already loaded for the
+        /// active mods rather than walking the disk: no I/O, and never an icon offered that would
+        /// not actually be loadable.
         /// </summary>
         public static List<string> AllIconPaths()
         {
@@ -143,7 +143,7 @@ namespace ArchitectStudio
             return path.NullOrEmpty() ? null : ContentFinder<Texture2D>.Get(path, false);
         }
 
-        /// <summary>Icone actuellement affichee pour cette categorie, choix ou defaut.</summary>
+        /// <summary>Icon currently shown for this category, chosen or default.</summary>
         public static Texture2D CurrentIconFor(DesignationCategoryDef category)
         {
             var chosen = TextureFor(CategoryAppearance.IconPathOf(category));
@@ -160,7 +160,7 @@ namespace ArchitectStudio
 
             var find = AccessTools.Method(resourcesType, "FindArchitectTabCategoryIcon", new[] { typeof(string) });
 
-            // Lecture pour notre propre affichage : elle ne doit pas armer la couleur.
+            // Read for our own drawing: it must not arm the colour.
             CategoryColorPainter.Suppressed = true;
             try
             {

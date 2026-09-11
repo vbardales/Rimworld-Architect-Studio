@@ -4,7 +4,7 @@ using Verse;
 
 namespace ArchitectStudio
 {
-    /// <summary>Petite boite de saisie pour nommer ou renommer un groupe.</summary>
+    /// <summary>Small text box to name or rename a group.</summary>
     public class Dialog_GroupName : Window
     {
         private readonly Action<string> onAccept;

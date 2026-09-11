@@ -6,12 +6,12 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Menu de choix d'une categorie. Les sous-categories sont imbriquees sous leur parente quand
-    /// Float Sub-Menus est present, listees a plat sinon.
+    /// Category picker menu. Subcategories are nested under their parent when Float Sub-Menus is
+    /// present, and listed flat otherwise.
     /// </summary>
     public static class CategoryMenu
     {
-        /// <param name="noneLabel">Entree "aucune" en tete, ou null pour ne pas la proposer.</param>
+        /// <param name="noneLabel">Leading "none" entry, or null not to offer it.</param>
         public static void Show(string noneLabel, Action<DesignationCategoryDef> onPick)
         {
             var options = new List<FloatMenuOption>();
@@ -55,7 +55,7 @@ namespace ArchitectStudio
 
                 var ordered = children.OrderByDescending(c => c.order).ThenBy(c => c.LabelCap.ToString());
 
-                // La parente reste selectionnable : elle peut contenir des batiments en propre.
+                // The parent stays selectable: it can hold buildings of its own.
                 var subOptions = new List<FloatMenuOption> { new FloatMenuOption(label, () => onPick(root)) };
                 foreach (var child in ordered)
                 {
@@ -70,8 +70,8 @@ namespace ArchitectStudio
                     continue;
                 }
 
-                // Sans Float Sub-Menus : tout a plat, la parente prefixant ses enfants pour que deux
-                // sous-categories homonymes restent distinguables.
+                // Without Float Sub-Menus: everything flat, the parent prefixing its children so
+                // that two subcategories sharing a label stay distinguishable.
                 options.Add(new FloatMenuOption(label, () => onPick(root)));
                 foreach (var child in ordered)
                 {

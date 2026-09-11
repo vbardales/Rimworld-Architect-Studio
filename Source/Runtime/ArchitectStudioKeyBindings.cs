@@ -15,8 +15,8 @@ namespace ArchitectStudio
     }
 
     /// <summary>
-    /// Ouvre l'editeur en cours de partie. C'est la seule facon de voir le menu Architecte se
-    /// reorganiser en direct : passer par les reglages du mod empile une fenetre modale par-dessus.
+    /// Opens the editor during a game. This is the only way to watch the Architect menu reorganise
+    /// itself live: going through the mod settings stacks a modal window on top of it.
     /// </summary>
     public class GameComponent_ArchitectStudio : GameComponent
     {

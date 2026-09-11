@@ -19,10 +19,9 @@ namespace ArchitectStudio
 
             HarmonyInstance = new Harmony(HarmonyId);
 
-            // Uniquement les patches dont le type cible n'a pas de constructeur statique chargeant des
-            // ressources : ce constructeur-ci tourne sur un thread de fond, et patcher une methode y
-            // declenche le constructeur statique de son type. Le reste est pose dans StartupInit,
-            // sur le thread principal.
+            // Only the patches whose target type has no static constructor loading resources: this
+            // constructor runs on a background thread, and patching a method there triggers its
+            // type's static constructor. The rest is applied in StartupInit, on the main thread.
             HarmonyInstance.PatchAll();
         }
 
@@ -89,8 +88,8 @@ namespace ArchitectStudio
 
             listing.GapLine();
 
-            // Etat des integrations : sans ce recapitulatif, une fonction absente ressemble a un bug
-            // alors qu'il ne manque qu'un mod.
+            // Integration status: without this recap, a missing feature looks like a bug when all
+            // that is missing is a mod.
             listing.Label("ArchitectStudio.Settings.Integrations".Translate());
             GUI.color = new Color(1f, 1f, 1f, 0.6f);
             listing.Label(IntegrationLine("Better Architect Menu", BetterArchitectCompat.Active));

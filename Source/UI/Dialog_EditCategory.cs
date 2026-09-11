@@ -6,8 +6,8 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Libelle, couleur et icone d'une categorie. Tout se choisit au pointeur - palette de couleurs
-    /// et grille d'icones - pour rester utilisable sans clavier.
+    /// Label, colour and icon of a category. Everything is picked with the pointer - colour palette
+    /// and icon grid - so that it stays usable without a keyboard.
     /// </summary>
     public class Dialog_EditCategory : Window
     {
@@ -81,7 +81,7 @@ namespace ArchitectStudio
             return y + 34f;
         }
 
-        /// <summary>Parente, pour les seules categories qu'on a creees.</summary>
+        /// <summary>Parent, for the categories we created ourselves only.</summary>
         private float DrawParentRow(Rect inRect, float y)
         {
             Widgets.Label(new Rect(inRect.x, y, 90f, 28f), "ArchitectStudio.EditCategory.Parent".Translate());
@@ -104,7 +104,7 @@ namespace ArchitectStudio
             {
                 CategoryMenu.Show("ArchitectStudio.Categories.TopLevel".Translate(), newParent =>
                 {
-                    // Une categorie ne peut pas etre sa propre parente.
+                    // A category cannot be its own parent.
                     if (newParent != category)
                     {
                         CustomCategoryRuntime.SetParent(category, newParent);

@@ -5,8 +5,8 @@ namespace ArchitectStudio
     public static class ArchitectStudioUI
     {
         /// <summary>
-        /// Ouvre l'editeur de groupes deroulants, ou le referme s'il est deja la. Point d'entree
-        /// unique du bouton du menu Architecte, du raccourci clavier et des reglages du mod.
+        /// Opens the dropdown group editor, or closes it if it is already there. Single entry point
+        /// for the Architect menu button, the key binding and the mod settings.
         /// </summary>
         public static void ToggleDropdownDialog() => Toggle<Dialog_DropdownGroups>(() => new Dialog_DropdownGroups());
 

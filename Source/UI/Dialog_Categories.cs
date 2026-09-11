@@ -5,9 +5,9 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Reordonne les categories et leurs sous-categories avec des boutons haut/bas. Volontairement
-    /// sans glisser-deposer : au pointeur d'un Steam Deck, viser une cible de depot est penible,
-    /// alors qu'un bouton reste un bouton.
+    /// Reorders categories and their subcategories with up/down buttons. Deliberately without
+    /// drag-and-drop: with a Steam Deck's pointer, aiming at a drop target is a chore, whereas a
+    /// button stays a button.
     /// </summary>
     public class Dialog_Categories : Window
     {
@@ -59,9 +59,9 @@ namespace ArchitectStudio
 
             for (var i = 0; i < rows.Count; i++)
             {
-                // Un deplacement renumerote toute la fratrie : les lignes suivantes de cette frame
-                // seraient dessinees a partir d'un ordre perime. On s'arrete, la frame suivante
-                // repart d'un arbre a jour.
+                // A move renumbers the whole sibling set: the following rows of this frame would be
+                // drawn from a stale order. We stop, and the next frame starts again from an
+                // up-to-date tree.
                 if (DrawRow(new Rect(0f, i * RowHeight, viewRect.width, RowHeight), rows[i]))
                 {
                     break;
@@ -75,7 +75,7 @@ namespace ArchitectStudio
             Text.Anchor = anchor;
         }
 
-        /// <summary>Renvoie vrai si cette ligne vient de provoquer un deplacement.</summary>
+        /// <summary>Returns true if this row has just caused a move.</summary>
         private static bool DrawRow(Rect rect, CategoryRuntime.CategoryRow row)
         {
             if (Mouse.IsOver(rect))
@@ -99,8 +99,8 @@ namespace ArchitectStudio
                 GUI.color = Color.white;
             }
 
-            // Une categorie sans rien a construire est grisee : avec les patches de BAM, beaucoup de
-            // sous-categories ne se remplissent qu'avec les mods qu'elles ciblent.
+            // A category with nothing to build is greyed out: with BAM's patches, many
+            // subcategories only fill up with the mods they target.
             var chosenColor = CategoryAppearance.ColorOf(row.def);
             if (count == 0)
             {
@@ -128,7 +128,7 @@ namespace ArchitectStudio
                 ? row.def.defName + "\n" + "ArchitectStudio.Categories.EmptyTip".Translate()
                 : row.def.defName);
 
-            // Le nom lui-meme ouvre l'editeur d'apparence : une grande cible, pas un bouton de plus.
+            // The name itself opens the appearance editor: a large target, not one more button.
             if (Widgets.ButtonInvisible(labelRect))
             {
                 Find.WindowStack.Add(new Dialog_EditCategory(row.def));
@@ -157,8 +157,8 @@ namespace ArchitectStudio
             {
                 Find.WindowStack.Add(new Dialog_GroupName(null, label =>
                 {
-                    // Sans Better Architect Menu, l'imbrication n'existe pas : on ne pose pas une
-                    // question dont la reponse serait ignoree, on explique.
+                    // Without Better Architect Menu there is no nesting: we do not ask a question
+                    // whose answer would be ignored, we explain.
                     if (!BetterArchitectCompat.SubcategoriesSupported)
                     {
                         CustomCategoryRuntime.Create(label, null);
@@ -167,8 +167,8 @@ namespace ArchitectStudio
                         return;
                     }
 
-                    // Le nom d'abord, la parente ensuite : deux questions simples valent mieux qu'un
-                    // formulaire, surtout au pointeur.
+                    // The name first, the parent afterwards: two simple questions beat one form,
+                    // especially with a pointer.
                     CategoryMenu.Show("ArchitectStudio.Categories.TopLevel".Translate(),
                         parent => CustomCategoryRuntime.Create(label, parent));
                 }));

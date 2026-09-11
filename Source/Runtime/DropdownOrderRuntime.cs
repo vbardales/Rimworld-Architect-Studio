@@ -6,8 +6,8 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Impose l'ordre d'affichage choisi a l'interieur des menus deroulants. Le jeu, lui, remplit
-    /// chaque <see cref="Designator_Dropdown"/> dans l'ordre de la base de defs, qu'on ne controle pas.
+    /// Forces the chosen display order inside dropdown menus. The game itself fills each
+    /// <see cref="Designator_Dropdown"/> in def database order, which we do not control.
     /// </summary>
     public static class DropdownOrderRuntime
     {
@@ -44,9 +44,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Trie une liste de batiments selon l'ordre enregistre pour ce groupe. Le tri est stable :
-        /// un batiment ajoute apres coup, absent de l'ordre enregistre, se retrouve a la fin sans
-        /// bousculer les autres.
+        /// Sorts a list of buildings according to the order recorded for this group. The sort is
+        /// stable: a building added afterwards, missing from the recorded order, ends up at the end
+        /// without jostling the others.
         /// </summary>
         public static List<BuildableDef> SortMembers(string groupId, List<BuildableDef> members)
         {
@@ -66,8 +66,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Reordonne les dropdowns d'une categorie qu'on vient de resoudre. Appele depuis le postfix
-        /// sur <c>ResolveDesignators</c>, donc aussi bien au demarrage qu'apres chaque modification.
+        /// Reorders the dropdowns of a category we have just resolved. Called from the postfix on
+        /// <c>ResolveDesignators</c>, so at startup as well as after every change.
         /// </summary>
         public static void ApplyOrder(DesignationCategoryDef category)
         {
@@ -107,15 +107,15 @@ namespace ArchitectStudio
                 dropdown.Elements.Clear();
                 dropdown.Elements.AddRange(sorted);
 
-                // Le bouton du menu Architecte affiche le designator actif : on le realigne sur la
-                // premiere entree, sans marquer le choix comme explicite pour garder les "..." vanilla.
+                // The Architect menu button shows the active designator: we realign it on the first
+                // entry, without marking the choice as explicit so the vanilla "..." is kept.
                 dropdown.SetActiveDesignator(dropdown.Elements[0], explicitySet: false);
             }
         }
 
         /// <summary>
-        /// Le groupe d'un dropdown n'est stocke nulle part : on le retrouve via le premier de ses
-        /// batiments.
+        /// A dropdown's group is stored nowhere: we find it back through the first of its
+        /// buildings.
         /// </summary>
         private static DesignatorDropdownGroupDef GroupOf(Designator_Dropdown dropdown)
         {

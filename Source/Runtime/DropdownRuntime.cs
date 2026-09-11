@@ -6,30 +6,30 @@ using Verse;
 namespace ArchitectStudio
 {
     /// <summary>
-    /// Applique les groupes de menus deroulants choisis par l'utilisateur par-dessus les defs.
-    /// Rien n'est ecrit sur disque : on mute <see cref="BuildableDef.designatorDropdown"/> en memoire,
-    /// puis on force la categorie concernee a reconstruire ses designators.
+    /// Applies the dropdown groups chosen by the user on top of the defs. Nothing is written to
+    /// disk: we mutate <see cref="BuildableDef.designatorDropdown"/> in memory, then force the
+    /// category concerned to rebuild its designators.
     /// </summary>
     public static class DropdownRuntime
     {
-        /// <summary>Valeur d'origine de chaque batiment, capturee avant le premier override.</summary>
+        /// <summary>Original value of each building, captured before the first override.</summary>
         private static readonly Dictionary<string, DesignatorDropdownGroupDef> originalGroups =
             new Dictionary<string, DesignatorDropdownGroupDef>();
 
-        /// <summary>Categorie d'origine de chaque batiment, pour pouvoir l'y remettre.</summary>
+        /// <summary>Original category of each building, so it can be put back there.</summary>
         private static readonly Dictionary<string, DesignationCategoryDef> originalCategories =
             new Dictionary<string, DesignationCategoryDef>();
 
         private static bool originalsCaptured;
 
-        /// <summary>Groupes references par la config mais introuvables, deja signales une fois.</summary>
+        /// <summary>Groups the configuration references but which cannot be found, already reported once.</summary>
         private static readonly HashSet<string> warnedMissingGroups = new HashSet<string>();
 
         private static List<BuildableDef> buildablesCache;
 
         /// <summary>
-        /// Cle stable pour un batiment. Un ThingDef et un TerrainDef peuvent theoriquement partager
-        /// un defName : le prefixe evite qu'un override deborde de l'un sur l'autre.
+        /// Stable key for a building. A ThingDef and a TerrainDef can in theory share a defName:
+        /// the prefix keeps an override from spilling from one onto the other.
         /// </summary>
         public static string KeyOf(BuildableDef def)
         {
@@ -37,9 +37,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Tous les batiments que le menu Architecte peut afficher. On s'aligne sur le filtre exact
-        /// de <c>DesignationCategoryDef.ResolveDesignators</c> : hors de ce perimetre, changer le
-        /// groupe n'aurait aucun effet visible.
+        /// Every building the Architect menu can display. We align on the exact filter in
+        /// <c>DesignationCategoryDef.ResolveDesignators</c>: outside that perimeter, changing the
+        /// group would have no visible effect.
         /// </summary>
         public static List<BuildableDef> AllBuildables()
         {
@@ -78,9 +78,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Categorie imposee a un groupe entier, ou null si le groupe n'en impose aucune. C'est le
-        /// seul moyen qu'un groupe ait une categorie a lui : nativement, il suit celle de ses membres
-        /// et se scinde en autant de boutons qu'ils occupent de categories.
+        /// Category forced on a whole group, or null if the group forces none. This is the only way
+        /// for a group to have a category of its own: natively it follows its members' and splits
+        /// into as many buttons as they occupy categories.
         /// </summary>
         public static DesignationCategoryDef TargetCategoryOf(string groupId)
         {
@@ -114,8 +114,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Recree les <see cref="DesignatorDropdownGroupDef"/> correspondant aux groupes de la config.
-        /// Ces defs n'existent qu'en memoire : ils sont reconstruits a chaque demarrage.
+        /// Recreates the <see cref="DesignatorDropdownGroupDef"/>s matching the groups in the
+        /// configuration. These defs only exist in memory: they are rebuilt at every startup.
         /// </summary>
         public static void EnsureCustomGroupDefs()
         {
@@ -127,7 +127,7 @@ namespace ArchitectStudio
                     def = new DesignatorDropdownGroupDef { defName = entry.id };
                     def.modContentPack = ArchitectStudioMod.Instance?.Content;
                     DefDatabase<DesignatorDropdownGroupDef>.Add(def);
-                    // Add() renomme en cas de collision : on se realigne sur le defName retenu.
+                    // Add() renames on collision: we realign on the defName it kept.
                     entry.id = def.defName;
                 }
 
@@ -137,7 +137,7 @@ namespace ArchitectStudio
             }
         }
 
-        /// <summary>Groupe voulu pour ce batiment, en tenant compte de la config et des defauts.</summary>
+        /// <summary>Group wanted for this building, taking the configuration and defaults into account.</summary>
         private static DesignatorDropdownGroupDef DesiredGroupFor(BuildableDef def)
         {
             var key = KeyOf(def);
@@ -157,8 +157,8 @@ namespace ArchitectStudio
                 return group;
             }
 
-            // Le groupe a disparu (mod retire). On revient au defaut plutot que de degrouper,
-            // et on garde l'affectation au cas ou le mod reviendrait.
+            // The group has disappeared (mod removed). We fall back to the default rather than
+            // ungroup, and keep the assignment in case the mod comes back.
             if (warnedMissingGroups.Add(groupId))
             {
                 Log.Warning($"[Architect Studio] Dropdown group not found: '{groupId}'. The buildings " +
@@ -168,7 +168,7 @@ namespace ArchitectStudio
             return originalGroups.TryGetValue(key, out var fallback) ? fallback : null;
         }
 
-        /// <summary>Applique toute la config et reconstruit les categories touchees.</summary>
+        /// <summary>Applies the whole configuration and rebuilds the categories affected.</summary>
         public static void Apply()
         {
             CaptureOriginals();
@@ -185,7 +185,7 @@ namespace ArchitectStudio
                     dirty.Add(def.designationCategory);
                 }
 
-                // Un changement de categorie touche les deux : celle qu'on quitte et celle qu'on rejoint.
+                // A category change touches both: the one being left and the one being joined.
                 var desiredCategory = DesiredCategoryFor(def, desiredGroup);
                 if (desiredCategory != null && def.designationCategory != desiredCategory)
                 {
@@ -205,12 +205,12 @@ namespace ArchitectStudio
                 RebuildCategory(category);
             }
 
-            // Des batiments ont pu changer de categorie : les comptes affiches ne valent plus rien.
+            // Buildings may have changed category: the displayed counts are worth nothing now.
             CategoryRuntime.InvalidateCounts();
             BetterArchitectCompat.InvalidateCaches();
         }
 
-        /// <summary>Efface tous les overrides et remet les groupes d'origine.</summary>
+        /// <summary>Erases every override and restores the original groups.</summary>
         public static void ResetAll()
         {
             ArchitectStudioMod.Settings.dropdownAssignments.Clear();
@@ -223,9 +223,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Reconstruit toutes les categories qui contiennent au moins un batiment de ce groupe.
-        /// Sert aux changements qui ne touchent aucun champ de def - typiquement l'ordre interne -
-        /// et que <see cref="Apply"/> ne verrait donc pas passer.
+        /// Rebuilds every category holding at least one building from this group. Used for changes
+        /// that touch no def field - typically the internal order - and which <see cref="Apply"/>
+        /// would therefore never see go by.
         /// </summary>
         public static void RebuildCategoriesOf(DesignatorDropdownGroupDef group)
         {
@@ -249,9 +249,9 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Force une categorie a reconstruire sa liste de designators. C'est le seul cache a purger :
-        /// <c>ArchitectCategoryTab.DesignationTabOnGUI</c> relit <c>ResolvedAllowedDesignators</c>
-        /// a chaque frame, donc l'affichage suit immediatement.
+        /// Forces a category to rebuild its designator list. This is the only cache to purge:
+        /// <c>ArchitectCategoryTab.DesignationTabOnGUI</c> re-reads <c>ResolvedAllowedDesignators</c>
+        /// on every frame, so the display follows immediately.
         /// </summary>
         public static void RebuildCategory(DesignationCategoryDef category)
         {
@@ -266,9 +266,8 @@ namespace ArchitectStudio
         }
 
         /// <summary>
-        /// Une reconstruction jette les anciens objets Designator. Si le joueur en avait un de
-        /// selectionne, il pointe desormais dans le vide : mieux vaut le deselectionner que de le
-        /// laisser survivre en dehors de son menu.
+        /// A rebuild throws the old Designator objects away. If the player had one selected, it now
+        /// points into the void: better to deselect it than to let it survive outside its menu.
         /// </summary>
         private static void DeselectStaleDesignator()
         {
