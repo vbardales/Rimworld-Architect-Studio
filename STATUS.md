@@ -1,23 +1,24 @@
 ---
-mod:        Architect Studio
-packageId:  nelim.architectstudio
-depot:      Rimworld-Architect-Studio
-visibilite: public
-detache:    oui
-etape:      done
-licence:    open
-licence_ou: LICENSE-fernyrepos.txt, MIT
-vitrine:    complete
-teste_le:   2026-09-03
-workshop:   3792784018
-reste:
-  - non_verifie: dragging a group member, never replayed since either of its two fixes
-  - non_verifie: the up/down arrows since the 1.0.2 rewrite, and at 150% interface scale
-  - non_verifie: a category forced on a whole group, and members added later inheriting it
-  - non_verifie: creating a category, and its entry in the keyboard configuration
-  - non_verifie: the option showing what research still locks
-session:    local_ea269783-fdb3-4329-83ed-5e4ad5f22536
-maj:        2026-09-12, mod session
+mod:          Architect Studio
+packageId:    nelim.architectstudio
+repo:         Rimworld-Architect-Studio
+visibility:   public
+detached:     yes
+stage:        done
+licence:      open
+licence_at:   LICENSE-fernyrepos.txt, MIT
+dependencies: declared
+showcase:     complete
+tested_on:    2026-09-03
+workshop:     3792784018
+remaining:
+  - unverified: dragging a group member, never replayed since either of its two fixes
+  - unverified: the up/down arrows since the 1.0.2 rewrite, and at 150% interface scale
+  - unverified: a category forced on a whole group, and members added later inheriting it
+  - unverified: creating a category, and its entry in the keyboard configuration
+  - unverified: the option showing what research still locks
+session:      local_ea269783-fdb3-4329-83ed-5e4ad5f22536
+updated:      2026-09-12, mod session
 ---
 
 # Architect Studio — status
@@ -33,6 +34,12 @@ The eleven fields derived from disk on 2026-09-12 were checked one by one and ho
 the sweep could not fill are settled here.
 
 - **`etape`** — `done`, confirmed. Three versions published, 1.0.0 to 1.0.2, showcase finished,
+- **`dependencies`** — `declared` when every mod this one needs is named in the About's
+  `modDependencies`, `to check` when a non-vanilla `loadAfter` suggests a dependency that is not
+  declared, `none` when the mod needs nothing. An undeclared dependency is not cosmetic: on
+  2026-09-11 Reequilibrage animaux took 47 vanilla animals down with it, Muffalo included, because
+  the class it injects belongs to a mod that was not declared and not loaded.
+
   Workshop item 3792784018 online.
 - **`teste_le`** — 2026-09-03, the date of the last fix that required seeing the mod run: the
   up/down arrows left their button as soon as the interface scale went above 100%, which shows
@@ -40,7 +47,7 @@ the sweep could not fill are settled here.
   game", was wrong for this mod: `TESTING.md` names four things already seen working in a real
   save, category and subcategory colours, deleting a category created here, and changing its
   parent.
-- **`reste`** — the five scenarios of `TESTING.md` that have never run. No known defect left
+- **`remaining`** — the five scenarios of `TESTING.md` that have never run. No known defect left
   unfixed, no feature missing from the first pass: what remains is unverified, not broken.
   Dragging comes first because it has carried two separate bugs and neither fix has been
   replayed since.
@@ -48,5 +55,6 @@ the sweep could not fill are settled here.
 `TESTING.md` stays the source: it says for each scenario what it proves and what its failure
 looks like. This sheet keeps only the balance.
 
-`licence` vocabulary: `open` explicit licence, `silent` no licence and a dead source, `alive` no
-licence but a living source, `forbidden` a written refusal, `original` nothing reused.
+`licence` vocabulary: `open` an explicit licence, `silent` no licence and a dead source,
+`alive` no licence but a living source, `forbidden` a written refusal, `original` owing nothing
+to anyone — not a name, not an idea traceable to one mod, not a value derived from its assets.
