@@ -3,6 +3,16 @@
 Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This file serves the repository and the writing of Steam patch notes; RimWorld does not display it in game.
 
+## [Unreleased]
+
+### Fixed
+
+- The assembly now declares `IgnoresAccessChecksTo("Assembly-CSharp")`. Krafs.Publicizer applies
+  it through the SDK's generated AssemblyInfo, which this project switches off, so the attribute
+  type was embedded and the waiver never applied. The mod does rely on publicization - removing
+  the directive stops the build on eight uses of four non-public members - and a runtime that
+  enforces the check would have taken those paths down with no message.
+
 ## [1.0.2] — 2026-09-03
 
 ### Fixed
