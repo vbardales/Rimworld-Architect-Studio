@@ -23,9 +23,9 @@ Each scenario says what it proves. A test whose failure you cannot interpret is 
 3. **Keep `Player.log`.** Everything this mod complains about is prefixed `[Architect Studio]`. The
    file is overwritten at the next launch and moved to `Player-prev.log`, so copy it out before
    relaunching.
-4. **Note which of the four optional mods are active**, because half the scenarios below change
-   shape without them: Better Architect Menu, Architect Icons, Float Sub-Menus, Colored Categories.
-   The mod settings list them under *Detected integrations*, and that list is the fastest way to
+4. **Note which optional mods are active**, because half the scenarios below change
+   shape without them: Better Architect Menu, Architect Icons, Float Sub-Menus, Searchable Menus.
+   The mod settings list the first three under *Detected integrations*, and that list is the fastest way to
    find out that a feature is missing because a mod is, not because the code is wrong.
 5. **There is no default keyboard shortcut.** F1 to F11 are taken by the main tabs, and F9 in
    particular collided with the history tab. Assign one in Options if you want it; the normal way in
@@ -238,8 +238,9 @@ relaunch, and look again. Everything is back, and `Player.log` is silent.
 
 **Proves** that the reflection bridges are soft, as the Workshop page claims.
 
-Turn off Better Architect Menu, Architect Icons, Float Sub-Menus and Colored Categories, keeping
-Harmony. The mod must load, both editors must open, groups must still work, and the log must stay
+Turn off all optional mods, including Better Architect Menu, Architect Icons, Float Sub-Menus,
+Searchable Menus and dropdown packs, keeping only Core, Harmony and Architect Studio.
+The mod must load, both editors must open, groups must still work, and the log must stay
 silent. Subcategories, icon selection and nested pick menus are simply absent, and the interface says
 so where it matters.
 
@@ -250,3 +251,19 @@ deletion, so their buildings are handed back before the def disappears.
 
 With several things configured, use *Reset everything* in the mod settings. The Architect menu
 returns to how it looked with the mod absent, and nothing is logged.
+
+## Automated validation
+
+From the repository root, run:
+
+```powershell
+pwsh -NoProfile -File Tests/Validate-Mod.ps1
+dotnet build Source/ArchitectStudio.csproj -c Release --no-restore
+```
+
+On a fresh checkout, omit `--no-restore` for the first build to restore NuGet dependencies.
+On 2026-09-12: 710 static assertions passed; Release build passed with zero warnings/errors.
+The script checks every shipped XML, metadata, translation keys and placeholders, C# literal
+translation references, the keybinding and its injected label, and distribution notices/content.
+It throws on the first failure and exits unsuccessfully. It does not load RimWorld, execute the
+C# runtime or prove the manual scenarios above. Automated behavioral coverage remains absent.

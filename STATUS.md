@@ -6,7 +6,7 @@ visibility:   public
 detached:     yes
 stage:        done
 licence:      open
-licence_at:   LICENSE-fernyrepos.txt, MIT
+licence_at:   LICENSE (MIT, copyright 2026 nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 dependencies: declared
 showcase:     complete
 tested_on:    2026-09-03
@@ -22,6 +22,32 @@ updated:      2026-09-12, mod session
 ---
 
 # Architect Studio — status
+
+## Verification — 2026-09-12
+
+- **Title:** keep `Architect Studio`, with no `Continued` or `Fork` suffix. According to
+  `ATTRIBUTION.md`, this is a separate implementation, not a continuation or copied codebase.
+  Compatibility with 1.6 is already declared in About.xml.
+- **Manual functional tests:** 14 scenarios in `TESTING.md`, with steps, expected outcomes
+  and failure signatures. They exist; they have not all passed. The five cases above are
+  explicit priorities, not an exhaustive inventory of everything unverified (labels, icons
+  and other scenarios also lack recorded results). No game session was run for this audit.
+- **Automated checks:** added `Tests/Validate-Mod.ps1`; 710 assertions passed. Covers all five
+  shipped XML files, metadata, EN/FR key parity, duplicate/empty translations, placeholder
+  parity, literal C# translation references, keybinding definition and French injection,
+  matching distribution notices, and unwanted development files in the published directory.
+  These are static checks, not automated tests of runtime C# behavior. Drag ordering,
+  settings persistence, research locking and reflection integrations still need in-game
+  validation; no automated behavioral test suite exists yet.
+- **Build:** `dotnet build Source/ArchitectStudio.csproj -c Release --no-restore` passed,
+  zero warnings and errors. This does not establish functional correctness in RimWorld.
+- **Description:** GitHub URL was already in `<url>`; now also included in `<description>`:
+  https://github.com/vbardales/Rimworld-Architect-Studio. Local files updated; Workshop not republished.
+- **Licence:** MIT, copyright (c) 2026 nelim, in `LICENSE` and `Mod/LICENSE`.
+  The separate MIT notice for studied fernyrepos mods (copyright 2025 fernyrepos) is preserved
+  in both `LICENSE-fernyrepos.txt` copies. Classification remains `open` under the vocabulary below.
+
+## Previous status and context
 
 Status sheet, read by a pass over every mod rather than by asking each session in turn.
 It lives at the root, never in `Mod/`, so Steam never receives it.
