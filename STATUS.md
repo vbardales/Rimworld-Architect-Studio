@@ -1,4 +1,5 @@
 ---
+settings_audit: complete
 localization: complete
 translation_en: complete
 translation_fr: complete
@@ -15,6 +16,7 @@ showcase:     complete
 tested_on:    2026-09-03
 workshop:     3792784018
 remaining:
+  - unverified: full final in-game scenarios, logs, new game and existing save, settings persistence and optional integrations including RIMMSQOL
   - unverified: English and French UI walkthrough at 100% and 150% scale, including generated keyboard categories before and after restart (TESTING.md translation gate)
   - unverified: dragging a group member, never replayed since either of its two fixes
   - unverified: the up/down arrows since the 1.0.2 rewrite, and at 150% interface scale
@@ -22,10 +24,176 @@ remaining:
   - unverified: creating a category, and its entry in the keyboard configuration
   - unverified: the option showing what research still locks
 session:      local_ea269783-fdb3-4329-83ed-5e4ad5f22536
-updated:      2026-09-13, translation audit
+updated:      2026-09-13, settings implementation and technical validation
 ---
 
 # Architect Studio — status
+
+## Settings completion — 2026-09-13
+
+Current result: **preOptions -> done**, ready for final in-game validation, not `tested`.
+This section supersedes the earlier audit and override conclusions below while preserving their
+history. The user's `go` authorized the shortcut and applicable settings tests. The ModIcon
+override remains in force; neither image was changed.
+
+Revision base: `d1bf712f0016993aff87ee18801ae296b2a55663`, with local changes to settings/reset,
+the naming helper, the new MainButtons worker/Def, FR/EN resources, shipped DLL, tests and
+documentation. The previous uncommitted STATUS edits were preserved. Nothing committed or
+published. Complete test scope and limitations: **Tests/RESULTS.md**.
+
+- Added `ArchitectStudio_Settings` MainButtonDef, hidden with native `buttonVisible=false`.
+  Its worker opens the game's `Dialog_ModSettings` with `ArchitectStudioMod.Instance`, sharing
+  the primary settings page and save path. It does not override visibility, remove the Def,
+  require RIMMSQOL, or reset a customization tool's visibility choice.
+- Confirmed the native 1.6 access mechanism by decompilation. Inspected local RIMMSQOL's
+  Main Buttons enumeration and `buttonVisible` read/write implementation. No integration was
+  interactively tested; reveal/hide/restart testing is explicitly in new scenario 15.
+- Fixed a settings defect found during this work: full reset omitted both general preferences
+  and was unavailable when only those differed from defaults. It now restores the Architect
+  editor button to on and research visibility to off; both single-toggle cases are tested.
+  Name trimming is extracted unchanged into a testable helper; no arbitrary length limit added.
+- `dotnet build Source/ArchitectStudio.csproj -c Release --no-restore`: passed, zero
+  warnings/errors. Shipped DLL SHA-256:
+  `F674C2251982ECF06C6132A426535CA54D5EC4681DEF2D78B6BA3FC4ED70CB7C`.
+- `pwsh -NoProfile -File Tests/Run-Behavior.ps1`: **27 passing assertions**, executing the
+  shipped DLL and real Scribe serializer with installed game assemblies. Covers all stored
+  settings collections and toggles, defaults/legacy empty files, accents/XML escaping,
+  post-load invalid-record cleanup, effective stable ordering/reset, name boundaries, preference
+  reset availability and the research runtime flag. This is a headless .NET 8 test process,
+  not Unity Mono or a rendered game session. Harness fixtures/engine limitations are documented.
+- `pwsh -NoProfile -File Tests/Validate-Mod.ps1`: **739 passing assertions** including new
+  shortcut metadata and language coverage. `Check-DefInjected.ps1 -TransMod Mod`: **11,588 Defs
+  indexed, 3 paths checked, zero errors**. Both are executed checks, not planned tests.
+- Localization revalidated for the changed interface: shortcut label/description use native
+  English Def fields with French injections; reset confirmation updated in both Keyed files.
+  No new literal UI prose in C#. Existing 78-key inventory and parameter checks remain valid.
+  No third-party text targets or conditional LoadFolders/patches were added.
+- Dependency review remains valid: Harmony is mandatory, customization/integration mods remain
+  optional. TESTING.md has 15 functional scenarios with setup/actions/expected outcomes and
+  explicit new/existing-save, FR/EN, settings and shortcut checks. Relevant automated and XML
+  tests now pass, so the cumulative gates through `done` are established under the user's
+  clarification that in-game settings interaction belongs to `done -> tested`.
+
+Next transition: execute the remaining functional scenarios in game, inspect Player.log and
+FR/EN layouts, validate actual research/build prevention and group/category effects, persistence,
+both settings routes and RIMMSQOL reveal/hide behavior in new/existing games. No in-game success
+is inferred from the automated tests. The historical `tested_on` is retained as history only.
+
+## ModIcon user override — 2026-09-13
+
+The user explicitly overrode the ModIcon style finding ("j'override pour ModIcon").
+The current delivered icon is accepted as-is: its composition exception no longer blocks
+the workflow and no image correction is required. The original visual observation below is
+preserved as audit history, not withdrawn or presented as newly conforming to the style guide.
+Combined with the already validated build, Preview and naming checks, this advances the stage
+from `horsMonoRepo` to **preOptions** and restores `showcase: complete`.
+The override applies only to ModIcon; `settings_audit: partial` and the remaining settings
+shortcut/technical-test requirements are unchanged. Only STATUS.md is edited; no tests rerun
+or images changed for this documentary update.
+
+## Ordered workflow audit — 2026-09-13
+
+This section supersedes historical status conclusions below, without deleting their evidence.
+Audited revision: `d1bf712f0016993aff87ee18801ae296b2a55663` (also GitHub HEAD).
+The working tree was clean at entry. Only this status document is changed by the audit;
+temporary build and 32 px inspection outputs are under ignored `.build/audit-20260913/`.
+No source, shipped assembly, image or historical result was replaced; nothing was published.
+
+Repository: `C:/Users/nelim/Documents/rimworld/ArchitectStudio`, with its own `.git`.
+Distributed root: `Mod/`. The independent Git repository is nested geographically under the
+collection directory, but has its own Git root and remote; it is not merely a monorepo subfolder.
+The collection's own remote is irrelevant to this audit.
+
+The user's ordered workflow takes precedence over the linked protocols, especially the
+clarification that interactive settings tests belong to `done -> tested`, not `preOptions -> options`.
+Stage values here use the workflow names literally: `horsMonoRepo` means independent repository
+established; `ModIcon générée`, `Preview générée`, `preOptions`, `options`, `l10n`, `preTest`,
+`done` and `tested` are its successive gates. Initial audit result: **horsMonoRepo** (previously
+`done`); after the explicit ModIcon override above, the retained global stage is **preOptions**.
+Later independent validations below do not imply passage through the remaining settings gate.
+
+| Transition | Result | Evidence or blocker |
+| --- | --- | --- |
+| dansMonoRepo -> horsMonoRepo | Validated | Own Git root, origin, GitHub PUBLIC repository and pushed HEAD checked live; coherent identifiers, English documentation and distributed MIT/attribution copies. |
+| horsMonoRepo -> ModIcon générée | Accepted by explicit user override | Release build and shipped binary freshness pass. Icon format is valid. The observed drawing-board backdrop and excess accessories are accepted as-is by the user on 2026-09-13. |
+| ModIcon générée -> Preview générée | Independently validated | Delivered PNG directly inspected at 896 x 504 and existing 268 px thumbnail; 612,584 bytes. Overhead workshop, tiled floor, warm lamp/cool surroundings, no faces, readable title/version and no clipping. No concrete camera defect or unresolved camera doubt. |
+| Preview générée -> preOptions | Independently validated | Amber accent clearly separates from slate-blue scene and blue secondary ink; palette and composition files present. English description and title; no prefix, suffix or linking word applies to Architect Studio. |
+| preOptions -> options | Defect found; tests partly unverified | Useful settings and primary Mod options route exist, but no dedicated MainButtons shortcut exists. Applicable behavioral automation is absent; static assertions do not execute settings logic. |
+| options -> l10n | Existing independent static validation retained and resource checks rerun | EN/FR resources pass, including generated category keys and the native Def label/injection. No relevant source/text change since the documented translation audit. Cannot advance cumulatively through the settings blocker. |
+| l10n -> preTest | Independent declaration review passes | Harmony is used and mandatory; optional integrations use reflection and guarded fallbacks. About declares Harmony and appropriate loadAfter entries. No LoadFolders, version folders or conditional XML patches to reconcile. Runtime integration compatibility remains unverified. |
+| preTest -> done | Partly validated; not established | Fourteen meaningful functional scenarios exist with setup/actions/expected results. Static automated/XML tests pass, but there is no automated behavioral suite or justified exemption for testable settings/order/persistence logic. |
+| done -> tested | Unverified | No game session executed in this audit. Historical observations cover only part of the behavior; current complete FR/EN walkthrough, logs, persistence, new/existing games and integrations have no full passing record. |
+
+### Checks executed and artifact evidence
+
+- `git rev-parse --show-toplevel`, `git status --short`, `git remote -v`, `git log -1`;
+  `gh repo view vbardales/Rimworld-Architect-Studio --json name,visibility,url,defaultBranchRef`
+  returned PUBLIC/main; `git ls-remote origin HEAD` returned the audited revision.
+  Initial sandbox network/config restrictions were resolved by a read-only elevated retry.
+- `pwsh -NoProfile -File Tests/Validate-Mod.ps1`: **728 assertions passed**. Reviewed the
+  validator itself: shipped XML parsing, metadata, nonempty/duplicate Keyed entries, EN/FR
+  parity, indexed parameter parity, literal code keys, keybinding injection, notices and
+  distribution cleanliness. These are static tests, not execution of runtime C#.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File ../scripts/Check-DefInjected.ps1 -TransMod Mod`:
+  **11,587 Defs indexed, one key checked, zero errors**; 29 patch operations applied by the
+  checker. The one owned target is `ArchitectStudio_OpenDropdowns.label`.
+- `dotnet build Source/ArchitectStudio.csproj -c Release --no-restore -p:OutputPath=../.build/audit-20260913/bin/`:
+  **passed, zero warnings/errors**, after retrying with SDK-cache access outside the sandbox.
+  The initial MSB4184 access denial was environmental, not a source/build defect.
+  References resolved to RimWorld **1.6.4871**, Harmony **2.4.2**, Publicizer **2.3.2**.
+  Rebuilt and shipped DLL SHA-256 both equal
+  `17360D9A443BC3B6408D853804E94B64B6BBE6E8A311E1E9145D7803F58AA376`.
+- PNG metadata read directly: icon **128 x 128, 32,548 bytes**; preview **896 x 504,
+  612,584 bytes**. Icon inspected at 128 and a diagnostic 32 px reduction: the head remains
+  visible, but surrounding tools merge into clutter. This composition finding initially blocked
+  the gate and was subsequently waived by the explicit user override above.
+- Preview directly inspected at full and thumbnail sizes; the saved palette, HTML and QA report
+  were reviewed. Historical measured contrast/font results remain preserved; the renderer was
+  not rerun and those numerical measurements are not claimed as newly executed.
+- Rights: README, ATTRIBUTION and both MIT notices are coherent with an original implementation
+  that studied other mods without copying their code. Matching root/distribution copies passed.
+  Public/original naming is appropriate; no licence was invented for Category Manager.
+
+### Settings audit
+
+`settings_audit: partial` reflects the actual missing shortcut and incomplete technical checks,
+not a demand for in-game verification at this gate. Inspected the mod class, settings serializer,
+editors, reset helpers, research visibility patches and reflection bridges.
+
+- Useful configuration is global ModSettings: group membership/order/category/grid/icon source;
+  category creation, parent, label, colour, icon and order; deleted-group restoration; two toggles.
+  Controls exist through Mod options -> Architect Studio and its editor buttons; manual XML
+  editing is not the primary configuration path.
+- Defaults in fields and Scribe agree: `showArchitectButton=true`, `showResearchLocked=false`,
+  schema version 1 and empty collections. Loading initializes missing collections and removes
+  invalid null/id-less records. Writes call `WriteSettings`; startup reapplies stored changes.
+  These facts were inspected, not demonstrated by a serialization round-trip test.
+- The Architect button toggle applies when reopening that menu. Research visibility reads the
+  setting at runtime and adds a disabled reason; proving build prevention still requires the
+  corresponding scenario. Group/category edits update runtime definitions and relevant caches.
+- Name entry trims whitespace and rejects an empty result; ordering controls disable boundary
+  arrows; colour uses preset swatches. Automated invalid/long input, ordering, restore/reset and
+  persistence checks have not been executed. No failure is inferred merely from that absence.
+- `Mod/Defs/KeyBindings.xml` contains a keyboard binding, not a MainButtonDef. Source searches
+  found only uses of vanilla Architect's MainButton and no custom registration. The visible
+  buttons inside the Architect window do not satisfy the optional hidden MainButtons contract.
+- No integration was interactively tested in this audit: neither RIMMSQOL nor Better Architect
+  Menu, Architect Icons, Float Sub-Menus or Searchable Menus. Reflection review validates the
+  optional dependency design, not compatibility with every installed version.
+
+### Remaining work and non-blocking observations
+
+To cross the next transition (`preOptions -> options`), provide the optional hidden MainButtons
+shortcut opening the same settings and complete the applicable automated settings behavior
+checks. Interactive in-game validation remains at `done -> tested`. No icon change is required
+after the user override; unrelated build, Preview, translation and dependency checks are retained.
+
+Publication follow-up, outside the next transition: About.xml contains a raw GitHub URL rather
+than PUBLISHING.md's discrete Steam `[url=...]Source code on GitHub[/url]` closing link. Normalize
+it before a future publication/description update; no Workshop edit was attempted here.
+No additional camera-comparison document, image-generation history or redundant English
+DefInjected file is requested. Existing language validation fields remain `complete` for the
+unchanged implementation only; any future shortcut UI will require its own localization audit.
 
 ## Translation audit — 2026-09-13
 

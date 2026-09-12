@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MainButtonDef>
+    <defName>ArchitectStudio_Settings</defName>
+    <label>Architect Studio</label>
+    <description>Open Architect Studio settings and editors.</description>
+    <workerClass>ArchitectStudio.MainButtonWorker_ArchitectStudio</workerClass>
+    <buttonVisible>false</buttonVisible>
+    <validWithoutMap>true</validWithoutMap>
+    <order>95</order>
+  </MainButtonDef>
+</Defs>

@@ -7,6 +7,9 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ### Fixed
 
+- Reset everything now restores both preferences and is available when only a preference differs
+  from its default.
+
 - The assembly now declares `IgnoresAccessChecksTo("Assembly-CSharp")`. Krafs.Publicizer applies
   it through the SDK's generated AssemblyInfo, which this project switches off, so the attribute
   type was embedded and the waiver never applied. The mod does rely on publicization - removing
@@ -14,6 +17,11 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
   enforces the check would have taken those paths down with no message.
 
 ### Added
+
+- An optional MainButtons shortcut to the existing mod settings, hidden by default and available
+  to RIMMSQOL and compatible customization tools, with English/French text.
+- Local automated tests of the shipped assembly's settings serialization, defaults, legacy
+  loading, order changes, name validation and reset behavior against installed RimWorld assemblies.
 
 - A startup probe now performs one deliberate non-public access and logs a named error if the
   runtime refuses it. The failure it guards against has no other symptom: the build stays clean,

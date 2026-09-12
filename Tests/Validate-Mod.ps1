@@ -62,6 +62,17 @@ foreach ($node in (Read-Xml "$root/Mod/Languages/French/DefInjected/KeyBindingDe
 foreach ($name in @('LICENSE', 'LICENSE-fernyrepos.txt', 'ATTRIBUTION.md')) {
     Assert ((Get-FileHash "$root/$name").Hash -eq (Get-FileHash "$root/Mod/$name").Hash) "Distribution notice differs: $name"
 }
+$button = (Read-Xml "$root/Mod/Defs/MainButtons.xml").Defs.MainButtonDef
+Assert ($button.defName -ceq 'ArchitectStudio_Settings') 'Settings shortcut identifier changed'
+Assert ($button.workerClass -ceq 'ArchitectStudio.MainButtonWorker_ArchitectStudio') 'Settings shortcut worker mismatch'
+Assert ($button.buttonVisible -ceq 'false') 'Settings shortcut must be hidden by default'
+Assert ($button.validWithoutMap -ceq 'true') 'Settings shortcut must remain usable without a map'
+Assert ([string]::IsNullOrEmpty($button.tabWindowClass)) 'Settings shortcut must open the existing settings dialog, not a separate tab'
+$buttonFr = (Read-Xml "$root/Mod/Languages/French/DefInjected/MainButtonDef/MainButtons.xml").LanguageData
+foreach ($field in @('label', 'description')) {
+    Assert (-not [string]::IsNullOrWhiteSpace($button.$field)) "Missing English shortcut $field"
+    Assert (-not [string]::IsNullOrWhiteSpace($buttonFr."ArchitectStudio_Settings.$field")) "Missing French shortcut $field"
+}
 $unwanted = @(Get-ChildItem "$root/Mod" -Recurse -File | Where-Object { $_.Extension -in '.cs', '.csproj', '.pdb' -or $_.Name -eq 'Assembly-CSharp.dll' })
 Assert ($unwanted.Count -eq 0) 'Development files or game assembly in published mod'
 Write-Output "PASS: $checks checks (XML, metadata, localization, keybinding, distribution)."

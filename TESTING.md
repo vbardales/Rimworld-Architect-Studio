@@ -273,6 +273,39 @@ Run the following in English and French, restarting RimWorld after changing lang
 
 These checks have not yet been run for the 2026-09-13 translation changes.
 
+## Local behavioral checks
+
+Current local behavioral suite (added 2026-09-13): after building the shipped DLL, run
+`pwsh -NoProfile -File Tests/Run-Behavior.ps1`. Requires .NET 8 and installed RimWorld 1.6
+runtime assemblies; `-Managed PATH` overrides their location. It tests real Scribe XML round-trips
+and compiled mod logic. See `Tests/RESULTS.md` for setup boundaries and actual results.
+The CI static checks remain independent; CI does not contain the game's runtime assemblies.
+
+## 15 — Optional MainButtons shortcut and preferences reset
+
+Preconditions: Core, Harmony and Architect Studio; a disposable new game and a copy of an
+existing save. Keep both user saves and current global settings backed up before changing them.
+Repeat in English and French at 100% and 150% UI scale.
+
+1. With no customization override, verify there is no visible or greyed-out Architect Studio
+   Main Button. Open Options -> Mod settings -> Architect Studio, change each toggle and reopen.
+   The same values remain, and the effects match scenarios 2 and 11.
+2. Enable RIMMSQOL, find Architect Studio in its Main Buttons editor and set Visible to true.
+   The button must appear and open the same native settings page, including both editor links.
+   Change a toggle through it; reopen through Mod settings and verify the value is shared.
+3. Restart, reload the existing save and verify settings and the revealed-button choice persist.
+   Hide the button through RIMMSQOL, restart and verify it stays hidden. Disable RIMMSQOL and
+   verify the primary settings access still works. No error should appear in Player.log.
+4. Starting with no editor customizations, change only the Architect button preference; reset
+   must become available and restore it to on. Repeat with only research visibility changed;
+   reset restores it to off. Repeat scenario 14 with customizations and both toggles changed.
+   Reopen the Architect menu to refresh its height after reset, then restart to check persistence.
+5. Try blank, whitespace-only, accented and long group names. Empty names are not accepted;
+   accents survive saving. Names have no imposed length cap: verify long labels do not make the
+   editors unusable. Check the reset confirmation and shortcut tooltip in both languages.
+
+Status: not executed in game. RIMMSQOL source/mechanism inspection is not a passing UI test.
+
 ## Automated validation commands
 
 From the repository root, run:
@@ -286,5 +319,6 @@ On a fresh checkout, omit `--no-restore` for the first build to restore NuGet de
 On 2026-09-12: 710 static assertions passed; Release build passed with zero warnings/errors.
 The script checks every shipped XML, metadata, translation keys and placeholders, C# literal
 translation references, the keybinding and its injected label, and distribution notices/content.
-It throws on the first failure and exits unsuccessfully. It does not load RimWorld, execute the
-C# runtime or prove the manual scenarios above. Automated behavioral coverage remains absent.
+It throws on the first failure and exits unsuccessfully. The static validator does not execute
+the C# runtime or prove the manual scenarios above. The separate local behavioral suite added on
+2026-09-13 executes compiled mod logic and Scribe; neither suite proves the in-game scenarios.

@@ -87,7 +87,7 @@
   <ArchitectStudio.Settings.Detected>present</ArchitectStudio.Settings.Detected>
   <ArchitectStudio.Settings.NotDetected>absent</ArchitectStudio.Settings.NotDetected>
   <ArchitectStudio.Settings.ResetEverything>Reset everything</ArchitectStudio.Settings.ResetEverything>
-  <ArchitectStudio.Settings.ConfirmResetEverything>Erase every Architect Studio setting: groups, created categories, orders, labels, colours and icons?</ArchitectStudio.Settings.ConfirmResetEverything>
+  <ArchitectStudio.Settings.ConfirmResetEverything>Restore default preferences and erase all groups, created categories, orders, labels, colours and icons?</ArchitectStudio.Settings.ConfirmResetEverything>
 
   <ArchitectStudio.Common.CategoryPath>{0} > {1}</ArchitectStudio.Common.CategoryPath>
   <ArchitectStudio.Common.RemoveGlyph>x</ArchitectStudio.Common.RemoveGlyph>

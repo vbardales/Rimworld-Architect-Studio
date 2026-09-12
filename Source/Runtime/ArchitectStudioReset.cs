@@ -21,6 +21,7 @@ namespace ArchitectStudio
             }
 
             ArchitectStudioMod.Settings.customCategories.Clear();
+            ArchitectStudioMod.Settings.ResetPreferences();
 
             CategoryAppearance.ResetAll();
             CategoryRuntime.ResetOrders();
@@ -34,7 +35,7 @@ namespace ArchitectStudio
             get
             {
                 var s = ArchitectStudioMod.Settings;
-                return s.customGroups.Count > 0 ||
+                return s.HasNonDefaultPreferences || s.customGroups.Count > 0 ||
                        s.dropdownAssignments.Count > 0 ||
                        s.groupOrders.Count > 0 ||
                        s.hiddenGroupIds.Count > 0 ||

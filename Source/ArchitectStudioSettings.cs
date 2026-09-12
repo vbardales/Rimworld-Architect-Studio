@@ -67,6 +67,14 @@ namespace ArchitectStudio
         /// </summary>
         public List<string> hiddenGroupIds = new List<string>();
 
+        public bool HasNonDefaultPreferences => !showArchitectButton || showResearchLocked;
+
+        public void ResetPreferences()
+        {
+            showArchitectButton = true;
+            showResearchLocked = false;
+        }
+
         public override void ExposeData()
         {
             base.ExposeData();

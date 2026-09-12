@@ -13,6 +13,14 @@ settings and reapplied on startup. The mod can be added to or removed from a gam
 Designed to stay usable without a keyboard, with the Steam Deck in mind: every action is reachable
 with a pointer, and no feature is keyboard-only.
 
+Open **Options -> Mod settings -> Architect Studio** for preferences and both editors.
+Settings are global, shared by all saves, and restored on game startup. Changes to groups and
+categories apply immediately; reopen the Architect menu after changing its editor-button toggle.
+An optional **Architect Studio** Main Button opens this same settings page. It is hidden by
+default and can be revealed through RIMMSQOL's Main Buttons editor or a compatible tool;
+no customization mod is required for the primary access. Reset everything also restores the
+editor-button preference to on and research-locked visibility to off.
+
 ## Works with
 
 None is required — the mod works on its own, and the settings screen shows which ones were

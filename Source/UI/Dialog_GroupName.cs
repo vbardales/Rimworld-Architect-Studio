@@ -44,7 +44,7 @@ namespace ArchitectStudio
                     Event.current.Use();
                 }
 
-                var name = current.Trim();
+                var name = SettingsInput.NormalizeName(current);
                 if (!name.NullOrEmpty())
                 {
                     onAccept(name);
