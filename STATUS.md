@@ -26,22 +26,21 @@ updated:      2026-09-12, mod session
 Status sheet, read by a pass over every mod rather than by asking each session in turn.
 It lives at the root, never in `Mod/`, so Steam never receives it.
 
-The field names above are deliberately left in French: they are read by that cross-mod pass, not
-by a reader, so renaming them here would break it for one mod out of many. Everything written
-for a reader is in English, as in the rest of this repository.
+The twelve fields derived from disk on 2026-09-12 were checked one by one and hold. The four
+the sweep cannot fill are settled here.
 
-The eleven fields derived from disk on 2026-09-12 were checked one by one and hold. The three
-the sweep could not fill are settled here.
-
-- **`etape`** — `done`, confirmed. Three versions published, 1.0.0 to 1.0.2, showcase finished,
-- **`dependencies`** — `declared` when every mod this one needs is named in the About's
-  `modDependencies`, `to check` when a non-vanilla `loadAfter` suggests a dependency that is not
-  declared, `none` when the mod needs nothing. An undeclared dependency is not cosmetic: on
-  2026-09-11 Reequilibrage animaux took 47 vanilla animals down with it, Muffalo included, because
-  the class it injects belongs to a mod that was not declared and not loaded.
-
+- **`stage`** — `done`, confirmed. Three versions published, 1.0.0 to 1.0.2, showcase finished,
   Workshop item 3792784018 online.
-- **`teste_le`** — 2026-09-03, the date of the last fix that required seeing the mod run: the
+- **`dependencies`** — `declared`, but only after checking, because the About lists five
+  non-vanilla `loadAfter` entries that are not in `modDependencies`: Architect Icons, Better
+  Architect Menu, its dropdowns, Float Sub-Menus and Searchable Menus. None of them is a
+  dependency. Every one is resolved by reflection, no third-party assembly is referenced at
+  build time, and the mod is meant to run with all five absent. `loadAfter` is there because we
+  hook onto them when they happen to be present. An undeclared dependency is not cosmetic - on
+  2026-09-11 Reequilibrage animaux took 47 vanilla animals down with it, Muffalo included,
+  because the class it injects belongs to a mod that was not declared and not loaded - which is
+  why this one is written out rather than waved through.
+- **`tested_on`** — 2026-09-03, the date of the last fix that required seeing the mod run: the
   up/down arrows left their button as soon as the interface scale went above 100%, which shows
   on screen and nowhere else. The line the sweep puts there by default, "never seen running in
   game", was wrong for this mod: `TESTING.md` names four things already seen working in a real

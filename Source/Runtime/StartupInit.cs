@@ -15,6 +15,10 @@ namespace ArchitectStudio
         {
             LongEventHandler.ExecuteWhenFinished(delegate
             {
+                // First, so that a runtime refusing non-public access is named in the log before
+                // anything that depends on it starts failing.
+                AccessCheckProbe.Run();
+
                 // Patches deferred until here: these callbacks run on the main thread - it is the
                 // same mechanism the game uses to call StaticConstructorOnStartupUtility.CallAll -
                 // whereas the mod constructor runs on a background thread, where opening any

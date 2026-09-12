@@ -13,6 +13,12 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
   the directive stops the build on eight uses of four non-public members - and a runtime that
   enforces the check would have taken those paths down with no message.
 
+### Added
+
+- A startup probe now performs one deliberate non-public access and logs a named error if the
+  runtime refuses it. The failure it guards against has no other symptom: the build stays clean,
+  startup is silent, and only the features that touch such a member die, each at first use.
+
 ## [1.0.2] — 2026-09-03
 
 ### Fixed

@@ -50,6 +50,14 @@ What a failure looks like:
 - *"Tried to get a resource … from a different thread"* — the v1.0.0 crash. Two patches are applied
   late, from `StartupInit`, precisely to avoid it: `ArchitectIconsCompat` and `CategoryColorPainter`.
   If this comes back, one of them has drifted back into the mod constructor.
+- *"The runtime refused access to a non-public member of the game …"* — the build lost the
+  publicizer waiver. The mod reads four non-public members of the game, and the attribute that
+  makes that legal is applied through a generated file this project switches off, so a rebuild
+  without `Source/AccessChecks.cs` produces a clean, silent, broken assembly. The probe that
+  prints this line is the only thing that says so; without it the failure shows up later, one
+  feature at a time, as an exception at first use. **If you ever see this line, copy it out** —
+  no one has yet seen the game's own runtime refuse such an access, and that log would be the
+  missing evidence for every mod of this collection built the same way.
 - *"Dropdown group not found: '…'"* — a saved assignment names a group no longer present. Not a
   failure in itself: the buildings fall back to their default and the assignment is kept in case the
   mod returns. Only worrying if you did not change your mod list.
