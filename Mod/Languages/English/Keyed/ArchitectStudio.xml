@@ -96,4 +96,6 @@
   <ArchitectStudio.Settings.ShowResearchLockedTip>Reveals the buildings and categories still hidden behind unfinished research. They stay greyed out and cannot be built: this is for organising, not for bypassing research.</ArchitectStudio.Settings.ShowResearchLockedTip>
   <ArchitectStudio.ResearchLocked.Reason>Research not completed</ArchitectStudio.ResearchLocked.Reason>
 
+  <ArchitectStudio.KeyBindings.CategoryLabel>{0} tab</ArchitectStudio.KeyBindings.CategoryLabel>
+  <ArchitectStudio.KeyBindings.CategoryDescription>Key bindings for the "{0}" section of the Architect menu.</ArchitectStudio.KeyBindings.CategoryDescription>
 </LanguageData>

@@ -1,4 +1,7 @@
 ---
+localization: complete
+translation_en: complete
+translation_fr: complete
 mod:          Architect Studio
 packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
@@ -12,16 +15,49 @@ showcase:     complete
 tested_on:    2026-09-03
 workshop:     3792784018
 remaining:
+  - unverified: English and French UI walkthrough at 100% and 150% scale, including generated keyboard categories before and after restart (TESTING.md translation gate)
   - unverified: dragging a group member, never replayed since either of its two fixes
   - unverified: the up/down arrows since the 1.0.2 rewrite, and at 150% interface scale
   - unverified: a category forced on a whole group, and members added later inheriting it
   - unverified: creating a category, and its entry in the keyboard configuration
   - unverified: the option showing what research still locks
 session:      local_ea269783-fdb3-4329-83ed-5e4ad5f22536
-updated:      2026-09-12, mod session
+updated:      2026-09-13, translation audit
 ---
 
 # Architect Studio — status
+
+## Translation audit — 2026-09-13
+
+- Scope: working tree based on `3441b9d8ef0c3fbfea7c828f930f8508d1fafe86`, with
+  the translation changes described here. Inspected `Source/`, `Mod/Defs/` and
+  `Mod/Languages/`. The mod has one shared content folder, no LoadFolders, XML patches,
+  grammar resources or version-specific text. Runtime Harmony patches and optional
+  integration branches are included.
+- Inventory: settings and integration status; Architect buttons; dropdown lists, filters,
+  counters, menus, confirmations and tooltips; category lists, appearance and naming dialogs;
+  research-lock reason; the shortcut Def label and dynamically generated keyboard categories.
+  Existing building/group/category labels use Def labels; custom names are user input.
+- Fixed two hardcoded English strings in `CustomCategoryRuntime.EnsureKeyBindingCategory`:
+  generated keyboard tab labels and descriptions now use complete parameterized Keyed text.
+  Existing bindings are refreshed too, including those created by the game at startup.
+- English and French each contain 78 owned Keyed entries. Reviewed meaning and parameters;
+  XML, nonempty values, duplicate keys, EN/FR parity and literal source references pass.
+  The shortcut uses its English Def label and the French injection
+  `ArchitectStudio_OpenDropdowns.label`. No English DefInjected override is needed.
+- Reused Core keys: `OK` and `CloseButton`, verified in installed English Keyed resources
+  and `French (Français).tar` (OK / Fermer). No third-party translation keys are reused.
+  Proper mod names, internal identifiers, icon paths, diagnostic logs and user-entered names
+  are excluded. Punctuation and rich-text decoration around existing labels add no prose.
+- Validation: `pwsh -NoProfile -File Tests/Validate-Mod.ps1` passed 728 assertions.
+  `powershell -NoProfile -ExecutionPolicy Bypass -File ../scripts/Check-DefInjected.ps1
+  -TransMod Mod` checked one injection with zero errors (11,587 indexed Defs).
+  The repository build workflow now runs the static validator on every CI build.
+  `dotnet build Source/ArchitectStudio.csproj -c Release --no-restore` passed with
+  zero warnings/errors; the shipped DLL was rebuilt. Nothing was published.
+- These fields certify the static translation gate only. English/French in-game checks
+  have not run; their procedure is in `TESTING.md` and remains tracked above. Historical
+  `stage` and `tested_on` are preserved. Reset affected fields after relevant changes.
 
 ## Preview recomposition — 2026-09-12
 

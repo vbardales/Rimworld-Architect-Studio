@@ -23,3 +23,7 @@ jobs:
 
       - name: Check the built assembly exists
         run: test -f Mod/Assemblies/ArchitectStudio.dll
+
+      - name: Validate mod and English/French resources
+        shell: pwsh
+        run: ./Tests/Validate-Mod.ps1
