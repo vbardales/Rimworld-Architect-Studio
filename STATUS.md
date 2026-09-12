@@ -11,38 +11,42 @@ vitrine:    complete
 teste_le:   2026-09-03
 workshop:   3792784018
 reste:
-  - non_verifie: glisser-deposer d'un membre de groupe, jamais rejoue depuis ses deux correctifs
-  - non_verifie: fleches haut/bas depuis leur reecriture en 1.0.2, et a 150% d'echelle
-  - non_verifie: categorie forcee sur tout un groupe, et heritage par les membres ajoutes ensuite
-  - non_verifie: creation d'une categorie, et son entree dans la configuration des touches
-  - non_verifie: option montrant ce que la recherche verrouille encore
+  - non_verifie: dragging a group member, never replayed since either of its two fixes
+  - non_verifie: the up/down arrows since the 1.0.2 rewrite, and at 150% interface scale
+  - non_verifie: a category forced on a whole group, and members added later inheriting it
+  - non_verifie: creating a category, and its entry in the keyboard configuration
+  - non_verifie: the option showing what research still locks
 session:    local_ea269783-fdb3-4329-83ed-5e4ad5f22536
-maj:        2026-09-12, session du mod
+maj:        2026-09-12, mod session
 ---
 
-# Architect Studio — etat
+# Architect Studio — status
 
-Fiche d'etat, lue par une passe sur tous les mods plutot qu'en interrogeant les fils un a un.
-Elle vit a la racine, jamais dans `Mod/`, donc Steam ne la recoit pas.
+Status sheet, read by a pass over every mod rather than by asking each session in turn.
+It lives at the root, never in `Mod/`, so Steam never receives it.
 
-Les champs deduits du disque le 2026-09-12 ont ete verifies un a un et sont justes. Les trois
-que le releve ne pouvait pas remplir sont tranches ici.
+The field names above are deliberately left in French: they are read by that cross-mod pass, not
+by a reader, so renaming them here would break it for one mod out of many. Everything written
+for a reader is in English, as in the rest of this repository.
 
-- **`etape`** — `done` confirme. Trois versions publiees, 1.0.0 a 1.0.2, vitrine faite, item
-  Workshop 3792784018 en ligne.
-- **`teste_le`** — le 2026-09-03, date du dernier correctif qui exigeait de voir le mod tourner :
-  les fleches haut/bas sortaient de leur bouton des que l'echelle d'interface depassait 100%, ce
-  qui ne se constate qu'a l'ecran. La ligne posee d'office par le releve, « jamais vu tourner en
-  jeu », etait fausse pour ce mod : `TESTING.md` nomme quatre choses deja vues marcher dans une
-  vraie partie, les couleurs de categorie et de sous-categorie, la suppression d'une categorie
-  creee ici, et le changement de son parent.
-- **`reste`** — les cinq scenarios de `TESTING.md` qui n'ont jamais tourne. Aucun defaut connu
-  non corrige, aucune fonctionnalite manquante au premier jet : ce qui reste est du non verifie,
-  pas du casse. Le glisser-deposer vient en tete parce qu'il a porte deux bugs distincts et que
-  ni l'un ni l'autre correctif n'a ete rejoue depuis.
+The eleven fields derived from disk on 2026-09-12 were checked one by one and hold. The three
+the sweep could not fill are settled here.
 
-`TESTING.md` reste la source : il dit pour chaque scenario ce qu'il prouve et a quoi ressemble
-son echec. Cette fiche n'en garde que le solde.
+- **`etape`** — `done`, confirmed. Three versions published, 1.0.0 to 1.0.2, showcase finished,
+  Workshop item 3792784018 online.
+- **`teste_le`** — 2026-09-03, the date of the last fix that required seeing the mod run: the
+  up/down arrows left their button as soon as the interface scale went above 100%, which shows
+  on screen and nowhere else. The line the sweep puts there by default, "never seen running in
+  game", was wrong for this mod: `TESTING.md` names four things already seen working in a real
+  save, category and subcategory colours, deleting a category created here, and changing its
+  parent.
+- **`reste`** — the five scenarios of `TESTING.md` that have never run. No known defect left
+  unfixed, no feature missing from the first pass: what remains is unverified, not broken.
+  Dragging comes first because it has carried two separate bugs and neither fix has been
+  replayed since.
 
-Vocabulaire de `licence` : `open` licence explicite, `silent` aucune licence et source morte,
-`alive` aucune licence mais source vivante, `forbidden` refus ecrit, `original` rien de repris.
+`TESTING.md` stays the source: it says for each scenario what it proves and what its failure
+looks like. This sheet keeps only the balance.
+
+`licence` vocabulary: `open` explicit licence, `silent` no licence and a dead source, `alive` no
+licence but a living source, `forbidden` a written refusal, `original` nothing reused.
