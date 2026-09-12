@@ -5,7 +5,7 @@ repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
 stage:        done
-licence:      open
+licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 dependencies: declared
 showcase:     complete
@@ -45,7 +45,8 @@ updated:      2026-09-12, mod session
   https://github.com/vbardales/Rimworld-Architect-Studio. Local files updated; Workshop not republished.
 - **Licence:** MIT, copyright (c) 2026 nelim, in `LICENSE` and `Mod/LICENSE`.
   The separate MIT notice for studied fernyrepos mods (copyright 2025 fernyrepos) is preserved
-  in both `LICENSE-fernyrepos.txt` copies. Classification remains `open` under the vocabulary below.
+  in both `LICENSE-fernyrepos.txt` copies. Classification is `original`: an original mod idea,
+  not an update or continuation of another mod. Its software licence remains MIT.
 
 ## Previous status and context
 
@@ -80,6 +81,7 @@ the sweep cannot fill are settled here.
 `TESTING.md` stays the source: it says for each scenario what it proves and what its failure
 looks like. This sheet keeps only the balance.
 
-`licence` vocabulary: `open` an explicit licence, `silent` no licence and a dead source,
-`alive` no licence but a living source, `forbidden` a written refusal, `original` owing nothing
-to anyone — not a name, not an idea traceable to one mod, not a value derived from its assets.
+`licence` vocabulary: `original` an original mod idea, not an update or continuation of another
+mod; studying other mods or integrating with them does not exclude this classification.
+For updates or continuations: `open` an explicit licence, `silent` no licence and a dead source,
+`alive` no licence but a living source, `forbidden` a written refusal.
