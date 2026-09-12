@@ -23,6 +23,44 @@ updated:      2026-09-12, mod session
 
 # Architect Studio — status
 
+## Preview recomposition — 2026-09-12
+
+- Final delivered image: `Mod/About/Preview.png`, 896 x 504, 612,584 bytes (under 900 KB).
+  Name and summary preserved verbatim from the previous Preview. Version badge is 1.6,
+  selected from the highest stable version actually declared in `Mod/About/About.xml`.
+  No status tag applies to this public original mod. Nothing published.
+- Illustration replaced: the previous source already contained a large title and interface
+  labels, so it could not serve as a text-free background. It remains intact under its distinct
+  archival name `Art/Preview-source.png`. New text-free source: `Art/Preview.png`, generated
+  with the built-in imagegen tool; exact prompt: `Art/PROMPT_Preview.md`. Visually checked:
+  overhead colony workshop, grouped miniature buildings on the right, calm tiled floor on
+  the left, no text or faces. Original full-resolution generated source retained here.
+- Composition and parameters: `Art/preview.html`; reproducible renderer: `Art/render-preview.cjs`
+  (Node.js with `playwright` and `sharp` available through NODE_PATH, installed Chrome or
+  CHROME_PATH override). Run `node Art/render-preview.cjs` from the repository root.
+  Colors load exclusively from `Art/preview-palette.json`; no duplicate palette in the HTML.
+- Palette rationale: the large slate-blue tiled floor supplies the veil and the dominant
+  blue family, lightened for the secondary ink. The characteristic amber lamp pool on the
+  sorting table supplies the vivid accent, with saturation increased for the rule and badge.
+  Primary ink is shared exactly by title and summary; the dark veil uses the guide's radial
+  gradient and text shadow. Secondary ink is saved but unused because there is no tag.
+  Rechecked against the revised guide: the warm orange-amber accent is a distinct hue family
+  from the cool blue secondary ink and dominant slate floor. Its stronger saturation makes
+  the rule and badge stand out at both sizes; no palette adjustment is needed.
+  Title hierarchy: both `Architect` and `Studio` are identity-bearing words, retained at 100%
+  (46 px, weight 600, primary ink). There is no prefix, suffix or linking word requiring 65%.
+- Font verified through Chromium's actual platform-font report after `document.fonts.ready`:
+  Segoe UI Semibold for the 46 px/600 title, Segoe UI regular for the 21 px/400 summary,
+  Segoe UI Bold for the 26 px/700 version. No fallback. Text origin is (50,54); rule is 58 x 3;
+  badge uses the guide's 80 x 80 triangle and center (869,27), rotated 45 degrees.
+- QA: `Art/preview-qa/report.json`, background without text in
+  `Art/preview-qa/background.png`, and `Art/preview-qa/thumbnail.png` at 268 px wide.
+  Contrast was checked against the rendered background at every pixel of the title and
+  summary bounding rectangles, including their corners: minima 10.19:1 and 7.44:1;
+  badge digits against the rendered opaque badge: 9.58:1. All exceed 4.5:1; tag not applicable.
+  Visual checks at both sizes: no overlap or clipped text, identifiable title and version,
+  visible rule. The summary is intended to be read at full size, as specified by the guide.
+
 ## Verification — 2026-09-12
 
 - **Title:** keep `Architect Studio`, with no `Continued` or `Fork` suffix. According to

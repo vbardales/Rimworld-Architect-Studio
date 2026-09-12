@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Architect Studio preview</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 896px; height: 504px; overflow: hidden; }
+body { font-family: "Segoe UI", system-ui, sans-serif; }
+.art, .veil { position: absolute; inset: 0; width: 896px; height: 504px; }
+.art { object-fit: cover; }
+.veil { background: radial-gradient(circle at 0% 0%, rgb(var(--veil-rgb) / .86) 0%, rgb(var(--veil-rgb) / 0) 74%); }
+.copy { position: absolute; left: 50px; top: 54px; color: var(--inkPrimary); text-shadow: 0 3px 10px rgba(0,0,0,.75); }
+h1 { font-size: 46px; font-weight: 600; line-height: 1.1; letter-spacing: 0; }
+.tag { font-size: 24px; font-weight: 400; line-height: 1.1; letter-spacing: .2px; margin-top: 8px; color: var(--inkSecondary); }
+.rule { width: 58px; height: 3px; background: var(--accent); margin-top: 20px; margin-bottom: 16px; }
+.summary { width: 430px; font-size: 21px; font-weight: 400; line-height: 1.45; letter-spacing: 0; }
+.badge { position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: var(--accent); clip-path: polygon(0 0,100% 0,100% 100%); }
+.version { position: absolute; left: 869px; top: 27px; transform: translate(-50%,-50%) rotate(45deg); font-size: 26px; font-weight: 700; line-height: 1; color: var(--badgeInk); }
+</style>
+<img class="art" src="Preview.png" alt=""><div class="veil"></div>
+<!-- Both title words carry the mod's identity: no prefix, suffix or linking word to reduce. -->
+<div class="copy"><h1>Architect Studio</h1><div class="rule"></div><p class="summary">Reorganise the Architect menu from inside the game.</p></div>
+<div class="badge"></div><div class="version"></div>
+<script>
+window.ready = (async () => {
+  const palette = await (await fetch('preview-palette.json')).json();
+  for (const [key, value] of Object.entries(palette)) document.documentElement.style.setProperty('--' + key, value);
+  document.documentElement.style.setProperty('--veil-rgb', palette.veil.slice(1).match(/../g).map(x => parseInt(x,16)).join(' '));
+  const xml = new DOMParser().parseFromString(await (await fetch('../Mod/About/About.xml')).text(), 'application/xml');
+  const versions = [...xml.querySelectorAll('supportedVersions > li')].map(x => x.textContent.trim()).filter(x => /^\d+\.\d+$/.test(x));
+  versions.sort((a,b) => { const aa=a.split('.').map(Number), bb=b.split('.').map(Number); return bb[0]-aa[0] || bb[1]-aa[1]; });
+  if (!versions.length) throw new Error('No stable supported version declared');
+  document.querySelector('.version').textContent = versions[0];
+  await document.fonts.ready;
+  await document.querySelector('.art').decode();
+  return { palette, version: versions[0] };
+})();
+</script></html>
