@@ -273,6 +273,11 @@ Run the following in English and French, restarting RimWorld after changing lang
 
 These checks have not yet been run for the 2026-09-13 translation changes.
 
+## Automated in game: Pickle
+
+Scenarios 1 to 14 are also written in Gherkin under `Tests/Pickle/`, played inside RimWorld by
+the Pickle test mod. Its README says how to run them and which parts stay manual. Not run yet.
+
 ## Local behavioral checks
 
 Current local behavioral suite (added 2026-09-13): after building the shipped DLL, run
