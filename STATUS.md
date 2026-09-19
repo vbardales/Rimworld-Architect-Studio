@@ -10,7 +10,7 @@ visibility:   public
 detached:     yes
 stage:        done
 licence:      original
-licence_at:   LICENSE (MIT, copyright 2026 nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
+licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 dependencies: declared
 showcase:     complete
 tested_on:    2026-09-03
@@ -285,7 +285,7 @@ unchanged implementation only; any future shortcut UI will require its own local
   zero warnings and errors. This does not establish functional correctness in RimWorld.
 - **Description:** GitHub URL was already in `<url>`; now also included in `<description>`:
   https://github.com/vbardales/Rimworld-Architect-Studio. Local files updated; Workshop not republished.
-- **Licence:** MIT, copyright (c) 2026 nelim, in `LICENSE` and `Mod/LICENSE`.
+- **Licence:** MIT, copyright (c) 2026 Nelim, in `LICENSE` and `Mod/LICENSE`.
   The separate MIT notice for studied fernyrepos mods (copyright 2025 fernyrepos) is preserved
   in both `LICENSE-fernyrepos.txt` copies. Classification is `original`: an original mod idea,
   not an update or continuation of another mod. Its software licence remains MIT.
