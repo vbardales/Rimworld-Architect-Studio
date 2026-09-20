@@ -12,6 +12,12 @@
 
     The game is never closed by this script. An unattended run closes it by itself when it ends;
     a game that was already open stays open.
+
+    Before a run starts, the report of the previous one is moved to PickleReports-archive, under
+    the hour it was written, and the oldest are dropped past -KeepReports. Pickle writes every run
+    into the one folder and overwrites it, screenshots included: without this, starting a run
+    destroys the evidence of the one before. An archive is a reprieve, not storage - a session
+    that needs a report copies what it needs somewhere of its own.
 #>
 [CmdletBinding()]
 param(
@@ -19,6 +25,7 @@ param(
     [int]$Port = 27750,
     [switch]$Launch,
     [int]$TimeoutMinutes = 90,
+    [int]$KeepReports = 5,
     [switch]$Force
 )
 
@@ -27,6 +34,7 @@ $ErrorActionPreference = 'Stop'
 $lockPath = Join-Path $env:LOCALAPPDATA 'rimworld-pickle-run.lock'
 $gamePath = 'C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64.exe'
 $reportRoot = Join-Path $env:USERPROFILE 'AppData\LocalLow\Ludeon Studios\RimWorld by Ludeon Studios\PickleReports'
+$archiveRoot = "$reportRoot-archive"
 $origin = "http://localhost:$Port"
 
 function Test-GameRunning {
@@ -72,6 +80,52 @@ function Exit-Lock {
     Remove-Item $lockPath -Force -ErrorAction SilentlyContinue
 }
 
+# Pickle writes every run into one folder and overwrites what was there, screenshots included. The
+# run that is about to start would therefore destroy the evidence of the one before it - which is
+# how a failure spends an afternoon being read from a report that belonged to another run. Moving
+# the old one out costs nothing on the same volume, and leaves the live folder empty rather than
+# growing without end.
+#
+# This keeps the last $KeepReports runs by count, not by age: a day with six runs would otherwise
+# lose the one that mattered, and a quiet week would keep nothing but stale ones.
+#
+# An archive is not storage. A session that needs a report must copy what it needs somewhere of
+# its own, and clean up after itself: the runs that follow will push this one out.
+function Save-PreviousReport {
+    $marker = Join-Path $reportRoot 'junit.xml'
+    if (-not (Test-Path $marker)) { return }
+
+    $stamp = (Get-Item $marker).LastWriteTime.ToString('yyyy-MM-dd_HHmm')
+    $target = Join-Path $archiveRoot $stamp
+    $twin = 1
+    while (Test-Path $target) {
+        $twin++
+        $target = Join-Path $archiveRoot "$stamp-$twin"
+    }
+    New-Item -ItemType Directory -Path $target -Force | Out-Null
+    Get-ChildItem -LiteralPath $reportRoot | Move-Item -Destination $target
+
+    # The report names its screenshots by absolute path, into the folder the next run is about to
+    # fill: left as they are, an archived report would show the wrong images, which is worse than
+    # showing none.
+    # Pickle writes those paths with mixed separators - forward slashes down to the save folder,
+    # backslashes after it - so they are matched separator by separator rather than literally.
+    $anySeparator = ($reportRoot -split '[\\/]' | ForEach-Object { [regex]::Escape($_) }) -join '[\\/]'
+    $utf8 = New-Object System.Text.UTF8Encoding $false
+    foreach ($file in (Get-ChildItem -LiteralPath $target -File | Where-Object { $_.Extension -in '.xml', '.html', '.md', '.json', '.ndjson' })) {
+        $text = [System.IO.File]::ReadAllText($file.FullName)
+        $rewritten = [regex]::Replace($text, $anySeparator, '.', 'IgnoreCase')
+        if ($rewritten -ne $text) { [System.IO.File]::WriteAllText($file.FullName, $rewritten, $utf8) }
+    }
+    Write-Host "Previous report kept in $target."
+
+    $stale = @(Get-ChildItem -LiteralPath $archiveRoot -Directory | Sort-Object LastWriteTime -Descending | Select-Object -Skip $KeepReports)
+    foreach ($directory in $stale) {
+        Remove-Item -LiteralPath $directory.FullName -Recurse -Force
+        Write-Host "Dropped $($directory.Name): older than the last $KeepReports runs."
+    }
+}
+
 function Show-Outcome {
     $state = Get-RunnerState
     $scenarios = @($state.features | Where-Object { $_.mod -eq $Mod } | ForEach-Object { $_.scenarios })
@@ -104,6 +158,7 @@ try {
         # The filter is the companion mod's name, exactly; PowerShell would otherwise cut the
         # argument at the first space and Pickle would find no scenario at all.
         $arguments = "-pickle-run=`"$Mod`""
+        Save-PreviousReport
         Write-Host "Launching RimWorld for '$Mod'..."
         $game = Start-Process -FilePath $gamePath -ArgumentList $arguments -PassThru
         $deadline = (Get-Date).AddMinutes($TimeoutMinutes)
@@ -136,6 +191,7 @@ try {
     $selected = @($state.features | ForEach-Object { $_.scenarios } | Where-Object { $_.selected }).Count
     if ($selected -eq 0) { throw "Nothing matched '$Mod': check the mod name against the runner's own list." }
     Write-Host "Running $selected scenarios of '$Mod'. The pointer moves on its own: leave the mouse alone."
+    Save-PreviousReport
 
     Invoke-Runner '/scope?value=selected'
     Invoke-Runner '/run?scope=selected'

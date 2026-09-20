@@ -39,7 +39,31 @@ so build the mod first. Feature files need no build.
   the companion mod's name, exactly; without it Pickle also runs its own 27 sample features. Reports
   land in `PickleReports` beside the saves: `report.html`, `junit.xml`, `summary.md`.
 
+- **Through the script**: `Tests/Pickle/Run-Pickle.ps1`, which is the way to prefer. It takes a lock
+  no second session can take, keeps the previous report, drives the run and prints the failures with
+  their attachments. Without `-Launch` it drives the game already open, through Pickle's dashboard on
+  `http://localhost:27750/`; with `-Launch` it starts one, which is what a step assembly built since
+  that game started needs. It never closes the game.
+
 Scenario 02 clicks real buttons through OS input: the pointer moves on its own while it runs.
+
+## The reports, and what overwrites them
+
+Pickle writes every run into `PickleReports` and overwrites what was there, screenshots included,
+and it writes only when a run ends. Two consequences, both of which have already cost an afternoon
+here:
+
+- **A run that does not finish leaves the report of the previous one in place.** A report older than
+  the run you think you are reading is the most expensive trap in this suite - check its timestamp
+  against the run. While a run is going, its live state is readable on `GET /state`, which carries
+  each scenario's outcome, failure message and attachments without waiting for the end.
+- **Starting a run destroys the evidence of the one before it.** `Run-Pickle.ps1` moves the previous
+  report to `PickleReports-archive\<date>_<hour>` first and keeps the last five, rewriting the paths
+  inside it so its screenshots still resolve. Launching the game by hand does not.
+
+An archive is a reprieve, not storage: five runs later it is gone. A session that needs a report -
+a failure to quote, a screenshot to compare against - **copies what it needs somewhere of its own,
+and cleans up after itself**. Nothing in `PickleReports` survives by default.
 
 ## What the suite does to your settings
 
