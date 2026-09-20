@@ -10,4 +10,9 @@
     <Reference Include="UnityEngine.CoreModule"><HintPath>$(Managed)/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="ArchitectStudio"><HintPath>../Mod/Assemblies/ArchitectStudio.dll</HintPath></Reference>
   </ItemGroup>
+  <ItemGroup>
+    <!-- Tests/Pickle/Source/*.cs needs RimWorks.Pickle attributes this project does not reference;
+         the default SDK glob would otherwise sweep them into this build and fail it. -->
+    <Compile Remove="Pickle/**/*.cs" />
+  </ItemGroup>
 </Project>
