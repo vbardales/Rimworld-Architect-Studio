@@ -61,9 +61,9 @@ ferny (fernyrepos) for Better Architect Menu and Colored Categories, MIT license
 bymarcin for Architect Icons, kathanon for Float Sub-Menus and Searchable Menus.
 Andreas Pardeike for Harmony.
 
-Source code and issue reports: https://github.com/vbardales/Rimworld-Architect-Studio
+See ATTRIBUTION.md. This mod is MIT licensed.
 
-See ATTRIBUTION.md. This mod is MIT licensed.</description>
+[url=https://github.com/vbardales/Rimworld-Architect-Studio]Source code on GitHub[/url]</description>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>

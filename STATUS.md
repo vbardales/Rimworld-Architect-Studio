@@ -13,21 +13,61 @@ licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 dependencies: declared
 showcase:     complete
-tested_on:    2026-09-03
+tested_on:    2026-09-20
 workshop:     3792784018
 remaining:
-  - unverified: full final in-game scenarios, logs, new game and existing save, settings persistence and optional integrations including RIMMSQOL
-  - unverified: English and French UI walkthrough at 100% and 150% scale, including generated keyboard categories before and after restart (TESTING.md translation gate)
-  - unverified: dragging a group member, never replayed since either of its two fixes
-  - unverified: the up/down arrows since the 1.0.2 rewrite, and at 150% interface scale
-  - unverified: a category forced on a whole group, and members added later inheriting it
-  - unverified: creating a category, and its entry in the keyboard configuration
-  - unverified: the option showing what research still locks
-session:      local_ea269783-fdb3-4329-83ed-5e4ad5f22536
-updated:      2026-09-13, settings implementation and technical validation
+  - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
+  - unverified: the RIMMSQOL half of scenario 15, revealing and hiding the MainButtons shortcut, which needs RIMMSQOL installed and a real restart
+  - unverified: clicks at 150% interface scale; the scenario misses its target and the cause is under investigation, in the suite's own step rather than in the mod
+session:      local_da0ac2a6-6bc4-4a6a-87e3-13347ab858c6
+updated:      2026-09-20, first full in-game Pickle run; two defects found and fixed
 ---
 
 # Architect Studio — status
+
+## First full in-game run — 2026-09-20
+
+The Pickle suite ran inside a real game for the first time: **40 Architect Studio scenarios, 39
+passed, 1 failed**, the failure being a click at 150% interface scale whose cause lies in the
+suite's own step and not in the mod. This supersedes the "not run yet" of the sections below for
+every behaviour it covers; it does not by itself carry the stage to `tested`, because the English
+and French walkthrough side by side and the RIMMSQOL half of scenario 15 remain unexecuted.
+
+Five of the seven lines the `remaining` list carried since 2026-09-13 are settled by it, each by
+named scenarios rather than by inference: dragging a group member, the up/down arrows, a category
+forced on a whole group with members added later inheriting it, creating a category and its entry in
+the keyboard configuration, and the option showing what research still locks.
+
+**Two defects were found and fixed, both reaching the player, neither caught by any static check.**
+
+- *Deleting a group belonging to another mod did not survive a settings reload.* `DissolveGroup`
+  recorded the dissolution as one empty-string entry per member in `dropdownAssignments` - 64 of them
+  for `Floor_Carpet` - and those entries did not come back through `Mod.GetSettings<T>()`, while
+  `hiddenGroupIds`, written by the same call, did. A diagnostic log inside the reload showed the
+  dictionary at zero entries with the hidden list intact. The dissolution is now carried by
+  `hiddenGroupIds` alone, read through `DropdownRuntime.SkipHidden`, which no longer depends on that
+  dictionary. A headless round-trip of 64 empty-value entries through the real Scribe passes, so the
+  serializer was never the culprit; the reload path was.
+- *`Restore deleted groups` brought nothing back.* It cleared `hiddenGroupIds` and never called
+  `DropdownRuntime.Apply()`, so the buildings kept the group the dissolution had left them with.
+  TESTING.md promised the members come back; now they do. The scenario that documented this as an
+  expected failure is green.
+
+A third defect was found by eye on a screenshot, which is what the `@review` scenarios exist for:
+both editors drew their intro paragraph in a fixed 24px box with middle anchoring, so the line was
+centred on a box too short for it and clipped at both ends as soon as it wrapped - which it does in
+a narrower window or a longer language. Measured with `Text.CalcHeight` now.
+
+The Workshop description now closes with `[url=...]Source code on GitHub[/url]` instead of the raw
+URL it carried since 2026-09-12. PUBLISHING.md makes that closing link a blocking criterion of
+`Preview générée -> preOptions`, so the stage was resting on an unmet condition; `Tests/Validate-Mod.ps1`
+passes its 739 checks with the new form, and the target matches both the `<url>` field and the remote.
+
+Three scenarios failed for days for a reason outside the mod entirely: RimIris kept a window over
+the bottom-left corner of the screen and the OS click landed there instead of on the button. The
+click step now names the covering window and its assembly, so the same situation reports itself
+instead of reading as a dead button. Removing RimIris turned them green. `Tests/Pickle/README.md`
+keeps the full account.
 
 ## Settings completion — 2026-09-13
 
