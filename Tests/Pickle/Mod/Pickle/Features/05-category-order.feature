@@ -1,5 +1,7 @@
 # TESTING.md scenario 5. The arrows move a category among its siblings, so that is what is
-# compared, whole list at once; then the Architect window's own tab cache must agree.
+# compared, whole list at once; then the Architect window's own tab cache must agree - which is
+# what keeps these two here. Resetting the order, and moving a subcategory, assert on the stored
+# order alone and are in Tests/BehaviorTests.cs.
 Feature: reordering categories
 
   Scenario: moving a category up
@@ -15,18 +17,3 @@ Feature: reordering categories
     And I move the category "Temperature" down
     Then it comes 1 place earlier among its siblings
     And the Architect window draws the siblings in that order
-
-  Scenario: Reset order puts every category back
-    When I remember where "Furniture" sits among its siblings
-    And I move the category "Furniture" down
-    And I move the category "Furniture" down
-    And I reset the category order
-    Then the siblings of "Furniture" are back in their remembered order
-
-  @requires:ferny.betterarchitect
-  Scenario: a subcategory moves among its own siblings
-    Given I create the category "Pickle child A" under "Structure"
-    And I create the category "Pickle child B" under "Structure"
-    When I remember where "Pickle child B" sits among its siblings
-    And I move the category "Pickle child B" up
-    Then it comes 1 place earlier among its siblings

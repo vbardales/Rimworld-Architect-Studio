@@ -86,21 +86,6 @@ namespace ArchitectStudio.PickleSteps
                 $"the window's tab cache orders them [{string.Join(", ", tabs)}], the editor [{string.Join(", ", siblings)}]");
         }
 
-        [Then("the siblings of {string} are back in their remembered order")]
-        public void BackToRemembered(PickleContext ctx, string category)
-        {
-            var remembered = ctx.Get<RememberedOrder>();
-            var now = SiblingNames(Driver.Category(ctx, category));
-            ctx.Assert(remembered.Siblings.SequenceEqual(now),
-                $"Before: [{string.Join(", ", remembered.Siblings)}]. Now: [{string.Join(", ", now)}]");
-        }
-
-        [When("I reset the category order")]
-        public void ResetOrder(PickleContext ctx)
-        {
-            CategoryRuntime.ResetOrders();
-        }
-
         // ---------------------------------------------------------------- created categories
 
         [When("I create the category {string}")]
@@ -108,16 +93,6 @@ namespace ArchitectStudio.PickleSteps
         {
             var def = CustomCategoryRuntime.Create(label, null);
             ctx.Assert(def != null, $"creating '{label}' returned no def");
-        }
-
-        [When("I create the category {string} under {string}")]
-        public void CreateUnder(PickleContext ctx, string label, string parentDefName)
-        {
-            var parent = Driver.Category(ctx, parentDefName);
-            ctx.Require(BetterArchitectCompat.SubcategoriesSupported,
-                "subcategories need Better Architect Menu, and its nesting could not be reached");
-            var def = CustomCategoryRuntime.Create(label, parent);
-            ctx.Assert(def != null, $"creating '{label}' under '{parentDefName}' returned no def");
         }
 
         [When("I delete the category {string}")]
@@ -166,36 +141,12 @@ namespace ArchitectStudio.PickleSteps
             CategoryAppearance.SetLabel(Driver.Category(ctx, defName), label);
         }
 
-        [Then("the category {string} is labelled {string}")]
-        public void Labelled(PickleContext ctx, string defName, string label)
-        {
-            var def = Driver.Category(ctx, defName);
-            ctx.Assert(def.label == label, $"'{defName}' should be labelled '{label}'; it is '{def.label}'");
-        }
-
         [When("I colour the category {string} with palette colour {int}")]
         public void Colour(PickleContext ctx, string defName, int index)
         {
             ctx.Require(index >= 1 && index <= CategoryAppearance.Palette.Length,
                 $"the palette has {CategoryAppearance.Palette.Length} colours");
             CategoryAppearance.SetColor(Driver.Category(ctx, defName), CategoryAppearance.Palette[index - 1]);
-        }
-
-        [Then("the category {string} is drawn in palette colour {int}")]
-        public void Coloured(PickleContext ctx, string defName, int index)
-        {
-            var expected = CategoryAppearance.Palette[index - 1];
-            var actual = CategoryAppearance.ColorOf(Driver.Category(ctx, defName));
-            // Stored as 0-255 integers, so a round trip may move a channel by under 1/255.
-            ctx.Assert(actual.HasValue && Mathf.Abs(actual.Value.r - expected.r) < 0.01f &&
-                       Mathf.Abs(actual.Value.g - expected.g) < 0.01f && Mathf.Abs(actual.Value.b - expected.b) < 0.01f,
-                $"'{defName}' should be drawn in {expected}; it is {(actual.HasValue ? actual.Value.ToString() : "uncoloured")}");
-        }
-
-        [When("I clear the colour of the category {string}")]
-        public void ClearColour(PickleContext ctx, string defName)
-        {
-            CategoryAppearance.SetColor(Driver.Category(ctx, defName), null);
         }
 
         private sealed class ChosenIcon
@@ -225,14 +176,6 @@ namespace ArchitectStudio.PickleSteps
                 ArchitectStudioUI.ToggleCategoriesDialog();
             }
         }
-
-        [Then("the category {string} has no colour")]
-        public void Uncoloured(PickleContext ctx, string defName)
-        {
-            var actual = CategoryAppearance.ColorOf(Driver.Category(ctx, defName));
-            ctx.Assert(!actual.HasValue, $"'{defName}' should have no colour; it is {actual}");
-        }
-
 
         [Then("Architect Icons returns that icon for {string} straight away")]
         public void IconShown(PickleContext ctx, string defName)

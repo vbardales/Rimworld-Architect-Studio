@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Xml;
 using ArchitectStudio;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ArchitectStudioTests
@@ -154,8 +155,131 @@ namespace ArchitectStudioTests
             clean.ResetPreferences();
             clean.showResearchLocked = true;
             Check(ArchitectStudioReset.HasAnything, "changing only research visibility enables reset");
+
+            // ------------------------------------------------------- categories, and one dialog
+            // Six scenarios used to assert all of this from Gherkin without ever drawing anything,
+            // so they confiscated a whole game session to read fields a headless process reads.
+            // What stays in Gherkin is what needs the running window: the Architect tab cache, the
+            // menu's own button order, Architect Icons.
+            var mod = (ArchitectStudioMod)System.Runtime.CompilerServices.RuntimeHelpers
+                .GetUninitializedObject(typeof(ArchitectStudioMod));
+            typeof(ArchitectStudioMod).GetProperty("Instance").GetSetMethod(true).Invoke(null, new object[] { mod });
+            var categories = new ArchitectStudioSettings();
+            typeof(ArchitectStudioMod).GetProperty("Settings").GetSetMethod(true).Invoke(null, new object[] { categories });
+
+            // Real defs in the real database, only built without Unity. Order descends down the
+            // list: the largest number is the category drawn at the top.
+            var roots = new List<DesignationCategoryDef>();
+            foreach (var name in new[] { "AS_TestAlpha", "AS_TestBravo", "AS_TestCharlie", "AS_TestDelta" })
+            {
+                var category = Def<DesignationCategoryDef>(name);
+                category.label = name;
+                category.order = 400 - roots.Count * 10;
+                DefDatabase<DesignationCategoryDef>.Add(category);
+                roots.Add(category);
+            }
+
+            List<string> Siblings(DesignationCategoryDef of) =>
+                CategoryRuntime.SiblingsOf(of).Select(c => c.defName).ToList();
+
+            var bravo = roots[1];
+            var originalOrder = Siblings(bravo);
+            CategoryRuntime.Move(bravo, 1);
+            CategoryRuntime.Move(bravo, 1);
+            var movedOrder = Siblings(bravo);
+            CategoryRuntime.ResetOrders();
+            Check(!movedOrder.SequenceEqual(originalOrder) && Siblings(bravo).SequenceEqual(originalOrder)
+                  && categories.categoryOrders.Count == 0,
+                "reset order puts every category back where it started");
+
+            // Subcategories are Better Architect Menu's, grafted on by reflection over a duck-typed
+            // extension; the stub at the bottom of this file carries the same contract, so the
+            // sibling scoping runs without the mod. Whether BAM still spells its type that way is a
+            // question only a game running with BAM answers - and the scenario did not ask it
+            // either: a missing type skipped it outright.
+            var childA = Def<DesignationCategoryDef>("AS_TestChildA");
+            childA.label = "AS_TestChildA";
+            childA.order = 200;
+            var childB = Def<DesignationCategoryDef>("AS_TestChildB");
+            childB.label = "AS_TestChildB";
+            childB.order = 190;
+            DefDatabase<DesignationCategoryDef>.Add(childA);
+            DefDatabase<DesignationCategoryDef>.Add(childB);
+            Check(BetterArchitectCompat.TryAttachParent(childA, roots[0]) &&
+                  BetterArchitectCompat.TryAttachParent(childB, roots[0]) &&
+                  Siblings(childB).SequenceEqual(new[] { "AS_TestChildA", "AS_TestChildB" }) &&
+                  CategoryRuntime.Move(childB, -1) &&
+                  Siblings(childB).SequenceEqual(new[] { "AS_TestChildB", "AS_TestChildA" }) &&
+                  Siblings(roots[0]).SequenceEqual(originalOrder),
+                "a subcategory moves among its own siblings, leaving the root order alone");
+            CategoryRuntime.ResetOrders();
+
+            // The group editor's own bounds check, reached the way its arrow buttons reach it. The
+            // member list is handed to the dialog rather than read back from the def database:
+            // that list is what ReorderMember works on, and a list of real buildings would drag a
+            // designator rebuild, hence Unity textures, behind it.
+            var dialog = System.Runtime.CompilerServices.RuntimeHelpers
+                .GetUninitializedObject(typeof(Dialog_DropdownGroups));
+            var seats = Def<DesignatorDropdownGroupDef>("AS_TestSeats");
+            var seatMembers = new List<BuildableDef>
+            {
+                Def<ThingDef>("AS_TestSeatA"), Def<ThingDef>("AS_TestSeatB"),
+                Def<ThingDef>("AS_TestSeatC"), Def<ThingDef>("AS_TestSeatD")
+            };
+            DropdownOrderRuntime.SetOrder(seats.defName, seatMembers);
+            var membersCache = typeof(Dialog_DropdownGroups).GetField("membersCache", BindingFlags.Instance | BindingFlags.NonPublic);
+            var reorderMember = typeof(Dialog_DropdownGroups).GetMethod("ReorderMember", BindingFlags.Instance | BindingFlags.NonPublic);
+            void PressArrow(int member, int target)
+            {
+                membersCache.SetValue(dialog, new Dictionary<DesignatorDropdownGroupDef, List<BuildableDef>>
+                    { { seats, DropdownOrderRuntime.SortMembers(seats.defName, seatMembers) } });
+                // Rows are 1-based on screen, indices are not.
+                reorderMember.Invoke(dialog, new object[] { seats, member - 1, target });
+            }
+            // Up on the first row and down on the last: both targets fall outside the list, and an
+            // unclamped insertion would throw rather than sit still.
+            PressArrow(1, -1);
+            PressArrow(4, 4);
+            Check(DropdownOrderRuntime.SortMembers(seats.defName, seatMembers).SequenceEqual(seatMembers),
+                "the arrows at the ends of a group move nothing");
+
+            var appearance = new ArchitectStudioSettings();
+            typeof(ArchitectStudioMod).GetProperty("Settings").GetSetMethod(true).Invoke(null, new object[] { appearance });
+            var alpha = roots[0];
+            var alphaLabel = CategoryAppearance.OriginalLabelOf(alpha);
+            CategoryAppearance.SetLabel(alpha, "Pickle furniture");
+            Check(alpha.label == "Pickle furniture" && appearance.categoryLabels[alpha.defName] == "Pickle furniture",
+                "a new label reaches the category def, not only the settings");
+
+            CategoryAppearance.SetLabel(alpha, "");
+            Check(alpha.label == alphaLabel && !CategoryAppearance.HasOverrides && !ArchitectStudioReset.HasAnything,
+                "going back to the original label removes the override and leaves nothing to reset");
+
+            var wanted = CategoryAppearance.Palette[2];
+            CategoryAppearance.SetColor(alpha, wanted);
+            var stored = CategoryAppearance.ColorOf(alpha);
+            CategoryAppearance.SetColor(alpha, null);
+            // Stored as 0-255 integers, so a round trip may move a channel by under 1/255.
+            Check(stored.HasValue && Mathf.Abs(stored.Value.r - wanted.r) < 0.01f &&
+                  Mathf.Abs(stored.Value.g - wanted.g) < 0.01f && Mathf.Abs(stored.Value.b - wanted.b) < 0.01f &&
+                  !CategoryAppearance.ColorOf(alpha).HasValue && appearance.categoryColors.Count == 0,
+                "a palette colour is stored, read back and cleared");
+
             Console.WriteLine("PASS: " + checks + " runtime behavior checks; no game UI session was run.");
         }
+    }
+}
+
+namespace BetterArchitect
+{
+    /// <summary>
+    /// Stand-in for Better Architect Menu's nesting extension. The mod resolves the real one by
+    /// type name and field name, never by reference, so this one answers the same way and lets the
+    /// harness nest a category. Nothing else in the tests reads it.
+    /// </summary>
+    public class NestedCategoryExtension : Verse.DefModExtension
+    {
+        public Verse.DesignationCategoryDef parentCategory;
     }
 }
 

@@ -19,11 +19,30 @@ remaining:
   - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
   - unverified: the RIMMSQOL half of scenario 15, revealing and hiding the MainButtons shortcut, which needs RIMMSQOL installed and a real restart
   - unverified: clicks at 150% interface scale; the scenario misses its target and the cause is under investigation, in the suite's own step rather than in the mod
-session:      local_da0ac2a6-6bc4-4a6a-87e3-13347ab858c6
-updated:      2026-09-20, first full in-game Pickle run; two defects found and fixed
+session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
+updated:      2026-09-20, six state-only Pickle scenarios moved down to the headless harness
 ---
 
 # Architect Studio — status
+
+## Six scenarios moved down to unit tests — 2026-09-20
+
+Six Pickle scenarios asserted stored state and nothing else — no click, no drawing, no reload —
+so they confiscated a game session at every run to read fields a headless process reads in
+milliseconds. They are now six assertions in `Tests/BehaviorTests.cs`, which goes from **27 to 33
+passing assertions**, and they are gone from `04-arrows`, `05-category-order` and `09-appearance`
+along with the seven steps that became orphaned in `Tests/Pickle/Source/CategorySteps.cs`.
+
+What was kept in those same files is what only a running game shows: `05` compares the order
+against the Architect window's own `desPanelsCached`, `04` against the menu's button order, `09`'s
+icon asks Architect Icons itself. No coverage was lost — none of the six had an equivalent in the
+harness before, each one is now asserted through the same mod code the scenario called, the group
+arrows included, reached through the dialog's own private `ReorderMember`.
+
+One boundary is worth naming: nesting a category needs Better Architect Menu's
+`NestedCategoryExtension`, which the harness stands in for with a stub of the same type and field
+name. The test therefore cannot tell that BAM still spells it that way — but neither could the
+scenario, which skipped rather than failed when the type was missing.
 
 ## First full in-game run — 2026-09-20
 

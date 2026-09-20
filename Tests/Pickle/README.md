@@ -116,6 +116,25 @@ sit in the corner of every capture. `I bring the interface back` undoes
 it, and an `[AfterScenario]` does too, so a scenario dying in between cannot leave the game without
 its interface.
 
+## What belongs here, and what does not
+
+A run confiscates the machine for tens of minutes: real clicks, a pointer moving on its own, the
+screen busy. **A scenario that restates what a unit test already proves pays that price at every
+run and adds nothing.** Only what a running game can show stays in Gherkin: a real click, a drag
+replayed, something drawn, a reload, a capture, a third-party mod answering.
+
+Six scenarios that only read stored state went down to `Tests/BehaviorTests.cs` on 2026-09-20 —
+the arrows at the ends of a group, resetting the category order, a subcategory moving among its
+siblings, a label reaching its def, that label going back, a colour set and cleared. What stayed
+next to them in the same files is what the headless harness cannot reach: `05` compares the order
+against the Architect window's own `desPanelsCached`, `04` against the menu's button order, and
+`09`'s icon asks Architect Icons itself.
+
+One caveat came out of the move, and it costs nothing: the subcategory test nests a category
+through a stub of Better Architect Menu's `NestedCategoryExtension`, resolved by type and field
+name the way the mod resolves the real one. It therefore cannot tell that BAM still spells it that
+way. Neither could the scenario: a missing type made it skip, not fail.
+
 ## What stays manual
 
 | TESTING.md | Why |
