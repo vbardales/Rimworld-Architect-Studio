@@ -18,12 +18,54 @@ workshop:     3792784018
 remaining:
   - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
   - unverified: the RIMMSQOL half of scenario 15, revealing and hiding the MainButtons shortcut, which needs RIMMSQOL installed and a real restart
-  - unverified: clicks at 150% interface scale; the scenario misses its target and the cause is under investigation, in the suite's own step rather than in the mod
+  - unverified: the 150% interface-scale screenshots, which the fix below finally produced; `16` is a @review scenario, so a person still has to read them for clipping and raw keys
+  - external: the Pickle defect behind that scenario is fixed in `Mods\Pickle-local` only, not upstream in github.com/RimWorks/Rimworld-Pickle; a Workshop Pickle still sends the pointer off screen at 150%
+  - defect: the `Mods\Pickle-local` build of 2026-09-20 22:11 carries that fix without Pickle's interface-scale guard (`3f514b2`), which the binary it replaced had; the guard-preserving build belongs to the session taking the upstream commit
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-20, six state-only Pickle scenarios moved down to the headless harness
+updated:      2026-09-20, the 150% click defect measured and fixed in Pickle; six state-only scenarios moved down to the harness
 ---
 
 # Architect Studio — status
+
+## The last red scenario, and it was never ours — 2026-09-20
+
+*screenshots of both editors at 150 percent* had been failing since the suite first ran, and this
+file said above that the cause lay in our own interface-scale step. **It did not.** A probe
+scenario written for the purpose, `18-tag-geometry.feature` with `Tests/Pickle/Source/TagProbe.cs`,
+measured what Pickle is handed for a tagged button and what it turns that into, at both scales.
+
+`GUIUtility.GUIToScreenRect` composes two spaces: it adds the clip origin **unscaled** and the
+local offset **scaled**. For the same button on a 1920x1080 window:
+
+| | clip origin | local rect | stored by `TagStore.Record` | true GUI rect |
+| --- | --- | --- | --- | --- |
+| 100% | `(0, 735)` | `y 285` | `y 1020` | `y 1020` |
+| 150% | `(0, 375)` | `y 285` | `y 802.5` | `y 660` |
+
+`375 + 285 x 1.5 = 802.5` is neither GUI space nor screen space. `InputBackends.ToScreen` then
+multiplies by `Prefs.UIScale` again and the pointer goes to `1203` on a screen 1080 tall. At scale
+1 the two spaces coincide, which is why exactly one scenario was red.
+
+Ruled out with numbers, so nobody spends another afternoon on them: our scale step (the GUI space
+does follow, `1920x1080` to `1280x720`), the Architect window's layout at that scale, a stale rect,
+and re-indexing the tag store's guard on `UI.screenWidth`/`screenHeight`.
+
+The fix is one statement in `TagStore.Record`, keeping the rect in GUI space, which is what every
+consumer of it wants. Built, deployed into `Mods\Pickle-local`, and replayed twice in the WSL game
+changing only which Pickle was staged: **with the fix 150% passes, with the Workshop copy it
+fails**, and 100% passes either way, which is what rules out the environment. The failing run names
+the defect exactly — *the pointer never reached (50.25, 814.00): the OS reports x:75 y:1079* — a y
+of 814 in a GUI space 720 tall, clamped to the bottom edge. The scenario clicks the button for real
+and then asserts the dialog opened, so this is a click landing, not a capture succeeding.
+`Tests/Pickle/README.md` carries the full account and the code.
+
+Three limits, all in the `remaining` list. `16` is `@review`, so those 150% screenshots exist now
+but assert nothing — a person still has to read them. The fix is local: upstream Pickle, and
+therefore anyone else's, still has the defect. And the build now in `Mods\Pickle-local` came from a
+Pickle checkout on `feat/clear-the-screen`, which branches before `3f514b2`, so it carries the fix
+**without** the interface-scale guard the binary it replaced had — a regression of this session's
+making, harmless while the conversion is right, caught by the session that owns the upstream commit
+and to be corrected there.
 
 ## Six scenarios moved down to unit tests — 2026-09-20
 
@@ -47,8 +89,10 @@ scenario, which skipped rather than failed when the type was missing.
 ## First full in-game run — 2026-09-20
 
 The Pickle suite ran inside a real game for the first time: **40 Architect Studio scenarios, 39
-passed, 1 failed**, the failure being a click at 150% interface scale whose cause lies in the
-suite's own step and not in the mod. This supersedes the "not run yet" of the sections below for
+passed, 1 failed**, the failure being a click at 150% interface scale. Measured later the same day:
+the cause is in Pickle's tag store, which stores a rect converted half into screen space, and not
+in this mod nor in the suite's own scale step as first thought. `Tests/Pickle/README.md` carries
+the numbers. This supersedes the "not run yet" of the sections below for
 every behaviour it covers; it does not by itself carry the stage to `tested`, because the English
 and French walkthrough side by side and the RIMMSQOL half of scenario 15 remain unexecuted.
 

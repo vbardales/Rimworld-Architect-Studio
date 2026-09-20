@@ -47,6 +47,28 @@ so build the mod first. Feature files need no build.
 
 Scenario 02 clicks real buttons through OS input: the pointer moves on its own while it runs.
 
+### Without taking the screen: the WSL game
+
+There is a second RimWorld on this machine, a Linux copy under `~/rimworld` in WSL, downloaded with
+steamcmd and kept for tests. **It is the one a session may launch**; the Windows install belongs to
+its owner and is neither started nor stopped by anyone else. `scripts/stage-pickle-wsl.sh
+ArchitectStudio`, in the monorepo, wipes its `Mods/`, copies Pickle, RimLogging, the hard
+dependencies, the mod and this suite into it, and writes a `ModsConfig.xml` to match. It prints the
+command to run, which drives the game under `xvfb` - a virtual screen, so real clicks happen and
+nobody's desktop is taken. The run ends by itself and writes its report.
+
+Two things that path needs. `-pickle-run` matches the companion mod's **display name**, so
+`"Architect Studio - Pickle tests"`, exactly; a filter that matches nothing exits 2 without playing
+anything. And the lock is still required: one machine, one runner, whichever RimWorld it is.
+
+It stages the **Workshop** Pickle, not `Mods\Pickle-local`. To run against a local Pickle build,
+copy it over `Mods/3791648678` after staging - the `packageId` is the same, so `ModsConfig` needs no
+change.
+
+To run one feature rather than the whole suite, delete the others from the staged copy under
+`~/rimworld/Mods/ArchitectStudioPickleTests/Pickle/Features`. Never from this repo, and there is
+nothing to put back: the next staging wipes `Mods/` anyway.
+
 ## The reports, and what overwrites them
 
 Pickle writes every run into `PickleReports` and overwrites what was there, screenshots included,
@@ -165,12 +187,74 @@ Nothing in this mod could have dodged it: the Architect window lives in that cor
 draw in its bottom row is under whatever else claims the corner. If it happens again with another
 mod, the message names it; that is the whole point of naming the assembly.
 
-## Still open: clicks at 150% interface scale
+## Fixed, not yet upstream: clicks at 150% interface scale
 
-`16`'s *screenshots of both editors at 150 percent* fails with the pointer landing away from the
-button. Pickle's own conversion does apply `Prefs.UIScale`, and its tag store already refuses a rect
-measured at another scale, so the remaining miss is narrower than "Pickle ignores the scale": the y
-in the failure is one that cannot exist in 150% GUI space, so the rect used was measured before the
-game had relaid out. `I set the interface scale to {int} percent` writes `Prefs.UIScale` directly,
-which is the likely culprit and would be ours to fix, not Pickle's. Unconfirmed - it needs a run
-that watches when the tag is recorded.
+`16`'s *screenshots of both editors at 150 percent* used to fail with the pointer landing away from
+the button. **Measured on 2026-09-20 by `18-tag-geometry.feature`, and the cause was in Pickle, not
+here** - an earlier note in this file blamed our own scale step, which the measurement cleared.
+The fix is written and the scenario passes; it lives in `Mods\Pickle-local` and has not been sent
+upstream.
+
+`TagStore.Record` stores `GUIUtility.GUIToScreenRect(rect)`. That function composes two spaces:
+it adds the clip origin **unscaled** and the local offset **scaled**. On a 1920x1080 window, for
+the same button drawn at the same place in its window:
+
+| | clip origin | local rect | what `Record` stores | true GUI rect |
+| --- | --- | --- | --- | --- |
+| 100% | `(0, 735)` | `y 285` | `y 1020` | `y 1020` |
+| 150% | `(0, 375)` | `y 285` | `y 802.5` | `y 660` |
+
+`375 + 285 x 1.5 = 802.5`, and that is neither GUI space (660) nor screen space (990). The
+consumers then treat it as GUI space: `InputBackends.ToScreen` multiplies by `Prefs.UIScale`
+again, giving `1203.75` on a screen 1080 tall, and the pointer is sent off the bottom. At scale 1
+the two spaces coincide and the double conversion is invisible - which is why only this one
+scenario is red.
+
+Ruled out, with numbers, so nobody re-does it: our `I set the interface scale to {int} percent`
+does everything the Options do and the GUI space follows (`1920x1080` to `1280x720`); the Architect
+window is correctly laid out for the new scale (same size, only `y` moves, as a bottom anchor
+should); the rect is not stale; and indexing the tag store's guard on `UI.screenWidth`/`screenHeight`
+instead of `Prefs.UIScale` would change nothing, since scale and dimensions agree at both ends.
+
+The fix is one statement in `TagStore.Record` - keep the rect in GUI space, which is what every
+consumer wants:
+
+```csharp
+Vector2 clipOrigin = GUIUtility.GUIToScreenPoint(Vector2.zero);  // the clip origin, in GUI space
+Rect guiRect = new(rect.position + clipOrigin, rect.size);
+```
+
+`GUIToScreenPoint(Vector2.zero)` is exact for this because the scaled term vanishes at zero. It
+leaves 100% untouched (`0 + 285` is still `1020`) and gives `660` at 150%, which `ToScreen` turns
+into the right `990`. It also makes the stored rect coherent: before, its position was
+half-converted while its width and height stayed in GUI space.
+
+### What was run
+
+Written, built and deployed into `Mods\Pickle-local\Assemblies` on 2026-09-20, then replayed in
+the WSL game (see *Without taking the screen*, above), twice, changing only which Pickle was
+staged:
+
+| Pickle staged | 100% | 150% |
+| --- | --- | --- |
+| `Pickle-local`, with the fix | passed | **passed** |
+| Workshop copy, without it | passed | **failed** |
+
+The 100% column is the control: it rules out the environment, since only the 150% row moves. The
+failure in the second run names the defect exactly - *the pointer never reached (50.25, 814.00):
+the OS reports x:75 y:1079* - a y of 814 in a GUI space 720 tall, which the OS then clamps to the
+bottom edge of the screen.
+
+That scenario is not a capture that happens to succeed: it goes `I click the Architect Studio
+button keyed "ArchitectStudio.ArchitectButton"` and then `Then window "Dialog_DropdownGroups" is
+open`, so a real click has to land on the button for it to pass.
+
+Three things that green does **not** say, and should not be read into it. `16` is `@review`: it
+asserts nothing about the images, so the 150% screenshots now exist and still need a person to
+read them. The fix has not been sent to `github.com/RimWorks/Rimworld-Pickle`, so a Workshop
+Pickle - anyone else's, and the WSL staging unless told otherwise - still has the defect. And the
+build deployed here was made from a checkout of Pickle sitting on `feat/clear-the-screen`, which
+branches *before* `3f514b2`, "ignore a tagged rect measured at another interface scale": it
+therefore carries the fix **without** that guard, which the binary it replaced did have. Harmless
+while the conversion is right, but it is a behaviour change nobody asked for, and the version that
+goes upstream must keep the guard.
