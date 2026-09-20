@@ -249,12 +249,23 @@ That scenario is not a capture that happens to succeed: it goes `I click the Arc
 button keyed "ArchitectStudio.ArchitectButton"` and then `Then window "Dialog_DropdownGroups" is
 open`, so a real click has to land on the button for it to pass.
 
-Three things that green does **not** say, and should not be read into it. `16` is `@review`: it
+Two things that green does **not** say, and should not be read into it. `16` is `@review`: it
 asserts nothing about the images, so the 150% screenshots now exist and still need a person to
-read them. The fix has not been sent to `github.com/RimWorks/Rimworld-Pickle`, so a Workshop
-Pickle - anyone else's, and the WSL staging unless told otherwise - still has the defect. And the
-build deployed here was made from a checkout of Pickle sitting on `feat/clear-the-screen`, which
-branches *before* `3f514b2`, "ignore a tagged rect measured at another interface scale": it
-therefore carries the fix **without** that guard, which the binary it replaced did have. Harmless
-while the conversion is right, but it is a behaviour change nobody asked for, and the version that
-goes upstream must keep the guard.
+read them. And the fix has not reached RimWorks: it is `fix/tag-rect-interface-scale`, e8aeae1 in
+the fork at `github.com/vbardales/Rimworld-Pickle`, so a Workshop Pickle - anyone else's, and the
+WSL staging unless told otherwise - still has the defect.
+
+### The trap in rebuilding Pickle from that checkout
+
+The first build deployed here carried the fix but silently dropped `3f514b2`, "ignore a tagged
+rect measured at another interface scale", because the checkout it came from sits on
+`feat/clear-the-screen`, which branches before that commit. The assembly already in that
+checkout's `Assemblies/` had been built *before* the branch switch, so its md5 matching
+`Pickle-local` proved only that the two binaries agreed - not that either matched the working
+tree. Rebuilding from the tree therefore removed a guard from the machine that nothing asked to
+remove. It was replaced the same evening by a build made on top of `3f514b2`.
+
+So: after building Pickle from a shared checkout, **check the branch, and check the deployed
+binary** - `get_UiScale` and `HeldAtAnotherScale` present, `GUIToScreenPoint` present,
+`GUIToScreenRect` gone. Check it **case-sensitively**: a case-insensitive search for `UiScale`
+also matches `Prefs.UIScale` and answers yes on every build, guard or no guard.

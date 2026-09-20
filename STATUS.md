@@ -19,8 +19,7 @@ remaining:
   - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
   - unverified: the RIMMSQOL half of scenario 15, revealing and hiding the MainButtons shortcut, which needs RIMMSQOL installed and a real restart
   - unverified: the 150% interface-scale screenshots, which the fix below finally produced; `16` is a @review scenario, so a person still has to read them for clipping and raw keys
-  - external: the Pickle defect behind that scenario is fixed in `Mods\Pickle-local` only, not upstream in github.com/RimWorks/Rimworld-Pickle; a Workshop Pickle still sends the pointer off screen at 150%
-  - defect: the `Mods\Pickle-local` build of 2026-09-20 22:11 carries that fix without Pickle's interface-scale guard (`3f514b2`), which the binary it replaced had; the guard-preserving build belongs to the session taking the upstream commit
+  - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, e8aeae1 in the fork at github.com/vbardales/Rimworld-Pickle, not merged to its main nor sent to RimWorks; a Workshop Pickle still sends the pointer off screen at 150%
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
 updated:      2026-09-20, the 150% click defect measured and fixed in Pickle; six state-only scenarios moved down to the harness
 ---
@@ -59,13 +58,20 @@ of 814 in a GUI space 720 tall, clamped to the bottom edge. The scenario clicks 
 and then asserts the dialog opened, so this is a click landing, not a capture succeeding.
 `Tests/Pickle/README.md` carries the full account and the code.
 
-Three limits, all in the `remaining` list. `16` is `@review`, so those 150% screenshots exist now
-but assert nothing — a person still has to read them. The fix is local: upstream Pickle, and
-therefore anyone else's, still has the defect. And the build now in `Mods\Pickle-local` came from a
-Pickle checkout on `feat/clear-the-screen`, which branches before `3f514b2`, so it carries the fix
-**without** the interface-scale guard the binary it replaced had — a regression of this session's
-making, harmless while the conversion is right, caught by the session that owns the upstream commit
-and to be corrected there.
+Two limits, both in the `remaining` list. `16` is `@review`, so those 150% screenshots exist now
+but assert nothing — a person still has to read them. And the fix has not reached RimWorks: it is
+`fix/tag-rect-interface-scale`, e8aeae1 in the fork, so anyone else's Pickle still has the defect.
+
+One trap this session fell into, kept because the next person can fall into it too. The build first
+deployed here was made from a Pickle checkout on `feat/clear-the-screen`, which branches *before*
+`3f514b2`, "ignore a tagged rect measured at another interface scale" — so it carried the fix
+while silently dropping that guard, which the binary it replaced had. The binary in that checkout's
+`Assemblies/` had been built before the branch switch, and its md5 matching was taken as proof that
+the working tree matched too. It was not. A second session caught it and replaced the build at
+22:24 with one made on top of `3f514b2`; the deployed assembly now has `get_UiScale`,
+`HeldAtAnotherScale` and `GUIToScreenPoint`, and no `GUIToScreenRect`. **Check the binary, and
+check case-sensitively** — a case-insensitive search for `UiScale` matches `Prefs.UIScale` and
+answers yes on every build, including the ones without the guard.
 
 ## Six scenarios moved down to unit tests — 2026-09-20
 
