@@ -137,13 +137,36 @@ namespace ArchitectStudio
             }
         }
 
+        /// <summary>
+        /// A group we do not own (shipped by the game or another mod) is dissolved by adding it to
+        /// <c>hiddenGroupIds</c> alone: unlike a per-member override in <c>dropdownAssignments</c>,
+        /// that one string reliably survives a settings round-trip through <c>Mod.GetSettings</c>,
+        /// which a bulk empty-value dictionary entry per member does not. Anything that would
+        /// otherwise resolve to a hidden group falls back to that building's own original group
+        /// instead - unless the original group is itself the hidden one, in which case there is
+        /// nothing to fall back to and the building goes ungrouped.
+        /// </summary>
+        private static DesignatorDropdownGroupDef SkipHidden(DesignatorDropdownGroupDef candidate, string key)
+        {
+            if (candidate == null || !ArchitectStudioMod.Settings.hiddenGroupIds.Contains(candidate.defName))
+            {
+                return candidate;
+            }
+
+            var original = originalGroups.TryGetValue(key, out var value) ? value : null;
+            return original != null && original != candidate && !ArchitectStudioMod.Settings.hiddenGroupIds.Contains(original.defName)
+                ? original
+                : null;
+        }
+
         /// <summary>Group wanted for this building, taking the configuration and defaults into account.</summary>
         private static DesignatorDropdownGroupDef DesiredGroupFor(BuildableDef def)
         {
             var key = KeyOf(def);
             if (!ArchitectStudioMod.Settings.dropdownAssignments.TryGetValue(key, out var groupId))
             {
-                return originalGroups.TryGetValue(key, out var original) ? original : null;
+                var original = originalGroups.TryGetValue(key, out var value) ? value : null;
+                return SkipHidden(original, key);
             }
 
             if (groupId.NullOrEmpty())
@@ -154,7 +177,7 @@ namespace ArchitectStudio
             var group = DefDatabase<DesignatorDropdownGroupDef>.GetNamedSilentFail(groupId);
             if (group != null)
             {
-                return group;
+                return SkipHidden(group, key);
             }
 
             // The group has disappeared (mod removed). We fall back to the default rather than

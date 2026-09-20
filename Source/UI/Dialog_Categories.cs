@@ -45,9 +45,16 @@ namespace ArchitectStudio
 
             Text.Font = GameFont.Small;
             GUI.color = new Color(1f, 1f, 1f, 0.6f);
-            Widgets.Label(new Rect(inRect.x, y, inRect.width, 24f), "ArchitectStudio.Categories.Intro".Translate());
+            // Measured, not a fixed box: this line fits on one row in English at this window's
+            // default width and wraps in a longer language or once the window is narrowed, and a
+            // box too short for it centres the block on itself and clips both ends.
+            var intro = "ArchitectStudio.Categories.Intro".Translate();
+            var introHeight = Text.CalcHeight(intro, inRect.width);
+            Text.Anchor = TextAnchor.UpperLeft;
+            Widgets.Label(new Rect(inRect.x, y, inRect.width, introHeight), intro);
+            Text.Anchor = TextAnchor.MiddleLeft;
             GUI.color = Color.white;
-            y += 30f;
+            y += introHeight + 6f;
 
             const float bottomBarHeight = 38f;
             var listRect = new Rect(inRect.x, y, inRect.width, inRect.height - y - bottomBarHeight);

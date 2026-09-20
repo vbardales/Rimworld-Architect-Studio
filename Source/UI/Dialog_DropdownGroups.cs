@@ -289,25 +289,13 @@ namespace ArchitectStudio
 
         /// <summary>
         /// Deletes a group we do not own. The def belongs to another mod and will come back at the
-        /// next startup: we empty it of its members, which is enough to make it disappear from the
-        /// Architect menu, and remember that it must no longer show up here.
+        /// next startup: recording it in <c>hiddenGroupIds</c> is enough to make it disappear from
+        /// the Architect menu (see <see cref="DropdownRuntime.SkipHidden"/>), and survives a settings
+        /// reload the way a per-member "no group" override in <c>dropdownAssignments</c> does not.
         /// </summary>
         private void DissolveGroup(DesignatorDropdownGroupDef group)
         {
             var settings = ArchitectStudioMod.Settings;
-
-            foreach (var def in MembersOf(group).ToList())
-            {
-                var key = DropdownRuntime.KeyOf(def);
-                if (DropdownRuntime.OriginalGroupOf(def) == null)
-                {
-                    settings.dropdownAssignments.Remove(key);
-                }
-                else
-                {
-                    settings.dropdownAssignments[key] = "";
-                }
-            }
 
             if (!settings.hiddenGroupIds.Contains(group.defName))
             {
@@ -330,6 +318,7 @@ namespace ArchitectStudio
         {
             ArchitectStudioMod.Settings.hiddenGroupIds.Clear();
             ArchitectStudioMod.Instance.WriteSettings();
+            DropdownRuntime.Apply();
             InvalidateCaches();
         }
 
@@ -348,9 +337,16 @@ namespace ArchitectStudio
 
             Text.Font = GameFont.Small;
             GUI.color = new Color(1f, 1f, 1f, 0.6f);
-            Widgets.Label(new Rect(inRect.x, y, inRect.width, 24f), "ArchitectStudio.Dropdowns.Intro".Translate());
+            // Measured, not a fixed box: this line fits on one row in English at this window's
+            // default width and wraps in a longer language or once the window is narrowed, and a
+            // box too short for it centres the block on itself and clips both ends.
+            var intro = "ArchitectStudio.Dropdowns.Intro".Translate();
+            var introHeight = Text.CalcHeight(intro, inRect.width);
+            Text.Anchor = TextAnchor.UpperLeft;
+            Widgets.Label(new Rect(inRect.x, y, inRect.width, introHeight), intro);
+            Text.Anchor = TextAnchor.MiddleLeft;
             GUI.color = Color.white;
-            y += 30f;
+            y += introHeight + 6f;
 
             const float bottomBarHeight = 38f;
             var bodyRect = new Rect(inRect.x, y, inRect.width, inRect.height - y - bottomBarHeight);
