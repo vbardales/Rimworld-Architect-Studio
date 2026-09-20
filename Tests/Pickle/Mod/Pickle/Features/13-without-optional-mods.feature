@@ -8,11 +8,11 @@ Feature: without the optional mods
     Given mod "ferny.betterarchitect" is not loaded
     And mod "com.bymarcin.architecticons" is not loaded
     And mod "kathanon.floatsubmenu" is not loaded
-    And "Stool", "DiningChair", "Armchair" and "EndTable" start in the same category
+    And four buildings "A", "B", "C" and "D" from one category, in no group
     Then the game log holds nothing from Architect Studio since startup
     When I create the group "Pickle seats"
-    And I add "Stool" to the group "Pickle seats"
-    And I add "DiningChair" to the group "Pickle seats"
+    And I add "A" to the group "Pickle seats"
+    And I add "B" to the group "Pickle seats"
     Then the Architect menu shows the group "Pickle seats" as 1 button
     When I open the category editor
     Then window "Dialog_Categories" is open

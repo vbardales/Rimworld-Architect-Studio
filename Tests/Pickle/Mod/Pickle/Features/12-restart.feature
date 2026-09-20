@@ -4,10 +4,10 @@
 Feature: everything survives a restart
 
   Scenario: group, category, order and colour come back from the file
-    Given "Stool", "DiningChair", "Armchair" and "EndTable" start in the same category
+    Given four buildings "A", "B", "C" and "D" from one category, in no group
     When I create the group "Pickle seats"
-    And I add "Stool" to the group "Pickle seats"
-    And I add "DiningChair" to the group "Pickle seats"
+    And I add "A" to the group "Pickle seats"
+    And I add "B" to the group "Pickle seats"
     And I create the category "Pickle tab"
     And I move the category "Furniture" up
     And I colour the category "Structure" with palette colour 5

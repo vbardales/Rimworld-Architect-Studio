@@ -5,11 +5,11 @@ Feature: the arrows at 150% interface scale
 
   Scenario: screenshots of the group editor at 100% and 150%
     Given the save "test-colony" is loaded
-    And "Stool", "DiningChair", "Armchair" and "EndTable" start in the same category
+    And four buildings "A", "B", "C" and "D" from one category, in no group
     When I create the group "Seats"
-    And I add "Stool" to the group "Seats"
-    And I add "DiningChair" to the group "Seats"
-    And I add "Armchair" to the group "Seats"
+    And I add "A" to the group "Seats"
+    And I add "B" to the group "Seats"
+    And I add "C" to the group "Seats"
     And I take a screenshot "group editor at 100 percent"
     And I set the interface scale to 150 percent
     And I wait 60 ticks

@@ -28,6 +28,19 @@ namespace ArchitectStudio.PickleSteps
             Driver.Call(ctx, dialog, "Assign", Driver.Buildable(ctx, defName), Driver.Group(ctx, groupLabel));
         }
 
+
+        /// <summary>
+        /// What clicking a group's row in the left column does. A capture taken without this shows
+        /// both right-hand columns on their "select a group" placeholder, which says nothing about
+        /// what the editor is for.
+        /// </summary>
+        [When("I select the group {string} in the editor")]
+        public async Task SelectGroup(PickleContext ctx, string groupLabel)
+        {
+            var dialog = Driver.GroupEditor(ctx);
+            Driver.Select(ctx, dialog, Driver.Group(ctx, groupLabel));
+            await ctx.WaitFrames(3);
+        }
         [When("I remove {string} from its group")]
         public void RemoveMember(PickleContext ctx, string defName)
         {
@@ -82,9 +95,9 @@ namespace ArchitectStudio.PickleSteps
         {
             var group = Driver.Group(ctx, groupLabel);
             var members = Driver.MembersOf(group);
-            var wanted = commaSeparated.Split(',').Select(s => s.Trim()).ToList();
+            var wanted = commaSeparated.Split(',').Select(s => Driver.DefName(ctx, s.Trim())).ToList();
             ctx.Require(wanted.Count == members.Count && wanted.All(n => members.Any(m => m.defName == n)),
-                $"'{groupLabel}' holds {Driver.Names(members)}, which is not the set [{commaSeparated}]");
+                $"'{groupLabel}' holds {Driver.Names(ctx, members)}, which is not the set [{commaSeparated}]");
 
             DropdownOrderRuntime.SetOrder(group.defName, wanted.Select(n => members.First(m => m.defName == n)));
             ArchitectStudioMod.Instance.WriteSettings();
@@ -129,7 +142,7 @@ namespace ArchitectStudio.PickleSteps
         public void MembersInOrder(PickleContext ctx, string groupLabel, string commaSeparated)
         {
             var expected = commaSeparated.Split(',').Select(s => s.Trim()).ToList();
-            var actual = Driver.MembersOf(Driver.Group(ctx, groupLabel)).Select(d => d.defName).ToList();
+            var actual = Driver.MembersOf(Driver.Group(ctx, groupLabel)).Select(d => Driver.NameOf(ctx, d)).ToList();
             ctx.Assert(actual.SequenceEqual(expected),
                 $"the editor should list [{string.Join(", ", expected)}]; it lists [{string.Join(", ", actual)}]");
         }
@@ -141,7 +154,7 @@ namespace ArchitectStudio.PickleSteps
             var buttons = Driver.MenuButtonsOf(group);
             ctx.Assert(buttons.Count == count,
                 $"the group '{groupLabel}' should draw {count} button(s); it draws {buttons.Count}: " +
-                string.Join(" / ", buttons.Select(b => Driver.Names(Driver.MenuOrderOf(b)))));
+                string.Join(" / ", buttons.Select(b => Driver.Names(ctx, Driver.MenuOrderOf(b)))));
         }
 
         [Then("the Architect menu lists the group {string} in the same order as the editor")]
@@ -153,7 +166,7 @@ namespace ArchitectStudio.PickleSteps
             var menu = Driver.MenuOrderOf(buttons[0]);
             var editor = Driver.MembersOf(group);
             ctx.Assert(menu.SequenceEqual(editor),
-                $"menu order {Driver.Names(menu)} should match editor order {Driver.Names(editor)}");
+                $"menu order {Driver.Names(ctx, menu)} should match editor order {Driver.Names(ctx, editor)}");
         }
 
         [Then("{string} is a button of its own in its category")]
@@ -193,21 +206,40 @@ namespace ArchitectStudio.PickleSteps
             ctx.Set(defA.designationCategory);
         }
 
-        [Given("{string}, {string}, {string} and {string} start in the same category")]
-        public void SameCategory(PickleContext ctx, string a, string b, string c, string d)
+        /// <summary>
+        /// Picks the buildings from the running game instead of naming vanilla ones, which mods move
+        /// around. The first category, by defName, holding four buildings that each draw their own
+        /// button; within it the first four by defName. Same mod list, same four buildings.
+        /// </summary>
+        [Given("four buildings {string}, {string}, {string} and {string} from one category, in no group")]
+        public void FourOfOneCategory(PickleContext ctx, string a, string b, string c, string d)
         {
-            var defs = new[] { a, b, c, d }.Select(n => Driver.Buildable(ctx, n)).ToList();
-            var categories = defs.Select(x => x.designationCategory).Distinct().ToList();
-            ctx.Require(categories.Count == 1,
-                "this scenario needs one category, but this mod list spreads them: " +
-                string.Join(", ", defs.Select(x => $"{x.defName} in {x.designationCategory?.defName}")));
+            var names = new[] { a, b, c, d };
+            var picked = DropdownRuntime.AllBuildables()
+                .Where(x => x.designationCategory != null && x.designatorDropdown == null &&
+                            Driver.IsStandaloneIn(x, x.designationCategory))
+                .GroupBy(x => x.designationCategory)
+                .OrderBy(g => g.Key.defName)
+                .Select(g => g.OrderBy(x => x.defName).Take(names.Length).ToList())
+                .FirstOrDefault(g => g.Count == names.Length);
+            ctx.Require(picked != null, "no Architect category holds four buildings outside any group");
+
+            var aliases = new Driver.Aliases();
+            for (var i = 0; i < names.Length; i++)
+            {
+                aliases.ByName[names[i]] = picked[i];
+            }
+
+            ctx.Set(aliases);
+            ctx.Attach("buildings picked", string.Join(", ", names.Select((n, i) => $"{n} = {picked[i].defName}")) +
+                $" in {picked[0].designationCategory.defName}");
         }
 
         [Then("no building belongs to the group {string}")]
         public void Empty(PickleContext ctx, string groupLabel)
         {
             var members = Driver.MembersOf(Driver.Group(ctx, groupLabel));
-            ctx.Assert(members.Count == 0, $"the group should be empty; it holds {Driver.Names(members)}");
+            ctx.Assert(members.Count == 0, $"the group should be empty; it holds {Driver.Names(ctx, members)}");
         }
 
         [Then("the group {string} has members again")]
@@ -230,7 +262,7 @@ namespace ArchitectStudio.PickleSteps
         public void AtLeast(PickleContext ctx, string groupLabel, int count)
         {
             var members = Driver.MembersOf(Driver.Group(ctx, groupLabel));
-            ctx.Require(members.Count >= count, $"'{groupLabel}' needs {count} members here; it has {Driver.Names(members)}");
+            ctx.Require(members.Count >= count, $"'{groupLabel}' needs {count} members here; it has {Driver.Names(ctx, members)}");
         }
     }
 }

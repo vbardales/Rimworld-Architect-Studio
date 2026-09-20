@@ -20,8 +20,39 @@ namespace ArchitectStudio.PickleSteps
 
         // ---------------------------------------------------------------- lookups
 
-        public static BuildableDef Buildable(PickleContext ctx, string defName)
+        /// <summary>
+        /// Letters a scenario gives the buildings it picked from the running game, mapped to their
+        /// defNames. A scenario that needs four buildings of one category cannot name vanilla ones:
+        /// Better Architect Menu alone spreads the vanilla chairs over two subcategories.
+        /// </summary>
+        public sealed class Aliases
         {
+            public readonly Dictionary<string, BuildableDef> ByName = new Dictionary<string, BuildableDef>();
+        }
+
+        private static Aliases AliasesOf(PickleContext ctx)
+        {
+            try
+            {
+                return ctx.Get<Aliases>();
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>The defName behind a name used in a scenario: an alias if one was given, the name itself otherwise.</summary>
+        public static string DefName(PickleContext ctx, string name) =>
+            AliasesOf(ctx)?.ByName.TryGetValue(name, out var def) == true ? def.defName : name;
+
+        /// <summary>How a scenario calls a def: its alias when it has one.</summary>
+        public static string NameOf(PickleContext ctx, BuildableDef def) =>
+            AliasesOf(ctx)?.ByName.FirstOrDefault(p => p.Value == def).Key ?? def.defName;
+
+        public static BuildableDef Buildable(PickleContext ctx, string name)
+        {
+            var defName = DefName(ctx, name);
             BuildableDef def = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
             def ??= DefDatabase<TerrainDef>.GetNamedSilentFail(defName);
             ctx.Require(def != null, $"no building or floor is named '{defName}'");
@@ -67,7 +98,8 @@ namespace ArchitectStudio.PickleSteps
             return DropdownOrderRuntime.SortMembers(group.defName, members);
         }
 
-        public static string Names(IEnumerable<BuildableDef> defs) => "[" + string.Join(", ", defs.Select(d => d.defName)) + "]";
+        public static string Names(PickleContext ctx, IEnumerable<BuildableDef> defs) =>
+            "[" + string.Join(", ", defs.Select(d => NameOf(ctx, d))) + "]";
 
         // ---------------------------------------------------------------- the Architect menu as drawn
 

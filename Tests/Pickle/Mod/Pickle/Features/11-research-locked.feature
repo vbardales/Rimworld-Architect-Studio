@@ -13,7 +13,7 @@ Feature: showing what research still locks
 
   Scenario: on, it shows greyed out and refuses
     When I turn on showing what research still locks
-    Then the Architect menu shows "EndTable" greyed out with the reason "Research not completed"
+    Then the Architect menu shows "EndTable" greyed out with the reason keyed "ArchitectStudio.ResearchLocked.Reason"
 
   Scenario: finishing the research makes it buildable, without a restart
     When I turn on showing what research still locks

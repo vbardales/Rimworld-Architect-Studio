@@ -16,9 +16,9 @@ Feature: deleting a group that belongs to another mod
     Then no building belongs to the group "Floor_Carpet"
 
   Scenario: Restore deleted groups brings its members back
-    # TESTING.md promises the members come back. Read in the source, the button only clears the
-    # hidden list and leaves the "no group" assignments in place, so this is expected to fail
-    # until the code or the promise changes.
+    # TESTING.md promises the members come back, and until 2026-09-18 they did not: the button
+    # cleared the hidden list but nothing reapplied the groups, so the members stayed where the
+    # dissolution had left them. Clearing that list is now enough on its own.
     When I delete the group "Floor_Carpet"
     And I restore the deleted groups
     Then the group "Floor_Carpet" has members again

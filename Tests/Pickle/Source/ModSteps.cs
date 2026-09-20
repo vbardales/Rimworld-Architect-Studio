@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using HarmonyLib;
 using RimWorld;
+using UnityEngine;
 using RimWorks.Pickle;
 using Verse;
 
@@ -80,9 +81,53 @@ namespace ArchitectStudio.PickleSteps
                 $"the Architect window should be {expected}px tall; it is {after}px (was {before}px)");
         }
 
-        [Then("no button {string} is drawn")]
-        public async Task NotDrawn(PickleContext ctx, string label)
+        /// <summary>
+        /// By translation key: the label drawn on the button is the one of the language the game
+        /// runs in, so a scenario naming the English text only passes on an English game.
+        ///
+        /// The pointer is moved first and the window under it is read, because a real click is an OS
+        /// click and goes to whatever window owns that point. Without this, a button covered by
+        /// another mod's window fails the following step as "the dialog did not open", which reads
+        /// as a dead button when in truth the click never reached it.
+        /// </summary>
+        [When("I click the Architect Studio button keyed {string}")]
+        public async Task ClickKeyed(PickleContext ctx, string key)
         {
+            var tag = $"btn:{Label(ctx, key)}";
+
+            // Pickle names the point it failed to reach, never the space that point was measured
+            // in: at another interface scale the two are what tell a stale rect from a bad click.
+            ctx.Attach($"geometry before clicking '{tag}'",
+                $"{DescribeUiSpace()}, Architect window at {ArchitectWindow(ctx).windowRect}");
+
+            await ctx.Hover(tag);
+            // Input.mousePosition is sampled per frame: without this the read is one move behind.
+            await ctx.WaitFrames(2);
+
+            var point = UI.MousePositionOnUIInverted;
+            var under = Find.WindowStack.GetWindowAt(point);
+            ctx.Assert(under == ArchitectWindow(ctx),
+                $"the click at {point} would land on {Describe(under)}, not on the Architect window: " +
+                "something is drawn over the button, and the button itself is not at fault");
+
+            await ctx.Click(tag);
+        }
+
+        private static string Describe(Window window)
+        {
+            if (window == null)
+            {
+                return "no window at all";
+            }
+
+            var mod = window.GetType().Assembly.GetName().Name;
+            return $"'{window.GetType().Name}' (from {mod})";
+        }
+
+        [Then("no Architect Studio button keyed {string} is drawn")]
+        public async Task NotDrawn(PickleContext ctx, string key)
+        {
+            var label = Label(ctx, key);
             try
             {
                 await ctx.Hover($"btn:{label}");
@@ -95,8 +140,29 @@ namespace ArchitectStudio.PickleSteps
             ctx.Assert(false, $"a button labelled '{label}' is still drawn");
         }
 
+        private static string Label(PickleContext ctx, string key)
+        {
+            ctx.Require(key.CanTranslate(), $"no translation is loaded for the key '{key}'");
+            return key.Translate().ToString();
+        }
+
+        /// <summary>
+        /// The scale the way the Options page changes it, minus the confirmation dialog and the
+        /// save. Writing <c>Prefs.UIScale</c> alone is not enough: widgets are laid out in
+        /// <c>UI.screenWidth</c>/<c>UI.screenHeight</c>, two cached fields that only
+        /// <c>Root.OnGUI</c> recomputes, and a window already on screen keeps the rect it was given
+        /// in the old space until something tells it the resolution moved. A widget drawn from such
+        /// a rect is recorded by Pickle's tag store at a place the new GUI space has not got, and
+        /// the click that follows lands off screen.
+        ///
+        /// So: write the scale, drop the label widths measured at the old one, let frames pass for
+        /// the fields, then do what <c>WindowStack.AdjustWindowsIfResolutionChanged</c> does and
+        /// lay every open window out again. The sizes before and after ride on the report, and the
+        /// step fails on the spot if the GUI space did not follow - a scale that did not take is
+        /// otherwise only visible as a click that misses, several steps later.
+        /// </summary>
         [When("I set the interface scale to {int} percent")]
-        public void UiScale(PickleContext ctx, int percent)
+        public async Task UiScale(PickleContext ctx, int percent)
         {
             // Never saved: Prefs.Save is not called, and the hook below puts the value back.
             if (!uiScaleBefore.HasValue)
@@ -104,8 +170,33 @@ namespace ArchitectStudio.PickleSteps
                 uiScaleBefore = Prefs.UIScale;
             }
 
+            var before = DescribeUiSpace();
+
             Prefs.UIScale = percent / 100f;
+            GenUI.ClearLabelWidthCache();
+
+            // Root.OnGUI runs UI.ApplyUIScale every frame: that is what moves UI.screenWidth and
+            // UI.screenHeight to the new scale. Nothing a step can call does it off a frame.
+            await ctx.WaitFrames(2);
+
+            foreach (var window in Find.WindowStack.Windows.ToList())
+            {
+                window.Notify_ResolutionChanged();
+            }
+
+            await ctx.WaitFrames(5);
+
+            var after = DescribeUiSpace();
+            ctx.Attach("interface scale", $"before: {before}\nafter:  {after}");
+
+            var expected = Mathf.RoundToInt(Screen.height / Prefs.UIScale);
+            ctx.Require(UI.screenHeight == expected,
+                $"the GUI space did not follow the scale: UI.screenHeight is {UI.screenHeight}, and {Screen.height} " +
+                $"pixels at {Prefs.UIScale:0.##} make {expected}. Every rect measured now belongs to the old layout");
         }
+
+        private static string DescribeUiSpace() =>
+            $"scale {Prefs.UIScale:0.##}, GUI space {UI.screenWidth}x{UI.screenHeight}, window {Screen.width}x{Screen.height}";
 
         private static float? uiScaleBefore;
 
@@ -152,9 +243,12 @@ namespace ArchitectStudio.PickleSteps
             ArchitectStudioMod.Instance.WriteSettings();
         }
 
-        [Then("the Architect menu shows {string} greyed out with the reason {string}")]
-        public void GreyedOut(PickleContext ctx, string defName, string reason)
+        /// <summary>By translation key: the text itself depends on the language the game runs in.</summary>
+        [Then("the Architect menu shows {string} greyed out with the reason keyed {string}")]
+        public void GreyedOut(PickleContext ctx, string defName, string reasonKey)
         {
+            ctx.Require(reasonKey.CanTranslate(), $"no translation is loaded for the key '{reasonKey}'");
+            var reason = reasonKey.Translate().ToString();
             var designator = BuildDesignator(ctx, defName);
             var visible = designator.Visible;
             ctx.Assert(visible && Disabled(designator) && designator.disabledReason == reason,
@@ -245,6 +339,21 @@ namespace ArchitectStudio.PickleSteps
         [When("I reset everything from the mod settings")]
         public void ResetAll(PickleContext ctx) => ArchitectStudioReset.All();
 
+        /// <summary>
+        /// Opens the settings page the way the hidden MainButtons shortcut does, by running its own
+        /// worker: a screenshot of that window is a screenshot of the real shortcut's destination.
+        /// Frames, not ticks: Dialog_ModSettings pauses the simulation, so a tick wait placed under
+        /// it in a scenario never advances and times out.
+        /// </summary>
+        [When("I open the Architect Studio settings through the shortcut and let it draw")]
+        public async Task OpenSettings(PickleContext ctx)
+        {
+            var def = DefDatabase<MainButtonDef>.GetNamedSilentFail("ArchitectStudio_Settings");
+            ctx.Require(def != null, "the MainButtonDef 'ArchitectStudio_Settings' is not loaded");
+            def.Worker.Activate();
+            await ctx.WaitFrames(10);
+        }
+
         [Then("the mod settings offer nothing to reset")]
         public void NothingToReset(PickleContext ctx)
         {
@@ -267,6 +376,90 @@ namespace ArchitectStudio.PickleSteps
             ArchitectStudioReset.All();
             File.WriteAllText(path, saved);
             SettingsSandbox.ReloadFromDisk();
+        }
+
+        // ---------------------------------------------------------------- screenshots a person reads
+
+        private static readonly Dictionary<Window, bool> hiddenForCapture = new Dictionary<Window, bool>();
+
+        /// <summary>
+        /// Turns on the game's own screenshot mode, which hides everything that is not a window - the
+        /// tab bar, the alerts, the colonist bar, the dev toolbar - and hides Pickle's own runner
+        /// windows on top of that, because a window draws in that mode unless it is told not to. The
+        /// capture then carries the editor over the map and nothing else.
+        /// </summary>
+        [When("I hide the interface around the windows on screen")]
+        public async Task HideInterface(PickleContext ctx)
+        {
+            var flag = AccessTools.Field(typeof(Window), "drawInScreenshotMode");
+            ctx.Require(flag != null, "Window.drawInScreenshotMode no longer exists: update the step");
+
+            foreach (var window in Find.WindowStack.Windows)
+            {
+                var fromPickle = window.GetType().Assembly.GetName().Name.StartsWith("RimWorks.Pickle");
+                var wanted = !fromPickle;
+                var current = (bool)flag.GetValue(window);
+                if (current == wanted)
+                {
+                    continue;
+                }
+
+                hiddenForCapture[window] = current;
+                flag.SetValue(window, wanted);
+            }
+
+            Find.UIRoot.screenshotMode.Active = true;
+            await ctx.WaitFrames(3);
+        }
+
+        [When("I bring the interface back")]
+        public void ShowInterface(PickleContext ctx)
+        {
+            RestoreInterface();
+        }
+
+        /// <summary>
+        /// A scenario that dies between the two steps would otherwise leave the game without its
+        /// interface, and no report would explain why.
+        /// </summary>
+        [AfterScenario]
+        public void RestoreInterfaceAfterScenario(PickleContext ctx)
+        {
+            RestoreInterface();
+        }
+
+        private static void RestoreInterface()
+        {
+            var flag = AccessTools.Field(typeof(Window), "drawInScreenshotMode");
+            foreach (var pair in hiddenForCapture)
+            {
+                flag.SetValue(pair.Key, pair.Value);
+            }
+
+            hiddenForCapture.Clear();
+
+            if (Find.UIRoot?.screenshotMode != null)
+            {
+                Find.UIRoot.screenshotMode.Active = false;
+            }
+        }
+
+        /// <summary>
+        /// The generated category lands at the end of the binding list, out of the first screenful:
+        /// a capture taken without this shows the camera bindings and proves nothing.
+        /// </summary>
+        [When("I scroll the keyboard configuration to the bottom")]
+        public async Task ScrollKeyBindings(PickleContext ctx)
+        {
+            var dialog = Find.WindowStack.WindowOfType<Dialog_KeyBindings>();
+            ctx.Require(dialog != null, "the keyboard configuration is not open");
+
+            var field = AccessTools.Field(typeof(Dialog_KeyBindings), "scrollPosition");
+            ctx.Require(field != null, "Dialog_KeyBindings.scrollPosition no longer exists: update the step");
+            // Far past the end; the scroll view clamps it to the last screenful.
+            field.SetValue(dialog, new Vector2(0f, 100000f));
+
+            await ctx.WaitFrames(3);
         }
     }
 }
