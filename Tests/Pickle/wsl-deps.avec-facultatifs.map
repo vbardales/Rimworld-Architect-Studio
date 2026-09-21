@@ -11,7 +11,7 @@
 # Architect menu it does.
 #
 # packageId                      workshopId   what it brings to the menu
-com.bymarcin.architecticons      2977841706   # icons on the category tabs: the only mod that can carry "a chosen icon shows without a restart"
+com.bymarcin.architecticons      1195427067   # icons on the category tabs: the only mod that can carry "a chosen icon shows without a restart". NOT 2977841706, which is the Viking Edition icon pack that merely depends on it: staged by mistake on 2026-09-21, it made the game drop the entry and the scenario skip
 ferny.betterarchitect            3563882422   # reskins the Architect window our editors draw into
 ferny.categoriesdropdowns        3455529827   # makes its own dropdown groups, the closest thing to a rival
 kathanon.floatsubmenu            2864015430   # turns a dropdown into a float menu, so it rewrites what a group looks like

@@ -16,11 +16,11 @@ Feature: the windows as a player would show them
 
   Scenario: the group editor with a group of its own, filled
     Given four buildings "A", "B", "C" and "D" from one category, in no group
-    When I create the group "Sleeping quarters"
-    And I add "A" to the group "Sleeping quarters"
-    And I add "B" to the group "Sleeping quarters"
-    And I add "C" to the group "Sleeping quarters"
-    And I select the group "Sleeping quarters" in the editor
+    When I create the group "Monolith machines"
+    And I add "A" to the group "Monolith machines"
+    And I add "B" to the group "Monolith machines"
+    And I add "C" to the group "Monolith machines"
+    And I select the group "Monolith machines" in the editor
     And I hide the interface around the windows on screen
     And I take a screenshot "group editor, a filled group"
     And I bring the interface back
