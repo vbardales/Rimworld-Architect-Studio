@@ -19,3 +19,8 @@ Source/bin/
 # Until this folder became a repository of its own the rule lived in the monorepo's .gitignore,
 # a file this repository does not carry.
 .claude/
+
+# Fiches de vitrine : elles ne sont pas publiables, et PUBLISHING.md demande de les effacer
+# une fois Preview.png et ModIcon.png faits. A tout niveau, pas seulement a la racine.
+PROMPT_*.md
+**/PROMPT_*.md

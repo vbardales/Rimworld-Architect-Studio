@@ -5,6 +5,8 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+## [1.0.3] — 2026-09-21
+
 ### Fixed
 
 - Reset everything now restores both preferences and is available when only a preference differs
@@ -26,6 +28,17 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 - A startup probe now performs one deliberate non-public access and logs a named error if the
   runtime refuses it. The failure it guards against has no other symptom: the build stays clean,
   startup is silent, and only the features that touch such a member die, each at first use.
+
+### Tests
+
+- The Pickle step that clicks an Architect Studio button now waits for any modal window to close
+  first. A window that absorbs input around itself eats the click wherever it lands, so the
+  covering-window check could not see it — that one asks what is drawn over the button, and such
+  a window blocks from a distance.
+- Scenario 13, the only one asserting that the mod works with none of its optional integrations
+  present, now loads the shared test colony and therefore runs. A second mod list,
+  `Tests/Pickle/wsl-deps.avec-facultatifs.map`, stages the five optional mods for the pass that
+  proves the mod still behaves beside them.
 
 ## [1.0.2] — 2026-09-03
 
