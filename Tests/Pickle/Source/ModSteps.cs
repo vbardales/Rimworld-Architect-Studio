@@ -386,6 +386,30 @@ namespace ArchitectStudio.PickleSteps
             await ctx.WaitFrames(10);
         }
 
+        /// <summary>
+        /// The settings window on screen is Architect Studio's own. "window Dialog_ModSettings is open"
+        /// is true for any mod's settings page, so a shortcut that opened someone else's would pass it
+        /// - and a shortcut revealed by another mod's interface is exactly where that could go wrong.
+        /// The window keeps the mod it shows in a field of type Mod; it is found by that type and not
+        /// by the field's name, so a rename in the game fails loudly instead of passing silently.
+        /// </summary>
+        [Then("the settings window open is Architect Studio's own")]
+        public void SettingsWindowIsOurs(PickleContext ctx)
+        {
+            var dialog = Find.WindowStack.Windows.OfType<Dialog_ModSettings>().FirstOrDefault();
+            ctx.Require(dialog != null, "no Dialog_ModSettings is open");
+
+            var field = typeof(Dialog_ModSettings)
+                .GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)
+                .FirstOrDefault(f => f.FieldType == typeof(Mod));
+            ctx.Require(field != null,
+                "Dialog_ModSettings holds no field of type Mod: the game changed how it remembers what it shows");
+
+            var shown = field.GetValue(dialog) as Mod;
+            ctx.Assert(shown is ArchitectStudioMod,
+                $"the settings window shows {(shown == null ? "no mod" : shown.GetType().Name)}, not Architect Studio");
+        }
+
         [Then("the mod settings offer nothing to reset")]
         public void NothingToReset(PickleContext ctx)
         {

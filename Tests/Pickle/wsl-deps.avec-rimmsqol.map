@@ -1,0 +1,17 @@
+# Pass "avec-rimmsqol": RIMMSQOL, the button-customisation mod MOD_SETTINGS.md names, and the shared Pickle
+# steps that drive it (PickleTools/RimmsqolSteps). Plays features 19 to 22. It answers what no other pass can:
+# can RIMMSQOL's own interface list our shortcut, reveal it, does the revealed button open OUR settings page,
+# does hiding it again work, and does the choice survive a restart. That is TESTING.md 15, steps 2 and 3.
+#
+#   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-rimmsqol.map -IncludeWip `
+#       -Filter '19-rimmsqol-shortcut.feature'
+#   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-rimmsqol.map -IncludeWip `
+#       -Filter '20-rimmsqol-restart-reveal.feature' -Then '21-rimmsqol-restart-hide.feature','22-rimmsqol-restart-forget.feature'
+#
+# It is NOT a loadAfter of the mod and not one of the five optional integrations: it is a mod a player may have
+# and this one must not misbehave beside, so it is a pass of its own, named, and never folded into the others.
+# Ids read from each mod's own About.xml (see PickleTools/RimmsqolSteps/README.md): RIMMSQOL is Workshop 1084452457
+# and its code needs Harmony, which the staging puts first in every pass, so it is not repeated here.
+# The steps mod hard-depends on Pickle and RIMMSQOL, so it goes after RIMMSQOL.
+MalteSchulze.RIMMSqol            1084452457
+nelim.pickletools.rimmsqol      path:PickleTools/RimmsqolSteps/Mod
