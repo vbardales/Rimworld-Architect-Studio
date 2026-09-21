@@ -13,18 +13,56 @@ licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 dependencies: declared
 showcase:     complete
-tested_on:    2026-09-20
+tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
   - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
   - unverified: the RIMMSQOL half of scenario 15, revealing and hiding the MainButtons shortcut, which needs RIMMSQOL installed and a real restart
   - verified: the 150% interface-scale screenshots of both editors, read by the mod's owner on 2026-09-20 and found clean — no clipping, no raw keys. English only, so the French half stays under the translation-gate line above
-  - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 122f21f in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%
+  - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 122f21f in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%. Played on 2026-09-21 against a Pickle built from that PR alone, the feature holding the scenario passes 3 of 3, the 150% one included
+  - verified: two passes on the shipped build, 2026-09-21, English, headless — without the optional mods (11 mods loaded, 43 scenarios of 18 features, 40 passed, 1 failed, 2 skipped) and with the five optional mods (16 mods loaded, 43 scenarios, 41 passed, 1 failed, 1 skipped). The one failure is the 150% scenario on a Workshop Pickle; the skips are scenario 13 (`@wip`, it asserts the optional mods are absent) and, without the mods, the Architect Icons scenario
+  - verified: scenario 13, run alone on the minimal mod list on 2026-09-21, passes — the editors open, a group is created and the menu shows it, and nothing from the mod is logged with Better Architect Menu, Architect Icons and Float Sub-Menus absent
+  - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
+  - unverified: the other four optional integrations (Better Architect Menu, Categories Dropdowns, Float Sub-Menus, Searchable Menus) have no scenario naming them; the with-optionals pass shows they break nothing, not that they work
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-20, the 150% click defect measured and fixed in Pickle; six state-only scenarios moved down to the harness
+updated:      2026-09-21, 1.0.3 checked on two mod lists; the group-editor capture added; Workshop update prepared
 ---
 
 # Architect Studio — status
+
+## 1.0.3 — checked and prepared, 2026-09-21
+
+Nothing in 1.0.3 changes what a player sees except one fix: *Reset everything* now restores the
+preferences as well and is available when only a preference differs from its default. The rest is
+the MainButtons shortcut, hidden by default, and a startup probe that names the failure if the
+runtime refuses the non-public access the mod relies on.
+
+**The two passes the release needs were played on the shipped `Mod/` folder**, headless, in
+English: once on the minimal mod list Pickle stages by default, once with the five optional mods.
+Both discovered 18 feature files and played 43 scenarios, so the totals are complete; the one
+failure in each is the 150% click, which is Pickle's defect and not the mod's (see `remaining`).
+
+**A wrong Workshop id nearly voided the second pass.** The overlay naming the optional mods carried
+the id of an icon pack that depends on Architect Icons, not of Architect Icons itself. The game
+dropped the entry without a word and the icon scenario skipped, correctly, on a mod that was never
+loaded. Corrected to `1195427067`; the four other ids were checked against each mod's own
+`packageId`. `Tests/Pickle/wsl-deps.avec-facultatifs.map` carries the note.
+
+**A third capture for the Workshop page**, `Art/steam/03-groups.png`: the group editor on a group
+built by scenario 17 under a readable name, taken in the pass without optional mods so the group
+list shows the game's own groups and not another mod's raw defNames. One thing in it is left as
+it is: the *Category* button reads "— none (members stay where they …", truncated at that width.
+It is the mod's real interface, not an artefact of the capture.
+
+**Not covered.** No scenario removes the mod from a running game and checks the menu comes back,
+so "can be removed from a game in progress" in the description rests on nothing being written to
+the save, not on a test.
+
+The Workshop description gained one line under *Works with*, for Categories Dropdowns: the groups
+it adds can be edited, extended or taken apart like any other. There is no integration code for
+that mod. What backs the sentence is that the editor lists the groups it adds (seen in the
+with-optionals pass, where its `Ferny_…` groups fill the list) and that the scenario deleting a
+group belonging to another mod passes. No scenario edits one of Categories Dropdowns' own groups.
 
 ## The last red scenario, and it was never ours — 2026-09-20
 
