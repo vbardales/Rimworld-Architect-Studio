@@ -192,6 +192,10 @@ mod, the message names it; that is the whole point of naming the assembly.
 `16`'s *screenshots of both editors at 150 percent* used to fail with the pointer landing away from
 the button. **Measured on 2026-09-20 by `18-tag-geometry.feature`, and the cause was in Pickle, not
 here** - an earlier note in this file blamed our own scale step, which the measurement cleared.
+That probe scenario and its `TagProbe.cs` were removed on 2026-09-21, once the fix was upstream:
+it printed the `GUIToScreenRect` it computed itself rather than what `Record` stored, so it read
+the same before and after and could never show the fix working. The numbers below are its record.
+Anything measuring the store again should read back through `TryGet`.
 The fix is written and the scenario passes; it lives in `Mods\Pickle-local` and has not been sent
 upstream.
 
