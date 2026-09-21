@@ -19,7 +19,7 @@ remaining:
   - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
   - unverified: the RIMMSQOL half of scenario 15, revealing and hiding the MainButtons shortcut, which needs RIMMSQOL installed and a real restart
   - verified: the 150% interface-scale screenshots of both editors, read by the mod's owner on 2026-09-20 and found clean — no clipping, no raw keys. English only, so the French half stays under the translation-gate line above
-  - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 541f927 in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%
+  - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 122f21f in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
 updated:      2026-09-20, the 150% click defect measured and fixed in Pickle; six state-only scenarios moved down to the harness
 ---
@@ -62,7 +62,7 @@ and then asserts the dialog opened, so this is a click landing, not a capture su
 produced were read by the mod's owner the same evening and found clean, no clipping and no raw
 keys. That is the verification, not the passing scenario. They were taken on an English game, so
 the French side of the translation gate is untouched by it. One limit is left in the `remaining`
-list: the fix is with RimWorks as PR 23 — it is `fix/tag-rect-interface-scale`, 541f927 in the fork
+list: the fix is with RimWorks as PR 23 — it is `fix/tag-rect-interface-scale`, 122f21f in the fork
 — so anyone else's Pickle still has the defect.
 
 One trap this session fell into, kept because the next person can fall into it too. The build first

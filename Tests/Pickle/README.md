@@ -255,7 +255,7 @@ open`, so a real click has to land on the button for it to pass.
 
 Two things that green does **not** say, and should not be read into it. `16` is `@review`: it
 asserts nothing about the images, so the 150% screenshots now exist and still need a person to
-read them. And the fix is with RimWorks as PR 23: it is `fix/tag-rect-interface-scale`, 541f927 in
+read them. And the fix is with RimWorks as PR 23: it is `fix/tag-rect-interface-scale`, 122f21f in
 the fork at `github.com/vbardales/Rimworld-Pickle`, so a Workshop Pickle - anyone else's, and the
 WSL staging unless told otherwise - still has the defect.
 
