@@ -32,10 +32,13 @@ updated:      2026-09-21, 1.0.3 checked on two mod lists; the group-editor captu
 
 ## 1.0.3 — checked and prepared, 2026-09-21
 
-Nothing in 1.0.3 changes what a player sees except one fix: *Reset everything* now restores the
-preferences as well and is available when only a preference differs from its default. The rest is
-the MainButtons shortcut, hidden by default, and a startup probe that names the failure if the
-runtime refuses the non-public access the mod relies on.
+1.0.3 carries four fixes a player can see: a deleted group belonging to another mod no longer
+comes back at the next start; *Restore deleted groups* now restores; the introduction line of both
+editors is no longer clipped when it wraps; and *Reset everything* restores the preferences as well
+and is available when only a preference differs. The first two were found on 2026-09-20 by playing
+the suite in a real game, and are described below. Besides them: the MainButtons shortcut, hidden
+by default, and a startup probe that names the failure if the runtime refuses the non-public
+access the mod relies on.
 
 **The two passes the release needs were played on the shipped `Mod/` folder**, headless, in
 English: once on the minimal mod list Pickle stages by default, once with the five optional mods.

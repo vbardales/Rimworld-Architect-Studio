@@ -9,6 +9,16 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ### Fixed
 
+- Deleting a group that belongs to another mod did not survive a restart: the group came back the
+  next time the game started. The dissolution was recorded as one empty entry per member in
+  `dropdownAssignments` (64 of them for the carpet group), and those entries did not come back
+  through `Mod.GetSettings<T>()`, while `hiddenGroupIds`, written by the same call, did. It is now
+  carried by `hiddenGroupIds` alone.
+- Restore deleted groups brought nothing back. It cleared the hidden list and never re-applied the
+  groups, so the buildings kept the arrangement the deletion had left them with.
+- The introduction line at the top of the group editor and the category editor was clipped once it
+  wrapped, as it does in a narrower window or a longer language: it was drawn centred in a fixed
+  24 px box. Its height is now measured.
 - Reset everything now restores both preferences and is available when only a preference differs
   from its default.
 
