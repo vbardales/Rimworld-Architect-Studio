@@ -100,6 +100,8 @@ namespace ArchitectStudio.PickleSteps
             ctx.Attach($"geometry before clicking '{tag}'",
                 $"{DescribeUiSpace()}, Architect window at {ArchitectWindow(ctx).windowRect}");
 
+            await WaitForModalsToClear(ctx);
+
             await ctx.Hover(tag);
             // Input.mousePosition is sampled per frame: without this the read is one move behind.
             await ctx.WaitFrames(2);
@@ -111,6 +113,36 @@ namespace ArchitectStudio.PickleSteps
                 "something is drawn over the button, and the button itself is not at fault");
 
             await ctx.Click(tag);
+        }
+
+        /// <summary>
+        /// A window that absorbs input around itself eats the click wherever it is drawn, so the
+        /// button can be plainly visible and unobstructed and the click still never arrive. Mods
+        /// that warm up at load do this for a few seconds (MissileGirl's "please wait" box is one),
+        /// which used to fail the very first click of the run and nothing after it. Waiting for the
+        /// stack to clear costs nothing when no such window is up.
+        /// </summary>
+        private static async Task WaitForModalsToClear(PickleContext ctx)
+        {
+            for (var attempt = 0; attempt < 60; attempt++)
+            {
+                var blocker = Find.WindowStack.Windows.FirstOrDefault(w => w.absorbInputAroundWindow);
+                if (blocker == null)
+                {
+                    return;
+                }
+
+                if (attempt == 0)
+                {
+                    ctx.Attach("waiting for a modal window",
+                        $"{Describe(blocker)} absorbs input around itself; the click would be eaten wherever it lands");
+                }
+
+                await ctx.WaitFrames(10);
+            }
+
+            ctx.Assert(false,
+                $"a modal window is still up after 600 frames: {Describe(Find.WindowStack.Windows.FirstOrDefault(w => w.absorbInputAroundWindow))}");
         }
 
         private static string Describe(Window window)

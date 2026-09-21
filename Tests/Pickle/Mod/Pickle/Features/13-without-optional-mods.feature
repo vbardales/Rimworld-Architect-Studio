@@ -4,6 +4,13 @@
 @wip
 Feature: without the optional mods
 
+  # The same fixture the other map-bound features load, and for the same reason: the scenario
+  # names buildings and reads the Architect menu, so it needs a map, and it must be the SAME map
+  # every run rather than whichever colony happens to be open. The fixture ships with Pickle, so
+  # nothing has to be staged for it.
+  Background:
+    Given the save "test-colony" is loaded
+
   Scenario: the editors work and nothing is logged
     Given mod "ferny.betterarchitect" is not loaded
     And mod "com.bymarcin.architecticons" is not loaded
