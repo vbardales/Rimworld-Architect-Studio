@@ -140,9 +140,12 @@ RimWorld interface windows only. The remaining `done -> tested` runtime/media ev
 The dedicated Pickle presentation pass ran after the Workshop shots were moved onto
 `nelim-zen-meadow-studio`: **3/3 passed**, `0` failed, `exitReason: passed`, set `studio`
 (archive `0922-1655`). It loaded the central emblem framing and wrote the real group editor,
-category editor and settings page. The three resulting 1920×1080 PNGs have been preserved in
-`Art/steam/03-groups.png`, `Art/steam/02-categories.png` and `Art/steam/01-settings.png` rather
-than left in the shared, prunable report directory. This is new Workshop media ready to upload;
+category editor and settings page. The three resulting captures were tightly framed around the editor
+at 1280×800 and exported as publication JPEGs: `Art/steam/03-groups.jpg` (190,596 bytes),
+`Art/steam/02-categories.jpg` (261,663 bytes) and `Art/steam/01-settings.jpg` (195,717 bytes).
+Their 647,976-byte batch is
+below the documented **2 MB per image / 8 MB total** Steam upload budget, rather than leaving the
+captures only in the shared, prunable report directory. This is new Workshop media ready to upload;
 it does not claim a French review or complete the remaining general runtime gates.
 
 ## 1.0.3 — checked and prepared, 2026-09-21
@@ -166,7 +169,7 @@ dropped the entry without a word and the icon scenario skipped, correctly, on a 
 loaded. Corrected to `1195427067`; the four other ids were checked against each mod's own
 `packageId`. `Tests/Pickle/wsl-deps.avec-facultatifs.map` carries the note.
 
-**A third capture for the Workshop page**, `Art/steam/03-groups.png`: the group editor on a group
+**A third capture for the Workshop page**, `Art/steam/03-groups.jpg`: the group editor on a group
 built by scenario 17 under a readable name, taken in the pass without optional mods so the group
 list shows the game's own groups and not another mod's raw defNames. One thing in it is left as
 it is: the *Category* button reads "— none (members stay where they …", truncated at that width.
