@@ -135,6 +135,16 @@ external state, not a new automated or in-game verification. The content declara
 content**: the Preview, ModIcon and three Workshop screenshots show a workbench illustration and
 RimWorld interface windows only. The remaining `done -> tested` runtime/media evidence is unchanged.
 
+## Studio Workshop captures — 2026-09-22
+
+The dedicated Pickle presentation pass ran after the Workshop shots were moved onto
+`nelim-zen-meadow-studio`: **3/3 passed**, `0` failed, `exitReason: passed`, set `studio`
+(archive `0922-1655`). It loaded the central emblem framing and wrote the real group editor,
+category editor and settings page. The three resulting 1920×1080 PNGs have been preserved in
+`Art/steam/03-groups.png`, `Art/steam/02-categories.png` and `Art/steam/01-settings.png` rather
+than left in the shared, prunable report directory. This is new Workshop media ready to upload;
+it does not claim a French review or complete the remaining general runtime gates.
+
 ## 1.0.3 — checked and prepared, 2026-09-21
 
 1.0.3 carries four fixes a player can see: a deleted group belonging to another mod no longer
