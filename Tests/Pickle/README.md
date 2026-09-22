@@ -133,9 +133,11 @@ the reviewable frames remain). Play `19` through `22` with `wsl-deps.avec-rimmsq
 Their requirements are explicit tags, so an incorrectly staged pass skips instead of claiming coverage.
 
 `17` differs from `16` in what it is for. `16` shows whatever the mod list and the language happen to
-produce, warts included - that is the point of a review shot. `17` sets the scene: it creates and
-fills a group of its own rather than borrowing one from another mod, whose raw defName would read as
-debug output on a store page.
+produce, warts included - that is the point of a review shot. `17` is a presentation pass: it uses
+PickleTools' `nelim-zen-meadow-studio` fixture through `wsl-deps.studio.map`, frames its central
+emblem behind the real windows, and creates and fills a group of its own rather than borrowing one
+from another mod, whose raw defName would read as debug output on a store page. It must stay
+separate from functional scenarios and from the optional-integrations pass.
 
 Both hide the surrounding interface through `I hide the interface around the windows on screen`,
 which turns on the game's own screenshot mode. That mode hides everything that is not a window -

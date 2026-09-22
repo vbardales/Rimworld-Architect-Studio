@@ -81,9 +81,11 @@ not on that screen, and the page does not claim the screen shows them.
 ## Screenshots, in the order to upload
 
 Steam shows the first one large: it is the most demonstrative that goes there, not the prettiest. All three are
-English, taken by the Pickle scenarios (`Tests/Pickle/Mod/Pickle/Features/17-publication-shots.feature`) in the
-pass **without** optional mods, so that the lists hold the game's own groups and not another mod's raw
-defNames. Each was opened and looked at on 2026-09-21.
+English, taken by the Pickle presentation scenario (`Tests/Pickle/Mod/Pickle/Features/17-publication-shots.feature`)
+with `wsl-deps.studio.map`: no optional Architect Studio integration is staged, while Nelim's dedicated
+zen-meadow screenshot colony supplies the intentional map backdrop. This keeps the lists to the game's
+own groups rather than another mod's raw defNames. Replace the currently uploaded captures after the
+scenario has been replayed and its new media reviewed.
 
 1. `Art/steam/03-groups.png` - **the group editor**, the mod's reason to exist and the first section of the
    description: three columns, a group of three buildings selected, its members with their order arrows, and the
