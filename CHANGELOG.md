@@ -13,6 +13,11 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 - RIMMSQOL shortcut scenarios now declare both required companion mods and document their automated
   reveal/hide/restart evidence path; no separate manual interaction checklist remains.
 
+### Changed
+
+- The distributed Workshop description and its publication source now link every cited Workshop mod
+  directly to its own Workshop page.
+
 ## [1.0.3] — 2026-09-21
 
 ### Fixed

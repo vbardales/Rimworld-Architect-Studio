@@ -95,6 +95,19 @@ exercise its 150% click against the stock Workshop Pickle without a local Pickle
 with this status update. This changes no runtime result; the English and French media reviews remain
 unverified by request.
 
+## Publication preparation — 2026-09-22
+
+The distributed `About.xml` description and the hand-edit source in `PUBLICATION.md` now agree on
+direct Workshop links for every named mod that has an item, including Colored Categories
+(`3323569935`). `Tests/Validate-Mod.ps1` passed **739** checks after the edit. This is source
+preparation only: because the Workshop item already exists, RimWorld will not synchronize this
+description; the page must be edited manually from `PUBLICATION.md` during the next upload.
+
+Remote inspection found `v1.0.2` as the latest GitHub tag/release, while the repository already
+contains the 1.0.3 changelog. The 1.0.3 tag and GitHub release are therefore the remaining
+reproducibility actions being prepared independently of the intentionally skipped runtime/media
+checks. The global stage remains `done`.
+
 ## 1.0.3 — checked and prepared, 2026-09-21
 
 1.0.3 carries four fixes a player can see: a deleted group belonging to another mod no longer

@@ -20,7 +20,7 @@ DROPDOWN GROUPS
 
 CATEGORIES AND SUBCATEGORIES
 
-- Create a category, or a subcategory when Better Architect Menu is present.
+- Create a category, or a subcategory when [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url] is present.
 - Reorder with up/down buttons, among siblings.
 - Change the label, colour and icon of any category, vanilla ones included.
 - Icon picker browsing every icon already loaded by your active mods.
@@ -34,18 +34,18 @@ WORKS WITH
 
 Detected automatically, none required — the settings screen shows which ones were found.
 
-- Better Architect Menu: subcategories, and invalidation of its display caches.
-- Architect Icons: category icon picking.
-- Float Sub-Menus: nested subcategories in the pick menus.
-- Searchable Menus: adds a search field to those menus by itself.
-- Categories Dropdowns: the groups it adds can be edited, extended or taken apart like any other.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url]: subcategories, and invalidation of its display caches.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067]Architect Icons[/url]: category icon picking.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430]Float Sub-Menus[/url]: nested subcategories in the pick menus.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119]Searchable Menus[/url]: adds a search field to those menus by itself.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827]Categories Dropdowns[/url]: the groups it adds can be edited, extended or taken apart like any other.
 
 ALSO RECOMMENDED
 
-- Architect Icons: Improved, and Optional Icons for Architect Icons — more icons for the picker to offer, since it browses whatever your active mods have loaded.
-- Bradson's Main Button Icons (Forked + Expanded) — the same treatment for the bottom bar.
-- Basic Dropdowns, and Basic Dropdowns - Extended — around a hundred ready-made dropdown groups, which this mod then lets you edit, extend or take apart.
-- Even More Linkables Dropdown Patch — dropdowns for linkable buildings.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2879451234]Architect Icons: Improved[/url], and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1966995052]Optional Icons for Architect Icons[/url] — more icons for the picker to offer, since it browses whatever your active mods have loaded.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3532359201]Bradson's Main Button Icons (Forked + Expanded)[/url] — the same treatment for the bottom bar.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827]Basic Dropdowns[/url], and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3562304092]Basic Dropdowns - Extended[/url] — around a hundred ready-made dropdown groups, which this mod then lets you edit, extend or take apart.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3150535403]Even More Linkables Dropdown Patch[/url] — dropdowns for linkable buildings.
 
 IF I GO QUIET
 
@@ -58,9 +58,9 @@ This mod's code was written with Claude Code (Anthropic) and its images generate
 THANKS
 
 Claude Code (Anthropic) and DALL-E (OpenAI).
-ferny (fernyrepos) for Better Architect Menu and Colored Categories, MIT licensed, whose study showed where the right hooks were.
-bymarcin for Architect Icons, kathanon for Float Sub-Menus and Searchable Menus.
-Andreas Pardeike for Harmony.
+ferny (fernyrepos) for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3323569935]Colored Categories[/url], MIT licensed, whose study showed where the right hooks were.
+bymarcin for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067]Architect Icons[/url], kathanon for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430]Float Sub-Menus[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119]Searchable Menus[/url].
+Andreas Pardeike for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url].
 
 See ATTRIBUTION.md. This mod is MIT licensed.
 

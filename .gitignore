@@ -24,3 +24,4 @@ Source/bin/
 # une fois Preview.png et ModIcon.png faits. A tout niveau, pas seulement a la racine.
 PROMPT_*.md
 **/PROMPT_*.md
+.firecrawl/
