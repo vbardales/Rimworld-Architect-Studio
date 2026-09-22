@@ -65,7 +65,7 @@ This mod's code was written with Claude Code (Anthropic) and Codex (OpenAI), and
 [*] ferny (fernyrepos) for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3323569935]Colored Categories[/url], MIT licensed, whose study showed where the right hooks were.
 [*] bymarcin for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067]Architect Icons[/url], kathanon for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430]Float Sub-Menus[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119]Searchable Menus[/url].
 [*] Andreas Pardeike for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url].
-[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696]RimLogging[/url], and PickleTools for development-only testing. They are not dependencies of Architect Studio.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696]RimLogging[/url], and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401]PickleTools[/url] for development-only testing. They are not dependencies of Architect Studio.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url] for exercising the optional MainButtons customization path during testing.
 [/list]
 
@@ -124,41 +124,84 @@ the limit of a Steam comment.
 
 **Better Architect Menu** (ferny)
 
-> Thank you for Better Architect Menu, and for publishing it under MIT. Reading how it hooks the Architect window
-> is what showed me where the right places were for Architect Studio, a mod that lets players regroup and reorder
-> that same menu from inside the game. No code was copied, and your licence is reproduced in the repository.
-> Architect Studio talks to yours by reflection when it is loaded: subcategories, and clearing your display caches
-> when a player changes something. It works without it, and better with it.
-> https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+Thank you for Better Architect Menu, and for publishing it under MIT! 🥰 Reading how it hooks the Architect window
+is what showed me where the right places were for Architect Studio, a mod that lets players regroup and reorder
+that same menu from inside the game. No code was copied, and your licence is reproduced in the repository.
+Architect Studio talks to yours by reflection when it is loaded: subcategories, and clearing your display caches
+when a player changes something. It works without it, and better with it.
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
 
 **Colored Categories** (ferny)
 
-> Colored Categories showed me where a category button gets its tint. Architect Studio lets players recolour any
-> category, and does it with a plain Harmony prefix at the same spot; nothing was copied. Thank you for the MIT
-> licence and for code readable enough to learn from.
-> https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+Colored Categories showed me where a category button gets its tint. 🎨😊 Architect Studio lets players recolour any
+category, and does it with a plain Harmony prefix at the same spot; nothing was copied. Thank you for the MIT
+licence and for code readable enough to learn from.
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
 
 **Architect Icons** (bymarcin)
 
-> Architect Studio lets players pick the icon of any Architect category, and when Architect Icons is loaded it asks
-> yours for the icon straight away, so the choice shows without a restart. Everything is resolved at runtime and
-> nothing depends on it. Thank you for making it possible to give the Architect menu icons at all.
-> https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+Architect Studio lets players pick the icon of any Architect category, and when Architect Icons is loaded it asks
+yours for the icon straight away, so the choice shows without a restart. Everything is resolved at runtime and
+nothing depends on it. Thank you for making it possible to give the Architect menu icons at all! 🤩
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
 
 **Float Sub-Menus** (kathanon)
 
-> When Float Sub-Menus is loaded, the pick menus in Architect Studio get nested subcategories. It works by
-> reflection and the mod is fine without it, but it is better with it. Thank you for it.
-> https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+When Float Sub-Menus is loaded, the pick menus in Architect Studio get nested subcategories. It works by
+reflection and the mod is fine without it, but it is better with it. Thank you for it! 😊
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
 
 **Searchable Menus** (kathanon)
 
-> Searchable Menus adds a search field to the pick menus in Architect Studio with nothing done on my side, which
-> is how such a mod should work. Thank you for improving other mods' menus without asking them for anything.
-> https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+Searchable Menus adds a search field to the pick menus in Architect Studio with nothing done on my side, which
+is how such a mod should work. Thank you for improving other mods' menus without asking them for anything! 😄
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
 
 **Harmony** (Andreas Pardeike)
 
-> Architect Studio reorganises the Architect menu through Harmony patches, and could not exist without them.
-> Thank you for the library and for keeping it working across versions.
-> https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+Architect Studio reorganises the Architect menu through Harmony patches, and could not exist without them.
+Thank you for the library and for keeping it working across versions. 💛
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+
+**Pickle**
+
+```
+[b]Thank you, Pickle![/b] 🥒😸
+Your game-driven scenarios and review captures took Architect Studio through its editors, ordering,
+translations and optional integrations in the actual RimWorld UI — proper player-facing testing, not just
+crossed fingers. Pickle is development-only, never a dependency, but it gave the test suite a lovely,
+reproducible route through the features players use. ✨
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+
+**RimLogging**
+
+```
+[b]Thank you, RimLogging![/b] 🤓
+You make Architect Studio's automated runs readable: every game-driven scenario gets logs to inspect, instead
+of a green result being treated as magic proof. That is wonderfully reassuring when a mod has lots of little UI
+paths to explore. RimLogging is development-only and never a dependency — just an excellent testing companion!
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```
+
+**RIMMSQOL**
+
+```
+[b]Thank you, RIMMSQOL![/b] 🥳
+Architect Studio's optional hidden MainButtons path gets a real reveal, hide and restart-persistence workout
+through your customization workflow. The mod runs happily without RIMMSQOL, so this is development-only — but
+it is such a neat way to make sure that optional path behaves exactly as it should. 🛠️
+https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+```

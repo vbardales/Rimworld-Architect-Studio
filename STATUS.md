@@ -126,6 +126,15 @@ is credited for its optional MainButtons test path. `Tests/Validate-Mod.ps1` aga
 checks. These source corrections do not replace the pending runtime/media evidence, do not update
 the already-created Workshop page, and leave the cumulative stage at `done`.
 
+## Workshop page actions — 2026-09-22
+
+The mod owner reports that the existing Workshop description was manually updated from
+`PUBLICATION.md`, the current ordered screenshots were uploaded, the release notes were entered,
+and the prepared thank-you comments were posted on their recipients' pages. This is user-reported
+external state, not a new automated or in-game verification. The content declaration is **no adult
+content**: the Preview, ModIcon and three Workshop screenshots show a workbench illustration and
+RimWorld interface windows only. The remaining `done -> tested` runtime/media evidence is unchanged.
+
 ## 1.0.3 — checked and prepared, 2026-09-21
 
 1.0.3 carries four fixes a player can see: a deleted group belonging to another mod no longer
