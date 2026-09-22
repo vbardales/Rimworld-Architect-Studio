@@ -10,8 +10,8 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 - The Pickle review pass now stages shared FilmTicks and InterfaceScale companions. It records the
   rendered group-member reorder as video and makes 150% review scenarios declare their required
   coordinate repair explicitly.
-- RIMMSQOL shortcut scenarios now declare both required companion mods and document their automated
-  reveal/hide/restart evidence path; no separate manual interaction checklist remains.
+- The RIMMSQOL shortcut scenario declares both required companion mods and records reveal/hide
+  integration with Architect Studio. The redundant tests of RIMMSQOL's own restart persistence were retired.
 
 ### Changed
 

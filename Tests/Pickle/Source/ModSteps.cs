@@ -359,9 +359,8 @@ namespace ArchitectStudio.PickleSteps
 
         /// <summary>
         /// A restart-model check in one process: the runtime is unwound to the unmodded defs, then
-        /// the file on disk is read back and replayed as StartupInit does. Process-restart coverage
-        /// belongs to the dedicated RIMMSQOL chain (features 20 through 22); no human procedure is
-        /// inferred from this helper.
+        /// the file on disk is read back and replayed as StartupInit does. This checks Architect
+        /// Studio's own settings; it makes no claim about another mod's settings persistence.
         /// </summary>
         [When("Architect Studio starts again from its settings file")]
         public void Restart(PickleContext ctx)

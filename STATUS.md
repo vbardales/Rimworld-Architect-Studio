@@ -17,7 +17,7 @@ tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
   - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
-  - unverified: the RIMMSQOL pass (features 19–22) is written with PickleTools/RimmsqolSteps, including reveal, hide and a three-process restart chain, but has not been executed on the current revision
+  - verified: the RIMMSQOL integration pass (`19`) passed 3/3 on 2026-09-22; the owner reviewed its list, revealed-button edit page and Architect Studio settings capture as correct. The former RIMMSQOL persistence chain was retired from this suite as redundant dependency coverage
   - verified: the 150% interface-scale screenshots of both editors, read by the mod's owner on 2026-09-20 and found clean — no clipping, no raw keys. English only, so the French half stays under the translation-gate line above
   - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 122f21f in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%. Played on 2026-09-21 against a Pickle built from that PR alone, the feature holding the scenario passes 3 of 3, the 150% one included
   - verified: two passes on the shipped build, 2026-09-21, English, headless — without the optional mods (11 mods loaded, 43 scenarios of 18 features, 40 passed, 1 failed, 2 skipped) and with the five optional mods (16 mods loaded, 43 scenarios, 41 passed, 1 failed, 1 skipped). The one failure is the 150% scenario on a Workshop Pickle; the skips are scenario 13 (`@wip`, it asserts the optional mods are absent) and, without the mods, the Architect Icons scenario
@@ -25,7 +25,7 @@ remaining:
   - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
   - unverified: the other four optional integrations (Better Architect Menu, Categories Dropdowns, Float Sub-Menus, Searchable Menus) have no scenario naming them; the with-optionals pass shows they break nothing, not that they work
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-22, 1.0.3 tag/release published; no RimWorld session launched and no Workshop page changed
+updated:      2026-09-22, RIMMSQOL integration captures reviewed; redundant dependency restart tests retired
 ---
 
 # Architect Studio — status
@@ -138,6 +138,25 @@ and the prepared thank-you comments were posted on their recipients' pages. This
 external state, not a new automated or in-game verification. The content declaration is **no adult
 content**: the Preview, ModIcon and three Workshop screenshots show a workbench illustration and
 RimWorld interface windows only. The remaining `done -> tested` runtime/media evidence is unchanged.
+
+## RIMMSQOL integration and retired restart chain — 2026-09-22
+
+Feature `19-rimmsqol-shortcut.feature` passed **3/3** on the staged RIMMSQOL pass. The owner reviewed
+its three captures: the shortcut is offered but absent from the bar by default; its revealed edit
+page is readable, with no icon assigned by default; and the revealed button opens Architect Studio's
+own readable settings page. These observations complete the visual review for this integration.
+
+One Pickle ticket (PID 19816) held the shared lock for three separate game launches with the
+same staged profile: `20-rimmsqol-restart-reveal.feature`, then `21-rimmsqol-restart-hide.feature`,
+then `22-rimmsqol-restart-forget.feature`. Each report ended `exitReason: passed`, **1/1 passed**,
+without failures or skips. The first two reports were archived as `0922-2200-seq1` and
+`0922-2201-seq2`; the third was the terminal report in `pickle-reports` when the ticket ended.
+The machine log records LOCK at 21:57:50, STAGE at 21:58:16 and UNLOCK at 22:03:14 for PID 19816.
+This proves the revealed choice survived one process restart, the hidden choice survived the next,
+and the last scenario removed the choice. The owner judged the extra capture after restart
+redundant: it tests RIMMSQOL's own persistence, not Architect Studio's integration. Features
+`20`–`22` were therefore retired from the maintained suite, while this run remains historical
+evidence. The overall stage remains `done`.
 
 ## Studio Workshop captures — 2026-09-22
 

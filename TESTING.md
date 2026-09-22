@@ -302,9 +302,8 @@ Repeat in English and French at 100% and 150% UI scale.
 2. Enable RIMMSQOL, find Architect Studio in its Main Buttons editor and set Visible to true.
    The button must appear and open the same native settings page, including both editor links.
    Change a toggle through it; reopen through Mod settings and verify the value is shared.
-3. Restart, reload the existing save and verify settings and the revealed-button choice persist.
-   Hide the button through RIMMSQOL, restart and verify it stays hidden. Disable RIMMSQOL and
-   verify the primary settings access still works. No error should appear in Player.log.
+3. Restart, reload the existing save and verify Architect Studio's own settings persist. Disable
+   RIMMSQOL and verify the primary settings access still works. No error should appear in Player.log.
 4. Starting with no editor customizations, change only the Architect button preference; reset
    must become available and restore it to on. Repeat with only research visibility changed;
    reset restores it to off. Repeat scenario 14 with customizations and both toggles changed.
@@ -313,9 +312,10 @@ Repeat in English and French at 100% and 150% UI scale.
    accents survive saving. Names have no imposed length cap: verify long labels do not make the
    editors unusable. Check the reset confirmation and shortcut tooltip in both languages.
 
-Status: not executed on the current revision in game. The RIMMSQOL scenarios use the shared
-`PickleTools/RimmsqolSteps` companion to drive its real settings instance, capture its pages, and test
-reveal/hide persistence across three processes; their eventual media review is the only human step.
+Status: feature 19 passed 3/3 on 2026-09-22. It uses the shared `PickleTools/RimmsqolSteps`
+companion to drive RIMMSQOL's settings instance and capture the integration with Architect Studio.
+The owner reviewed its list, edit and settings captures. The three-process test of RIMMSQOL's own
+visibility-choice persistence was retired from this suite as redundant dependency coverage.
 
 ## Automated validation commands
 

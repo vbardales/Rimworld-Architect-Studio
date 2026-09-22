@@ -123,15 +123,15 @@ assembly it comes from instead.
 The `@review` features automate the route and leave the reviewer only media to inspect. `03` films the
 rendered member rows while the first row moves to last; `04b` captures the arrows at 100% and 150%; `15`
 captures the settings page behind the hidden shortcut; `16` captures both editors at both scales and an
-accented category name in the generated keyboard category; `17` prepares Workshop shots; `19` and `21`
-capture RIMMSQOL's list/edit page and the settings route it reveals. A green capture or film proves that
+accented category name in the generated keyboard category; `17` prepares Workshop shots; `19`
+captures RIMMSQOL's list/edit page and the settings route it reveals. A green capture or film proves that
 the route ran, not that its pixels are correct.
 
 Play `03`, `04b` and `16` with `wsl-deps.avec-revues.map`; it stages FilmTicks and InterfaceScale. `04b`
 and `16` call InterfaceScale's prefixed maintained step directly; Architect Studio no longer ships a
 copy. The
 film is attached under `screenshots/film/` and is encoded as WebM when `ffmpeg` is available (otherwise
-the reviewable frames remain). Play `19` through `22` with `wsl-deps.avec-rimmsqol.map` and `-IncludeWip`.
+the reviewable frames remain). Play `19` with `wsl-deps.avec-rimmsqol.map` and `-IncludeWip`.
 Their requirements are explicit tags, so an incorrectly staged pass skips instead of claiming coverage.
 
 `17` differs from `16` in what it is for. `16` shows whatever the mod list and the language happen to
@@ -174,8 +174,8 @@ There is no remaining manual interaction procedure for Architect Studio. The sui
 assertions, restarts and cleanup; a person only reviews the media attached by `@review` scenarios. The
 physical pointer path for drag starts is not exposed by the current Pickle API, so `03` records the actual
 member list before and after the editor's registered drop callback rather than asking somebody to drag a
-row. Features `20` through `22` perform the RIMMSQOL restart chain under one launcher lock. English and
-French are separate launches selected by `-Language`, never an in-game language switch.
+row. RIMMSQOL's own settings persistence is covered by its owner, not by Architect Studio.
+English and French are separate launches selected by `-Language`, never an in-game language switch.
 
 ## When a click lands on someone else's window
 

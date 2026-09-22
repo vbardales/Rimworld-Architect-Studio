@@ -12,7 +12,7 @@
 # WHAT THIS DOES NOT DO: it does not click RIMMSQOL's checkbox. The steps make the calls the checkbox makes; that
 # the checkbox is wired to them is read from RIMMSQOL's source, not shown in a game. "The bar draws it" is worked
 # out from the bar's own list and rule, not photographed: the captures are what shows pixels, and a green
-# scenario says only that the path ran. Restart persistence is 20, 21 and 22.
+# scenario says only that the path ran. RIMMSQOL's own persistence is outside this mod's contract.
 #
 # Played only by the pass "avec-rimmsqol": without RIMMSQOL staged the first step stops with a sentence.
 # Every scenario is followed by a teardown that puts RIMMSQOL back, pass or fail.

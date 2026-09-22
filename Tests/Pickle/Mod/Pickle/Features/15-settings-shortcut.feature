@@ -3,8 +3,8 @@
 # own worker, and a person checks that both toggles, the two editor buttons and the reset control
 # read correctly in the language the game runs in.
 #
-# RIMMSQOL reveal/hide and its real-restart persistence are covered by features 19 through 22 with
-# PickleTools/RimmsqolSteps. This feature owns the Architect Studio side: the native shortcut worker
+# RIMMSQOL reveal/hide is covered by feature 19 with PickleTools/RimmsqolSteps. This feature owns
+# the Architect Studio side: the native shortcut worker
 # reaches this same settings page.
 #
 # The opening step waits frames rather than the scenario waiting ticks: Dialog_ModSettings is a
