@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "architect-studio-release-automation",
+  "version": "0.0.0-development",
+  "description": "Release tooling only; Architect Studio itself is a .NET/RimWorld mod.",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@semantic-release/github": "12.0.10",
+    "semantic-release": "25.0.9",
+    "semantic-release-steam": "2.1.3"
+  }
+}
