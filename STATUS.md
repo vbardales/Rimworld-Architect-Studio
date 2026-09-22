@@ -25,7 +25,7 @@ remaining:
   - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
   - unverified: the other four optional integrations (Better Architect Menu, Categories Dropdowns, Float Sub-Menus, Searchable Menus) have no scenario naming them; the with-optionals pass shows they break nothing, not that they work
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-22, Pickle pass maps audited and prepared through 62c08e2; no RimWorld session launched
+updated:      2026-09-22, 1.0.3 tag/release published; no RimWorld session launched and no Workshop page changed
 ---
 
 # Architect Studio — status
@@ -107,6 +107,12 @@ Remote inspection found `v1.0.2` as the latest GitHub tag/release, while the rep
 contains the 1.0.3 changelog. The 1.0.3 tag and GitHub release are therefore the remaining
 reproducibility actions being prepared independently of the intentionally skipped runtime/media
 checks. The global stage remains `done`.
+
+**Completed after this review:** annotated tag `v1.0.3` points to
+`b316bfa903567bf1b1978199e25042b66e1ab780`, and the public GitHub release
+[`Architect Studio 1.0.3`](https://github.com/vbardales/Rimworld-Architect-Studio/releases/tag/v1.0.3)
+was published on 2026-09-22 with the 1.0.3 changelog notes. This status-only follow-up is the
+next commit and is intentionally not represented by that release tag.
 
 ## 1.0.3 — checked and prepared, 2026-09-21
 
