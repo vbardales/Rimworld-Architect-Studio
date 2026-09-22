@@ -1,0 +1,33 @@
+name: private RimWorld reference image
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_private_image_push:
+        description: Type PUSH_PRIVATE_IMAGE to download RimWorld and push the private GHCR reference image.
+        required: true
+        default: ''
+        type: string
+
+# This workflow has no push, PR, or schedule trigger.  The image contains proprietary game
+# files and must remain private; do not change package visibility or copy it outside GHCR.
+jobs:
+  build:
+    if: inputs.confirm_private_image_push == 'PUSH_PRIVATE_IMAGE'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Build a managed-assemblies-only private image
+        uses: RimWorks/steam-game-image-action@v1
+        with:
+          steam-username: ${{ secrets.STEAM_USERNAME }}
+          steam-config-vdf: ${{ secrets.STEAM_CONFIG_VDF }}
+          app-id: '294100'
+          branch: public
+          image: ghcr.io/${{ github.repository_owner }}/rimworld-game
+          registry-password: ${{ secrets.GITHUB_TOKEN }}
+          runnable: false
+          include-paths: RimWorldLinux_Data/Managed
+          skip-if-unchanged: true

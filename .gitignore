@@ -25,3 +25,7 @@ Source/bin/
 PROMPT_*.md
 **/PROMPT_*.md
 .firecrawl/
+
+# Local Node dependency/cache material used only to validate release tooling.
+node_modules/
+.npm-cache/
