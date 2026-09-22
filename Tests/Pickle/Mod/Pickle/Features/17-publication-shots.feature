@@ -6,7 +6,7 @@
 #
 # The group here is created and filled by the scenario rather than borrowed from the mod list: a
 # group belonging to another mod shows its raw defName, which reads as debug output on a store page.
-@review @requires:nelim.pickletools.screenshotstudio
+@review @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
 Feature: the windows as a player would show them
 
   Background:
@@ -22,9 +22,9 @@ Feature: the windows as a player would show them
     And I add "C" to the group "Monolith machines"
     And I select the group "Monolith machines" in the editor
     And Nelim's Pickle Tools: I frame the studio "emblem"
-    And I hide the interface around the windows on screen
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "group editor, a filled group"
-    And I bring the interface back
+    And Nelim's Pickle Tools: screenshot mode is disabled
 
   Scenario: the category editor over the map
     When I close all dialogs
@@ -32,15 +32,15 @@ Feature: the windows as a player would show them
     And I wait 30 ticks
     Then window "Dialog_Categories" is open
     When Nelim's Pickle Tools: I frame the studio "emblem"
-    And I hide the interface around the windows on screen
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "category editor"
-    And I bring the interface back
+    And Nelim's Pickle Tools: screenshot mode is disabled
 
   Scenario: the settings page over the map
     When I close all dialogs
     And I open the Architect Studio settings through the shortcut and let it draw
     Then window "Dialog_ModSettings" is open
     When Nelim's Pickle Tools: I frame the studio "emblem"
-    And I hide the interface around the windows on screen
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "settings page"
-    And I bring the interface back
+    And Nelim's Pickle Tools: screenshot mode is disabled

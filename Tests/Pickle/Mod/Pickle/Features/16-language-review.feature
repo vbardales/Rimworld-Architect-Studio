@@ -30,7 +30,7 @@ Feature: the interface in the language the game runs in
   # The gate asks for both scales: 150% is where a translated label has the least room left.
   Scenario: screenshots of both editors at 150 percent
     When I close all dialogs
-    And I set the interface scale to 150 percent
+    And Nelim's Pickle Tools: the interface scale is 150 percent
     And I wait 60 ticks
     And I open the "Architect" tab
     And I click the Architect Studio button keyed "ArchitectStudio.ArchitectButton"

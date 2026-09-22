@@ -115,6 +115,11 @@ namespace ArchitectStudio.PickleSteps
             await ctx.Click(tag);
         }
 
+        // Diagnostics for the Architect-specific keyed click. InterfaceScale owns changing and
+        // restoring the scale; this only records the coordinate spaces when a click is reviewed.
+        private static string DescribeUiSpace() =>
+            $"scale {Prefs.UIScale:0.##}, GUI space {UI.screenWidth}x{UI.screenHeight}, window {Screen.width}x{Screen.height}";
+
         /// <summary>
         /// A window that absorbs input around itself eats the click wherever it is drawn, so the
         /// button can be plainly visible and unobstructed and the click still never arrive. Mods
@@ -176,70 +181,6 @@ namespace ArchitectStudio.PickleSteps
         {
             ctx.Require(key.CanTranslate(), $"no translation is loaded for the key '{key}'");
             return key.Translate().ToString();
-        }
-
-        /// <summary>
-        /// The scale the way the Options page changes it, minus the confirmation dialog and the
-        /// save. Writing <c>Prefs.UIScale</c> alone is not enough: widgets are laid out in
-        /// <c>UI.screenWidth</c>/<c>UI.screenHeight</c>, two cached fields that only
-        /// <c>Root.OnGUI</c> recomputes, and a window already on screen keeps the rect it was given
-        /// in the old space until something tells it the resolution moved. A widget drawn from such
-        /// a rect is recorded by Pickle's tag store at a place the new GUI space has not got, and
-        /// the click that follows lands off screen.
-        ///
-        /// So: write the scale, drop the label widths measured at the old one, let frames pass for
-        /// the fields, then do what <c>WindowStack.AdjustWindowsIfResolutionChanged</c> does and
-        /// lay every open window out again. The sizes before and after ride on the report, and the
-        /// step fails on the spot if the GUI space did not follow - a scale that did not take is
-        /// otherwise only visible as a click that misses, several steps later.
-        /// </summary>
-        [When("I set the interface scale to {int} percent")]
-        public async Task UiScale(PickleContext ctx, int percent)
-        {
-            // Never saved: Prefs.Save is not called, and the hook below puts the value back.
-            if (!uiScaleBefore.HasValue)
-            {
-                uiScaleBefore = Prefs.UIScale;
-            }
-
-            var before = DescribeUiSpace();
-
-            Prefs.UIScale = percent / 100f;
-            GenUI.ClearLabelWidthCache();
-
-            // Root.OnGUI runs UI.ApplyUIScale every frame: that is what moves UI.screenWidth and
-            // UI.screenHeight to the new scale. Nothing a step can call does it off a frame.
-            await ctx.WaitFrames(2);
-
-            foreach (var window in Find.WindowStack.Windows.ToList())
-            {
-                window.Notify_ResolutionChanged();
-            }
-
-            await ctx.WaitFrames(5);
-
-            var after = DescribeUiSpace();
-            ctx.Attach("interface scale", $"before: {before}\nafter:  {after}");
-
-            var expected = Mathf.RoundToInt(Screen.height / Prefs.UIScale);
-            ctx.Require(UI.screenHeight == expected,
-                $"the GUI space did not follow the scale: UI.screenHeight is {UI.screenHeight}, and {Screen.height} " +
-                $"pixels at {Prefs.UIScale:0.##} make {expected}. Every rect measured now belongs to the old layout");
-        }
-
-        private static string DescribeUiSpace() =>
-            $"scale {Prefs.UIScale:0.##}, GUI space {UI.screenWidth}x{UI.screenHeight}, window {Screen.width}x{Screen.height}";
-
-        private static float? uiScaleBefore;
-
-        [AfterScenario]
-        public void RestoreUiScale(PickleContext ctx)
-        {
-            if (uiScaleBefore.HasValue)
-            {
-                Prefs.UIScale = uiScaleBefore.Value;
-                uiScaleBefore = null;
-            }
         }
 
         private sealed class WindowHeight
@@ -433,72 +374,6 @@ namespace ArchitectStudio.PickleSteps
             ArchitectStudioReset.All();
             File.WriteAllText(path, saved);
             SettingsSandbox.ReloadFromDisk();
-        }
-
-        // ---------------------------------------------------------------- screenshots a person reads
-
-        private static readonly Dictionary<Window, bool> hiddenForCapture = new Dictionary<Window, bool>();
-
-        /// <summary>
-        /// Turns on the game's own screenshot mode, which hides everything that is not a window - the
-        /// tab bar, the alerts, the colonist bar, the dev toolbar - and hides Pickle's own runner
-        /// windows on top of that, because a window draws in that mode unless it is told not to. The
-        /// capture then carries the editor over the map and nothing else.
-        /// </summary>
-        [When("I hide the interface around the windows on screen")]
-        public async Task HideInterface(PickleContext ctx)
-        {
-            var flag = AccessTools.Field(typeof(Window), "drawInScreenshotMode");
-            ctx.Require(flag != null, "Window.drawInScreenshotMode no longer exists: update the step");
-
-            foreach (var window in Find.WindowStack.Windows)
-            {
-                var fromPickle = window.GetType().Assembly.GetName().Name.StartsWith("RimWorks.Pickle");
-                var wanted = !fromPickle;
-                var current = (bool)flag.GetValue(window);
-                if (current == wanted)
-                {
-                    continue;
-                }
-
-                hiddenForCapture[window] = current;
-                flag.SetValue(window, wanted);
-            }
-
-            Find.UIRoot.screenshotMode.Active = true;
-            await ctx.WaitFrames(3);
-        }
-
-        [When("I bring the interface back")]
-        public void ShowInterface(PickleContext ctx)
-        {
-            RestoreInterface();
-        }
-
-        /// <summary>
-        /// A scenario that dies between the two steps would otherwise leave the game without its
-        /// interface, and no report would explain why.
-        /// </summary>
-        [AfterScenario]
-        public void RestoreInterfaceAfterScenario(PickleContext ctx)
-        {
-            RestoreInterface();
-        }
-
-        private static void RestoreInterface()
-        {
-            var flag = AccessTools.Field(typeof(Window), "drawInScreenshotMode");
-            foreach (var pair in hiddenForCapture)
-            {
-                flag.SetValue(pair.Key, pair.Value);
-            }
-
-            hiddenForCapture.Clear();
-
-            if (Find.UIRoot?.screenshotMode != null)
-            {
-                Find.UIRoot.screenshotMode.Active = false;
-            }
         }
 
         /// <summary>

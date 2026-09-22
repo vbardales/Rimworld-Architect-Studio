@@ -12,6 +12,6 @@ Feature: the arrows at 150% interface scale
     And I add "C" to the group "Seats"
     And I select the group "Seats" in the editor
     And I take a screenshot "group editor at 100 percent"
-    And I set the interface scale to 150 percent
+    And Nelim's Pickle Tools: the interface scale is 150 percent
     And I wait 60 ticks
     And I take a screenshot "group editor at 150 percent"

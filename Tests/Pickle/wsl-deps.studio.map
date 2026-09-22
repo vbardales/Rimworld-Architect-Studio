@@ -4,3 +4,4 @@
 # wsl-deps.avec-facultatifs.map: store-page pictures should show Architect Studio alone, and
 # no functional scenario is allowed to acquire a scenic-fixture dependency by accident.
 nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
+nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod

@@ -4,9 +4,8 @@
 #   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-pickletools.map -Filter '16-language-review.feature'
 #
 # The repair is a Harmony postfix on TagStore.Record, applied to every click of the run regardless of which
-# step set the interface scale, so nothing in 16-language-review.feature itself changes: it still calls
-# "I set the interface scale to {int} percent" (ModSteps.cs, ArchitectStudio's own), which already does the
-# full Options-page equivalent. Only the click that follows behaves differently.
+# shared scale step. `16-language-review.feature` calls that maintained PickleTools step directly, so the
+# scale setup and the click-coordinate repair come from the same development-only companion.
 #
 # `path:` names a folder of the PickleTools repository (relative to the collection's root); the folder's own
 # About.xml packageId must match. See PickleTools/InterfaceScale/README.md - in particular the "delete this"

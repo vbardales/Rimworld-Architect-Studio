@@ -92,7 +92,11 @@ in `PUBLICATION.md`. These are pending publication preparations, not observed ru
 `Tests/Pickle/wsl-deps.avec-pickletools.map` is a valid narrow alternative to the broader review
 pass: it stages only `nelim.pickletools.interfacescale`, allowing `16-language-review.feature` to
 exercise its 150% click against the stock Workshop Pickle without a local Pickle fork. It is tracked
-with this status update. This changes no runtime result; the English and French media reviews remain
+with this status update. `04b-arrows-at-150-percent.feature` and `16-language-review.feature` now call
+the shared prefixed InterfaceScale step, and the obsolete local scale step was removed from
+`Tests/Pickle/Source/ModSteps.cs`. The Workshop capture feature likewise uses shared ScreenshotMode,
+declared in both its `@requires` tags and `wsl-deps.studio.map`; its former local screenshot-mode
+steps and cleanup hook were removed. This changes no runtime result; the English and French media reviews remain
 unverified by request.
 
 ## Publication preparation — 2026-09-22
