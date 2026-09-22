@@ -25,7 +25,7 @@ remaining:
   - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
   - unverified: the other four optional integrations (Better Architect Menu, Categories Dropdowns, Float Sub-Menus, Searchable Menus) have no scenario naming them; the with-optionals pass shows they break nothing, not that they work
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-22, audit of 46124c334c778382eb19d0bd1e7b1d4bd304a01b; static, build and behavioral checks rerun; no RimWorld session launched
+updated:      2026-09-22, Pickle pass maps audited and prepared through 62c08e2; no RimWorld session launched
 ---
 
 # Architect Studio — status
@@ -35,8 +35,8 @@ updated:      2026-09-22, audit of 46124c334c778382eb19d0bd1e7b1d4bd304a01b; sta
 Audited revision: `46124c334c778382eb19d0bd1e7b1d4bd304a01b`. The autonomous repository and
 distributed root (`Mod/`) were checked directly. The remote remains
 `https://github.com/vbardales/Rimworld-Architect-Studio.git`. The entry working tree contained
-one pre-existing untracked file, `Tests/Pickle/wsl-deps.avec-pickletools.map`; it was preserved
-and is not part of this audit.
+one pre-existing untracked file, `Tests/Pickle/wsl-deps.avec-pickletools.map`; it was subsequently
+reviewed and committed as its own targeted InterfaceScale pass.
 
 The cumulative stage remains **`done`**. `preOptions -> options` remains supported by the useful
 native settings page and the hidden-by-default MainButtons definition; the static validator checks
@@ -86,6 +86,14 @@ next Workshop update, this revision needs the runtime evidence reviewed, a nonem
 in `CHANGELOG.md`, a tag on the exact pushed commit and its GitHub release, then a final direct review of
 the Workshop description, ordered screenshots, adult-content answers and publication messages recorded
 in `PUBLICATION.md`. These are pending publication preparations, not observed runtime defects.
+
+## Targeted InterfaceScale pass — 2026-09-22
+
+`Tests/Pickle/wsl-deps.avec-pickletools.map` is a valid narrow alternative to the broader review
+pass: it stages only `nelim.pickletools.interfacescale`, allowing `16-language-review.feature` to
+exercise its 150% click against the stock Workshop Pickle without a local Pickle fork. It is tracked
+with this status update. This changes no runtime result; the English and French media reviews remain
+unverified by request.
 
 ## 1.0.3 — checked and prepared, 2026-09-21
 

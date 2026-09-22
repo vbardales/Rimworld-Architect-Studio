@@ -1,0 +1,14 @@
+# Pass "avec-pickletools": stages PickleTools/InterfaceScale beside the mod, so scenario 16's 150% click
+# lands on the Workshop Pickle as it ships, no -PickleSrc and no modified Pickle to keep in sync by hand.
+#
+#   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-pickletools.map -Filter '16-language-review.feature'
+#
+# The repair is a Harmony postfix on TagStore.Record, applied to every click of the run regardless of which
+# step set the interface scale, so nothing in 16-language-review.feature itself changes: it still calls
+# "I set the interface scale to {int} percent" (ModSteps.cs, ArchitectStudio's own), which already does the
+# full Options-page equivalent. Only the click that follows behaves differently.
+#
+# `path:` names a folder of the PickleTools repository (relative to the collection's root); the folder's own
+# About.xml packageId must match. See PickleTools/InterfaceScale/README.md - in particular the "delete this"
+# list for when RimWorks/Rimworld-Pickle pull request 23 merges.
+nelim.pickletools.interfacescale   path:PickleTools/InterfaceScale/Mod
