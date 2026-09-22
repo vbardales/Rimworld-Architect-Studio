@@ -13,7 +13,7 @@ keeps the plain-text form of the same content.
 ```
 Organise the Architect menu from inside the game, without restarting.
 
-[h2]Dropdown groups[/h2]
+[h1]Dropdown groups[/h1]
 [list]
 [*] Create a group, put buildings into it, take them out.
 [*] Order the members of a group, by dragging or with up/down arrows.
@@ -23,7 +23,7 @@ Organise the Architect menu from inside the game, without restarting.
 [*] Warns when a group is spread across several categories, where the game silently produces several separate buttons.
 [/list]
 
-[h2]Categories and subcategories[/h2]
+[h1]Categories and subcategories[/h1]
 [list]
 [*] Create a category, or a subcategory when [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url] is present.
 [*] Reorder with up/down buttons, among siblings.
@@ -34,9 +34,9 @@ Organise the Architect menu from inside the game, without restarting.
 
 Nothing is written to the game's def files, nor to another mod's: everything is stored in the mod settings and reapplied on startup. The mod can be added to or removed from a game in progress.
 
-Interface in English and French. Designed to stay usable without a keyboard, with the Steam Deck in mind.
+Embedded English and French translations. Designed to stay usable without a keyboard, with the Steam Deck in mind.
 
-[h2]Works with[/h2]
+[h1]Works with[/h1]
 Detected automatically, none required.
 [list]
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url]: subcategories, and invalidation of its display caches.
@@ -46,7 +46,7 @@ Detected automatically, none required.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827]Categories Dropdowns[/url]: the groups it adds can be edited, extended or taken apart like any other.
 [/list]
 
-[h2]Also recommended[/h2]
+[h1]Also recommended[/h1]
 [list]
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2879451234]Architect Icons: Improved[/url], and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1966995052]Optional Icons for Architect Icons[/url] — more icons for the picker to offer, since it browses whatever your active mods have loaded.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3532359201]Bradson's Main Button Icons (Forked + Expanded)[/url] — the same treatment for the bottom bar.
@@ -54,18 +54,19 @@ Detected automatically, none required.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3150535403]Even More Linkables Dropdown Patch[/url] — dropdowns for linkable buildings.
 [/list]
 
-[h2]If I go quiet[/h2]
+[h1]If I go quiet[/h1]
 If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
 
-[h2]AI-generated[/h2]
-This mod's code was written with Claude Code (Anthropic) and its images generated with DALL-E (OpenAI), under human direction, review and testing. Stated openly: designing with these tools is my job.
+[h1]AI-generated[/h1]
+This mod's code was written with Claude Code (Anthropic) and Codex (OpenAI), and its images generated with DALL-E (OpenAI), under human direction, review and testing. Stated openly: designing with these tools is my job.
 
-[h2]Thanks[/h2]
+[h1]Thanks[/h1]
 [list]
-[*] Claude Code (Anthropic) and DALL-E (OpenAI).
 [*] ferny (fernyrepos) for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3323569935]Colored Categories[/url], MIT licensed, whose study showed where the right hooks were.
 [*] bymarcin for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067]Architect Icons[/url], kathanon for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430]Float Sub-Menus[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119]Searchable Menus[/url].
 [*] Andreas Pardeike for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url].
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696]RimLogging[/url], and PickleTools for development-only testing. They are not dependencies of Architect Studio.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url] for exercising the optional MainButtons customization path during testing.
 [/list]
 
 See ATTRIBUTION.md. This mod is MIT licensed.

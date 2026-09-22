@@ -28,7 +28,7 @@ CATEGORIES AND SUBCATEGORIES
 
 Nothing is written to the game's def files, nor to another mod's: everything is stored in the mod settings and reapplied on startup. The mod can be added to or removed from a game in progress.
 
-Interface in English and French. Designed to stay usable without a keyboard, with the Steam Deck in mind.
+Embedded English and French translations. Designed to stay usable without a keyboard, with the Steam Deck in mind.
 
 WORKS WITH
 
@@ -53,14 +53,15 @@ If I do not answer within a reasonable time after being contacted, anyone may fr
 
 AI-GENERATED
 
-This mod's code was written with Claude Code (Anthropic) and its images generated with DALL-E (OpenAI), under human direction, review and testing. Stated openly: designing with these tools is my job.
+This mod's code was written with Claude Code (Anthropic) and Codex (OpenAI), and its images generated with DALL-E (OpenAI), under human direction, review and testing. Stated openly: designing with these tools is my job.
 
 THANKS
 
-Claude Code (Anthropic) and DALL-E (OpenAI).
 ferny (fernyrepos) for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3323569935]Colored Categories[/url], MIT licensed, whose study showed where the right hooks were.
 bymarcin for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067]Architect Icons[/url], kathanon for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430]Float Sub-Menus[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119]Searchable Menus[/url].
 Andreas Pardeike for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url].
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696]RimLogging[/url], and PickleTools for development-only testing. They are not dependencies of Architect Studio.
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url] for exercising the optional MainButtons customization path during testing.
 
 See ATTRIBUTION.md. This mod is MIT licensed.
 

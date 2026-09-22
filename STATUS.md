@@ -114,6 +114,18 @@ checks. The global stage remains `done`.
 was published on 2026-09-22 with the 1.0.3 changelog notes. This status-only follow-up is the
 next commit and is intentionally not represented by that release tag.
 
+## Publication copy refinement — 2026-09-22
+
+The local Steam-format source and distributed description were refined without changing the
+Workshop item: Steam must still be edited by hand from `PUBLICATION.md`. Its section headings now
+use `[h1]`; the AI disclosure names Claude Code, Codex and DALL-E without repeating them under
+thanks; and the thanks name the actual development-only test tooling. [Pickle](https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678),
+[RimLogging](https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696) and PickleTools are
+explicitly non-dependencies; [RIMMSQOL](https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457)
+is credited for its optional MainButtons test path. `Tests/Validate-Mod.ps1` again passed **739**
+checks. These source corrections do not replace the pending runtime/media evidence, do not update
+the already-created Workshop page, and leave the cumulative stage at `done`.
+
 ## 1.0.3 — checked and prepared, 2026-09-21
 
 1.0.3 carries four fixes a player can see: a deleted group belonging to another mod no longer
