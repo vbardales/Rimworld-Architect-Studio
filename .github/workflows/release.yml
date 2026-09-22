@@ -35,6 +35,10 @@ jobs:
 
       - name: Calculate release only (no tag, GitHub release, or Steam upload)
         if: inputs.mode == 'dry-run'
+        env:
+          # The automatic Actions token is needed only to inspect GitHub release state.
+          # Steam credentials remain unavailable in this mode.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release --dry-run
 
       - name: Publish after protected-environment approval
