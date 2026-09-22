@@ -3,8 +3,9 @@
 # own worker, and a person checks that both toggles, the two editor buttons and the reset control
 # read correctly in the language the game runs in.
 #
-# Steps 2 and 3 of TESTING.md 15 stay manual: revealing the button needs RIMMSQOL installed, and
-# proving the revealed-then-hidden choice survives needs a real restart.
+# RIMMSQOL reveal/hide and its real-restart persistence are covered by features 19 through 22 with
+# PickleTools/RimmsqolSteps. This feature owns the Architect Studio side: the native shortcut worker
+# reaches this same settings page.
 #
 # The opening step waits frames rather than the scenario waiting ticks: Dialog_ModSettings is a
 # full-screen modal that pauses the simulation, so "I wait N ticks" under it never advances and

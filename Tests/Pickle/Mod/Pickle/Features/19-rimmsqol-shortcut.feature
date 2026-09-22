@@ -16,7 +16,7 @@
 #
 # Played only by the pass "avec-rimmsqol": without RIMMSQOL staged the first step stops with a sentence.
 # Every scenario is followed by a teardown that puts RIMMSQOL back, pass or fail.
-@wip @review @rimmsqol
+@wip @review @rimmsqol @requires:MalteSchulze.RIMMSqol @requires:nelim.pickletools.rimmsqol
 Feature: RIMMSQOL reveals and hides the Architect Studio shortcut
 
   Background:

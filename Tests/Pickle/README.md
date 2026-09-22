@@ -118,12 +118,19 @@ mod's window would otherwise fail the next step as "the dialog did not open" - a
 from the report, when the click never reached it. The step now names the covering window and the
 assembly it comes from instead.
 
-## Screenshots a person reads
+## Evidence a person reads
 
-Four features assert nothing and attach screenshots instead, all tagged `@review`: `04b` (arrows at
-150%), `15` (the settings page behind the hidden shortcut), `16` (both editors at 100% and 150%, and
-an accented category name in the generated keyboard category) and `17` (the same windows, dressed for
-the Workshop page). The route is automated; the judgement is not.
+The `@review` features automate the route and leave the reviewer only media to inspect. `03` films the
+rendered member rows while the first row moves to last; `04b` captures the arrows at 100% and 150%; `15`
+captures the settings page behind the hidden shortcut; `16` captures both editors at both scales and an
+accented category name in the generated keyboard category; `17` prepares Workshop shots; `19` and `21`
+capture RIMMSQOL's list/edit page and the settings route it reveals. A green capture or film proves that
+the route ran, not that its pixels are correct.
+
+Play `03`, `04b` and `16` with `wsl-deps.avec-revues.map`; it stages FilmTicks and InterfaceScale. The
+film is attached under `screenshots/film/` and is encoded as WebM when `ffmpeg` is available (otherwise
+the reviewable frames remain). Play `19` through `22` with `wsl-deps.avec-rimmsqol.map` and `-IncludeWip`.
+Their requirements are explicit tags, so an incorrectly staged pass skips instead of claiming coverage.
 
 `17` differs from `16` in what it is for. `16` shows whatever the mod list and the language happen to
 produce, warts included - that is the point of a review shot. `17` sets the scene: it creates and
@@ -157,15 +164,14 @@ through a stub of Better Architect Menu's `NestedCategoryExtension`, resolved by
 name the way the mod resolves the real one. It therefore cannot tell that BAM still spells it that
 way. Neither could the scenario: a missing type made it skip, not fail.
 
-## What stays manual
+## No manual scenario checklist
 
-| TESTING.md | Why |
-| --- | --- |
-| 3, the pointer starting a drag | A physical drag is not replayed, only the drop |
-| 10 and 12, a real restart | One process cannot rebuild the def database; the replay of the settings file is tested |
-| 13, without optional mods | Needs its own mod list; tagged `@wip` |
-| 15, the RIMMSQOL half | Revealing the button needs RIMMSQOL installed, and its persistence a real restart |
-| The language switch | Changing language needs RimWorld restarted; `16` covers whichever language it is already running in |
+There is no remaining manual interaction procedure for Architect Studio. The suite owns setup, action,
+assertions, restarts and cleanup; a person only reviews the media attached by `@review` scenarios. The
+physical pointer path for drag starts is not exposed by the current Pickle API, so `03` records the actual
+member list before and after the editor's registered drop callback rather than asking somebody to drag a
+row. Features `20` through `22` perform the RIMMSQOL restart chain under one launcher lock. English and
+French are separate launches selected by `-Language`, never an in-game language switch.
 
 ## When a click lands on someone else's window
 

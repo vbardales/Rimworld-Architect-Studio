@@ -1,6 +1,7 @@
 # TESTING.md scenario 12, in one process: the runtime is unwound to the unmodded defs, then the
-# settings file is read back and replayed exactly as StartupInit does. A real restart also rebuilds
-# the def database from XML, which stays a manual check.
+# settings file is read back and replayed exactly as StartupInit does. A process restart also rebuilds
+# the def database from XML; that boundary stays explicitly unverified until its Pickle pass is played,
+# not as a separate human action.
 Feature: everything survives a restart
 
   Scenario: group, category, order and colour come back from the file

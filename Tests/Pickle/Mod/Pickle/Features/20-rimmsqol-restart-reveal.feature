@@ -11,7 +11,7 @@
 # scenario that fails before it leaves nothing: the teardown puts the choice back and the launcher stops the
 # chain. If the game dies after that step, or the chain is cut, the choice stays in the WSL profile's
 # Config/Mod_1084452457_QOLMod.xml; PickleTools/RimmsqolSteps/README.md, "Leftovers", gives the files to delete.
-@wip @rimmsqol
+@wip @rimmsqol @requires:MalteSchulze.RIMMSqol @requires:nelim.pickletools.rimmsqol
 Feature: a choice made in RIMMSQOL is written for the next launch (1 of 3, reveal)
 
   Scenario: RIMMSQOL reveals the shortcut and the choice is kept

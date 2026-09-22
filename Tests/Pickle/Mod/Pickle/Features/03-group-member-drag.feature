@@ -1,6 +1,8 @@
 # TESTING.md scenario 3. The drop is replayed through the callback the editor registered on its
-# last repaint, so the insertion-index conversion under test is the mod's own. What this cannot
-# see is the pointer physically starting a drag; that half stays a manual check.
+# last repaint, so the insertion-index conversion under test is the mod's own. The review scenario
+# records the rendered member rows before and after that callback; no separate manual procedure is
+# left. Play this feature with wsl-deps.avec-revues.map.
+@review @requires:nelim.pickletools.filmticks
 Feature: dragging a group member
 
   Background:
@@ -15,7 +17,11 @@ Feature: dragging a group member
   Scenario: the first member dragged below the last lands last
     Given the group "Seats" is ordered "A, B, C, D"
     # Below the fourth row is insertion index 4. Landing third is the old off-by-one.
-    When I drag member 1 of the group "Seats" to insertion index 4
+    When I select the group "Seats" in the editor
+    And Nelim's Pickle Tools: I film every 1 ticks as "group-member-first-to-last"
+    And I drag member 1 of the group "Seats" to insertion index 4
+    And I wait 30 ticks
+    And Nelim's Pickle Tools: I stop filming
     Then the group "Seats" holds "B, C, D, A" in that order
     And the Architect menu lists the group "Seats" in the same order as the editor
 

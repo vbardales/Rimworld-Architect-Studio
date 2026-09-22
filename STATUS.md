@@ -17,7 +17,7 @@ tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
   - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
-  - unverified: the RIMMSQOL half of scenario 15, revealing and hiding the MainButtons shortcut, which needs RIMMSQOL installed and a real restart
+  - unverified: the RIMMSQOL pass (features 19–22) is written with PickleTools/RimmsqolSteps, including reveal, hide and a three-process restart chain, but has not been executed on the current revision
   - verified: the 150% interface-scale screenshots of both editors, read by the mod's owner on 2026-09-20 and found clean — no clipping, no raw keys. English only, so the French half stays under the translation-gate line above
   - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 122f21f in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%. Played on 2026-09-21 against a Pickle built from that PR alone, the feature holding the scenario passes 3 of 3, the 150% one included
   - verified: two passes on the shipped build, 2026-09-21, English, headless — without the optional mods (11 mods loaded, 43 scenarios of 18 features, 40 passed, 1 failed, 2 skipped) and with the five optional mods (16 mods loaded, 43 scenarios, 41 passed, 1 failed, 1 skipped). The one failure is the 150% scenario on a Workshop Pickle; the skips are scenario 13 (`@wip`, it asserts the optional mods are absent) and, without the mods, the Architect Icons scenario
@@ -25,10 +25,67 @@ remaining:
   - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
   - unverified: the other four optional integrations (Better Architect Menu, Categories Dropdowns, Float Sub-Menus, Searchable Menus) have no scenario naming them; the with-optionals pass shows they break nothing, not that they work
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-21, 1.0.3 checked on two mod lists; the group-editor capture added; Workshop update prepared
+updated:      2026-09-22, audit of 46124c334c778382eb19d0bd1e7b1d4bd304a01b; static, build and behavioral checks rerun; no RimWorld session launched
 ---
 
 # Architect Studio — status
+
+## Audit — 2026-09-22
+
+Audited revision: `46124c334c778382eb19d0bd1e7b1d4bd304a01b`. The autonomous repository and
+distributed root (`Mod/`) were checked directly. The remote remains
+`https://github.com/vbardales/Rimworld-Architect-Studio.git`. The entry working tree contained
+one pre-existing untracked file, `Tests/Pickle/wsl-deps.avec-pickletools.map`; it was preserved
+and is not part of this audit.
+
+The cumulative stage remains **`done`**. `preOptions -> options` remains supported by the useful
+native settings page and the hidden-by-default MainButtons definition; the static validator checks
+that its worker opens the same `Dialog_ModSettings` route. English/French resources and the three
+French DefInjected targets passed the static gate, so `settings_audit`, `localization`,
+`translation_en`, and `translation_fr` remain `complete`. Harmony is the sole hard dependency;
+the listed integrations remain optional `loadAfter` entries.
+
+Executed outside RimWorld:
+
+- `pwsh -NoProfile -File Tests/Validate-Mod.ps1` — **739** static/XML, metadata, localization,
+  keybinding and distribution checks passed.
+- `dotnet build Source/ArchitectStudio.csproj -c Release --no-restore` — passed with **0** warnings
+  and **0** errors; it rebuilt the shipped `Mod/Assemblies/ArchitectStudio.dll`.
+- `pwsh -NoProfile -File Tests/Run-Behavior.ps1` — **33** behavior checks passed against the
+  shipped assembly and real Scribe serialization. This is a headless .NET process, not a game UI
+  session.
+
+The rebuilt shipped DLL SHA-256 is
+`18145E4F11280F7D4C6168093A516B15102141AEE169ABF29E4F3498B2263EFF`. Direct artifact inspection:
+`Mod/About/ModIcon.png` is 128 × 128 (32,548 bytes); `Mod/About/Preview.png` is 896 × 504
+(612,584 bytes, under 1 MB). Both were opened and visually reviewed; the Preview has a readable
+title, summary and 1.6 badge, while the icon remains legible at its delivered size.
+
+No RimWorld or Pickle run was launched, in accordance with the audit instruction. This does not
+add an in-game claim: the `done -> tested` items already recorded in `remaining` stay unverified,
+including the French walkthrough, RIMMSQOL reveal/hide persistence, and the named optional
+integrations. The existing Pickle results and their external 150% runner defect are retained as
+historical evidence, not rerun here.
+
+## Pickle coverage and later-gate review — 2026-09-22
+
+The Pickle suite was reviewed against every behavior in `TESTING.md`, the shared PickleTools catalogue
+and the actual pass maps. The local step DLL rebuilt successfully with zero warnings. The static
+validator still passes **739** checks and the shipped mod's behavioral harness still passes **33**;
+neither result is presented as an in-game pass.
+
+The suite now gives a reviewer media rather than a manual action checklist: the group-member reorder
+has a FilmTicks `@review` recording, scale-sensitive screenshots require the InterfaceScale companion,
+and RIMMSQOL features explicitly require both RIMMSQOL and its shared steps companion. The RIMMSQOL
+reveal/hide/restart sequence is already modeled as three separate processes; it remains unverified
+until the named WSL pass completes and its captures are read. No game was launched for this review.
+
+`tested` is deliberately set aside for this audit. The following later gate was inspected independently:
+**`tested -> prepublished` is not currently ready**, without changing the retained global stage. Before any
+next Workshop update, this revision needs the runtime evidence reviewed, a nonempty release-note entry
+in `CHANGELOG.md`, a tag on the exact pushed commit and its GitHub release, then a final direct review of
+the Workshop description, ordered screenshots, adult-content answers and publication messages recorded
+in `PUBLICATION.md`. These are pending publication preparations, not observed runtime defects.
 
 ## 1.0.3 — checked and prepared, 2026-09-21
 

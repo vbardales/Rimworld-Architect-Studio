@@ -5,6 +5,14 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+### Tests
+
+- The Pickle review pass now stages shared FilmTicks and InterfaceScale companions. It records the
+  rendered group-member reorder as video and makes 150% review scenarios declare their required
+  coordinate repair explicitly.
+- RIMMSQOL shortcut scenarios now declare both required companion mods and document their automated
+  reveal/hide/restart evidence path; no separate manual interaction checklist remains.
+
 ## [1.0.3] — 2026-09-21
 
 ### Fixed

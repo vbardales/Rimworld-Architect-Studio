@@ -1,0 +1,11 @@
+# Pass "avec-revues": shared tools used only for evidence a person reviews.
+#
+#   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-revues.map `
+#       -Filter '03-group-member-drag.feature,04b-arrows-at-150-percent.feature,16-language-review.feature'
+#
+# InterfaceScale repairs the current Workshop Pickle's coordinate conversion at 150%, so a
+# screenshot review can exercise its real buttons. FilmTicks records the group-member reorder as
+# a video: the scenario still asserts the callback's result, while the reviewer sees the actual
+# rendered member rows change. Both companions are development-only and are never distributed.
+nelim.pickletools.interfacescale path:PickleTools/InterfaceScale/Mod
+nelim.pickletools.filmticks      path:PickleTools/FilmTicks/Mod

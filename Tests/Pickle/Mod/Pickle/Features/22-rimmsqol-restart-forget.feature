@@ -1,6 +1,6 @@
 # TESTING.md 15, step 3, chain launch 3 of 3: the hide survived the restart, then forget. After this launch
 # RIMMSQOL holds nothing about the shortcut and the profile is back to what a clean run starts from.
-@wip @rimmsqol
+@wip @rimmsqol @requires:MalteSchulze.RIMMSqol @requires:nelim.pickletools.rimmsqol
 Feature: a choice made in RIMMSQOL is read at the next launch (3 of 3, forget)
 
   Scenario: the hide survived the restart, and forgetting leaves nothing behind

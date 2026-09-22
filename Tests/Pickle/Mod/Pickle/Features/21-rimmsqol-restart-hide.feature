@@ -2,7 +2,7 @@
 # shortcut and kept the choice; this process starts from RIMMSQOL's file alone. The first step refuses to pass
 # when the writer ran in this same process, so a memory that merely still holds the value cannot pass for a file.
 # It also proves the revealed shortcut is what the player sees at startup: drawn, and opening our own page.
-@wip @rimmsqol
+@wip @rimmsqol @requires:MalteSchulze.RIMMSqol @requires:nelim.pickletools.rimmsqol
 Feature: a choice made in RIMMSQOL is read at the next launch (2 of 3, hide)
 
   Scenario: the reveal survived the restart, and the shortcut is hidden again

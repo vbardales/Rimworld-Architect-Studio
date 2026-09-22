@@ -258,7 +258,8 @@ Repeat the source/text inventory and resource validation after UI, Def or transl
 before entering `preTest`. Record evidence in `STATUS.md` under `Translation audit` and reset
 affected localization/language fields to `unchecked` until revalidated.
 
-Run the following in English and French, restarting RimWorld after changing language:
+Run the following through the Pickle passes in English and French (`-Language English` and
+`-Language French`), preserving the attached media for review:
 
 - Open mod settings, both Architect editors, naming dialogs, category appearance and parent
   menus. Exercise confirmations, empty lists, search filters, counters, split-group warnings,
@@ -271,12 +272,15 @@ Run the following in English and French, restarting RimWorld after changing lang
   integration product names must remain unchanged; existing building/category labels come
   from their owning mods' translations.
 
-These checks have not yet been run for the 2026-09-13 translation changes.
+The scenarios set up each route and attach the screenshots/video; the remaining human action is reading
+that media for layout and language correctness. They never switch the language inside a running game.
 
 ## Automated in game: Pickle
 
-Scenarios 1 to 14 are also written in Gherkin under `Tests/Pickle/`, played inside RimWorld by
-the Pickle test mod. Its README says how to run them and which parts stay manual. Not run yet.
+All scenarios are written in Gherkin under `Tests/Pickle/`, played inside RimWorld by the Pickle test
+mod. `Tests/Pickle/README.md` defines the named minimal, optional-integration, review and RIMMSQOL passes.
+There is no separate manual action checklist: `@review` scenarios reduce human validation to their attached
+screenshots or video. Execution and media review remain pending where `STATUS.md` says so.
 
 ## Local behavioral checks
 
@@ -309,7 +313,9 @@ Repeat in English and French at 100% and 150% UI scale.
    accents survive saving. Names have no imposed length cap: verify long labels do not make the
    editors unusable. Check the reset confirmation and shortcut tooltip in both languages.
 
-Status: not executed in game. RIMMSQOL source/mechanism inspection is not a passing UI test.
+Status: not executed on the current revision in game. The RIMMSQOL scenarios use the shared
+`PickleTools/RimmsqolSteps` companion to drive its real settings instance, capture its pages, and test
+reveal/hide persistence across three processes; their eventual media review is the only human step.
 
 ## Automated validation commands
 
@@ -325,5 +331,5 @@ On 2026-09-12: 710 static assertions passed; Release build passed with zero warn
 The script checks every shipped XML, metadata, translation keys and placeholders, C# literal
 translation references, the keybinding and its injected label, and distribution notices/content.
 It throws on the first failure and exits unsuccessfully. The static validator does not execute
-the C# runtime or prove the manual scenarios above. The separate local behavioral suite added on
+the C# runtime or prove the in-game scenarios above. The separate local behavioral suite added on
 2026-09-13 executes compiled mod logic and Scribe; neither suite proves the in-game scenarios.
