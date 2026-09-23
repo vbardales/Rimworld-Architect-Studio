@@ -10,7 +10,7 @@ Feature: creating a category, and its keyboard shortcut
     Then the Architect menu has a tab labelled "Pickle tab"
     And the category "Pickle tab" has a key binding category
 
-  Scenario: the keyboard configuration draws with the new category in it
+  Scenario: the keyboard configuration opens and draws without errors once a category exists
     When I create the category "Pickle tab"
     And I open the keyboard configuration and let it draw
     Then window "Dialog_KeyBindings" is open

@@ -9,8 +9,9 @@
 # Which world that was is attached to the report ("optional integrations in this pass"):
 #   - the minimal pass (no optional mod)   -> all three absent, and the mod still loads and works: §13 itself;
 #   - the pass with the optional mods      -> all three present, and every bridge resolved.
-# The composition of each pass is the launcher's business: it stages a named mod list and refuses to
-# report a run when a staged mod was dropped by the game.
+# The composition of each pass is the launcher's business: it stages a named mod list. The launcher
+# only PRINTS a staged mod that the game dropped, it does not fail the run on it, so this scenario cannot
+# tell a pass that lost a mod from a pass that never had it: read the attachment against the pass meant.
 Feature: the optional mods, present or absent
 
   # The same fixture the other map-bound features load, and for the same reason: the scenario names

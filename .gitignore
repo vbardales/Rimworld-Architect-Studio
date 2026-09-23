@@ -29,3 +29,12 @@ PROMPT_*.md
 # Local Node dependency/cache material used only to validate release tooling.
 node_modules/
 .npm-cache/
+
+# Textures compilees : un .dds est un produit de conversion, il pese lourd et ne se relit pas
+# dans un diff. Le PNG source est ce qui se versionne.
+*.dds
+*.DDS
+
+# Preuves de run : gardees SUR DISQUE, pas dans git. Captures et Player.log font grossir le
+# dossier sans limite. Ce qui se versionne est un court resume texte dans docs/runs/, cite par STATUS.md.
+Tests/Pickle/Evidence/
