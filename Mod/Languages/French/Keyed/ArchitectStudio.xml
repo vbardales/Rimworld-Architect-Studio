@@ -28,7 +28,7 @@
 
   <ArchitectStudio.Dropdowns.Members>Membres</ArchitectStudio.Dropdowns.Members>
   <ArchitectStudio.Dropdowns.MembersOf>Membres de {0}</ArchitectStudio.Dropdowns.MembersOf>
-  <ArchitectStudio.Dropdowns.NoSelection>Sélectionne un groupe à gauche, ou crée-en un.</ArchitectStudio.Dropdowns.NoSelection>
+  <ArchitectStudio.Dropdowns.NoSelection>Sélectionne un groupe à gauche ou crée-en un.</ArchitectStudio.Dropdowns.NoSelection>
   <ArchitectStudio.Dropdowns.Rename>Renommer</ArchitectStudio.Dropdowns.Rename>
   <ArchitectStudio.Dropdowns.Delete>Supprimer</ArchitectStudio.Dropdowns.Delete>
   <ArchitectStudio.Dropdowns.ConfirmDelete>Supprimer le groupe « {0} » ? Ses bâtiments reprendront leur groupe d'origine.</ArchitectStudio.Dropdowns.ConfirmDelete>
@@ -59,7 +59,7 @@
   <ArchitectStudio.ArchitectButtonCategoriesTip>Réordonner les catégories et leurs sous-catégories.</ArchitectStudio.ArchitectButtonCategoriesTip>
 
   <ArchitectStudio.Categories.Title>Catégories</ArchitectStudio.Categories.Title>
-  <ArchitectStudio.Categories.Intro>Les flèches déplacent une catégorie parmi ses sœurs. Clique son nom pour changer libellé, couleur et icône.</ArchitectStudio.Categories.Intro>
+  <ArchitectStudio.Categories.Intro>Les flèches changent l'ordre d'affichage des catégories. Clique sur son nom pour changer son libellé, sa couleur et son icône.</ArchitectStudio.Categories.Intro>
   <ArchitectStudio.Categories.ResetOrder>Réinitialiser l&apos;ordre</ArchitectStudio.Categories.ResetOrder>
   <ArchitectStudio.Categories.ConfirmResetOrder>Remettre toutes les catégories dans leur ordre d&apos;origine ?</ArchitectStudio.Categories.ConfirmResetOrder>
 
