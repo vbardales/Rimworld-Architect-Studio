@@ -6,6 +6,8 @@
 # InterfaceScale repairs the current Workshop Pickle's coordinate conversion at 150%, so a
 # screenshot review can exercise its real buttons. FilmTicks records the group-member reorder as
 # a video: the scenario still asserts the callback's result, while the reviewer sees the actual
-# rendered member rows change. Both companions are development-only and are never distributed.
+# rendered member rows change. ScreenshotMode hides HUD overlays on translated text in feature 16.
+# All three companions are development-only and are never distributed.
 nelim.pickletools.interfacescale path:PickleTools/InterfaceScale/Mod
 nelim.pickletools.filmticks      path:PickleTools/FilmTicks/Mod
+nelim.pickletools.screenshotmode path:PickleTools/ScreenshotMode/Mod

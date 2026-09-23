@@ -375,22 +375,5 @@ namespace ArchitectStudio.PickleSteps
             SettingsSandbox.ReloadFromDisk();
         }
 
-        /// <summary>
-        /// The generated category lands at the end of the binding list, out of the first screenful:
-        /// a capture taken without this shows the camera bindings and proves nothing.
-        /// </summary>
-        [When("I scroll the keyboard configuration to the bottom")]
-        public async Task ScrollKeyBindings(PickleContext ctx)
-        {
-            var dialog = Find.WindowStack.WindowOfType<Dialog_KeyBindings>();
-            ctx.Require(dialog != null, "the keyboard configuration is not open");
-
-            var field = AccessTools.Field(typeof(Dialog_KeyBindings), "scrollPosition");
-            ctx.Require(field != null, "Dialog_KeyBindings.scrollPosition no longer exists: update the step");
-            // Far past the end; the scroll view clamps it to the last screenful.
-            field.SetValue(dialog, new Vector2(0f, 100000f));
-
-            await ctx.WaitFrames(3);
-        }
     }
 }

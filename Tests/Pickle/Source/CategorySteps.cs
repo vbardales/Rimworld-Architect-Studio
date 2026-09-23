@@ -123,6 +123,12 @@ namespace ArchitectStudio.PickleSteps
             ctx.Assert(def.bindingCatDef != null, $"'{def.defName}'.bindingCatDef is null: the keyboard configuration will read null");
             ctx.Assert(DefDatabase<KeyBindingCategoryDef>.AllDefsListForReading.Contains(def.bindingCatDef),
                 $"'{def.bindingCatDef.defName}' is set on the category but missing from the def database");
+            var expectedLabel = "ArchitectStudio.KeyBindings.CategoryLabel".Translate(def.LabelCap).ToString();
+            var expectedDescription = "ArchitectStudio.KeyBindings.CategoryDescription".Translate(def.LabelCap).ToString();
+            ctx.Assert(def.bindingCatDef.label == expectedLabel,
+                $"'{def.bindingCatDef.defName}' label is '{def.bindingCatDef.label}', expected '{expectedLabel}'");
+            ctx.Assert(def.bindingCatDef.description == expectedDescription,
+                $"'{def.bindingCatDef.defName}' description is '{def.bindingCatDef.description}', expected '{expectedDescription}'");
         }
 
         [When("I open the keyboard configuration and let it draw")]

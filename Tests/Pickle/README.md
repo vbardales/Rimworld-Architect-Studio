@@ -122,12 +122,14 @@ assembly it comes from instead.
 
 The `@review` features automate the route and leave the reviewer only media to inspect. `03` films the
 rendered member rows while the first row moves to last; `04b` captures the arrows at 100% and 150%; `15`
-captures the settings page behind the hidden shortcut; `16` captures both editors at both scales and an
-accented category name in the generated keyboard category; `17` prepares Workshop shots; `19`
+captures the settings page behind the hidden shortcut; `16` captures both editors at both scales and
+asserts the translated binding fields for an accented category; `17` prepares Workshop shots; `19`
 captures RIMMSQOL's list/edit page and the settings route it reveals. A green capture or film proves that
 the route ran, not that its pixels are correct.
 
-Play `03`, `04b` and `16` with `wsl-deps.avec-revues.map`; it stages FilmTicks and InterfaceScale. `04b`
+Play `03`, `04b` and `16` with `wsl-deps.avec-revues.map`; it stages FilmTicks, InterfaceScale and
+ScreenshotMode. `16` hides the game's HUD for its editor captures so tutorial overlays cannot cover
+translated text. `04b`
 and `16` call InterfaceScale's prefixed maintained step directly; Architect Studio no longer ships a
 copy. The
 film is attached under `screenshots/film/` and is encoded as WebM when `ffmpeg` is available (otherwise

@@ -1,13 +1,14 @@
-# Pass "avec-pickletools": stages PickleTools/InterfaceScale beside the mod, so scenario 16's 150% click
-# lands on the Workshop Pickle as it ships, no -PickleSrc and no modified Pickle to keep in sync by hand.
+# Pass "avec-pickletools": stages InterfaceScale and ScreenshotMode beside the mod, so scenario 16's
+# 150% click lands on the Workshop Pickle and the review captures have no HUD over their text.
 #
 #   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-pickletools.map -Filter '16-language-review.feature'
 #
-# The repair is a Harmony postfix on TagStore.Record, applied to every click of the run regardless of which
-# shared scale step. `16-language-review.feature` calls that maintained PickleTools step directly, so the
+# The repair is a Harmony postfix on TagStore.Record, applied to every click of the run.
+# `16-language-review.feature` calls the maintained PickleTools scale step directly, so the
 # scale setup and the click-coordinate repair come from the same development-only companion.
 #
 # `path:` names a folder of the PickleTools repository (relative to the collection's root); the folder's own
 # About.xml packageId must match. See PickleTools/InterfaceScale/README.md - in particular the "delete this"
 # list for when RimWorks/Rimworld-Pickle pull request 23 merges.
 nelim.pickletools.interfacescale   path:PickleTools/InterfaceScale/Mod
+nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
