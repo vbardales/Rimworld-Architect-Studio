@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Architect Studio - restart pass switch</name>
+  <author>Nelim</author>
+  <packageId>nelim.architectstudio.restartpass</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Empty on purpose, development only, never published. Its presence in a mod list is a condition: the two features that play a real restart of Architect Studio (write, then read in a new process) are tagged @requires on it, so they run in the pass that stages it and are skipped everywhere else. See Tests/Pickle/README.md.</description>
+  <modDependencies>
+    <li>
+      <packageId>nelim.architectstudio</packageId>
+      <displayName>Architect Studio</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/3792784018</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>nelim.architectstudio</li>
+  </loadAfter>
+</ModMetaData>

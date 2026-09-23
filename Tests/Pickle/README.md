@@ -118,6 +118,42 @@ mod's window would otherwise fail the next step as "the dialog did not open" - a
 from the report, when the click never reached it. The step now names the covering window and the
 assembly it comes from instead.
 
+## The passes, and which scenarios only one of them runs
+
+Nothing in the suite is tagged `@wip`. A scenario is either unconditional, and plays in every pass, or it
+carries `@requires:<mod>` and plays only where that mod is staged; a pass that forgets a companion skips
+the scenario instead of claiming coverage. Each pass is a mod list in a `wsl-deps.<name>.map`, named by
+`-DepMap`, and each is played once per language (`-Language English`, `-Language French`) where the
+language matters.
+
+| Pass | Map | Stages beside the mod | Scenarios only it runs |
+| --- | --- | --- | --- |
+| minimal | none | Core, the expansions, Harmony, RimLogging, Pickle | every unconditional scenario; `13` with all three bridges absent |
+| optionals | `wsl-deps.avec-facultatifs.map` | the five optional integrations | `09` (the icon, needs Architect Icons); `13` with all three bridges present |
+| reviews | `wsl-deps.avec-revues.map` | InterfaceScale, FilmTicks, ScreenshotMode | `03`, `04b`, `16` |
+| studio | `wsl-deps.studio.map` | ScreenshotStudio, ScreenshotMode | `17` |
+| RIMMSQOL | `wsl-deps.avec-rimmsqol.map` | RIMMSQOL and the steps that drive it | `19` |
+| restart | `wsl-deps.redemarrage.map` | a switch mod, empty on purpose | `20` and `21`, two launches |
+
+### The restart pass
+
+A real restart is two game processes, and one process cannot play it: the def database is regenerated
+from XML at startup, which is where the mod rebuilds what it created. `20-restart-write.feature` configures
+everything the mod persists (a group created and filled, a category created, one moved, a colour set, a
+group that belongs to another mod deleted), keeps it on disk on purpose and records a snapshot of the whole
+Architect menu. `21-restart-read.feature` is a NEW process started from that file: it refuses to pass if the
+marker came from its own process, and compares the whole menu, not a selection of facts. The launcher runs
+the two under one hold of the lock:
+
+```
+scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.redemarrage.map `
+    -Filter '20-restart-write.feature' -Then '21-restart-read.feature'
+```
+
+The two features are tagged `@requires:nelim.architectstudio.restartpass`. That mod is an empty switch
+(`Switches/RestartPass`): its presence in the mod list is the condition, so no other pass runs half a chain.
+If the chain is cut, the player's file stays in a backup beside the settings; any later run puts it back.
+
 ## Evidence a person reads
 
 The `@review` features automate the route and leave the reviewer only media to inspect. `03` films the
@@ -173,7 +209,8 @@ way. Neither could the scenario: a missing type made it skip, not fail.
 ## No manual scenario checklist
 
 There is no remaining manual interaction procedure for Architect Studio. The suite owns setup, action,
-assertions, restarts and cleanup; a person only reviews the media attached by `@review` scenarios. The
+assertions, restarts and cleanup (a restart is a real second process, see "The restart pass"); a person only
+reviews the media attached by `@review` scenarios. The
 physical pointer path for drag starts is not exposed by the current Pickle API, so `03` records the actual
 member list before and after the editor's registered drop callback rather than asking somebody to drag a
 row. RIMMSQOL's own settings persistence is covered by its owner, not by Architect Studio.

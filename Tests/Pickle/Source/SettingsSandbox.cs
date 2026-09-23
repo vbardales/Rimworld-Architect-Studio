@@ -22,7 +22,7 @@ namespace ArchitectStudio.PickleSteps
         /// <summary>Group defs present before the scenario, so the ones it created can be dropped.</summary>
         private static HashSet<string> groupsBefore = new HashSet<string>();
 
-        private static string SettingsPath
+        internal static string SettingsPath
         {
             get
             {
@@ -38,11 +38,32 @@ namespace ArchitectStudio.PickleSteps
         [BeforeScenario]
         public void IsolateSettings(PickleContext ctx)
         {
+            // The second launch of a restart test has to look at what the first one kept, from a process
+            // that STARTED with it. Isolating now would wipe exactly that. The player's own file is still
+            // in the backup the first launch made, and is put back when the scenario ends.
+            if (RestartSteps.TakesOverKeptConfiguration())
+            {
+                groupsBefore = new HashSet<string>();
+                return;
+            }
+
+            IsolateNow();
+        }
+
+        /// <summary>
+        /// Puts the player's file back if a run left it in the backup, remembers what exists, backs the
+        /// file up and starts from an empty configuration. Also what a restart test's first launch asks
+        /// for explicitly, so that a marker left by a chain that was cut cannot leak into it.
+        /// </summary>
+        internal static void IsolateNow()
+        {
             if (File.Exists(BackupPath))
             {
                 // Left behind by a run that never finished: the backup is the player's real file.
                 RestoreFromBackup();
             }
+
+            RestartSteps.ClearMarker();
 
             groupsBefore = new HashSet<string>(
                 DefDatabase<DesignatorDropdownGroupDef>.AllDefsListForReading.Select(g => g.defName));
@@ -56,10 +77,19 @@ namespace ArchitectStudio.PickleSteps
         [AfterScenario]
         public void RestoreSettings(PickleContext ctx)
         {
+            // The first launch of a restart test leaves its configuration on disk ON PURPOSE, and the
+            // player's file stays in the backup until the second launch has looked and put it back.
+            if (RestartSteps.KeptByThisProcess())
+            {
+                return;
+            }
+
             if (File.Exists(BackupPath))
             {
                 RestoreFromBackup();
             }
+
+            RestartSteps.ClearMarker();
         }
 
         private static void RestoreFromBackup()

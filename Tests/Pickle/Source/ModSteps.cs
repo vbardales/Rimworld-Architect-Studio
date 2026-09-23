@@ -300,13 +300,13 @@ namespace ArchitectStudio.PickleSteps
 
         // ---------------------------------------------------------------- reset and restart
 
-        private sealed class MenuSnapshot
+        internal sealed class MenuSnapshot
         {
             public Dictionary<string, string> Buildables;
             public Dictionary<string, string> Categories;
         }
 
-        private static MenuSnapshot Snapshot()
+        internal static MenuSnapshot Snapshot()
         {
             return new MenuSnapshot
             {
@@ -330,7 +330,7 @@ namespace ArchitectStudio.PickleSteps
             ctx.Assert(diffs.Count == 0, "the Architect menu differs:\n" + string.Join("\n", diffs));
         }
 
-        private static IEnumerable<string> Diff(string kind, Dictionary<string, string> before, Dictionary<string, string> now)
+        internal static IEnumerable<string> Diff(string kind, Dictionary<string, string> before, Dictionary<string, string> now)
         {
             foreach (var key in before.Keys.Union(now.Keys))
             {

@@ -205,7 +205,8 @@ Delete a vanilla or modded group from the list. It disappears from the Architect
 editor, and the footer counts it under deleted groups.
 
 **Restart the game.** It must still be gone — that is the whole point, and it is the half a single
-session cannot check.
+session cannot check. The restart pass automates it (`20-restart-write`, then `21-restart-read`: two real
+game launches under one lock hold); do it by hand only to see it with your own eyes.
 
 *Restore deleted groups* brings it back with its members.
 
@@ -233,7 +234,8 @@ this option does not touch it.
 from scratch.
 
 With a group created, a category created, an order changed and a colour set: quit the game entirely,
-relaunch, and look again. Everything is back, and `Player.log` is silent.
+relaunch, and look again. Everything is back, and `Player.log` is silent. The restart pass plays this in
+two real launches (group, category, order, colour, deleted group); a manual run is optional.
 
 ## 13 — Without the optional mods
 

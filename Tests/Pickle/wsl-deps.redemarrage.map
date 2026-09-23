@@ -1,0 +1,12 @@
+# Pass "redemarrage": the switch mod that makes the two restart features run. A real restart is two game
+# launches under one hold of the lock (-Then): the first configures Architect Studio and keeps the result on
+# disk, the second is a NEW process started from that file, and looks at what the mod rebuilt at startup on a
+# def database generated from XML. That is what TESTING.md 8, 10, 12 and 15.3 ask for and one process cannot do.
+#
+#   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.redemarrage.map `
+#       -Filter '20-restart-write.feature' -Then '21-restart-read.feature'
+#
+# The features are tagged @requires on the switch, so any other pass skips them: a condition, not a hiding
+# place. The switch is an empty mod (About only): its presence in the mod list is the whole mechanism.
+# `path:` is relative to the collection's root; the folder's own About.xml packageId must match.
+nelim.architectstudio.restartpass   path:ArchitectStudio/Tests/Pickle/Switches/RestartPass
