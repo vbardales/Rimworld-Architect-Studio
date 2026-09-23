@@ -154,6 +154,26 @@ The two features are tagged `@requires:nelim.architectstudio.restartpass`. That 
 (`Switches/RestartPass`): its presence in the mod list is the condition, so no other pass runs half a chain.
 If the chain is cut, the player's file stays in a backup beside the settings; any later run puts it back.
 
+## Which proofs to keep
+
+The launcher's report folder is overwritten by the next run, and screenshots and `Player.log` grow without
+limit, so nothing under `Tests/Pickle/Evidence/` is in git (it is in `.gitignore`, like `*.dds`). Keep,
+per scenario, the **latest report for the revision now in the repository**, and an older one only when it
+is the sole proof of a check the latest run did not repeat. Delete the rest.
+
+- **Keep, always:** `summary.md`, `summary.json`, `junit.xml`, and `messages.ndjson` (the attachments: the
+  process ids of a restart chain, the optional integrations of a pass). Together they are about 10 KB.
+- **Keep only for `@review` scenarios:** the screenshots and films the reviewer read, and nothing else
+  in `screenshots/`. Copy them from `pickle-reports` by scenario name: that folder also holds other
+  mods' captures.
+- **Keep the `Player.log` of one run only** when it is the proof that the game log was silent or that a
+  staged mod loaded; drop it otherwise. Drop `report.html`, it is a rendering of the files above.
+- **Ownership:** a report is yours only if `Player.log` "Command line arguments" holds your
+  `-pickle-run=`. Without the log, `messages.ndjson` naming your scenario is the proof.
+- **In git:** one short text summary per kept run in `docs/runs/`, cited by `STATUS.md`. Never a folder.
+- Pass `-EvidenceDir Tests/Pickle/Evidence/<run>` to the launcher so the copy is made before the lock is
+  released; with `-Then` each launch lands in `seq1`, `seq2`, and so on.
+
 ## Evidence a person reads
 
 The `@review` features automate the route and leave the reviewer only media to inspect. `03` films the

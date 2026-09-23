@@ -2,8 +2,8 @@
 
 Two real game launches under one hold of the machine lock (`-Then`), same profile, staged with the switch
 mod `nelim.architectstudio.restartpass`. Full reports stay on disk in
-`Tests/Pickle/Evidence/restart-0923-2059/{seq1,seq2}` (not in git). seq2 has no `Player.log`: the next
-ticket moved it. Its ownership rests on `summary.md` and the process ids below.
+`Tests/Pickle/Evidence/restart-0923-2059/{seq1,seq2}` (not in git, minified to about 100 KB: summary,
+junit, messages, and seq1's `Player.log`). seq2 has no `Player.log`: the next ticket moved it. Its ownership rests on `summary.md` and the process ids below.
 
 | Launch | Feature | Outcome | Duration (ms) |
 |---|---|---|---|
