@@ -5,6 +5,23 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+## [1.0.4] — 2026-09-23
+
+First release published by the automated pipeline (semantic-release, then Steam), not from the game.
+
+### Fixed
+
+- French hints read correctly in the two editors: a stray comma is gone from the group editor's
+  empty-selection line, and the category editor's introduction is rewritten.
+
+### Changed
+
+- The mod's About page credits Codex alongside Claude Code, names Pickle, RimLogging, PickleTools and
+  RIMMSQOL as development-only testing tools (not dependencies), and says "Embedded English and French
+  translations".
+- The distributed Workshop description and its publication source now link every cited Workshop mod
+  directly to its own Workshop page. The description now comes from `Mod/README.template.md`.
+
 ### Tests
 
 - The Pickle review pass now stages shared FilmTicks and InterfaceScale companions. It records the
@@ -12,11 +29,9 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
   coordinate repair explicitly.
 - The RIMMSQOL shortcut scenario declares both required companion mods and records reveal/hide
   integration with Architect Studio. The redundant tests of RIMMSQOL's own restart persistence were retired.
-
-### Changed
-
-- The distributed Workshop description and its publication source now link every cited Workshop mod
-  directly to its own Workshop page.
+- No scenario is tagged `@wip` any more; the optional-mods scenario runs in every pass.
+- A real restart is played: two game launches under one lock hold, the second a new process that finds the
+  configuration of the first.
 
 ## [1.0.3] — 2026-09-21
 

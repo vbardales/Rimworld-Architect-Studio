@@ -25,7 +25,7 @@ remaining:
   - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
   - unverified: the other four optional integrations (Better Architect Menu, Categories Dropdowns, Float Sub-Menus, Searchable Menus) have no scenario naming them; the with-optionals pass shows they break nothing, not that they work
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-23, corrected French review replayed 3/3 and its captures read
+updated:      2026-09-23, 1.0.4 published through the automated pipeline (tag v1.0.4, GitHub release, Steam change note read on the Workshop); stage stays done: tested needs the full pass matrix replayed on a frozen revision
 ---
 
 # Architect Studio — status
