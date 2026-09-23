@@ -25,10 +25,31 @@ remaining:
   - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
   - unverified: the other four optional integrations (Better Architect Menu, Categories Dropdowns, Float Sub-Menus, Searchable Menus) have no scenario naming them; the with-optionals pass shows they break nothing, not that they work
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-22, RIMMSQOL integration captures reviewed; redundant dependency restart tests retired
+updated:      2026-09-23, corrected French review replayed 3/3 and its captures read
 ---
 
 # Architect Studio — status
+
+## French review corrections — 2026-09-22
+
+During owner review of the French `16-language-review.feature` media, two wording changes were
+made: the no-selection hint no longer inserts a comma before “ou”, and the category editor now
+explains that arrows change display order and says “Clique sur son nom”. The 150% group-editor
+capture had its intro covered by the game's learning-helper HUD; feature 16 now uses shared
+ScreenshotMode for its four editor captures. The former keyboard-configuration screenshot did
+not show the newly created accented category and was removed; the scenario now asserts the
+generated binding category's translated label and description directly. Static validation passes
+739 checks and the Pickle steps assembly builds without warnings.
+
+**Replayed on 2026-09-23**, `16-language-review.feature` in French, headless, on the `avec-revues`
+mod list (14 mods, all loaded): **3 of 3 passed**, `exitReason: passed`, and the report is provably
+that run's (its `Player.log` carries `-pickle-run=16-language-review.feature`). The four editor
+captures were opened and read: the learning-helper HUD is gone at 150% and the group editor's intro
+line is fully visible; the no-selection hint reads "à gauche ou crée-en un" and the category
+editor's intro reads "Les flèches changent l'ordre d'affichage des catégories"; every category and
+group label is French, and nothing is clipped. Not covered by that pass: English, and the pass with
+the optional mods, so this is the corrected French review, not a new `tested` sign-off. The French
+wording is in `Mod/` and ships, so it postdates the `v1.0.3` tag.
 
 ## Audit — 2026-09-22
 
