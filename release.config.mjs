@@ -1,16 +1,13 @@
-const steamPublishEnabled = process.env.STEAM_PUBLISH === 'true';
-
+// The Steam plugin is wrapped by release-steam-plugin.mjs. Without STEAM_PUBLISH=true it only
+// checks the description sources, so `semantic-release --dry-run` stays credential-free and
+// incapable of contacting Steam. In a real run it checks them before any tag or GitHub release
+// exists, and converts the release notes to Steam BBCode.
 const plugins = [
   '@semantic-release/commit-analyzer',
   '@semantic-release/release-notes-generator',
   '@semantic-release/github',
-];
-
-// The Steam plugin is deliberately absent unless the protected production job opts in.
-// This keeps `semantic-release --dry-run` credential-free and incapable of contacting Steam.
-if (steamPublishEnabled) {
-  plugins.push([
-    'semantic-release-steam',
+  [
+    './release-steam-plugin.mjs',
     {
       appId: '294100',
       branchTargets: { main: 'stable' },
@@ -20,8 +17,8 @@ if (steamPublishEnabled) {
         workshopIds: { stable: '3792784018' },
       }],
     },
-  ]);
-}
+  ],
+];
 
 export default {
   branches: ['main'],
