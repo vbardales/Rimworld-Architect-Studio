@@ -5,7 +5,11 @@
 const plugins = [
   '@semantic-release/commit-analyzer',
   '@semantic-release/release-notes-generator',
-  '@semantic-release/github',
+  [
+    '@semantic-release/github',
+    // The GitHub release carries the mod's name, like the ones made by hand before the pipeline.
+    { releaseNameTemplate: 'Architect Studio <%= nextRelease.version %>' },
+  ],
   [
     './release-steam-plugin.mjs',
     {
