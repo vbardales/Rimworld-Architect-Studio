@@ -133,7 +133,7 @@ translated text. `04b`
 and `16` call InterfaceScale's prefixed maintained step directly; Architect Studio no longer ships a
 copy. The
 film is attached under `screenshots/film/` and is encoded as WebM when `ffmpeg` is available (otherwise
-the reviewable frames remain). Play `19` with `wsl-deps.avec-rimmsqol.map` and `-IncludeWip`.
+the reviewable frames remain). Play `19` with `wsl-deps.avec-rimmsqol.map`.
 Their requirements are explicit tags, so an incorrectly staged pass skips instead of claiming coverage.
 
 `17` differs from `16` in what it is for. `16` shows whatever the mod list and the language happen to

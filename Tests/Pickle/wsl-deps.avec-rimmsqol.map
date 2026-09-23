@@ -3,7 +3,7 @@
 # can RIMMSQOL's own interface list our shortcut, reveal it, does the revealed button open OUR settings page,
 # and does hiding it again work? That is the optional shortcut integration in TESTING.md 15, step 2.
 #
-#   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-rimmsqol.map -IncludeWip `
+#   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-rimmsqol.map `
 #       -Filter '19-rimmsqol-shortcut.feature'
 #
 # It is NOT a loadAfter of the mod and not one of the five optional integrations: it is a mod a player may have

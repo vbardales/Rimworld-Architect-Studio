@@ -59,6 +59,40 @@ namespace ArchitectStudio.PickleSteps
                 "Architect Studio logged at startup:\n" + string.Join("\n", lines.Select(m => $"{m.type}: {m.text}")));
         }
 
+        /// <summary>
+        /// Each optional bridge reports itself available exactly when its mod is loaded: never when it is
+        /// absent (a false positive would call into a type that is not there), never when it is present
+        /// (a false negative would silently drop the integration). The scenario that uses it runs in every
+        /// pass, so the same assertion covers "none of them is loaded" in the minimal pass and "all of
+        /// them are" in the pass with the optional mods, with no way to be skipped.
+        ///
+        /// It attaches which world it ran in, so a report reader sees whether an absent bridge was
+        /// checked against an absent mod or a present one.
+        /// </summary>
+        [Then("each optional integration is reported exactly when its mod is loaded")]
+        public void IntegrationsMatchLoadedMods(PickleContext ctx)
+        {
+            var bridges = new[]
+            {
+                new { Name = "Better Architect Menu", PackageId = "ferny.betterarchitect", Reported = BetterArchitectCompat.Active },
+                new { Name = "Architect Icons", PackageId = "com.bymarcin.architecticons", Reported = ArchitectIconsCompat.Available },
+                new { Name = "Float Sub-Menus", PackageId = "kathanon.floatsubmenu", Reported = FloatSubMenuCompat.Available },
+            };
+
+            var world = new List<string>();
+            foreach (var bridge in bridges)
+            {
+                var loaded = ModLister.AllInstalledMods.Any(m =>
+                    m.Active && string.Equals(m.PackageIdNonUnique, bridge.PackageId, StringComparison.OrdinalIgnoreCase));
+
+                world.Add($"{bridge.Name}: mod {(loaded ? "loaded" : "absent")}, bridge {(bridge.Reported ? "reported" : "not reported")}");
+                ctx.Assert(bridge.Reported == loaded,
+                    $"{bridge.Name}: the mod is {(loaded ? "loaded" : "absent")} but the bridge {(bridge.Reported ? "reports itself available" : "does not")}");
+            }
+
+            ctx.Attach("optional integrations in this pass", string.Join("; ", world));
+        }
+
         // ---------------------------------------------------------------- the Architect window
 
         [When("I turn {word} the button in the Architect menu")]

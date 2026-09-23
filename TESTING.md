@@ -169,9 +169,10 @@ present. Without it the editor says outright that the category will be created a
 than ask a question whose answer it would ignore.
 
 - The new tab appears in the Architect menu.
-- **Open Options → Keyboard configuration and scroll to the Architect section.** The new category
-  must be listed there with the others. A missing entry, or an error in the log at that moment, is
-  this scenario failing.
+- **Open Options → Keyboard configuration.** The dialog must draw with the new category defined, and
+  the log must stay silent. The category is **not listed** there: the dialog draws a category only if
+  it has bindings, and this one has none, so no screenshot of it can show the entry. The scenario
+  asserts the generated binding category on the def instead, and its translated label and description.
 - Move a building into it with Better Architect Menu's own Edit Mode, the pencil left of the sort
   buttons. Architect Studio deliberately does not duplicate that.
 
@@ -238,12 +239,17 @@ relaunch, and look again. Everything is back, and `Player.log` is silent.
 
 **Proves** that the reflection bridges are soft, as the Workshop page claims.
 
-Turn off all optional mods, including Better Architect Menu, Architect Icons, Float Sub-Menus,
-Searchable Menus and dropdown packs, keeping only Core, Harmony and Architect Studio.
-The mod must load, both editors must open, groups must still work, and the log must stay
-silent. Subcategories, icon selection and nested pick menus are simply absent, and the interface says
-so where it matters.
+Played by `13-optional-mods.feature` in **every** pass. It asserts what holds in all of them: each
+bridge (Better Architect Menu, Architect Icons, Float Sub-Menus) reports itself exactly when its mod
+is loaded, the editors open, a group can be created and filled, and the log stays silent. Which world
+it ran in is attached to the report.
 
+In the **minimal pass** (Core, Harmony and Architect Studio, nothing else) that is the scenario as
+first written: the mod loads with none of the optional mods, both editors open, groups work, the log is
+silent, and subcategories, icon selection and nested pick menus are simply absent. In the pass with the
+optional mods the same scenario proves every bridge resolved. It replaces a version tagged `@wip` that
+asserted three absences: Pickle can skip a scenario on the presence of a mod but not on its absence, so
+that version could only be hidden, not played.
 ## 14 — Reset everything
 
 **Proves** that the reset unwinds in the right order: created categories go through their normal
