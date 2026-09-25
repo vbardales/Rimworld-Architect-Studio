@@ -34,7 +34,7 @@ updated:      2026-09-23, 1.0.4 published through the automated pipeline (tag v1
 
 During owner review of the French `16-language-review.feature` media, two wording changes were
 made: the no-selection hint no longer inserts a comma before “ou”, and the category editor now
-explains that arrows change display order and says “Clique sur son nom”. The 150% group-editor
+explains that arrows change display order and now words it as an explanation, not an order: “Cliquer sur une catégorie permet de modifier son libellé, sa couleur et son icône.” (owner, 2026-09-25). The 150% group-editor
 capture had its intro covered by the game's learning-helper HUD; feature 16 now uses shared
 ScreenshotMode for its four editor captures. The former keyboard-configuration screenshot did
 not show the newly created accented category and was removed; the scenario now asserts the

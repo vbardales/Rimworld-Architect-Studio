@@ -59,7 +59,7 @@
   <ArchitectStudio.ArchitectButtonCategoriesTip>Réordonner les catégories et leurs sous-catégories.</ArchitectStudio.ArchitectButtonCategoriesTip>
 
   <ArchitectStudio.Categories.Title>Catégories</ArchitectStudio.Categories.Title>
-  <ArchitectStudio.Categories.Intro>Les flèches changent l'ordre d'affichage des catégories. Clique sur son nom pour changer son libellé, sa couleur et son icône.</ArchitectStudio.Categories.Intro>
+  <ArchitectStudio.Categories.Intro>Les flèches changent l'ordre d'affichage des catégories. Cliquer sur une catégorie permet de modifier son libellé, sa couleur et son icône.</ArchitectStudio.Categories.Intro>
   <ArchitectStudio.Categories.ResetOrder>Réinitialiser l&apos;ordre</ArchitectStudio.Categories.ResetOrder>
   <ArchitectStudio.Categories.ConfirmResetOrder>Remettre toutes les catégories dans leur ordre d&apos;origine ?</ArchitectStudio.Categories.ConfirmResetOrder>
 
