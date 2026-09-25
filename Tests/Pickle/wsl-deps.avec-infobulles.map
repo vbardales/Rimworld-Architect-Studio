@@ -1,0 +1,7 @@
+# Pass "avec-infobulles": the review tools plus HoverSteps, for the captures of tooltips and counted phrases (feature 18).
+#
+#   scripts/Run-PickleWsl.ps1 -Mod ArchitectStudio -DepMap wsl-deps.avec-infobulles.map -Filter 18-counted-phrases.feature
+#
+# Development-only companions, never distributed.
+nelim.pickletools.screenshotmode path:PickleTools/ScreenshotMode/Mod
+nelim.pickletools.hoversteps     path:PickleTools/HoverSteps/Mod

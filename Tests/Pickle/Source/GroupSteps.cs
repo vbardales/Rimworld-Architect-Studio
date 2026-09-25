@@ -235,6 +235,47 @@ namespace ArchitectStudio.PickleSteps
                 $" in {picked[0].designationCategory.defName}");
         }
 
+        /// <summary>
+        /// Leaves the confirmation of the editor's Delete button on screen without confirming it:
+        /// the text it shows is what a review capture needs, and confirming would remove the group.
+        /// </summary>
+        [When("I ask to delete the group {string} and leave the question open")]
+        public void AskToDelete(PickleContext ctx, string groupLabel)
+        {
+            var group = Driver.Group(ctx, groupLabel);
+            var custom = ArchitectStudioMod.Settings.customGroups.Any(e => e.id == group.defName);
+            var method = typeof(Dialog_DropdownGroups).GetMethod("DeleteConfirmationText",
+                System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
+            ctx.Require(method != null,
+                "Dialog_DropdownGroups.DeleteConfirmationText no longer exists: the scenario drives the editor through it, update the steps");
+            var text = (string)method.Invoke(null, new object[] { group, custom, Driver.MembersOf(group).Count });
+            Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(text, () => { }, destructive: true));
+        }
+
+        [When("I remove every member but one from the group {string}")]
+        public void KeepOne(PickleContext ctx, string groupLabel)
+        {
+            var dialog = Driver.GroupEditor(ctx);
+            foreach (var member in Driver.MembersOf(Driver.Group(ctx, groupLabel)).Skip(1).ToList())
+            {
+                Driver.Call(ctx, dialog, "Assign", member, null);
+            }
+        }
+
+        /// <summary>The add column starts on the selected group's category; with none, it lists every building.</summary>
+        [When("I list the buildings of every category in the add column")]
+        public void AllCategories(PickleContext ctx)
+        {
+            var dialog = Driver.GroupEditor(ctx);
+            var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+            var filter = typeof(Dialog_DropdownGroups).GetField("addCategoryFilter", flags);
+            var set = typeof(Dialog_DropdownGroups).GetField("addCategoryFilterSet", flags);
+            ctx.Require(filter != null && set != null,
+                "Dialog_DropdownGroups.addCategoryFilter no longer exists: update the steps");
+            filter.SetValue(dialog, null);
+            set.SetValue(dialog, true);
+        }
+
         [Then("no building belongs to the group {string}")]
         public void Empty(PickleContext ctx, string groupLabel)
         {
