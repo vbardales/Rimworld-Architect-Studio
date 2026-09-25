@@ -23,7 +23,7 @@
 
   <ArchitectStudio.Dropdowns.Groups>Groupes</ArchitectStudio.Dropdowns.Groups>
   <ArchitectStudio.Dropdowns.NewGroup>Nouveau groupe…</ArchitectStudio.Dropdowns.NewGroup>
-  <ArchitectStudio.Dropdowns.Custom>Groupe créé par toi</ArchitectStudio.Dropdowns.Custom>
+  <ArchitectStudio.Dropdowns.Custom>Groupe personnalisé</ArchitectStudio.Dropdowns.Custom>
   <ArchitectStudio.Dropdowns.GroupNameTitle>Nom du groupe</ArchitectStudio.Dropdowns.GroupNameTitle>
 
   <ArchitectStudio.Dropdowns.Members>Membres</ArchitectStudio.Dropdowns.Members>
@@ -36,7 +36,7 @@
   <ArchitectStudio.Dropdowns.Add>Ajouter un bâtiment</ArchitectStudio.Dropdowns.Add>
   <ArchitectStudio.Dropdowns.Category>Catégorie :</ArchitectStudio.Dropdowns.Category>
   <ArchitectStudio.Dropdowns.AllCategories>Toutes les catégories</ArchitectStudio.Dropdowns.AllCategories>
-  <ArchitectStudio.Dropdowns.MoreResults>… et {0} autres. Affine la recherche.</ArchitectStudio.Dropdowns.MoreResults>
+  <ArchitectStudio.Dropdowns.MoreResults>… et {0} autres. La recherche permet d'affiner.</ArchitectStudio.Dropdowns.MoreResults>
 
   <ArchitectStudio.Dropdowns.OverrideCount>{0} bâtiment(s) déplacé(s) par rapport aux réglages d'origine.</ArchitectStudio.Dropdowns.OverrideCount>
   <ArchitectStudio.Dropdowns.ResetAll>Tout réinitialiser</ArchitectStudio.Dropdowns.ResetAll>
@@ -51,7 +51,7 @@
 
   <ArchitectStudio.Dropdowns.GroupCategory>Catégorie :</ArchitectStudio.Dropdowns.GroupCategory>
   <ArchitectStudio.Dropdowns.GroupCategoryFree>— aucune (les membres restent où ils sont)</ArchitectStudio.Dropdowns.GroupCategoryFree>
-  <ArchitectStudio.Dropdowns.GroupCategoryTip>Impose une catégorie à tout le groupe : ses membres y sont déplacés, et ceux que tu ajouteras ensuite suivront. Sans cela, le groupe apparaît là où sont ses membres, et se scinde en plusieurs boutons s&apos;ils sont dispersés.</ArchitectStudio.Dropdowns.GroupCategoryTip>
+  <ArchitectStudio.Dropdowns.GroupCategoryTip>Impose une catégorie à tout le groupe : ses membres y sont déplacés, et ceux qui seront ajoutés ensuite suivront. Sans cela, le groupe apparaît là où sont ses membres, et se scinde en plusieurs boutons s&apos;ils sont dispersés.</ArchitectStudio.Dropdowns.GroupCategoryTip>
   <ArchitectStudio.Settings.KeyHintUnbound>Aucun raccourci clavier par défaut — assignable dans Options → Configuration du clavier.</ArchitectStudio.Settings.KeyHintUnbound>
 
   <ArchitectStudio.Settings.OpenCategories>Catégories et sous-catégories…</ArchitectStudio.Settings.OpenCategories>

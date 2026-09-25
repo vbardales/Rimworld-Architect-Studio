@@ -5,6 +5,11 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+### Fixed
+
+- French interface text, second pass on the same rule: the "more results" line, the label of a group made by the
+  player and the forced-category tooltip no longer address the player with an order or with "toi".
+
 ## [1.0.5] — 2026-09-25
 
 Second release published by the pipeline, in documented mode: the version, the GitHub notes and the Steam change note
