@@ -6,7 +6,7 @@ document that moves is re-read for what changed and one that never helped is not
 repository named) plus the first eight characters of its blob hash; the blob hash is the one to compare,
 because the monorepo commit hash is shared by files that did not change.
 
-Read on 2026-09-25, by the session `Architect Studio / done` (`local_da0ac2a6-…`), after a compaction.
+Read on 2026-09-25 (see the update at the end: the protocol documents have since moved to the protocols repository), by the session `Architect Studio / done` (`local_da0ac2a6-…`), after a compaction.
 "Full" means every line was read; "partial" names what was read.
 
 ## Read, useful
@@ -53,3 +53,20 @@ list and was not read; `settings_audit` is `complete` from an earlier audit.
 - `translation_fr` is `partial` again: French strings changed after it was `complete` and two tooltips are unseen.
 - TESTING.md 15.4 and 15.5 are neither automated nor justified as not applicable.
 - Requests carry no revision: the tree changed while requests were queued (noted in `STATUS.md`).
+
+## Update, 2026-09-25 late: the protocol documents moved and three changed
+
+Commit `90d51374` of the monorepo (09-25 15:25) moved `AGENTS.md`, `AUDIT.md`, `PUBLISHING.md`, `TRANSLATIONS.md`,
+`STYLE_RIMWORLD.md`, `MOD_SETTINGS.md`, `EXTERNAL_TOOLS.md` and `scripts/SEARCHING.md` out of the monorepo:
+the owner is now the protocols repository, a bare repository at `Documents/rimworld-protocols.git` (HEAD `448991f`
+09-25 21:25). The files still present in `rimworld/` are untracked mirror copies, identical to its HEAD (checked
+with `diff` and blob hashes on 2026-09-25): read either, but cite the protocols repository.
+
+Read again as a diff against the versions above (not in full), with what each changed here:
+
+| File | Read before | Now (blob) | What changed for this mod |
+| --- | --- | --- | --- |
+| `AUDIT.md` | `4db3571e` | `5f65a0b7` | Step 10 and the description bullet: the CI can now resend the description and creates the tag after the upload for every update |
+| `PUBLISHING.md` | `b9d6db1c` (683 lines) | `3a5c7d43` (703) | A Steam change note **starts with the version number** on its first line (Architect Studio 1.0.5 is the example named); documented mode; `dispatch-publish.sh` also refuses without a required reviewer and both secrets |
+| `TRANSLATIONS.md` | `8970fe6c` (100) | `fac81881` (112) | **Counts and plurals are families of keys** (`.One`, `.Many`, `.Zero`), never a suffix or `Pluralize`: this mod's `OverrideCount`, `HiddenCount`, `ConfirmDissolve` and `MoreResults` do not comply (defect in `STATUS.md`) |
+| `AGENTS.md`, `STYLE_RIMWORLD.md` | `bb4c08c1`, `83c8a141` | same | unchanged |

@@ -1,7 +1,7 @@
 ---
 settings_audit: complete
-localization: complete
-translation_en: complete
+localization: partial
+translation_en: partial
 translation_fr: partial
 mod:          Architect Studio
 packageId:    nelim.architectstudio
@@ -16,6 +16,7 @@ showcase:     complete
 tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
+  - defect: counted phrases are built with a suffix, which TRANSLATIONS.md forbids since 2026-09-25 (counts and plurals are families of keys `.One`/`.Many`/`.Zero`, the count first): `OverrideCount` ("{0} building(s) moved…", "{0} bâtiment(s) déplacé(s)…"), `HiddenCount` ("{0} group(s) deleted", "{0} groupe(s) supprimé(s)"), `ConfirmDissolve` ("Its {1} buildings…", wrong for 1) and `MoreResults` ("…and {0} more"). `Source/UI/Dialog_DropdownGroups.cs` lines 370, 373, 653 and 867 must pick the key from the count, both languages define every form, and the key check must be replayed; hence `localization`, `translation_en` and `translation_fr` are `partial` again. Found 2026-09-25 while re-reading the protocols; not fixed yet
   - unverified: the French strings rewritten on 2026-09-25 that no capture shows yet: the two tooltips (the "Button in the Architect menu" setting and the Groups… button) and the forced-category tooltip, hence `translation_fr: partial`; the label "Groupe personnalisé" and the line "La recherche permet d'affiner." (second pass, owner approved) still have to be read on a French capture; the editor intros and the empty-selection hint were read in French captures of `cf410b0` and `68fe26f`
   - verified: TESTING.md 15.4 and 15.5 are automated on `68fe26f` (2026-09-25): the two reset scenarios of `14-reset.feature` passed (3/3 with the existing one), and the very long accented name scenario passed in English and French with its captures read. The owner has not yet given a verdict on the group editor capture (long name cut by an ellipsis in the list and the members header, full name readable nowhere); the disposable new game of section 15 is not applicable, with its reason in TESTING.md
   - unverified: owner reading of the review media: the member drag film validated; group editor at 150% no defect, gallery use needs a crop; French category editor wording validated; the long-name group editor capture awaits a verdict. The other media are read by me, not by the owner
