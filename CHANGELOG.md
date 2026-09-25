@@ -5,6 +5,12 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+### Changed
+
+- The release workflow is the current `Rimworld-Release-Admin` template (PR 4): `ref`, `version` and `mode` inputs, a
+  full-SHA guard, a documented release (version from the workflow input, notes from `CHANGELOG.md` and `PUBLICATION.md`).
+  The Steam description is read from `PUBLICATION.md` again and `Mod/README.template.md` is gone.
+
 ### Tests
 
 - TESTING.md 15.4 and 15.5 are no longer manual checks: each preference alone is put back by the real reset
@@ -31,7 +37,7 @@ First release published by the automated pipeline (semantic-release, then Steam)
   RIMMSQOL as development-only testing tools (not dependencies), and says "Embedded English and French
   translations".
 - The distributed Workshop description and its publication source now link every cited Workshop mod
-  directly to its own Workshop page. The description now comes from `Mod/README.template.md`.
+  directly to its own Workshop page. Until 1.0.4 the description came from `Mod/README.template.md`; from the next release it comes from `PUBLICATION.md` (see Unreleased).
 
 ### Tests
 

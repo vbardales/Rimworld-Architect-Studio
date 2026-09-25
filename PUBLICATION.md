@@ -133,8 +133,9 @@ with blueprints and storage crates, a cartoon mascot in a hard hat, and three in
 
 - `Mod/About/PublishedFileId.txt` is unchanged for an update. `git status` must stay clean.
 - Steam creates a **new** item private and RimWorld never calls `SetItemVisibility`; this item is already public.
-- The Steam change note is the release notes `semantic-release` generates from the commit messages, converted to BBCode by the release. A commit type that triggers no release (`docs`, `test`, `ci`, `chore`) triggers no upload.
-- The tag and the GitHub release are created by the same run, before the Steam upload: `verifyConditions` refuses to start when the description source is missing, precisely so that a tag never exists without its upload. `CHANGELOG.md` is written by hand and by nobody else: no plugin feeds it.
+- The release is **documented** (`documented: true` in `release.config.mjs`): the version is the `version` input of the workflow (the next patch, minor or major of the last tag), so no `feat:` or `fix:` commit is needed. The GitHub release notes are the `## [<version>]` section of `CHANGELOG.md` (dated, written by hand); the Steam change note is the fenced block under `### <version>` of this file, BBCode, sent as written. Both are checked and printed before any tag exists, and the dry-run stops on purpose when either is missing.
+- semantic-release creates the tag, then the GitHub release, then uploads to Steam: the tag comes **before** the upload, which `AUDIT.md` step 10 would rather have after. The workflow makes up for it: if a publish run fails after the tag exists, its last step deletes the tag and the release that run created (never one that existed before) and the summary says the Steam item was not touched. If the upload timed out or its result is unknown, check the item on Steam before any new attempt.
+- `publish` takes the full 40-character SHA of a commit whose dry-run passed (`Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio release.yml <SHA> <version>`); only the owner approves `steam-production`. Rollback target: `v1.0.3` (`b316bfa`), the last version tested in full; each good version gets its tag, which is the next target.
 
 ## Thanks to post on the mods' pages
 

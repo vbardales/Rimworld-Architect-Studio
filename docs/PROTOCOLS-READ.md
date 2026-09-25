@@ -23,7 +23,7 @@ Read on 2026-09-25, by the session `Architect Studio / done` (`local_da0ac2a6-â€
 | `PickleTools/README.md` | pickletools `2b7b6d0` 09-25 17:22, blob `5b617e40` | full | Tool table and `path:` pass maps |
 | `PickleTools/Headless/README.md` | pickletools `b2712fc` 09-25 15:03, blob `9e4bf0ba` | partial: lines 159-258 (settings seed, several passes, waiting, sleep and archive), 283-387 (`-Then`, hangs, reports), 438-487 (traps), all headings | Restart chain rules; the game logs in UTC; nothing is edited while a run goes |
 | `./STATUS.md` | this repo `b7f8833`+, blob changes with every entry | front matter, headings, first sections; edited | It is the file kept up to date |
-| `./PUBLICATION.md` | this repo `42d09cc` 09-23 20:50, blob `9f1c4022` | full | Gallery order and file names; the CI reads `Mod/README.template.md` |
+| `./PUBLICATION.md` | this repo `42d09cc` 09-23 20:50, blob `9f1c4022` (read before PR 4; PR 4 rewrote it: re-read "The description is sent by the release" and "After an upload") | full | Gallery order and file names; since PR 4 the release reads the description and change note from this file |
 | `./TESTING.md` | this repo `2c076f8` 09-23 21:02, blob `d7b01926` | lines 1-36, 231-330, headings | Sections 12 to 15: restart, reset, MainButtons, the two open manual checks (15.4, 15.5) |
 | `./CHANGELOG.md` | this repo `84b7476` 09-23 21:54, blob `8b9ebd95` | full (written by this session) | |
 | `./docs/runs/` | this repo | full (written by this session) | One line per run |
@@ -48,7 +48,7 @@ list and was not read; `settings_audit` is `complete` from an earlier audit.
 
 ## Gaps this reading found (also in `STATUS.md`, `remaining`)
 
-- The release workflow predates the current template (no `ref`/`version` inputs or SHA guard; tag and release before the upload).
+- The release workflow predated the current template: fixed by PR 4 (`b3776cc`); its first dry-run is pending.
 - The gallery images were numbered `01-settings`, `02-categories`, `03-groups` while the upload order is groups first: renamed to `01-groups`, `02-categories`, `03-settings`.
 - `translation_fr` is `partial` again: French strings changed after it was `complete` and two tooltips are unseen.
 - TESTING.md 15.4 and 15.5 are neither automated nor justified as not applicable.
