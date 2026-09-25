@@ -35,6 +35,8 @@ updated:      2026-09-25, 1.0.5 published through the pipeline (tag v1.0.5 on cc
 
 ## Pass matrix after 1.0.4, and French wording — 2026-09-25
 
+**1.0.5 published, 2026-09-25, fail fast.** Documented release, exact commit `ccad16850a8c3f6213ba785947edd9c4abcfb197` (`ccad168`): dry-run run 36167737673 (green, version 1.0.5 computed, description 5296 bytes sha256 `418d2463…de58`, change note read from PUBLICATION.md, nothing sent to Steam), publish run 36167923552 (`steam-production` approved by the owner, all steps green, the tag rollback step skipped). Tag `v1.0.5` and release "Architect Studio 1.0.5" at 17:41 UTC. On the Workshop page: the change note "Fixed" is at the top of the change notes and the description keeps its structure (7 headings, 5 lists, 23 links, no raw BBCode). The payload change since 1.0.4 is the French text only. Rollback target: `v1.0.4` (`03590ad`). The Pickle requests still queued on `68fe26f` (reset, long names in English and French, the full French reviews pass) return after this publication and their verdict goes here.
+
 **Fail fast, in this order.** `v1.0.4` (`03590ad`) was published on 2026-09-23 before the matrix ran:
 dry-run run 35910509801, publish run 35910620906 (both on `03590ad`, environment approved by the owner),
 tag and GitHub release at 19:51 UTC, Workshop item updated the same minute, change note read on the
