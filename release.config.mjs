@@ -1,10 +1,13 @@
 // The Steam plugin is wrapped by release-steam-plugin.mjs. Without STEAM_PUBLISH=true it only
 // checks the description sources, so `semantic-release --dry-run` stays credential-free and
-// incapable of contacting Steam. In a real run it checks them before any tag or GitHub release
-// exists, and converts the release notes to Steam BBCode.
+// incapable of contacting Steam.
+//
+// documented mode: the wrapper decides the release. The version is the `version` input of the workflow (it must be
+// the next patch, minor or major of the last tag), the GitHub release notes are the "## [<version>]" section of
+// CHANGELOG.md and the Steam change note is the fenced block under "### <version>" of PUBLICATION.md, sent as
+// written. Both are checked before any tag exists. So no commit-analyzer or release-notes-generator, and no
+// feat:/fix: commit is needed.
 const plugins = [
-  '@semantic-release/commit-analyzer',
-  '@semantic-release/release-notes-generator',
   [
     '@semantic-release/github',
     // The GitHub release carries the mod's name, like the ones made by hand before the pipeline.
@@ -13,6 +16,10 @@ const plugins = [
   [
     './release-steam-plugin.mjs',
     {
+      documented: true,
+      // The Steam description is the BBCode block under this heading of PUBLICATION.md, sent as written.
+      descriptionFile: 'PUBLICATION.md',
+      descriptionHeading: '^## The description is sent by the release',
       appId: '294100',
       branchTargets: { main: 'stable' },
       mods: [{
