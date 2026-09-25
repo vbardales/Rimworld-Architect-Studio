@@ -14,3 +14,7 @@ Format: date, pass (language), revision, result. Full reports are on disk under 
 - 2026-09-25 reviews (fr) `84b7476`, replay of the cut run: 39 passed, 9 skipped, 0 failed; captures read.
 - 2026-09-25 restart chain (en) `b7f8833`: 2/2 passed, written by `e2fb…` and read by `eb29…`, 375 buildings, 17 categories, 4 named buildings. Three earlier requests failed without a report: a CR in `wsl-deps.redemarrage.map` (fixed in `7d808d8`).
 - 2026-09-25 French editors capture (fr) `cf410b0`: 1/1, the reworded intros read on screen.
+- 2026-09-25 reset (en) `68fe26f`: 3/3 passed, the two new 15.4 scenarios included.
+- 2026-09-25 very long accented name (en, fr) `68fe26f`: 1/1 each; captures read (names cut by an ellipsis, nothing overflows).
+- 2026-09-25 reviews (fr) `68fe26f`, full pass after the 1.0.5 wording: 51 scenarios, 42 passed, 0 failed, 9 skipped (conditional, played in their own passes).
+- 2026-09-25 publication: 1.0.5 on `ccad168` (dry-run 36167737673, publish 36167923552), no red afterwards, rollback target `v1.0.4` not needed.
