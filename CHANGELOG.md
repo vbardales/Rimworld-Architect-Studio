@@ -5,6 +5,11 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+## [1.0.5] — 2026-09-25
+
+Second release published by the pipeline, in documented mode: the version, the GitHub notes and the Steam change note
+come from this file and from `PUBLICATION.md`.
+
 ### Changed
 
 - The release workflow is the current `Rimworld-Release-Admin` template (PR 4): `ref`, `version` and `mode` inputs, a

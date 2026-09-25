@@ -137,6 +137,20 @@ with blueprints and storage crates, a cartoon mascot in a hard hat, and three in
 - semantic-release creates the tag, then the GitHub release, then uploads to Steam: the tag comes **before** the upload, which `AUDIT.md` step 10 would rather have after. The workflow makes up for it: if a publish run fails after the tag exists, its last step deletes the tag and the release that run created (never one that existed before) and the summary says the Steam item was not touched. If the upload timed out or its result is unknown, check the item on Steam before any new attempt.
 - `publish` takes the full 40-character SHA of a commit whose dry-run passed (`Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio release.yml <SHA> <version>`); only the owner approves `steam-production`. Rollback target: `v1.0.3` (`b316bfa`), the last version tested in full; each good version gets its tag, which is the next target.
 
+## Steam change notes
+
+One fenced block per version, under `### <version>`, BBCode, sent to Steam as written by the release. The
+block of the version being published must exist before its dry-run.
+
+### 1.0.5
+
+```
+[h3]Fixed[/h3]
+[list]
+[*]French: the interface text no longer gives orders. Hints and tooltips now say what an action allows, or use the infinitive (the empty-selection hint, the introductions of both editors, and the tooltips of the Architect button and its setting).
+[/list]
+```
+
 ## Thanks to post on the mods' pages
 
 One per page, in the mod's own comments, once they can see the link. Pasting the bare URL of this item gives a
