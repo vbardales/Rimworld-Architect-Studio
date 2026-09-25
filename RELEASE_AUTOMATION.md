@@ -55,6 +55,8 @@ scope.  `release-dry-run` must hold no Steam secrets.
 5. Only then dispatch `release.yml` with `publish`, the same `version` and the full SHA of the dry-run
    (the run stops if `main` moved), and approve `steam-production`. The configured
    target is the existing item `3792784018`; it never creates a new Workshop item.
+   The publication is a transaction: if the run fails after creating the tag and the GitHub release,
+   its last step deletes them (the Steam item is not touched: check it on Steam before trying again).
 6. After the job, a human verifies Workshop visibility, the subscribed item/update, release notes,
    the live description, and the installed mod in RimWorld. Steam visibility and subscription are not
    API-validated by this workflow.

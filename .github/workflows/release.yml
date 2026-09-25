@@ -7,6 +7,8 @@ name: release (approval gated)
 # dry-run prints the lines scripts/dispatch-publish.sh looks for. Publish it with:
 #   bash /c/Users/nelim/Documents/rimworld/Rimworld-Release-Admin/scripts/dispatch-publish.sh <owner/repo> release.yml <40-character SHA> <version>
 # after a successful dry-run with the same commit and version. Only the owner approves steam-production.
+# The publication is a transaction: if it fails after the tag and the GitHub release were created, the last step
+# deletes them (a tag and a release are easy to delete, a Steam deployment is not).
 "on":
   workflow_dispatch:
     inputs:
@@ -116,6 +118,17 @@ jobs:
         with:
           steam-username: ${{ secrets.STEAM_USERNAME }}
           steam-config-vdf-b64: ${{ secrets.STEAM_CONFIG_VDF_B64 }}
+      # The publication is a transaction: semantic-release creates the tag and the GitHub release, then the Steam
+      # plugin uploads. A tag and a release are easy to delete, a Steam deployment is not, so when the run fails the
+      # tag and the release this run created are removed (see the last step). This records, before anything is
+      # created, whether the tag already exists: one that was there before this run is never touched.
+      - name: Note whether the release tag already exists
+        id: tag
+        if: inputs.mode == 'publish'
+        shell: bash
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null 2>&1; then existed=true; else existed=false; fi
+          echo "existed=$existed" >> "$GITHUB_OUTPUT"
       - name: Publish after protected-environment approval
         if: inputs.mode == 'publish'
         env:
@@ -123,3 +136,18 @@ jobs:
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+      # A failure after the tag was created (the GitHub release, the Steam upload) leaves a release that claims a
+      # version Steam may not have. Only the tag and the release are undone here: the Steam item is not touched, and
+      # if the upload timed out or its result is unknown, check the item on Steam before another attempt.
+      - name: Roll back the tag and the GitHub release of this run
+        if: failure() && inputs.mode == 'publish' && steps.tag.outputs.existed == 'false'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          tag="v$VERSION"
+          if gh release view "$tag" >/dev/null 2>&1; then gh release delete "$tag" --yes; deleted="the GitHub release $tag"; fi
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null 2>&1; then git push origin ":refs/tags/$tag"; deleted="${deleted:+$deleted and }the tag $tag"; fi
+          msg="${deleted:+Rolled back: $deleted deleted, because the publication failed.}"
+          echo "${msg:-The publication failed before a tag or a release was created: nothing to roll back.} The Steam item was not touched: check it on Steam before trying again." | tee -a "$GITHUB_STEP_SUMMARY"
