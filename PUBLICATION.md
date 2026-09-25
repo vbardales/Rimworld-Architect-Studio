@@ -140,11 +140,13 @@ with blueprints and storage crates, a cartoon mascot in a hard hat, and three in
 ## Steam change notes
 
 One fenced block per version, under `### <version>`, BBCode, sent to Steam as written by the release. The
-block of the version being published must exist before its dry-run.
+block of the version being published must exist before its dry-run. Start each block with the version heading, as the 1.0.4 note did (`[h2][url=…/compare/vA...vB]B[/url] (date)[/h2]`): without it the Workshop change notes list the entry with no version number.
 
 ### 1.0.5
 
 ```
+[h2][url=https://github.com/vbardales/Rimworld-Architect-Studio/compare/v1.0.4...v1.0.5]1.0.5[/url] (2026-09-25)[/h2]
+
 [h3]Fixed[/h3]
 [list]
 [*]French: the interface text no longer gives orders. Hints and tooltips now say what an action allows, or use the infinitive (the empty-selection hint, the introductions of both editors, and the tooltips of the Architect button and its setting).
