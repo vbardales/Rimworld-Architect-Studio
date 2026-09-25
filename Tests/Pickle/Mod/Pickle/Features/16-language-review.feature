@@ -57,3 +57,26 @@ Feature: the interface in the language the game runs in
     When I close all dialogs
     And I create the category "Entrepôt élevé"
     Then the category "Entrepôt élevé" has a key binding category
+
+  # TESTING.md 15.5: names have no length cap, so a person looks at what a very long, accented name
+  # does to both editors. The parsing rules (blank refused, boundaries trimmed, accents kept, nothing
+  # truncated) are covered out of game by Tests/BehaviorTests.cs; only the layout needs eyes.
+  Scenario: a very long accented name in both editors
+    When I close all dialogs
+    And I open the "Architect" tab
+    And I click the Architect Studio button keyed "ArchitectStudio.ArchitectButton"
+    Then window "Dialog_DropdownGroups" is open
+    When I create the group "Atelier d'ébénisterie fine, réservé aux étagères, coffres, établis et tout le mobilier très volumineux de la colonie"
+    And I select the group "Atelier d'ébénisterie fine, réservé aux étagères, coffres, établis et tout le mobilier très volumineux de la colonie" in the editor
+    And I wait 30 ticks
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "group editor with a very long accented name"
+    And Nelim's Pickle Tools: screenshot mode is disabled
+    And I close all dialogs
+    And I open the category editor
+    And I create the category "Entrepôt élevé des matériaux de construction, outils et provisions de longue conservation"
+    And I wait 30 ticks
+    Then window "Dialog_Categories" is open
+    When Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "category editor with a very long accented name"
+    And Nelim's Pickle Tools: screenshot mode is disabled

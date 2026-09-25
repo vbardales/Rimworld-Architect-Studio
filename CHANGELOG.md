@@ -5,6 +5,17 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+### Tests
+
+- TESTING.md 15.4 and 15.5 are no longer manual checks: each preference alone is put back by the real reset
+  (two scenarios in `14-reset.feature`, plus 33 out-of-game checks), and one review scenario captures both editors
+  with a very long accented name for the owner to read. The dependency maps are pinned to LF.
+
+### Fixed
+
+- French interface text no longer gives orders: the category editor and group editor intros, the empty-selection
+  hint and two tooltips explain what an action allows or use the infinitive.
+
 ## [1.0.4] — 2026-09-23
 
 First release published by the automated pipeline (semantic-release, then Steam), not from the game.

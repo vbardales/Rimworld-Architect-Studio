@@ -391,6 +391,40 @@ namespace ArchitectStudio.PickleSteps
             ctx.Assert(!ArchitectStudioReset.HasAnything, "the reset button is still offered: something survived the reset");
         }
 
+        [Then("the mod settings offer a reset")]
+        public void OfferAReset(PickleContext ctx)
+        {
+            ctx.Assert(ArchitectStudioReset.HasAnything, "the reset button is not offered although a preference differs from its default");
+        }
+
+        /// <summary>
+        /// TESTING.md 15.4 changes the preference alone, through the settings, without an Architect
+        /// window: the step touches the same field the checkbox does and writes the file.
+        /// </summary>
+        [When("I switch the Architect button preference {word} in the mod settings")]
+        public void SwitchButtonPreference(PickleContext ctx, string onOff)
+        {
+            ctx.Require(onOff == "on" || onOff == "off", $"write on or off, not '{onOff}'");
+            ArchitectStudioMod.Settings.showArchitectButton = onOff == "on";
+            ArchitectStudioMod.Instance.WriteSettings();
+        }
+
+        [Then("the Architect button preference is {word}")]
+        public void ButtonPreferenceIs(PickleContext ctx, string onOff)
+        {
+            ctx.Require(onOff == "on" || onOff == "off", $"write on or off, not '{onOff}'");
+            ctx.Assert(ArchitectStudioMod.Settings.showArchitectButton == (onOff == "on"),
+                $"the Architect button preference is {(ArchitectStudioMod.Settings.showArchitectButton ? "on" : "off")}, expected {onOff}");
+        }
+
+        [Then("showing what research still locks is {word}")]
+        public void ShowLockedIs(PickleContext ctx, string onOff)
+        {
+            ctx.Require(onOff == "on" || onOff == "off", $"write on or off, not '{onOff}'");
+            ctx.Assert(ArchitectStudioMod.Settings.showResearchLocked == (onOff == "on"),
+                $"showing what research still locks is {(ArchitectStudioMod.Settings.showResearchLocked ? "on" : "off")}, expected {onOff}");
+        }
+
         /// <summary>
         /// A restart-model check in one process: the runtime is unwound to the unmodded defs, then
         /// the file on disk is read back and replayed as StartupInit does. This checks Architect

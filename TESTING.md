@@ -321,6 +321,21 @@ Repeat in English and French at 100% and 150% UI scale.
    accents survive saving. Names have no imposed length cap: verify long labels do not make the
    editors unusable. Check the reset confirmation and shortcut tooltip in both languages.
 
+Status of 15.4 and 15.5 (2026-09-25): no longer manual checks.
+- **15.4** is covered out of game by `Tests/BehaviorTests.cs` (33 checks pass on 2026-09-25, among them
+  "changing only the Architect toggle enables reset", "changing only research visibility enables reset" and
+  "reset restores both toggles"), and in game by the two scenarios added to `14-reset.feature`, which put each
+  preference back through the real reset.
+- **15.5**: the rules (blank and whitespace-only refused, boundaries trimmed, accents kept, nothing truncated)
+  are covered by `BehaviorTests.cs`. What only eyes can judge is whether a very long accented name breaks the
+  editors: scenario "a very long accented name in both editors" in `16-language-review.feature` attaches one
+  capture of each editor, in the language of the pass; the owner reads them. The reset confirmation and the
+  shortcut tooltip in both languages stay under the French tooltip item of `STATUS.md`.
+- New game versus existing save: not applicable, with its reason. The mod writes nothing into a save (groups,
+  categories and preferences live in the mod settings, global to all saves, and the mod can be added to or
+  removed from a game in progress); every scenario loads the same fixture save, `test-colony`, and the restart
+  chain proves the settings survive a new process. A game started from scratch would exercise the game, not the mod.
+
 Status: feature 19 passed 3/3 on 2026-09-22. It uses the shared `PickleTools/RimmsqolSteps`
 companion to drive RIMMSQOL's settings instance and capture the integration with Architect Studio.
 The owner reviewed its list, edit and settings captures. The three-process test of RIMMSQOL's own

@@ -17,3 +17,19 @@ Feature: reset everything
     And I reset everything from the mod settings
     Then the Architect menu is as remembered
     And the mod settings offer nothing to reset
+
+  # TESTING.md 15.4. Each preference alone, with no editor customization: the reset must become
+  # available and put it back. The default is on for the Architect button and off for research.
+  Scenario: the Architect button preference alone makes the reset available and restores it to on
+    When I switch the Architect button preference off in the mod settings
+    Then the mod settings offer a reset
+    When I reset everything from the mod settings
+    Then the Architect button preference is on
+    And the mod settings offer nothing to reset
+
+  Scenario: showing what research still locks alone makes the reset available and restores it to off
+    When I turn on showing what research still locks
+    Then the mod settings offer a reset
+    When I reset everything from the mod settings
+    Then showing what research still locks is off
+    And the mod settings offer nothing to reset
