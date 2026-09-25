@@ -7,6 +7,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ### Fixed
 
+- Counted phrases read correctly in both languages: "1 building moved", "2 buildings moved", "1 group deleted" instead of
+  "building(s)" and "group(s)", the delete confirmation says "Its 1 building" or "Its 3 buildings", and French reads 0 as a
+  singular ("0 bâtiment déplacé"). Each phrase is a family of keys chosen by the count (`.Zero`, `.One`, `.Many`); the
+  mod validator now requires every form in both languages and refuses a `(s)` suffix.
 - French interface text, second pass on the same rule: the "more results" line, the label of a group made by the
   player and the forced-category tooltip no longer address the player with an order or with "toi".
 

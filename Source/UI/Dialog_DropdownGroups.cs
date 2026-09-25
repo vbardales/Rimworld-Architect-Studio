@@ -367,10 +367,10 @@ namespace ArchitectStudio
             var overrideCount = settings.dropdownAssignments.Count;
             var hiddenCount = settings.hiddenGroupIds.Count;
 
-            var label = "ArchitectStudio.Dropdowns.OverrideCount".Translate(overrideCount).ToString();
+            var label = CountedText.Get("ArchitectStudio.Dropdowns.OverrideCount", overrideCount).ToString();
             if (hiddenCount > 0)
             {
-                label += "  ·  " + "ArchitectStudio.Dropdowns.HiddenCount".Translate(hiddenCount);
+                label += "  ·  " + CountedText.Get("ArchitectStudio.Dropdowns.HiddenCount", hiddenCount);
             }
 
             var labelWidth = rect.width - 340f - (hiddenCount > 0 ? 246f : 0f);
@@ -650,7 +650,7 @@ namespace ArchitectStudio
 
             return memberCount == 0
                 ? "ArchitectStudio.Dropdowns.ConfirmDissolveEmpty".Translate(GroupLabel(group))
-                : "ArchitectStudio.Dropdowns.ConfirmDissolve".Translate(GroupLabel(group), memberCount);
+                : CountedText.Get("ArchitectStudio.Dropdowns.ConfirmDissolve", memberCount, GroupLabel(group));
         }
 
         /// <summary>
@@ -864,7 +864,7 @@ namespace ArchitectStudio
             {
                 GUI.color = new Color(1f, 1f, 1f, 0.5f);
                 Widgets.Label(new Rect(inner.x, listRect.yMax, inner.width, footerHeight),
-                    "ArchitectStudio.Dropdowns.MoreResults".Translate(total - shown.Count));
+                    CountedText.Get("ArchitectStudio.Dropdowns.MoreResults", total - shown.Count));
                 GUI.color = Color.white;
             }
         }

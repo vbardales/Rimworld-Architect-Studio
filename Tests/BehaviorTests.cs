@@ -127,6 +127,9 @@ namespace ArchitectStudioTests
                 "name validation trims boundaries and preserves accented names");
             string longName = new string('x', 500);
             Check(SettingsInput.NormalizeName(longName) == longName, "long names are not silently truncated");
+            Check(CountedText.KeyFor("k", 0) == "k.Zero" && CountedText.KeyFor("k", 1) == "k.One" &&
+                CountedText.KeyFor("k", 2) == "k.Many" && CountedText.KeyFor("k", 11) == "k.Many",
+                "a counted phrase picks its key from the count: Zero, One, then Many, never a suffix on a word");
             Check(loaded.HasNonDefaultPreferences && ArchitectStudioReset.HasAnything,
                 "nondefault preferences are detected for reset");
             Check(ResearchLockedVisibility.Enabled, "research visibility reads the persisted enabled preference");

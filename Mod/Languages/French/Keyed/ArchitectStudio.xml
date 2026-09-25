@@ -36,15 +36,23 @@
   <ArchitectStudio.Dropdowns.Add>Ajouter un bâtiment</ArchitectStudio.Dropdowns.Add>
   <ArchitectStudio.Dropdowns.Category>Catégorie :</ArchitectStudio.Dropdowns.Category>
   <ArchitectStudio.Dropdowns.AllCategories>Toutes les catégories</ArchitectStudio.Dropdowns.AllCategories>
-  <ArchitectStudio.Dropdowns.MoreResults>… et {0} autres. La recherche permet d'affiner.</ArchitectStudio.Dropdowns.MoreResults>
+  <ArchitectStudio.Dropdowns.MoreResults.Zero>… et {0} autre. La recherche permet d'affiner.</ArchitectStudio.Dropdowns.MoreResults.Zero>
+  <ArchitectStudio.Dropdowns.MoreResults.One>… et {0} autre. La recherche permet d'affiner.</ArchitectStudio.Dropdowns.MoreResults.One>
+  <ArchitectStudio.Dropdowns.MoreResults.Many>… et {0} autres. La recherche permet d'affiner.</ArchitectStudio.Dropdowns.MoreResults.Many>
 
-  <ArchitectStudio.Dropdowns.OverrideCount>{0} bâtiment(s) déplacé(s) par rapport aux réglages d'origine.</ArchitectStudio.Dropdowns.OverrideCount>
+  <ArchitectStudio.Dropdowns.OverrideCount.Zero>{0} bâtiment déplacé par rapport aux réglages d'origine.</ArchitectStudio.Dropdowns.OverrideCount.Zero>
+  <ArchitectStudio.Dropdowns.OverrideCount.One>{0} bâtiment déplacé par rapport aux réglages d'origine.</ArchitectStudio.Dropdowns.OverrideCount.One>
+  <ArchitectStudio.Dropdowns.OverrideCount.Many>{0} bâtiments déplacés par rapport aux réglages d'origine.</ArchitectStudio.Dropdowns.OverrideCount.Many>
   <ArchitectStudio.Dropdowns.ResetAll>Tout réinitialiser</ArchitectStudio.Dropdowns.ResetAll>
   <ArchitectStudio.Dropdowns.ConfirmReset>Effacer tous les groupes créés et tous les déplacements de bâtiments ?</ArchitectStudio.Dropdowns.ConfirmReset>
 
   <ArchitectStudio.Dropdowns.ConfirmDissolveEmpty>Supprimer « {0} » ? Ce groupe appartient à un autre mod : son def sera recréé au prochain démarrage, mais il ne réapparaîtra plus dans cette liste.</ArchitectStudio.Dropdowns.ConfirmDissolveEmpty>
-  <ArchitectStudio.Dropdowns.ConfirmDissolve>Supprimer « {0} » ? Ses {1} bâtiments redeviendront des boutons séparés dans le menu Architecte, et le groupe disparaîtra de cette liste.</ArchitectStudio.Dropdowns.ConfirmDissolve>
-  <ArchitectStudio.Dropdowns.HiddenCount>{0} groupe(s) supprimé(s).</ArchitectStudio.Dropdowns.HiddenCount>
+  <ArchitectStudio.Dropdowns.ConfirmDissolve.Zero>Supprimer « {1} » ? Son {0} bâtiment redeviendra un bouton séparé dans le menu Architecte, et le groupe disparaîtra de cette liste.</ArchitectStudio.Dropdowns.ConfirmDissolve.Zero>
+  <ArchitectStudio.Dropdowns.ConfirmDissolve.One>Supprimer « {1} » ? Son {0} bâtiment redeviendra un bouton séparé dans le menu Architecte, et le groupe disparaîtra de cette liste.</ArchitectStudio.Dropdowns.ConfirmDissolve.One>
+  <ArchitectStudio.Dropdowns.ConfirmDissolve.Many>Supprimer « {1} » ? Ses {0} bâtiments redeviendront des boutons séparés dans le menu Architecte, et le groupe disparaîtra de cette liste.</ArchitectStudio.Dropdowns.ConfirmDissolve.Many>
+  <ArchitectStudio.Dropdowns.HiddenCount.Zero>{0} groupe supprimé.</ArchitectStudio.Dropdowns.HiddenCount.Zero>
+  <ArchitectStudio.Dropdowns.HiddenCount.One>{0} groupe supprimé.</ArchitectStudio.Dropdowns.HiddenCount.One>
+  <ArchitectStudio.Dropdowns.HiddenCount.Many>{0} groupes supprimés.</ArchitectStudio.Dropdowns.HiddenCount.Many>
   <ArchitectStudio.Dropdowns.RestoreHidden>Restaurer les groupes supprimés</ArchitectStudio.Dropdowns.RestoreHidden>
   <ArchitectStudio.Dropdowns.SplitWarning>Groupe éclaté sur {0} catégories : le jeu en fera autant de boutons séparés.</ArchitectStudio.Dropdowns.SplitWarning>
   <ArchitectStudio.Dropdowns.SplitWarningTip>Catégories concernées : {0}. Un groupe de menu déroulant n&apos;est rattaché à aucune catégorie : le jeu regroupe catégorie par catégorie.</ArchitectStudio.Dropdowns.SplitWarningTip>

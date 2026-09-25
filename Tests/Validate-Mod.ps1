@@ -50,6 +50,20 @@ foreach ($file in Get-ChildItem "$root/Source" -Recurse -Filter *.cs) {
         Assert ($languages.English.ContainsKey($match.Groups[1].Value)) "Missing source translation: $($match.Groups[1].Value)"
     }
 }
+foreach ($file in Get-ChildItem "$root/Source" -Recurse -Filter *.cs) {
+    foreach ($match in [regex]::Matches([IO.File]::ReadAllText($file.FullName), 'CountedText\.Get\(\s*"(ArchitectStudio\.[^"]+)"')) {
+        foreach ($language in @('English', 'French')) {
+            foreach ($form in @('Zero', 'One', 'Many')) {
+                Assert ($languages[$language].ContainsKey("$($match.Groups[1].Value).$form")) "Missing counted form: $language/$($match.Groups[1].Value).$form"
+            }
+        }
+    }
+}
+foreach ($language in @('English', 'French')) {
+    foreach ($key in $languages[$language].Keys) {
+        Assert ($languages[$language][$key] -notmatch '\([sx]\)') "A plural built with a suffix, use a family of keys (TRANSLATIONS.md counts and plurals): $language/$key"
+    }
+}
 $defs = (Read-Xml "$root/Mod/Defs/KeyBindings.xml").Defs.KeyBindingDef
 Assert ($defs.defName -ceq 'ArchitectStudio_OpenDropdowns') 'KeyBinding DefOf reference broken'
 Assert ($defs.category -ceq 'Game') 'Incorrect keybinding category'

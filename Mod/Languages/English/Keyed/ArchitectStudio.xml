@@ -36,15 +36,23 @@
   <ArchitectStudio.Dropdowns.Add>Add a building</ArchitectStudio.Dropdowns.Add>
   <ArchitectStudio.Dropdowns.Category>Category:</ArchitectStudio.Dropdowns.Category>
   <ArchitectStudio.Dropdowns.AllCategories>All categories</ArchitectStudio.Dropdowns.AllCategories>
-  <ArchitectStudio.Dropdowns.MoreResults>…and {0} more. Refine your search.</ArchitectStudio.Dropdowns.MoreResults>
+  <ArchitectStudio.Dropdowns.MoreResults.Zero>…and {0} more. Refine your search.</ArchitectStudio.Dropdowns.MoreResults.Zero>
+  <ArchitectStudio.Dropdowns.MoreResults.One>…and {0} more. Refine your search.</ArchitectStudio.Dropdowns.MoreResults.One>
+  <ArchitectStudio.Dropdowns.MoreResults.Many>…and {0} more. Refine your search.</ArchitectStudio.Dropdowns.MoreResults.Many>
 
-  <ArchitectStudio.Dropdowns.OverrideCount>{0} building(s) moved from their original settings.</ArchitectStudio.Dropdowns.OverrideCount>
+  <ArchitectStudio.Dropdowns.OverrideCount.Zero>{0} buildings moved from their original settings.</ArchitectStudio.Dropdowns.OverrideCount.Zero>
+  <ArchitectStudio.Dropdowns.OverrideCount.One>{0} building moved from its original settings.</ArchitectStudio.Dropdowns.OverrideCount.One>
+  <ArchitectStudio.Dropdowns.OverrideCount.Many>{0} buildings moved from their original settings.</ArchitectStudio.Dropdowns.OverrideCount.Many>
   <ArchitectStudio.Dropdowns.ResetAll>Reset everything</ArchitectStudio.Dropdowns.ResetAll>
   <ArchitectStudio.Dropdowns.ConfirmReset>Erase every group you created and every building move?</ArchitectStudio.Dropdowns.ConfirmReset>
 
   <ArchitectStudio.Dropdowns.ConfirmDissolveEmpty>Delete "{0}"? This group belongs to another mod: its def will be recreated on next startup, but it will no longer appear in this list.</ArchitectStudio.Dropdowns.ConfirmDissolveEmpty>
-  <ArchitectStudio.Dropdowns.ConfirmDissolve>Delete "{0}"? Its {1} buildings will become separate buttons again in the Architect menu, and the group will disappear from this list.</ArchitectStudio.Dropdowns.ConfirmDissolve>
-  <ArchitectStudio.Dropdowns.HiddenCount>{0} group(s) deleted.</ArchitectStudio.Dropdowns.HiddenCount>
+  <ArchitectStudio.Dropdowns.ConfirmDissolve.Zero>Delete "{1}"? Its {0} buildings will become separate buttons again in the Architect menu, and the group will disappear from this list.</ArchitectStudio.Dropdowns.ConfirmDissolve.Zero>
+  <ArchitectStudio.Dropdowns.ConfirmDissolve.One>Delete "{1}"? Its {0} building will become a separate button again in the Architect menu, and the group will disappear from this list.</ArchitectStudio.Dropdowns.ConfirmDissolve.One>
+  <ArchitectStudio.Dropdowns.ConfirmDissolve.Many>Delete "{1}"? Its {0} buildings will become separate buttons again in the Architect menu, and the group will disappear from this list.</ArchitectStudio.Dropdowns.ConfirmDissolve.Many>
+  <ArchitectStudio.Dropdowns.HiddenCount.Zero>{0} groups deleted.</ArchitectStudio.Dropdowns.HiddenCount.Zero>
+  <ArchitectStudio.Dropdowns.HiddenCount.One>{0} group deleted.</ArchitectStudio.Dropdowns.HiddenCount.One>
+  <ArchitectStudio.Dropdowns.HiddenCount.Many>{0} groups deleted.</ArchitectStudio.Dropdowns.HiddenCount.Many>
   <ArchitectStudio.Dropdowns.RestoreHidden>Restore deleted groups</ArchitectStudio.Dropdowns.RestoreHidden>
   <ArchitectStudio.Dropdowns.SplitWarning>Group split across {0} categories: the game will make that many separate buttons.</ArchitectStudio.Dropdowns.SplitWarning>
   <ArchitectStudio.Dropdowns.SplitWarningTip>Categories involved: {0}. A dropdown group is not tied to any category: the game groups category by category.</ArchitectStudio.Dropdowns.SplitWarningTip>
