@@ -4,14 +4,14 @@
   <ArchitectStudio.Settings.Intro>Réorganise le menu Architecte depuis le jeu.</ArchitectStudio.Settings.Intro>
   <ArchitectStudio.Settings.OpenDropdowns>Groupes de menus déroulants…</ArchitectStudio.Settings.OpenDropdowns>
   <ArchitectStudio.Settings.ShowArchitectButton>Bouton dans le menu Architecte</ArchitectStudio.Settings.ShowArchitectButton>
-  <ArchitectStudio.Settings.ShowArchitectButtonTip>Ajoute une rangée en bas de la fenêtre Architecte pour ouvrir l'éditeur sans clavier. Rouvre le menu Architecte pour que le changement prenne effet.</ArchitectStudio.Settings.ShowArchitectButtonTip>
+  <ArchitectStudio.Settings.ShowArchitectButtonTip>Ajouter une rangée en bas de la fenêtre Architecte permet d'ouvrir l'éditeur sans clavier. Le changement prend effet à la réouverture du menu Architecte.</ArchitectStudio.Settings.ShowArchitectButtonTip>
   <ArchitectStudio.Settings.KeyHint>Raccourci clavier : {0} — modifiable dans Options → Configuration du clavier.</ArchitectStudio.Settings.KeyHint>
 
   <ArchitectStudio.ArchitectButton>Groupes…</ArchitectStudio.ArchitectButton>
-  <ArchitectStudio.ArchitectButtonTip>Ouvre l'éditeur de groupes de menus déroulants.</ArchitectStudio.ArchitectButtonTip>
+  <ArchitectStudio.ArchitectButtonTip>Ouvrir l'éditeur de groupes de menus déroulants.</ArchitectStudio.ArchitectButtonTip>
 
   <ArchitectStudio.Dropdowns.Title>Groupes de menus déroulants</ArchitectStudio.Dropdowns.Title>
-  <ArchitectStudio.Dropdowns.Intro>Regroupe plusieurs bâtiments sous un seul bouton du menu Architecte. Les changements sont appliqués immédiatement. Glisse un membre pour le réordonner.</ArchitectStudio.Dropdowns.Intro>
+  <ArchitectStudio.Dropdowns.Intro>Permet de regrouper plusieurs bâtiments sous un seul bouton du menu Architecte. Les changements sont appliqués immédiatement. Glisser un membre permet de le réordonner.</ArchitectStudio.Dropdowns.Intro>
 
   <ArchitectStudio.Dropdowns.GridMenu>Menu en grille d'icônes</ArchitectStudio.Dropdowns.GridMenu>
   <ArchitectStudio.Dropdowns.IconSource>Icônes :</ArchitectStudio.Dropdowns.IconSource>
@@ -28,7 +28,7 @@
 
   <ArchitectStudio.Dropdowns.Members>Membres</ArchitectStudio.Dropdowns.Members>
   <ArchitectStudio.Dropdowns.MembersOf>Membres de {0}</ArchitectStudio.Dropdowns.MembersOf>
-  <ArchitectStudio.Dropdowns.NoSelection>Sélectionne un groupe à gauche ou crée-en un.</ArchitectStudio.Dropdowns.NoSelection>
+  <ArchitectStudio.Dropdowns.NoSelection>Sélectionner un groupe à gauche ou en créer un.</ArchitectStudio.Dropdowns.NoSelection>
   <ArchitectStudio.Dropdowns.Rename>Renommer</ArchitectStudio.Dropdowns.Rename>
   <ArchitectStudio.Dropdowns.Delete>Supprimer</ArchitectStudio.Dropdowns.Delete>
   <ArchitectStudio.Dropdowns.ConfirmDelete>Supprimer le groupe « {0} » ? Ses bâtiments reprendront leur groupe d'origine.</ArchitectStudio.Dropdowns.ConfirmDelete>
