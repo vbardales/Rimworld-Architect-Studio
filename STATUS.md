@@ -2,7 +2,7 @@
 settings_audit: complete
 localization: complete
 translation_en: complete
-translation_fr: complete
+translation_fr: partial
 mod:          Architect Studio
 packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
@@ -16,7 +16,10 @@ showcase:     complete
 tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
-  - unverified: the English and French walkthrough side by side, which needs RimWorld restarted between the two languages; the 2026-09-20 run covered English only (TESTING.md translation gate)
+  - unverified: the two French tooltips rewritten on 2026-09-25 (the "Button in the Architect menu" setting and the Groups… button) have not been seen on screen, hence `translation_fr: partial`; the other rewritten strings (both editor intros, the empty-selection hint) were read in a French capture of `cf410b0`
+  - unverified: TESTING.md 15.4 (each preference alone makes the reset available and restores it) and 15.5 (blank, whitespace, accented and long group names) are not automated and not justified as not applicable; `tested` requires one or the other. The disposable new game precondition of section 15 is not covered either
+  - unverified: the owner has read the English `@review` media of `84b7476` only in part (film of the member drag: validated; group editor at 150%: no defect, gallery use needs a crop; French category editor: wording changed by the owner, re-read pending). The remaining captures listed in the 2026-09-25 matrix section are read by me, not yet by the owner
+  - unverified: `.github/workflows/release.yml` predates the current template of `Rimworld-Release-Admin/scripts/templates` (no `ref` and `version` inputs, no full-SHA guard, so `dispatch-publish.sh` cannot drive it; the tag and release are created before the Steam upload, not after). A pull request regenerating it is needed before the next publication
   - verified: the RIMMSQOL integration pass (`19`) passed 3/3 on 2026-09-22; the owner reviewed its list, revealed-button edit page and Architect Studio settings capture as correct. The former RIMMSQOL persistence chain was retired from this suite as redundant dependency coverage
   - verified: the 150% interface-scale screenshots of both editors, read by the mod's owner on 2026-09-20 and found clean — no clipping, no raw keys. English only, so the French half stays under the translation-gate line above
   - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 122f21f in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%. Played on 2026-09-21 against a Pickle built from that PR alone, the feature holding the scenario passes 3 of 3, the 150% one included
@@ -25,16 +28,55 @@ remaining:
   - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
   - unverified: the other four optional integrations (Better Architect Menu, Categories Dropdowns, Float Sub-Menus, Searchable Menus) have no scenario naming them; the with-optionals pass shows they break nothing, not that they work
 session:      local_bc1e5351-947b-42cf-a3a1-46da9c81cff9
-updated:      2026-09-23, 1.0.4 published through the automated pipeline (tag v1.0.4, GitHub release, Steam change note read on the Workshop); stage stays done: tested needs the full pass matrix replayed on a frozen revision
+updated:      2026-09-25, pass matrix replayed after the 1.0.4 publication (fail fast): seven passes green, restart chain green, French wording moved off the imperative; stage stays done, see the 2026-09-25 section
 ---
 
 # Architect Studio — status
+
+## Pass matrix after 1.0.4, and French wording — 2026-09-25
+
+**Fail fast, in this order.** `v1.0.4` (`03590ad`) was published on 2026-09-23 before the matrix ran:
+dry-run run 35910509801, publish run 35910620906 (both on `03590ad`, environment approved by the owner),
+tag and GitHub release at 19:51 UTC, Workshop item updated the same minute, change note read on the
+Workshop page. Rollback target if a red appears: `v1.0.3` (`b316bfa`), the last commit tested in full;
+the next good version becomes the next target. A red would be a defect of 1.0.4, said as such.
+
+**Matrix, revision `84b7476` unless stated** (English unless stated; each row is the report of that run,
+its `Player.log` carrying the expected `-pickle-run=`; `exitReason: passed` in all):
+
+| Pass | Result |
+| --- | --- |
+| minimal, English | 32 passed, 16 skipped (the conditional ones), 0 failed |
+| minimal, French | 32 passed, 16 skipped, 0 failed, no error logged |
+| optionals | 33 passed, 15 skipped, 0 failed |
+| reviews, English | 39 passed, 9 skipped, 0 failed |
+| reviews, French | first run cut at 23/48 by a game hang while loading the fixture save (`watchdog-timeout`, no defect of the mod); replayed: 39 passed, 9 skipped |
+| studio | 3/3 |
+| RIMMSQOL | 3/3 |
+| restart chain, `b7f8833` | launch 1 and launch 2 passed; written by process `e2fb…`, read by a different process `eb29…`; 375 buildings, 17 categories, 4 named buildings on both sides |
+| French editors, `cf410b0` | 1/1: the new intros and the empty-selection hint read on screen |
+
+The restart chain first failed three times without a report: `git pull --rebase` had re-checked out
+`wsl-deps.redemarrage.map` with CRLF endings, bash in WSL read `path:…/RestartPass\r`, found no `About/`
+and exited before the game started. `.gitattributes` now pins `*.map` to LF (`7d808d8`). The evidence is
+on disk, minified (`Tests/Pickle/Evidence/matrix-84b7476` and `matrix-b7f8833`, not in git); the history
+is in `docs/runs/`.
+
+**Requests carry no revision** (WELCOME.md, point 4): while requests were queued the working tree
+changed (French strings, commits `b7f8833` and `cf410b0`). The English passes are unaffected and the
+restart chain does not read those strings; the French passes of `84b7476` do not cover the new wording,
+which the single French capture of `cf410b0` does for the two editor intros and the empty-selection hint.
+
+**French wording, owner, 2026-09-25:** no imperative in the interface text (an order forces a choice
+between tu and vous); explain what an action allows, or use the infinitive. Five strings changed
+(`b7f8833`, `cf410b0`): the category editor intro, the empty-selection hint, the groups intro and the
+two tooltips. This is a `fix(l10n)` for a later release; nothing is published.
 
 ## French review corrections — 2026-09-22
 
 During owner review of the French `16-language-review.feature` media, two wording changes were
 made: the no-selection hint no longer inserts a comma before “ou”, and the category editor now
-explains that arrows change display order and now words it as an explanation, not an order: “Cliquer sur une catégorie permet de modifier son libellé, sa couleur et son icône.” (owner, 2026-09-25). The 150% group-editor
+explains that arrows change display order (its second sentence was reworded again on 2026-09-25, see above). The 150% group-editor
 capture had its intro covered by the game's learning-helper HUD; feature 16 now uses shared
 ScreenshotMode for its four editor captures. The former keyboard-configuration screenshot did
 not show the newly created accented category and was removed; the scenario now asserts the

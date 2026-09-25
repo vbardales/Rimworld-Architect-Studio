@@ -161,8 +161,9 @@ limit, so nothing under `Tests/Pickle/Evidence/` is in git (it is in `.gitignore
 per scenario, the **latest report for the revision now in the repository**, and an older one only when it
 is the sole proof of a check the latest run did not repeat. Delete the rest.
 
-- **Keep, always:** `summary.md`, `summary.json`, `junit.xml`, and `messages.ndjson` (the attachments: the
-  process ids of a restart chain, the optional integrations of a pass). Together they are about 10 KB.
+- **Keep, always:** `summary.json` and `junit.xml` (the dispatcher's WELCOME.md says they suffice), plus
+  `summary.md` for a human reading. Keep `messages.ndjson` only when its attachments are the proof itself:
+  the process ids of a restart chain. Drop `report.html` and every other `messages.ndjson`.
 - **Keep only for `@review` scenarios:** the screenshots and films the reviewer read, and nothing else
   in `screenshots/`. Copy them from `pickle-reports` by scenario name: that folder also holds other
   mods' captures.

@@ -32,13 +32,13 @@ scenario has been replayed and its new media reviewed.
 **Upload budget:** use the listed JPEGs at 1280×800, tightly framed around the actual editor window. Each file must be at most **2 MB**, and the three-file
 Workshop batch at most **8 MB**. Re-check both limits after regenerating or recompressing a capture.
 
-1. `Art/steam/03-groups.jpg` - **the group editor**, the mod's reason to exist and the first section of the
+1. `Art/steam/01-groups.jpg` - **the group editor**, the mod's reason to exist and the first section of the
    description: three columns, a group of three buildings selected, its members with their order arrows, and the
    buildings available to add. One thing in it is left as it is: the *Category* button reads "— none (members
    stay where they …", truncated at that width; it is the real interface.
 2. `Art/steam/02-categories.jpg` - **the category editor**: every category with its icon and building count, the
    empty ones greyed out, the up/down arrows among siblings.
-3. `Art/steam/01-settings.jpg` - **the settings page**: the two editors, the two toggles, the keyboard-shortcut
+3. `Art/steam/03-settings.jpg` - **the settings page**: the two editors, the two toggles, the keyboard-shortcut
    hint and the detected integrations.
 
 ## Dependencies and DLC
