@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
-import { access, readFile } from 'node:fs/promises';
+import { access, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import steam from 'semantic-release-steam';
 import { compileReadme } from 'semantic-release-steam/lib/readme.mjs';
 import { renderSteamBBCode } from 'semantic-release-steam/lib/description.mjs';
@@ -58,6 +59,15 @@ async function changeNote(cwd, version) {
   const note = fencedBlockUnder(text, new RegExp(`^### +${version.replaceAll('.', '\\.')}(\\s|$)`), `"### ${version}" of PUBLICATION.md`);
   const bytes = Buffer.byteLength(note, 'utf8');
   if (bytes > LIMIT_BYTES) throw new Error(`the Steam change note is ${bytes} bytes of UTF-8, above the Steam limit of ${LIMIT_BYTES}`);
+  // semantic-release used to generate the version heading of a note; a block sent as written has only the heading it
+  // carries, and Steam shows the entry with no version at all when it has none (Architect Studio 1.0.5). A published
+  // note can only be corrected by hand by the owner, so this stops the dry-run instead. The first line is a BBCode
+  // line ([b] or [h1] to [h3]) that carries the version, like PUBLISHING.md asks ([b]1.3.0[/b]).
+  const first = note.split('\n', 1)[0].trim();
+  const escaped = version.replaceAll('.', '\\.');
+  if (!new RegExp(`^\\[(b|h[1-3])\\].*(?<![\\d.])${escaped}(?![\\d.]).*\\[/(b|h[1-3])\\]$`).test(first)) {
+    throw new Error(`the change note of ${version} must begin with a line that carries the version, like [b]${version}[/b] or [h3]${version}[/h3]: Steam shows the entry with no version otherwise. It begins with: ${first.slice(0, 80)}`);
+  }
   return note;
 }
 
@@ -74,20 +84,88 @@ async function changelogSection(cwd, version) {
 
 // "descriptionFile" mode (pluginConfig.descriptionFile + descriptionHeading): the Steam description is not compiled
 // from <mod>/README.template.md but is the fenced block under the first line of that file matching the heading (a
-// regular expression, like "^## The description"), sent as written, so it is BBCode. The repository holds it in
-// PUBLICATION.md next to the change notes, and README.template.md is not needed.
+// regular expression, like "^## Steam description"). The repository holds it in PUBLICATION.md next to the change
+// notes, and README.template.md is not needed. descriptionFormat says what the block is: 'markdown' (the standard:
+// converted to Steam BBCode by the same converter as a README) or 'bbcode' (the default, sent as written).
 const descriptionFromFile = (pluginConfig) => pluginConfig.descriptionFile !== undefined;
 
-async function descriptionFileText(pluginConfig, cwd) {
+async function descriptionFileBlock(pluginConfig, cwd) {
   const file = pluginConfig.descriptionFile;
   if (typeof file !== 'string' || !file || typeof pluginConfig.descriptionHeading !== 'string') {
     throw new Error('descriptionFile needs a repository-relative path, and descriptionHeading the regular expression of the heading above the block');
   }
+  const format = pluginConfig.descriptionFormat ?? 'bbcode';
+  if (!['bbcode', 'markdown'].includes(format)) throw new Error(`descriptionFormat must be 'bbcode' or 'markdown', got '${format}'`);
   const text = await readFile(resolve(cwd, file), 'utf8').catch(() => { throw new Error(`${file} is missing: it holds the Steam description`); });
-  return fencedBlockUnder(text, new RegExp(pluginConfig.descriptionHeading), `"${pluginConfig.descriptionHeading}" of ${file}`);
+  const block = fencedBlockUnder(text, new RegExp(pluginConfig.descriptionHeading), `"${pluginConfig.descriptionHeading}" of ${file}`);
+  return { block, format };
+}
+
+async function descriptionFileText(pluginConfig, cwd) {
+  const { block, format } = await descriptionFileBlock(pluginConfig, cwd);
+  return format === 'markdown' ? renderSteamBBCode(block) : block;
 }
 
 const exists = (path) => access(path).then(() => true, () => false);
+
+// "aboutDescription" (pluginConfig.aboutDescription: true): the <description> of <mod>/About/About.xml, which the game
+// shows in the mod list, is generated as plain text from the same Markdown as the Steam description (README.template.md,
+// or the Markdown block of descriptionFile) and every run stops when it differs. Same rules as the manual template's
+// about-description.mjs, which tests/about-conversion.test.mjs keeps identical to this copy.
+const encodeXml = (text) => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+const decodeXml = (text) => text.replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&quot;', '"').replaceAll('&apos;', "'").replaceAll('&amp;', '&');
+
+export function markdownToPlainText(markdown) {
+  const lines = markdown.replace(/\r\n?/g, '\n').split('\n').map((raw) => {
+    let line = raw.replace(/\s+$/, '');
+    if (/^\s*([-*_])(\s*\1){2,}\s*$/.test(line)) return '';
+    line = line.replace(/^\s{0,3}#{1,6}\s+/, '').replace(/\s+#+$/, '');
+    line = line.replace(/^(\s*)>\s?/, '$1');
+    line = line.replace(/^(\s*)[-*+]\s+/, '$1- ');
+    line = line.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g, (_, alt, url) => (alt && alt !== url ? `${alt} (${url})` : url));
+    line = line.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g, (_, text, url) => (text === url ? url : `${text} (${url})`));
+    line = line.replace(/\*\*(.+?)\*\*/g, '$1').replace(/__(.+?)__/g, '$1');
+    line = line.replace(/(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])/g, '$1').replace(/(?<![\w_])_(?!\s)(.+?)(?<!\s)_(?![\w_])/g, '$1');
+    line = line.replace(/`([^`]+)`/g, '$1');
+    return line;
+  });
+  return lines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function locateDescription(xml) {
+  const masked = xml.replace(/<!--[\s\S]*?-->/g, (comment) => ' '.repeat(comment.length));
+  const match = masked.match(/<description>([\s\S]*?)<\/description>/);
+  if (!match) throw new Error('About.xml has no <description>');
+  return { start: match.index + '<description>'.length, end: match.index + '<description>'.length + match[1].length };
+}
+
+export function readAboutDescription(xml) {
+  const { start, end } = locateDescription(xml);
+  const inner = xml.slice(start, end);
+  const cdata = inner.match(/^\s*<!\[CDATA\[([\s\S]*?)\]\]>\s*$/);
+  return (cdata ? cdata[1] : decodeXml(inner)).replace(/\r\n?/g, '\n').trim();
+}
+
+export function replaceAboutDescription(xml, text) {
+  const { start, end } = locateDescription(xml);
+  return xml.slice(0, start) + encodeXml(text) + xml.slice(end);
+}
+
+async function aboutState(mod, pluginConfig, cwd) {
+  let markdown;
+  if (descriptionFromFile(pluginConfig)) {
+    const { block, format } = await descriptionFileBlock(pluginConfig, cwd);
+    if (format !== 'markdown') throw new Error("aboutDescription needs a Markdown description: set descriptionFormat: 'markdown' (the block of descriptionFile is BBCode otherwise)");
+    markdown = block;
+  } else {
+    markdown = await readFile(join(resolve(cwd, mod.path), 'README.template.md'), 'utf8');
+  }
+  const expected = markdownToPlainText(markdown);
+  if (!expected) throw new Error('aboutDescription: the description is empty, so About.xml cannot be generated from it');
+  const path = join(mod.path, 'About', 'About.xml');
+  const xml = await readFile(resolve(cwd, path), 'utf8').catch(() => { throw new Error(`${path} is missing`); });
+  return { expected, current: readAboutDescription(xml), path, next: replaceAboutDescription(xml, expected) };
+}
 
 async function checkMod(mod, pluginConfig, cwd, logger) {
   const modPath = resolve(cwd, mod.path);
@@ -121,13 +199,18 @@ async function checkMod(mod, pluginConfig, cwd, logger) {
   if (bytes > LIMIT_BYTES) throw new Error(`the Steam description of ${mod.name} is ${bytes} bytes of UTF-8, above the Steam limit of ${LIMIT_BYTES}`);
   logger.log(`Steam description for ${mod.name}: ${description.length} characters of BBCode (${bytes} bytes), sha256 ${createHash('sha256').update(description).digest('hex')}`);
   // The dry-run is the only review of what will replace the page, so it prints the whole text.
-  logger.log(`Steam description as it will be sent (${fromFile ? `taken as written from ${pluginConfig.descriptionFile}` : `converted from ${mod.path}/README.template.md`}):\n${description}`);
+  logger.log(`Steam description as it will be sent (${fromFile ? (pluginConfig.descriptionFormat === 'markdown' ? `Markdown block of ${pluginConfig.descriptionFile} converted to BBCode` : `taken as written from ${pluginConfig.descriptionFile}`) : `converted from ${mod.path}/README.template.md`}):\n${description}`);
 }
 
 export async function verifyConditions(pluginConfig, context) {
   const cwd = context.cwd ?? process.cwd();
   for (const mod of pluginConfig.mods) {
     await checkMod(mod, pluginConfig, cwd, context.logger);
+    if (pluginConfig.aboutDescription === true) {
+      const { expected, current, path } = await aboutState(mod, pluginConfig, cwd);
+      if (current !== expected) throw new Error(`the <description> of ${path} is not the plain text of the description source: run "node release-steam-plugin.mjs --sync-about --write", read the diff and commit it`);
+      context.logger.log(`About.xml: the description of ${mod.name} is the plain text of the description source`);
+    }
   }
   if (documented(pluginConfig)) {
     // Checked before any tag exists, so a missing note cannot leave a release with no Steam update.
@@ -160,4 +243,22 @@ export async function publish(pluginConfig, context) {
     ? { compileReadme: async () => '', buildSteamDescription: async () => descriptionFileText(pluginConfig, cwd) }
     : {};
   return steam.publish(pluginConfig, { ...context, ...fromFile, nextRelease: { ...context.nextRelease, notes } });
+}
+
+// node release-steam-plugin.mjs --sync-about [--write]   (from the root of the repository)
+// Says whether the <description> of About.xml is the plain text of the description source (exit 1 when it is not), and
+// with --write rewrites that one element and nothing else.
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href && process.argv.includes('--sync-about')) {
+  const cwd = process.cwd();
+  const config = (await import(pathToFileURL(join(cwd, 'release.config.mjs')).href)).default;
+  const options = config.plugins.find((entry) => Array.isArray(entry) && String(entry[0]).includes('release-steam-plugin'))?.[1];
+  if (!options?.aboutDescription) throw new Error('release.config.mjs does not set aboutDescription: true for this plugin');
+  let drift = false;
+  for (const mod of options.mods) {
+    const { expected, current, path, next } = await aboutState(mod, options, cwd);
+    if (current === expected) console.log(`${path}: the description is already the plain text of the description source.`);
+    else if (process.argv.includes('--write')) { await writeFile(resolve(cwd, path), next); console.log(`${path}: description rewritten. Read the diff, then commit.`); }
+    else { console.log(`${path}: the description differs from the plain text of the description source. Run with --write.`); drift = true; }
+  }
+  if (drift) process.exit(1);
 }
