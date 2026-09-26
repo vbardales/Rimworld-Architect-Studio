@@ -131,6 +131,18 @@ with blueprints and storage crates, a cartoon mascot in a hard hat, and three in
 One fenced block per version, under `### <version>`, BBCode, sent to Steam as written by the release. The
 block of the version being published must exist before its dry-run. Start each block with the version heading, as the 1.0.4 note did (`[h2][url=…/compare/vA...vB]B[/url] (date)[/h2]`): without it the Workshop change notes list the entry with no version number.
 
+### 1.0.6-beta.1
+
+```
+[h2][url=https://github.com/vbardales/Rimworld-Architect-Studio/compare/v1.0.5...v1.0.6-beta.1]1.0.6-beta.1[/url] (2026-09-26)[/h2]
+
+[h3]Fixed[/h3]
+[list]
+[*]Counted phrases read correctly in English and French: "1 building moved" / "2 buildings moved", "1 group deleted", the delete confirmation for one or several buildings, and "0 bâtiment déplacé" in French.
+[*]French: the "more results" line, the label of a group made by the player and the forced-category tooltip no longer give orders or use "toi".
+[/list]
+```
+
 ### 1.0.5
 
 ```
