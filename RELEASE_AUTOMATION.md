@@ -13,7 +13,7 @@ protected `steam-production` GitHub environment.
 | --- | --- | --- |
 | `build.yml` | push to `main`, pull request, manual | Builds the mod and validates shipped XML/resources. |
 | `game-image.yml` | manual only, exact `PUSH_PRIVATE_IMAGE` confirmation | Builds a managed-assemblies-only RimWorld image and pushes it to private GHCR. It has no schedule or automatic trigger. |
-| `release.yml` | manual only | Inputs `ref`, `version`, `mode`. Defaults to a credential-free semantic-release dry run. `publish` needs the full 40-character SHA that the dry-run printed and pauses at `steam-production`; only after approval can it create the tag, the GitHub release and update the existing Workshop item. |
+| `publish-tag.yml` | manual only | Inputs `ref`, `version`, `mode`. Defaults to a credential-free dry run. `publish` needs the full 40-character SHA that the dry-run printed and pauses at `steam-production`; only after approval can it create the tag, the GitHub release and update the existing Workshop item. |
 
 The reference image is `ghcr.io/<owner>/rimworld-game`, built with
 `RimWorks/steam-game-image-action@v1`, `runnable: false`, and only
@@ -37,7 +37,7 @@ scope.  `release-dry-run` must hold no Steam secrets.
 
 ## Release procedure and human gates
 
-1. Run `release.yml` in `dry-run` mode with the commit (`ref`) and the `version` to release. It
+1. Run `publish-tag.yml` in `dry-run` mode with the commit (`ref`) and the `version` to release. It
    rebuilds `Mod/`, compares the rebuilt files with the tracked ones (a difference is named in the run
    summary with both hashes, then the tracked, tested files are put back: what ships is what is
    committed), runs `Tests/Validate-Mod.ps1`, and only checks that the version can be released and
@@ -45,14 +45,14 @@ scope.  `release-dry-run` must hold no Steam secrets.
    major of the last tag, or if the `## [<version>]` section of `CHANGELOG.md` or the `### <version>`
    change note of `PUBLICATION.md` is missing. It cannot create a tag, GitHub release, or Steam
    update because `STEAM_PUBLISH` and Steam credentials are absent. The dispatch is
-   `Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio release.yml <SHA> <version>`.
+   `Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio publish-tag.yml <SHA> <version>`.
 2. A human reviews the calculated version/notes, `CHANGELOG.md`, the built DLL, and `git diff`.
 3. A human runs the relevant Pickle scenarios and reviews their captured media. Green automation is
    route evidence, not a visual or gameplay sign-off; preserve the report/archive before another run
    overwrites it. See `Tests/Pickle/README.md` and `TESTING.md`.
 4. A human checks `Art/steam/01-groups.jpg`, `02-categories.jpg` and `03-settings.jpg` and decides
    whether they should replace Workshop media. This automation never uploads screenshots.
-5. Only then dispatch `release.yml` with `publish`, the same `version` and the full SHA of the dry-run
+5. Only then dispatch `publish-tag.yml` with `publish`, the same `version` and the full SHA of the dry-run
    (the run stops if `main` moved), and approve `steam-production`. The configured
    target is the existing item `3792784018`; it never creates a new Workshop item.
    The publication is a transaction: if the run fails after creating the tag and the GitHub release,
@@ -61,9 +61,9 @@ scope.  `release-dry-run` must hold no Steam secrets.
    the live description, and the installed mod in RimWorld. Steam visibility and subscription are not
    API-validated by this workflow.
 
-`semantic-release-steam` needs Node 20+, SteamCMD, and `rsync` in the publishing runner. Its
-configuration maps `main` to the `stable` target and maps that target to the existing Workshop ID.
-It is loaded only when `STEAM_PUBLISH=true`, so dry runs remain unable to invoke it.
+The publishing runner needs Node 22 and SteamCMD; the workflow installs the upload library. The Steam
+credentials exist only in the `steam-production` environment, so a dry run cannot upload. The target is
+the Workshop ID of `.github/publish.config.json`.
 
 ## First activation checks
 
@@ -71,4 +71,4 @@ Before authorizing the first image push, set the GHCR package visibility to **pr
 the repository owner has package write/read access.  Before authorizing the first publish, verify the
 Steam account can update item `3792784018`, then create/verify the `steam-production` environment
 approval rule.  Leave branch protection and human PR review in place: a merged conventional commit
-is still not enough to publish because the release workflow is manual-only.
+is not enough to publish because the publish workflow is manual-only.
