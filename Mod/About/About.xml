@@ -9,7 +9,7 @@
   <url>https://github.com/vbardales/Rimworld-Architect-Studio</url>
   <description>Organise the Architect menu from inside the game, without restarting.
 
-DROPDOWN GROUPS
+Dropdown groups
 
 - Create a group, put buildings into it, take them out.
 - Order the members of a group, by dragging or with up/down arrows.
@@ -18,9 +18,9 @@ DROPDOWN GROUPS
 - Delete a group. Groups provided by another mod are dissolved and hidden instead, since their def is recreated on every startup; a button restores them.
 - Warns when a group is spread across several categories, where the game silently produces several separate buttons.
 
-CATEGORIES AND SUBCATEGORIES
+Categories and subcategories
 
-- Create a category, or a subcategory when [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url] is present.
+- Create a category, or a subcategory when Better Architect Menu (https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422) is present.
 - Reorder with up/down buttons, among siblings.
 - Change the label, colour and icon of any category, vanilla ones included.
 - Icon picker browsing every icon already loaded by your active mods.
@@ -30,42 +30,42 @@ Nothing is written to the game's def files, nor to another mod's: everything is 
 
 Embedded English and French translations. Designed to stay usable without a keyboard, with the Steam Deck in mind.
 
-WORKS WITH
+Works with
 
-Detected automatically, none required — the settings screen shows which ones were found.
+Detected automatically, none required.
 
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url]: subcategories, and invalidation of its display caches.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067]Architect Icons[/url]: category icon picking.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430]Float Sub-Menus[/url]: nested subcategories in the pick menus.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119]Searchable Menus[/url]: adds a search field to those menus by itself.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827]Categories Dropdowns[/url]: the groups it adds can be edited, extended or taken apart like any other.
+- Better Architect Menu (https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422): subcategories, and invalidation of its display caches.
+- Architect Icons (https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067): category icon picking.
+- Float Sub-Menus (https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430): nested subcategories in the pick menus.
+- Searchable Menus (https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119): adds a search field to those menus by itself.
+- Categories Dropdowns (https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827): the groups it adds can be edited, extended or taken apart like any other.
 
-ALSO RECOMMENDED
+Also recommended
 
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2879451234]Architect Icons: Improved[/url], and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1966995052]Optional Icons for Architect Icons[/url] — more icons for the picker to offer, since it browses whatever your active mods have loaded.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3532359201]Bradson's Main Button Icons (Forked + Expanded)[/url] — the same treatment for the bottom bar.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827]Basic Dropdowns[/url], and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3562304092]Basic Dropdowns - Extended[/url] — around a hundred ready-made dropdown groups, which this mod then lets you edit, extend or take apart.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3150535403]Even More Linkables Dropdown Patch[/url] — dropdowns for linkable buildings.
+- Architect Icons: Improved (https://steamcommunity.com/sharedfiles/filedetails/?id=2879451234), and Optional Icons for Architect Icons (https://steamcommunity.com/sharedfiles/filedetails/?id=1966995052) — more icons for the picker to offer, since it browses whatever your active mods have loaded.
+- Bradson's Main Button Icons (Forked + Expanded) (https://steamcommunity.com/sharedfiles/filedetails/?id=3532359201) — the same treatment for the bottom bar.
+- Basic Dropdowns (https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827), and Basic Dropdowns - Extended (https://steamcommunity.com/sharedfiles/filedetails/?id=3562304092) — around a hundred ready-made dropdown groups, which this mod then lets you edit, extend or take apart.
+- Even More Linkables Dropdown Patch (https://steamcommunity.com/sharedfiles/filedetails/?id=3150535403) — dropdowns for linkable buildings.
 
-IF I GO QUIET
+If I go quiet
 
 If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
 
-AI-GENERATED
+AI-generated
 
 This mod's code was written with Claude Code (Anthropic) and Codex (OpenAI), and its images generated with DALL-E (OpenAI), under human direction, review and testing. Stated openly: designing with these tools is my job.
 
-THANKS
+Thanks
 
-ferny (fernyrepos) for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422]Better Architect Menu[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3323569935]Colored Categories[/url], MIT licensed, whose study showed where the right hooks were.
-bymarcin for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067]Architect Icons[/url], kathanon for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430]Float Sub-Menus[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119]Searchable Menus[/url].
-Andreas Pardeike for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url].
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696]RimLogging[/url], and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401]PickleTools[/url] for development-only testing. They are not dependencies of Architect Studio.
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url] for exercising the optional MainButtons customization path during testing.
+- ferny (fernyrepos) for Better Architect Menu (https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422) and Colored Categories (https://steamcommunity.com/sharedfiles/filedetails/?id=3323569935), MIT licensed, whose study showed where the right hooks were.
+- bymarcin for Architect Icons (https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067), kathanon for Float Sub-Menus (https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430) and Searchable Menus (https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119).
+- Andreas Pardeike for Harmony (https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077).
+- Pickle (https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678), RimLogging (https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696), and PickleTools (https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401) for development-only testing. They are not dependencies of Architect Studio.
+- RIMMSQOL (https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457) for exercising the optional MainButtons customization path during testing.
 
 See ATTRIBUTION.md. This mod is MIT licensed.
 
-[url=https://github.com/vbardales/Rimworld-Architect-Studio]Source code on GitHub[/url]</description>
+Source code on GitHub (https://github.com/vbardales/Rimworld-Architect-Studio)</description>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>

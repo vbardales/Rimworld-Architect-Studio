@@ -17,9 +17,12 @@ const plugins = [
     './release-steam-plugin.mjs',
     {
       documented: true,
-      // The Steam description is the BBCode block under this heading of PUBLICATION.md, sent as written.
+      // The one source of the description: the Markdown block under this heading of PUBLICATION.md, converted to BBCode for
+      // Steam and to plain text for the <description> of Mod/About/About.xml, which every run checks.
       descriptionFile: 'PUBLICATION.md',
-      descriptionHeading: '^## The description is sent by the release',
+      descriptionHeading: '^## Steam description$',
+      descriptionFormat: 'markdown',
+      aboutDescription: true,
       appId: '294100',
       branchTargets: { main: 'stable' },
       mods: [{
