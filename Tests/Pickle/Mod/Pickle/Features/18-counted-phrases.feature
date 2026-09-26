@@ -41,6 +41,7 @@ Feature: counted phrases and tooltips in the language the game runs in
     And I take a screenshot "delete confirmation with several buildings"
     And Nelim's Pickle Tools: screenshot mode is disabled
     When I close all dialogs
+    And I open the "Architect" tab
     And I click the Architect Studio button keyed "ArchitectStudio.ArchitectButton"
     Then window "Dialog_DropdownGroups" is open
     When I remove every member but one from the group "Floor_Carpet"
