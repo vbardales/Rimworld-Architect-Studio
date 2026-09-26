@@ -1,0 +1,21 @@
+{
+  "templateStamp": "a8ca11cdd9a3",
+  "workshopId": "3792784018",
+  "packageId": "nelim.architectstudio",
+  "releaseTitle": "Architect Studio {version}",
+  "requirePaths": [
+    "Assemblies/ArchitectStudio.dll"
+  ],
+  "forbidPaths": [],
+  "previewFile": "About/Preview.png",
+  "galleryDir": "Art/steam",
+  "aboutFromDescription": true,
+  "build": {
+    "project": "Source/ArchitectStudio.csproj"
+  },
+  "description": {
+    "file": "PUBLICATION.md",
+    "format": "markdown",
+    "heading": "^## Steam description$"
+  }
+}
