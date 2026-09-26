@@ -5,6 +5,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+## [1.0.6-beta.1] — 2026-09-26
+
+Pre-release to test the manual publication workflow (dry-run only; nothing is published to the Workshop).
+
 ### Fixed
 
 - Counted phrases read correctly in both languages: "1 building moved", "2 buildings moved", "1 group deleted" instead of
@@ -13,6 +17,12 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
   mod validator now requires every form in both languages and refuses a `(s)` suffix.
 - French interface text, second pass on the same rule: the "more results" line, the label of a group made by the
   player and the forced-category tooltip no longer address the player with an order or with "toi".
+
+### Changed
+
+- Publication goes through the manual workflow `publish-tag.yml` (generated from the `Rimworld-Release-Admin` template)
+  instead of semantic-release. The Steam description and the `About.xml` one come from a single Markdown source in
+  `PUBLICATION.md`.
 
 ## [1.0.5] — 2026-09-25
 
