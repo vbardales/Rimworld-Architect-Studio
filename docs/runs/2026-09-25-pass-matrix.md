@@ -20,3 +20,4 @@ Format: date, pass (language), revision, result. Full reports are on disk under 
 - 2026-09-25 publication: 1.0.5 on `ccad168` (dry-run 36167737673, publish 36167923552), no red afterwards, rollback target `v1.0.4` not needed.
 - 2026-09-25 very long English accented names (en, fr) `3fb0b93`: 1/1 each; the names read as English in both languages, cut by an ellipsis.
 - 2026-09-26 counted-phrase footer (en, fr) `4e86e04`: 1/1 each; the `.Zero` form read in both languages ("0 buildings moved…", "0 bâtiment déplacé…"), no `(s)` left.
+- 2026-09-26 counted phrases and tooltips, feature 18 (en, fr) `11e0874` (TD f03e/16da, matrix-11e0874): 7/7 each, 1 attempt, no flaky; `.One`/`.Many`/`.Zero` of `OverrideCount`, `.Many`/`.One` of `ConfirmDissolve`, `.One` of `HiddenCount`, `.Many` of `MoreResults`, and three tooltips all read well in both languages. `ConfirmDissolve.Zero`, `MoreResults.One` and `HiddenCount.Many` stay unreachable on screen (feature's own note).
