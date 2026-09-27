@@ -113,3 +113,12 @@ Feature: counted phrases and tooltips in the language the game runs in
     And I open the Architect Studio settings through the shortcut and let it draw
     And Nelim's Pickle Tools: I hover over the tooltip keyed "ArchitectStudio.Settings.ShowArchitectButtonTip"
     And I take a screenshot "tooltip of the Architect button setting"
+
+  Scenario: the tooltip of a custom group in the groups list
+    When I close all dialogs
+    And I open the "Architect" tab
+    And I click the Architect Studio button keyed "ArchitectStudio.ArchitectButton"
+    Then window "Dialog_DropdownGroups" is open
+    When I create the group "Pickle seats"
+    And Nelim's Pickle Tools: I hover over the tooltip keyed "ArchitectStudio.Dropdowns.Custom"
+    And I take a screenshot "tooltip of a custom group"
