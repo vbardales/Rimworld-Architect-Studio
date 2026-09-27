@@ -22,3 +22,13 @@ Feature: deleting a group that belongs to another mod
     When I delete the group "Floor_Carpet"
     And I restore the deleted groups
     Then the group "Floor_Carpet" has members again
+
+  # Categories Dropdowns ships its own DesignatorDropdownGroupDef list (Ferny_Walls, Ferny_Doors,
+  # Ferny_Bridges...) with every assignment to a vanilla or third-party building commented out in
+  # its own patch.xml: on this mod list the group exists but holds no member. That is still the
+  # closest thing to a rival group system this mod has to stay compatible with, and no scenario had
+  # ever dissolved one of its groups before.
+  @requires:ferny.categoriesdropdowns
+  Scenario: a Categories Dropdowns group can be dissolved without breaking
+    When I delete the group "Ferny_Walls"
+    Then the group "Ferny_Walls" is remembered as deleted

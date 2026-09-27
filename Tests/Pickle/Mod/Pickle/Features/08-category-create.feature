@@ -20,3 +20,12 @@ Feature: creating a category, and its keyboard shortcut
     When I create the category "Pickle tab"
     And I delete the category "Pickle tab"
     Then the Architect menu has no tab labelled "Pickle tab"
+
+  # TESTING.md scenario 8: "give it a name, then a parent if Better Architect Menu is present".
+  # BAM owns the only nesting mechanism there is; no scenario had ever created a category under a
+  # parent before.
+  @requires:ferny.betterarchitect
+  Scenario: a category created with a parent nests under it
+    When I create the category "Pickle parent"
+    And I create the category "Pickle child" under the parent "Pickle parent"
+    Then the category "Pickle child" sits under the parent "Pickle parent"

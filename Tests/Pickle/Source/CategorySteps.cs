@@ -101,6 +101,31 @@ namespace ArchitectStudio.PickleSteps
             CustomCategoryRuntime.Delete(Driver.CreatedCategory(ctx, label));
         }
 
+        /// <summary>
+        /// TESTING.md scenario 8: "give it a name, then a parent if Better Architect Menu is
+        /// present". BAM owns the only nesting mechanism there is (see
+        /// <see cref="BetterArchitectCompat.ParentCategoryOf"/>), so this only means anything with
+        /// it loaded, hence the scenario's own <c>@requires</c>.
+        /// </summary>
+        [When("I create the category {string} under the parent {string}")]
+        public void CreateNested(PickleContext ctx, string label, string parentLabel)
+        {
+            var parent = Driver.CreatedCategory(ctx, parentLabel);
+            var def = CustomCategoryRuntime.Create(label, parent);
+            ctx.Assert(def != null, $"creating '{label}' under '{parentLabel}' returned no def");
+        }
+
+        [Then("the category {string} sits under the parent {string}")]
+        public void HasParent(PickleContext ctx, string label, string parentLabel)
+        {
+            var def = Driver.CreatedCategory(ctx, label);
+            var expectedParent = Driver.CreatedCategory(ctx, parentLabel);
+            var actualParent = BetterArchitectCompat.ParentCategoryOf(def);
+            ctx.Assert(actualParent == expectedParent,
+                $"'{def.defName}' should sit under '{expectedParent.defName}'; " +
+                $"Better Architect Menu reports its parent as {(actualParent == null ? "none" : actualParent.defName)}");
+        }
+
         [Then("the Architect menu has a tab labelled {string}")]
         public void HasTab(PickleContext ctx, string label)
         {
