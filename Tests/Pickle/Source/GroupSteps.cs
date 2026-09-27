@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using RimWorks.Pickle;
+using RimWorld;
 using Verse;
 
 namespace ArchitectStudio.PickleSteps
@@ -70,6 +71,30 @@ namespace ArchitectStudio.PickleSteps
             var custom = ArchitectStudioMod.Settings.customGroups.Any(e => e.id == group.defName);
             // The editor's delete button picks between the two the same way.
             Driver.Call(ctx, dialog, custom ? "DeleteGroup" : "DissolveGroup", group);
+        }
+
+        /// <summary>
+        /// Dissolves a second foreign group, picked from the running game rather than named: it only
+        /// has to be some other group with members, to reach the HiddenCount.Many form (two or more
+        /// groups hidden), which no scenario naming vanilla groups could do without breaking on a mod
+        /// list that moves them around.
+        /// </summary>
+        [When("I dissolve a second foreign group besides {string}")]
+        public void DissolveSecondForeign(PickleContext ctx, string exceptLabel)
+        {
+            var except = Driver.Group(ctx, exceptLabel);
+            var settings = ArchitectStudioMod.Settings;
+            var group = DefDatabase<DesignatorDropdownGroupDef>.AllDefsListForReading
+                .Where(g => g != except
+                            && !settings.customGroups.Any(e => e.id == g.defName)
+                            && !settings.hiddenGroupIds.Contains(g.defName)
+                            && Driver.MembersOf(g).Count > 0)
+                .OrderBy(g => g.defName)
+                .FirstOrDefault();
+            ctx.Require(group != null, "no second foreign group with members is left to dissolve");
+            var dialog = Driver.GroupEditor(ctx);
+            Driver.Call(ctx, dialog, "DissolveGroup", group);
+            ctx.Attach("second group dissolved", group.defName);
         }
 
         [When("I restore the deleted groups")]

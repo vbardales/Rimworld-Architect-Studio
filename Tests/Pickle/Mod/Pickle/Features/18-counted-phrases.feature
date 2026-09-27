@@ -1,9 +1,12 @@
 # TESTING.md "Translation gate": the counted phrases and the tooltips no earlier capture shows.
 # Nothing is asserted about the text; a person reads the screenshots in the language the game runs
 # in (play once with `-Language English`, once with `-Language French`).
-# Not reachable on screen: the ".Zero" form of the delete confirmation (an empty group has its own
-# text), the ".One" form of "…and N more" (needs exactly 201 buildings) and the ".Many" form of
-# "groups deleted" (needs a second foreign group).
+# Not reachable on screen: the ".Zero" form of the delete confirmation. It is not merely hard to
+# reach: an empty group is routed to its own "ConfirmDissolveEmpty" key
+# (Dialog_DropdownGroups.DeleteConfirmationText), so "ConfirmDissolve.Zero" can never be shown by the
+# game as written; see STATUS.md.
+# Reachable but needing an exact building count, not attempted here: the ".One" form of
+# "…and N more" (needs exactly 201 buildings outside any group, which a mod list can move around).
 @review @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.hoversteps
 Feature: counted phrases and tooltips in the language the game runs in
 
@@ -61,6 +64,19 @@ Feature: counted phrases and tooltips in the language the game runs in
     And I wait 30 ticks
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "footer with one group deleted"
+    And Nelim's Pickle Tools: screenshot mode is disabled
+
+  Scenario: the footer after two groups deleted
+    Given the group "Floor_Carpet" has at least 2 members
+    When I close all dialogs
+    And I open the "Architect" tab
+    And I click the Architect Studio button keyed "ArchitectStudio.ArchitectButton"
+    Then window "Dialog_DropdownGroups" is open
+    When I delete the group "Floor_Carpet"
+    And I dissolve a second foreign group besides "Floor_Carpet"
+    And I wait 30 ticks
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "footer with two groups deleted"
     And Nelim's Pickle Tools: screenshot mode is disabled
 
   Scenario: the add column cut short by the result limit
