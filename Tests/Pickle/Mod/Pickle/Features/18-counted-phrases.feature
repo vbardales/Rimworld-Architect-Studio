@@ -1,12 +1,11 @@
 # TESTING.md "Translation gate": the counted phrases and the tooltips no earlier capture shows.
 # Nothing is asserted about the text; a person reads the screenshots in the language the game runs
 # in (play once with `-Language English`, once with `-Language French`).
-# Not reachable on screen: the ".Zero" form of the delete confirmation. It is not merely hard to
-# reach: an empty group is routed to its own "ConfirmDissolveEmpty" key
-# (Dialog_DropdownGroups.DeleteConfirmationText), so "ConfirmDissolve.Zero" can never be shown by the
-# game as written; see STATUS.md.
-# Reachable but needing an exact building count, not attempted here: the ".One" form of
-# "…and N more" (needs exactly 201 buildings outside any group, which a mod list can move around).
+# Not reachable on screen: the ".Zero" forms of the delete confirmation, "groups deleted" and "…and N more". Not merely hard to
+# reach: the game never calls them with 0 (an empty group goes to its own "ConfirmDissolveEmpty" key, and the other two lines are not
+# drawn at 0; Dialog_DropdownGroups), so they are exempt in Tests/Validate-Mod.ps1; see STATUS.md.
+# Reached by moving the surplus into the group so that exactly 201 are left to add: the ".One" form of
+# "…and N more" (see "I move buildings into the group ... until 201 are left to add").
 @review @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.hoversteps
 Feature: counted phrases and tooltips in the language the game runs in
 
@@ -90,6 +89,20 @@ Feature: counted phrases and tooltips in the language the game runs in
     And I wait 30 ticks
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "add column with more results than shown"
+    And Nelim's Pickle Tools: screenshot mode is disabled
+
+  Scenario: the add column cut short by exactly one building
+    When I close all dialogs
+    And I open the "Architect" tab
+    And I click the Architect Studio button keyed "ArchitectStudio.ArchitectButton"
+    Then window "Dialog_DropdownGroups" is open
+    When I create the group "Pickle seats"
+    And I select the group "Pickle seats" in the editor
+    And I list the buildings of every category in the add column
+    And I move buildings into the group "Pickle seats" until 201 are left to add
+    And I wait 30 ticks
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "add column with exactly one more result than shown"
     And Nelim's Pickle Tools: screenshot mode is disabled
 
   Scenario: the tooltip of the Groups button in the Architect window

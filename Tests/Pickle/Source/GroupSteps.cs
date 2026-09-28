@@ -327,6 +327,33 @@ namespace ArchitectStudio.PickleSteps
             set.SetValue(dialog, true);
         }
 
+        /// <summary>
+        /// The "…and 1 more" form of the add column needs exactly one building beyond the 200 it
+        /// lists. No mod list has that many by luck, so the count is made: the add column offers every
+        /// building that is not in the selected group (Dialog_DropdownGroups.DrawAddColumn), hence
+        /// moving the surplus into the group leaves exactly N to add whatever the mod list is.
+        /// </summary>
+        [When("I move buildings into the group {string} until {int} are left to add")]
+        public void FillUntilLeft(PickleContext ctx, string groupLabel, int left)
+        {
+            var dialog = Driver.GroupEditor(ctx);
+            var group = Driver.Group(ctx, groupLabel);
+            var candidates = DropdownRuntime.AllBuildables()
+                .Where(d => d.designatorDropdown != group)
+                .OrderBy(d => d.defName)
+                .ToList();
+            ctx.Require(candidates.Count >= left,
+                $"only {candidates.Count} buildings can be added to '{groupLabel}', fewer than the {left} to leave: this mod list is too small for the scenario");
+
+            foreach (var def in candidates.Take(candidates.Count - left))
+            {
+                Driver.Call(ctx, dialog, "Assign", def, group);
+            }
+
+            var remaining = DropdownRuntime.AllBuildables().Count(d => d.designatorDropdown != group);
+            ctx.Assert(remaining == left, $"{remaining} buildings are left to add, not {left}");
+        }
+
         [Then("no building belongs to the group {string}")]
         public void Empty(PickleContext ctx, string groupLabel)
         {
