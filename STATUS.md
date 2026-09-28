@@ -1,8 +1,8 @@
 ---
 settings_audit: complete
-localization: partial
-translation_en: partial
-translation_fr: partial
+localization: complete
+translation_en: complete
+translation_fr: complete
 mod:          Architect Studio
 packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
@@ -40,6 +40,16 @@ updated:      2026-09-25, 1.0.5 published through the pipeline (tag v1.0.5 on cc
 ---
 
 # Architect Studio — status
+
+## Translation audit addendum — 2026-09-28
+
+Checked revision: `3f0d844` plus the docs commits after it (no Mod/ change after `899820d`). Scope: `Mod/Languages/{English,French}/Keyed/ArchitectStudio.xml`, every `.Translate(` and `CountedText.Get(` key in `Source/`.
+
+- Static: `Tests/Validate-Mod.ps1` passes (989 checks): both languages hold the same keys and placeholders, every `CountedText.Get` key has `.One` and `.Many` in both languages, no `(s)` or `(x)` suffix. `.Zero` is required for `OverrideCount` only; `ConfirmDissolve`, `HiddenCount` and `MoreResults` are exempt because the game never calls them with 0 (owner's call, 2026-09-28). Their `.Zero` strings stay in the files, unused.
+- In game, read by me on screenshots in both languages: feature 18 on `3edb` (French, 10/10) and `3af0` (English, 10/10), earlier runs `11e0874`, `0a9f`, `2cc6`, `21ed`, `886f`. Seen: `OverrideCount` .Zero/.One/.Many, `ConfirmDissolve` .One/.Many, `HiddenCount` .One/.Many ("2 groupes supprimés."), `MoreResults` .One/.Many ("…and 1 more", "… et 1 autre"), the four tooltips (Groups button, forced category, Architect-button setting, custom group "Group you created" / "Groupe personnalisé").
+- Read earlier: editors and settings page in both languages (`cf410b0`, `68fe26f`), category editor French wording validated by the owner.
+- French rule of 2026-09-28: infinitive for a bare verb (`GroupCategoryTip`, `Settings.Intro`); no imperative, no "toi" anywhere in the Keyed file.
+- Reused dependency keys and exclusions: none. Product names (Better Architect Menu, Architect Icons, Float Sub-Menus) stay untranslated on purpose.
 
 ## Pass matrix after 1.0.4, and French wording — 2026-09-25
 
