@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RimWorks.Pickle;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ArchitectStudio.PickleSteps
@@ -108,8 +109,18 @@ namespace ArchitectStudio.PickleSteps
         public async Task HoverCustomGroupTooltip(PickleContext ctx, string groupLabel)
         {
             var group = Driver.Group(ctx, groupLabel);
-            var tag = "tip:" + group.defName + "\n" + "ArchitectStudio.Dropdowns.Custom".Translate();
-            await ctx.Hover(tag);
+            var text = group.defName + "\n" + "ArchitectStudio.Dropdowns.Custom".Translate();
+            await ctx.Hover("tip:" + text);
+            // The 2026-09-28 run found the gap: finding the tag only puts the pointer over the
+            // region, it does not mean the game has drawn ITS tooltip yet (a previous one can still
+            // linger a few frames). Wait for it the way Nelim's Pickle Tools' own hover step does
+            // (HoverSteps.cs, IsDrawn): a matching, past-its-delay entry in TooltipHandler.activeTips.
+            await ctx.AssertEventually(
+                () => TooltipHandler.activeTips.Values.Any(tip =>
+                    (tip.signal.textGetter != null ? tip.signal.textGetter() : tip.signal.text) == text &&
+                    Time.realtimeSinceStartup > tip.firstTriggerTime + tip.signal.delay),
+                () => $"the pointer is over the region, but the tooltip \"{text.Replace("\n", " ")}\" was not drawn in time",
+                4f);
         }
 
         [When("I restore the deleted groups")]

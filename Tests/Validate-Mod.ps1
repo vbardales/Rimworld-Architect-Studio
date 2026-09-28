@@ -50,11 +50,17 @@ foreach ($file in Get-ChildItem "$root/Source" -Recurse -Filter *.cs) {
         Assert ($languages.English.ContainsKey($match.Groups[1].Value)) "Missing source translation: $($match.Groups[1].Value)"
     }
 }
+# ConfirmDissolve.Zero cannot be shown by the game as written: Dialog_DropdownGroups.DeleteConfirmationText
+# routes a member count of 0 to the separate key ConfirmDissolveEmpty instead, so the .Zero form of
+# ConfirmDissolve would only ever exist to satisfy this loop. Exempted on the owner's call (STATUS.md).
+$noZeroForm = @('ArchitectStudio.Dropdowns.ConfirmDissolve')
 foreach ($file in Get-ChildItem "$root/Source" -Recurse -Filter *.cs) {
     foreach ($match in [regex]::Matches([IO.File]::ReadAllText($file.FullName), 'CountedText\.Get\(\s*"(ArchitectStudio\.[^"]+)"')) {
+        $key = $match.Groups[1].Value
+        $forms = if ($noZeroForm -ccontains $key) { @('One', 'Many') } else { @('Zero', 'One', 'Many') }
         foreach ($language in @('English', 'French')) {
-            foreach ($form in @('Zero', 'One', 'Many')) {
-                Assert ($languages[$language].ContainsKey("$($match.Groups[1].Value).$form")) "Missing counted form: $language/$($match.Groups[1].Value).$form"
+            foreach ($form in $forms) {
+                Assert ($languages[$language].ContainsKey("$key.$form")) "Missing counted form: $language/$key.$form"
             }
         }
     }
