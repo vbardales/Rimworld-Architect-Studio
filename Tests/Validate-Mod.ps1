@@ -50,10 +50,17 @@ foreach ($file in Get-ChildItem "$root/Source" -Recurse -Filter *.cs) {
         Assert ($languages.English.ContainsKey($match.Groups[1].Value)) "Missing source translation: $($match.Groups[1].Value)"
     }
 }
-# ConfirmDissolve.Zero cannot be shown by the game as written: Dialog_DropdownGroups.DeleteConfirmationText
-# routes a member count of 0 to the separate key ConfirmDissolveEmpty instead, so the .Zero form of
-# ConfirmDissolve would only ever exist to satisfy this loop. Exempted on the owner's call (STATUS.md).
-$noZeroForm = @('ArchitectStudio.Dropdowns.ConfirmDissolve')
+# The .Zero form of these keys cannot be shown by the game as written, so it would only ever exist to
+# satisfy this loop. Exempted on the owner's call (STATUS.md). In Dialog_DropdownGroups:
+#   ConfirmDissolve: DeleteConfirmationText routes a member count of 0 to ConfirmDissolveEmpty instead;
+#   HiddenCount:     drawn only under `if (hiddenCount > 0)`;
+#   MoreResults:     drawn only when `total > shown.Count`, so its count is at least 1.
+# OverrideCount is drawn unconditionally: its .Zero is real and stays required.
+$noZeroForm = @(
+    'ArchitectStudio.Dropdowns.ConfirmDissolve',
+    'ArchitectStudio.Dropdowns.HiddenCount',
+    'ArchitectStudio.Dropdowns.MoreResults'
+)
 foreach ($file in Get-ChildItem "$root/Source" -Recurse -Filter *.cs) {
     foreach ($match in [regex]::Matches([IO.File]::ReadAllText($file.FullName), 'CountedText\.Get\(\s*"(ArchitectStudio\.[^"]+)"')) {
         $key = $match.Groups[1].Value
