@@ -11,6 +11,9 @@ detached:     yes
 stage:        done
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
+upstream_mod_remotes:
+  - https://github.com/fernyrepos/Better-Architect-Menu.git
+  - https://github.com/fernyrepos/Colored-Categories.git
 dependencies: declared
 showcase:     complete
 tested_on:    2026-09-21
