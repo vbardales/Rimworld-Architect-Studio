@@ -120,5 +120,5 @@ Feature: counted phrases and tooltips in the language the game runs in
     And I click the Architect Studio button keyed "ArchitectStudio.ArchitectButton"
     Then window "Dialog_DropdownGroups" is open
     When I create the group "Pickle seats"
-    And Nelim's Pickle Tools: I hover over the tooltip keyed "ArchitectStudio.Dropdowns.Custom"
+    And I hover over the tooltip of the custom group "Pickle seats"
     And I take a screenshot "tooltip of a custom group"

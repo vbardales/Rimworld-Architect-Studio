@@ -97,6 +97,21 @@ namespace ArchitectStudio.PickleSteps
             ctx.Attach("second group dissolved", group.defName);
         }
 
+        /// <summary>
+        /// The "Groupe personnalisé" / "Custom" line is not its own tooltip: it is appended, after a
+        /// newline, to the group's defName (see Dialog_DropdownGroups.DrawGroupColumn). Nelim's
+        /// Pickle Tools' hover-by-key step matches a tag exactly and cannot find a tooltip that is
+        /// only part of the drawn text, which is what "tip:Groupe personnalisé" not found in the run
+        /// of 2026-09-28 showed. Rebuilding the exact tag ourselves is the fix.
+        /// </summary>
+        [When("I hover over the tooltip of the custom group {string}")]
+        public async Task HoverCustomGroupTooltip(PickleContext ctx, string groupLabel)
+        {
+            var group = Driver.Group(ctx, groupLabel);
+            var tag = "tip:" + group.defName + "\n" + "ArchitectStudio.Dropdowns.Custom".Translate();
+            await ctx.Hover(tag);
+        }
+
         [When("I restore the deleted groups")]
         public void RestoreHidden(PickleContext ctx)
         {
