@@ -84,12 +84,12 @@ namespace ArchitectStudio
         /// <summary>Parent, for the categories we created ourselves only.</summary>
         private float DrawParentRow(Rect inRect, float y)
         {
-            Widgets.Label(new Rect(inRect.x, y, 90f, 28f), "ArchitectStudio.EditCategory.Parent".Translate());
+            Widgets.Label(new Rect(inRect.x, y, 130f, 28f), "ArchitectStudio.EditCategory.Parent".Translate());
 
             if (!BetterArchitectCompat.SubcategoriesSupported)
             {
                 GUI.color = new Color(1f, 1f, 1f, 0.6f);
-                Widgets.Label(new Rect(inRect.x + 94f, y, inRect.width - 94f, 28f),
+                Widgets.Label(new Rect(inRect.x + 134f, y, inRect.width - 134f, 28f),
                     "ArchitectStudio.Categories.NoNesting".Translate());
                 GUI.color = Color.white;
                 return y + 34f;

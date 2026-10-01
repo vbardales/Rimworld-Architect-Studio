@@ -85,15 +85,15 @@
 
   <ArchitectStudio.Categories.New>New category…</ArchitectStudio.Categories.New>
   <ArchitectStudio.Categories.TopLevel>— top-level category</ArchitectStudio.Categories.TopLevel>
-  <ArchitectStudio.EditCategory.Parent>Parent</ArchitectStudio.EditCategory.Parent>
+  <ArchitectStudio.EditCategory.Parent>Parent category</ArchitectStudio.EditCategory.Parent>
   <ArchitectStudio.EditCategory.Delete>Delete this category</ArchitectStudio.EditCategory.Delete>
   <ArchitectStudio.EditCategory.ConfirmDelete>Delete the category "{0}"? Its buildings will return to their original category.</ArchitectStudio.EditCategory.ConfirmDelete>
 
   <ArchitectStudio.Categories.NoNesting>Without Better Architect Menu there are no subcategories: the category is created at top level.</ArchitectStudio.Categories.NoNesting>
 
   <ArchitectStudio.Settings.Integrations>Detected integrations</ArchitectStudio.Settings.Integrations>
-  <ArchitectStudio.Settings.Detected>present</ArchitectStudio.Settings.Detected>
-  <ArchitectStudio.Settings.NotDetected>absent</ArchitectStudio.Settings.NotDetected>
+  <ArchitectStudio.Settings.Detected>detected</ArchitectStudio.Settings.Detected>
+  <ArchitectStudio.Settings.NotDetected>not detected</ArchitectStudio.Settings.NotDetected>
   <ArchitectStudio.Settings.ResetEverything>Reset everything</ArchitectStudio.Settings.ResetEverything>
   <ArchitectStudio.Settings.ConfirmResetEverything>Restore default preferences and erase all groups, created categories, orders, labels, colours and icons?</ArchitectStudio.Settings.ConfirmResetEverything>
 

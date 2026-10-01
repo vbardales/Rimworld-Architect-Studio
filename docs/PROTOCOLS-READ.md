@@ -2,71 +2,59 @@
 
 Which documents this mod's session read, in which version, and which were of no use. Kept so that a
 document that moves is re-read for what changed and one that never helped is not opened again.
-"Version" is the last commit that touched the file (`git log -1 --format='%h %ad' -- <file>`, its
-repository named) plus the first eight characters of its blob hash; the blob hash is the one to compare,
-because the monorepo commit hash is shared by files that did not change.
+"Version" is the blob hash (first eight characters of `git hash-object <file>`), because the commit hash
+of the monorepo is shared by files that did not change. The protocol documents live in the protocols
+repository (bare, `../rimworld-protocols.git`, work tree = the monorepo root); a `git log` run from the
+monorepo returns the commit that removed them, so cite the blob.
 
-Read on 2026-09-25 (see the update at the end: the protocol documents have since moved to the protocols repository), by the session `Architect Studio / done` (`local_da0ac2a6-…`), after a compaction.
-"Full" means every line was read; "partial" names what was read.
+Last read on **2026-10-01** by the session `architectstudio / options` (`local_fe5827e4-…`), at the start
+of a session. "Full" means every line was read. Earlier reads (2026-09-25, same mod) are summarized in
+the last section: only the table of this section is current.
+
+Protocols repository HEAD `c105a43` (10-01 05:15). `PUBLISHING.md` and `STYLE_RIMWORLD.md` were **modified
+and uncommitted** in it at the time of the read: the blob below is that of the working copy.
 
 ## Read, useful
 
-| File | Version | Read | What it changed here |
+| File | Version (blob) | Read | What it changed here |
 | --- | --- | --- | --- |
-| `AGENTS.md` | monorepo `90d51374` 09-25 15:25, blob `bb4c08c1` | full | Evidence rule (latest report per revision, one text line per run in `docs/runs/`, never folders); CI publishing rules |
-| `AUDIT.md` | `90d51374`, blob `4db3571e` | full | `done → tested` criteria; fail fast; requests carry no SHA; session title; no monitors |
-| `PUBLISHING.md` | `90d51374`, blob `b9d6db1c` | full | Fail fast; everything on GitHub in English; gallery folder numbered in upload order; thanks and attribution copies; CI section |
-| `TRANSLATIONS.md` | `90d51374`, blob `8970fe6c` | full | A change to French text resets `translation_fr` until revalidated; runtime checks stay `unverified` until done |
-| `Rimworld-Ticket-Dispatcher/docs/WELCOME.md` | ticket-dispatcher `79668cc` 09-25 17:16, blob `eb72657f` | full (a 48-line earlier version was read on 09-24) | Submit requests, never launch; no watchers; small tickets; filter terms; `-DepMap` file name only; keep the tree frozen until `RUN_DONE`; this journal |
-| `Rimworld-Ticket-Dispatcher/docs/SUBMIT.md` | `79668cc`, blob `a86821ac` | full | Options, exit codes, `-EvidenceDir` rules, what a request does not carry |
-| `Rimworld-Release-Admin/docs/OPERATIONS.md` | release-admin `d403592` 09-25 16:33, blob `2bb7a32d` | full | Current release template (`ref`/`version` inputs, SHA guard, documented mode); this repository's workflow is behind it |
-| `PickleTools/README.md` | pickletools `2b7b6d0` 09-25 17:22, blob `5b617e40` | full | Tool table and `path:` pass maps |
-| `PickleTools/Headless/README.md` | pickletools `b2712fc` 09-25 15:03, blob `9e4bf0ba` | partial: lines 159-258 (settings seed, several passes, waiting, sleep and archive), 283-387 (`-Then`, hangs, reports), 438-487 (traps), all headings | Restart chain rules; the game logs in UTC; nothing is edited while a run goes |
-| `./STATUS.md` | this repo `b7f8833`+, blob changes with every entry | front matter, headings, first sections; edited | It is the file kept up to date |
-| `./PUBLICATION.md` | this repo `42d09cc` 09-23 20:50, blob `9f1c4022` (read before PR 4; PR 4 rewrote it: re-read "The description is sent by the release" and "After an upload") | full | Gallery order and file names; since PR 4 the release reads the description and change note from this file |
-| `./TESTING.md` | this repo `2c076f8` 09-23 21:02, blob `d7b01926` | lines 1-36, 231-330, headings | Sections 12 to 15: restart, reset, MainButtons, the two open manual checks (15.4, 15.5) |
-| `./CHANGELOG.md` | this repo `84b7476` 09-23 21:54, blob `8b9ebd95` | full (written by this session) | |
-| `./docs/runs/` | this repo | full (written by this session) | One line per run |
-| `./Tests/Pickle/README.md` | this repo | full (written by this session) | Passes, restart pass, proofs to keep |
+| `AGENTS.md` | `44dddcbc` (21 lines) | full | Settings and translation gates before `preTest`; evidence rule (latest report per scenario for the revision now in the repository, drop the rest, list before deleting); `docs/runs/` is one text line per run; trim the history once published |
+| `AUDIT.md` | `38015d96` (274 lines) | full | Step 9 `done → tested`: no `@wip`, every `@requires` scenario played, no manual test left; step 12 (go back down, `workflow_stage`, session title); `.dds` and evidence stay out of git; Explorer artifacts in `Mod/` |
+| `TRANSLATIONS.md` | `71e64b12` (213 lines) | full | **New since 2026-09-30:** pawn gender switch (three segments), French review by Virginie (`translation_fr` cannot be `complete` without it, a session never marks its own French as reviewed), `FRENCH_REVIEW.md` at the mod root generated by a script |
+| `MOD_SETTINGS.md` | `a61cd541` (107 lines) | full | Nothing new for this mod: `settings_audit: complete` stands (primary route, hidden MainButtons shortcut, features 15 and 19) |
+| `PUBLISHING.md` | `70a54363` (789 lines, working copy) | full | Pull request to the origin repository is systematic and goes in `BACKLOG.md` (owner, 2026-09-28); the Preview carries the ModIcon in a corner and gallery position `0` is its copy; Steam change note starts with the version; gallery order |
+| `WORKSHOP_COMMENTS.md` | `cdd3381b` (159 lines) | full | Register: nine of this mod's recipients are `posted`; **Basic Dropdowns (ex Categories Dropdowns, 3455529827) has no row**, see the gaps |
+| `Rimworld-Release-Admin/docs/OPERATIONS.md` | `347a0d63` (112 lines; release-admin `d5282af`) | full | Manual workflow `publish-tag.yml` (this repository was migrated, PR 6 and 7); dry-run of the exact SHA; the semantic-release path is being retired |
+| `Rimworld-Ticket-Dispatcher/docs/WELCOME.md` | `1bdd1eed` (150 lines; dispatcher `dcbecf7`) | full | Deposit requests, never launch; the request carries no SHA; no `desktop.ini` or `.ico` in `Mod/`; `robocopy /MIR` or `[IO.Directory]::Delete('\\?\…')` for long capture names; read-and-record rule |
+| `Rimworld-Ticket-Dispatcher/docs/SUBMIT.md` | `7ab5e437` (133 lines) | full | Options of a request, `-DepMap` is a file name, exit codes |
+| `PickleTools/README.md` | `1d28b27e` (89 lines) | full | Tool table (only the ones already named in the pass maps are used here) |
+| `PickleTools/Headless/README.md` | `c023a674` (509 lines) | partial: headings, lines 253-302 (archive, passes without a DLC), 383-412 (what happens to the report) | `-EvidenceDir` copies before the lock is released; launcher archives are a reprieve, not storage |
+| `./STATUS.md` | this repository | front matter, headings, first sections; edited | It is the file kept up to date |
+| `./TESTING.md` | this repository | headings, section 15, validation commands | Manual checks 15.4 and 15.5 were automated (2026-09-25) |
+| `./CHANGELOG.md`, `./PUBLICATION.md`, `./README.md`, `./ATTRIBUTION.md`, `./LICENSE`, `./Mod/About/About.xml` | this repository | headings and the parts that carry rules (About.xml full) | Nothing to change: `CHANGELOG.md` is append-only and its first release is `1.0.0`; see `STATUS.md` for why no `0.1.0` entry is added |
+| `./docs/runs/`, `./Tests/Pickle/` | this repository | full (pass matrix, README "Which proofs to keep") | One line per run; proofs to keep are described in `Tests/Pickle/README.md` |
 
-## Read, of no use to this mod for now (do not reopen unless the file changes for a reason that concerns it)
+## Read, of no use to this mod (do not reopen unless the file changes for a reason that concerns it)
 
-| File | Version | Read | Why it did not help |
-| --- | --- | --- | --- |
-| `STYLE_RIMWORLD.md` | `90d51374`, blob `83c8a141` | headings only (484 lines) | Graphic style of Preview and ModIcon; only the owner generates them, and this mod's images exist |
-| `scripts/SEARCHING.md` | `90d51374`, blob `93d971dc` | headings only (168 lines) | Searching the Workshop corpus for other mods' defs; no port or def collision to check |
-| `PickleTools/Docs/steps.md` | pickletools `7268217` 09-25 17:22, blob `a79d9390` | header and the `ScreenshotMode` section | A generated catalogue: open it when a new scenario needs a step, not before |
-| `./README.md` | this repo `ad2525f` 09-13, blob `7dc3e89d` | first 25 lines | Player-facing summary, no rule for this work |
-| `./ATTRIBUTION.md`, `./LICENSE` | `ea985b0` 09-02, `96502b1` 09-19 | ATTRIBUTION full, LICENSE header | Identical to their copies in `Mod/` (checked with `diff`); nothing to do |
-| `./Mod/About/About.xml` | this repo | the diff since `v1.0.3` | Credits changed for 1.0.4; nothing else |
+| File | Version (blob) | Why it did not help |
+| --- | --- | --- |
+| `STYLE_RIMWORLD.md` | `e03d13c2` (706 lines, working copy) | Graphic style of Preview and ModIcon; only the owner generates them and this mod's images exist. Not opened on 2026-10-01 |
+| `scripts/SEARCHING.md` | `45f0fa13` (222 lines) | Searching the Workshop corpus for other mods' defs; no port or def collision to check. Not opened on 2026-10-01 |
+| `PickleTools/docs/steps.md` | `8639a069` (285 lines) | A generated catalogue: open it when a new scenario needs a step. Not opened on 2026-10-01 |
+| `PickleTools/Authoring/README.md` | not opened | Only for writing a new suite |
+| `./BACKLOG.md`, `./NOTES.md`, `./BUGS.md` | did not exist | `BACKLOG.md` is created on 2026-10-01 for the pull requests to the origin repositories; `NOTES.md` and `BUGS.md` stay absent (nothing to put in them) |
 
-## Named but absent or not read
+## Gaps found by the 2026-10-01 read
 
-`./BACKLOG.md`, `./NOTES.md` and `./BUGS.md` do not exist in this repository (the monorepo's `BACKLOG.md` was
-excluded on purpose). `MOD_SETTINGS.md` is referenced by `AGENTS.md` and `TRANSLATIONS.md` but was not in the
-list and was not read; `settings_audit` is `complete` from an earlier audit.
+- `translation_fr` is `unchecked`, and cannot reach `complete` before the owner reads `FRENCH_REVIEW.md` (generated by `Tests/New-FrenchReview.ps1`). This keeps the workflow state at `options`.
+- `Mod/desktop.ini` was tracked, so Steam shipped it: untracked and ignored on 2026-10-01.
+- The pull requests to `fernyrepos/Better-Architect-Menu` and `fernyrepos/Colored-Categories` were not tracked anywhere: `BACKLOG.md`.
+- `Basic Dropdowns` (renamed from Categories Dropdowns, same Workshop id 3455529827, author ferny) is named in the description as "Works with" and exercised by feature 10, but has no row in `WORKSHOP_COMMENTS.md` and is not in `THANKS`. The description also lists the same item twice under its two names.
+- `Tests/Pickle/Evidence/` held 482 MB, 12 revisions, most superseded: trimmed to the latest report per scenario (101 MB).
 
-## Gaps this reading found (also in `STATUS.md`, `remaining`)
+## Earlier reads, 2026-09-25
 
-- The release workflow predated the current template: fixed by PR 4 (`b3776cc`); its first dry-run is pending.
-- The gallery images were numbered `01-settings`, `02-categories`, `03-groups` while the upload order is groups first: renamed to `01-groups`, `02-categories`, `03-settings`.
-- `translation_fr` is `partial` again: French strings changed after it was `complete` and two tooltips are unseen.
-- TESTING.md 15.4 and 15.5 are neither automated nor justified as not applicable.
-- Requests carry no revision: the tree changed while requests were queued (noted in `STATUS.md`).
-
-## Update, 2026-09-25 late: the protocol documents moved and three changed
-
-Commit `90d51374` of the monorepo (09-25 15:25) moved `AGENTS.md`, `AUDIT.md`, `PUBLISHING.md`, `TRANSLATIONS.md`,
-`STYLE_RIMWORLD.md`, `MOD_SETTINGS.md`, `EXTERNAL_TOOLS.md` and `scripts/SEARCHING.md` out of the monorepo:
-the owner is now the protocols repository, a bare repository at `Documents/rimworld-protocols.git` (HEAD `448991f`
-09-25 21:25). The files still present in `rimworld/` are untracked mirror copies, identical to its HEAD (checked
-with `diff` and blob hashes on 2026-09-25): read either, but cite the protocols repository.
-
-Read again as a diff against the versions above (not in full), with what each changed here:
-
-| File | Read before | Now (blob) | What changed for this mod |
-| --- | --- | --- | --- |
-| `AUDIT.md` | `4db3571e` | `5f65a0b7` | Step 10 and the description bullet: the CI can now resend the description and creates the tag after the upload for every update |
-| `PUBLISHING.md` | `b9d6db1c` (683 lines) | `3a5c7d43` (703) | A Steam change note **starts with the version number** on its first line (Architect Studio 1.0.5 is the example named); documented mode; `dispatch-publish.sh` also refuses without a required reviewer and both secrets |
-| `TRANSLATIONS.md` | `8970fe6c` (100) | `fac81881` (112) | **Counts and plurals are families of keys** (`.One`, `.Many`, `.Zero`), never a suffix or `Pluralize`: this mod's `OverrideCount`, `HiddenCount`, `ConfirmDissolve` and `MoreResults` do not comply (defect in `STATUS.md`) |
-| `AGENTS.md`, `STYLE_RIMWORLD.md` | `bb4c08c1`, `83c8a141` | same | unchanged |
+The session `Architect Studio / done` (`local_da0ac2a6-…`) read `AGENTS.md` (`bb4c08c1`), `AUDIT.md` (`4db3571e`, then `5f65a0b7`),
+`PUBLISHING.md` (`b9d6db1c`, then `3a5c7d43`), `TRANSLATIONS.md` (`8970fe6c`, then `fac81881`), the dispatcher's `WELCOME.md` (`eb72657f`)
+and `SUBMIT.md` (`a86821ac`), `OPERATIONS.md` (`2bb7a32d`) and the PickleTools READMEs. Every one of them has moved since (see the table above).
+What those reads changed is in `STATUS.md` and the git history.

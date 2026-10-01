@@ -38,3 +38,10 @@ node_modules/
 # Preuves de run : gardees SUR DISQUE, pas dans git. Captures et Player.log font grossir le
 # dossier sans limite. Ce qui se versionne est un court resume texte dans docs/runs/, cite par STATUS.md.
 Tests/Pickle/Evidence/
+
+# Windows Explorer artifacts inside the published folder: Steam sends Mod/ as it stands, so a
+# desktop.ini or an .ico committed there reaches every subscriber. The folder icon is local
+# (Mod/desktop.ini points to Art/Preview.ico); the file stays on disk, git never sees it.
+Mod/desktop.ini
+Mod/**/desktop.ini
+Mod/*.ico
