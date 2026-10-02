@@ -136,15 +136,18 @@ namespace ArchitectStudio.PickleSteps
 
             await WaitForModalsToClear(ctx);
 
-            await ctx.Hover(tag);
-            // Input.mousePosition is sampled per frame: without this the read is one move behind.
+            // Pickle 6 clicks at the widget: no OS pointer moves, so Input.mousePosition stays where it was
+            // (the screen centre) and a GetWindowAt on it says nothing about the button. What can still
+            // swallow the click is a window drawn above the Architect window that takes input.
             await ctx.WaitFrames(2);
 
-            var point = UI.MousePositionOnUIInverted;
-            var under = Find.WindowStack.GetWindowAt(point);
-            ctx.Assert(under == ArchitectWindow(ctx),
-                $"the click at {point} would land on {Describe(under)}, not on the Architect window: " +
-                "something is drawn over the button, and the button itself is not at fault");
+            var architect = ArchitectWindow(ctx);
+            var stack = Find.WindowStack;
+            var above = stack.Windows.Skip(stack.Windows.IndexOf(architect) + 1)
+                .FirstOrDefault(w => w.windowRect.Overlaps(architect.windowRect) && stack.GetsInput(w));
+            ctx.Assert(above == null,
+                $"{Describe(above)} is drawn above the Architect window and takes input: " +
+                "the click would be eaten there, and the button itself is not at fault");
 
             await ctx.Click(tag);
         }
