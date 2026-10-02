@@ -39,4 +39,4 @@ carry is what we learned from them:
 
 - [ ] Full suite on the revision that will be published, once the tree is frozen (small tickets, one per pass,
       `-Label` carries the SHA): minimal, optionals, reviews in both languages, restart chain.
-- [ ] French review by the owner of `FRENCH_REVIEW.md` (then `translation_fr: complete` and the state goes back up).
+- [x] French review by the owner of `FRENCH_REVIEW.md`: validated 2026-10-02, `translation_fr: complete`.
