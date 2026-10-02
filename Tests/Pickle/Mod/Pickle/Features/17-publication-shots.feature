@@ -44,3 +44,19 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "settings page"
     And Nelim's Pickle Tools: screenshot mode is disabled
+
+  # The result, not the tool: the Architect menu with the group as one button, its dropdown open.
+  # A menu is shown for what it is, so nothing is staged beyond the group the scenario builds itself.
+  Scenario: the Architect menu with the group as one button, its dropdown open
+    Given four buildings "A", "B", "C" and "D" from one category, in no group
+    When I create the group "Monolith machines"
+    And I add "A" to the group "Monolith machines"
+    And I add "B" to the group "Monolith machines"
+    And I add "C" to the group "Monolith machines"
+    And I close all dialogs
+    And I show the Architect menu on the category of the group "Monolith machines"
+    And I open the dropdown of the group "Monolith machines" in the Architect menu
+    And Nelim's Pickle Tools: I frame the studio "emblem"
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "architect menu, a group opened"
+    And Nelim's Pickle Tools: screenshot mode is disabled

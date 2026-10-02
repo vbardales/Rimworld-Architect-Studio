@@ -198,6 +198,46 @@ namespace ArchitectStudio.PickleSteps
                 $"the editor should list [{string.Join(", ", expected)}]; it lists [{string.Join(", ", actual)}]");
         }
 
+        /// <summary>
+        /// Opens the Architect tab on the category whose panel draws the group, so a capture shows the
+        /// menu as a player sees it: the group as one button among the others.
+        /// </summary>
+        [When("I show the Architect menu on the category of the group {string}")]
+        public async Task ShowArchitectOnGroup(PickleContext ctx, string groupLabel)
+        {
+            var button = Driver.MenuButtonsOf(Driver.Group(ctx, groupLabel)).FirstOrDefault();
+            ctx.Require(button != null, $"the group {groupLabel} draws no button in any category");
+            var category = DefDatabase<DesignationCategoryDef>.AllDefsListForReading
+                .First(c => c.AllResolvedDesignators.Contains(button));
+
+            Find.MainTabsRoot.SetCurrentTab(MainButtonDefOf.Architect, false);
+            await ctx.WaitFrames(10);
+
+            var window = MainButtonDefOf.Architect.TabWindow as MainTabWindow_Architect;
+            ctx.Require(window != null, "the Architect tab window is not open");
+            var panel = window.desPanelsCached.FirstOrDefault(t => t.def == category);
+            ctx.Require(panel != null, $"the Architect window has no panel for {category.defName}");
+            window.selectedDesPanel = panel;
+            await ctx.WaitFrames(10);
+            ctx.Attach("category shown", category.defName);
+        }
+
+        /// <summary>
+        /// What clicking the group button does: the dropdown opens. Called on the designator itself,
+        /// since the button sits at a place that depends on the category and the screen.
+        /// </summary>
+        [When("I open the dropdown of the group {string} in the Architect menu")]
+        public async Task OpenGroupDropdown(PickleContext ctx, string groupLabel)
+        {
+            var button = Driver.MenuButtonsOf(Driver.Group(ctx, groupLabel)).FirstOrDefault();
+            ctx.Require(button != null, $"the group {groupLabel} draws no button in any category");
+            var before = Find.WindowStack.Windows.Count;
+            button.ProcessInput(new Event());
+            await ctx.WaitFrames(10);
+            ctx.Assert(Find.WindowStack.Windows.Count > before,
+                $"opening the dropdown of {groupLabel} should open a menu window; windows went from {before} to {Find.WindowStack.Windows.Count}");
+        }
+
         [Then("the Architect menu shows the group {string} as {int} button(s)")]
         public void ButtonCount(PickleContext ctx, string groupLabel, int count)
         {
