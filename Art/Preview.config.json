@@ -2,14 +2,19 @@
   "title": "Architect Studio",
   "titleSize": 46,
   "titleParts": [
-    { "text": "Architect Studio", "scale": 1 }
+    {
+      "text": "Architect Studio",
+      "scale": 1
+    }
   ],
   "suffix": "",
   "tag": "",
-  "copyLines": ["Reorganise the Architect menu from inside the game."],
+  "copyLines": [
+    "Reorganise the Architect menu from inside the game."
+  ],
   "layout": "panel",
   "panelAnchor": "top-left",
-  "backgroundFile": "Preview.png",
+  "backgroundFile": "Preview-source.png",
   "backgroundPosition": "center",
   "backgroundSize": "cover",
   "echo": {
@@ -26,7 +31,7 @@
     "flipX": true
   },
   "iconBadge": {
-    "file": "ModIcon-badge.png",
+    "file": "ModIcon-source.png",
     "corner": "bottom-left",
     "width": 220,
     "outline": false,
@@ -34,5 +39,12 @@
     "veilSize": 275,
     "veilLeft": -55,
     "veilBottom": -61
+  },
+  "palette": {
+    "veil": "#293747",
+    "inkPrimary": "#F2ECE1",
+    "inkSecondary": "#9DC7EF",
+    "accent": "#FFA72B",
+    "badgeInk": "#17120E"
   }
 }

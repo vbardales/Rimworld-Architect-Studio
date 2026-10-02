@@ -45,3 +45,6 @@ Tests/Pickle/Evidence/
 Mod/desktop.ini
 Mod/**/desktop.ini
 Mod/*.ico
+
+# Reproducible Preview diagnostics generated locally by the shared renderer.
+Art/.render/
