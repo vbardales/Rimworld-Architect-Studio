@@ -2,14 +2,14 @@
 settings_audit: complete
 localization: complete
 translation_en: complete
-translation_fr: partial
+translation_fr: complete
 mod:          Architect Studio
 packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-stage:        showcase
-workflow_stage: options
+stage:        done
+workflow_stage: done
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -20,7 +20,6 @@ showcase:     complete
 tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
-  - unverified: after the owner's first reading on 2026-10-01 (`Parente` → `Catégorie parente`; `présent`/`absent` → `détecté`/`non détecté`, English matched: `Parent category`, `detected`/`not detected`; label column of the parent row widened 90 → 130 px in `Dialog_EditCategory.cs`, DLL rebuilt, validator 989) the changed rows need a second reading and one look at the category editor in game (clipping, also at 150%). French review by Virginie (TRANSLATIONS.md, 2026-09-30: `translation_fr` cannot be `complete` before the owner has read the French). `FRENCH_REVIEW.md` at the repository root lists every French text with its English; generated from the shipped XML by `Tests/New-FrenchReview.ps1` on `5b5fe20`. Doubted rows are flagged in its fifth column. Until she reads it the workflow state stays `options`
   - unverified: the whole suite on the revision that will be published next (features 01 to 17 and 19 to 21 last played in full on `84b7476`, before the counted-phrase code of `4e86e04`); small tickets once the tree is frozen. Not a block under the fail-fast policy, but `tested` is not re-established until it is green
   - unverified: the French reviews pass of `68fe26f` (42 passed of 51) has no report left on disk, only its line in `docs/runs/2026-09-25-pass-matrix.md`
   - defect: `Mod/desktop.ini` was tracked and shipped to subscribers; untracked and ignored on 2026-10-01, gone from the next publication
@@ -46,12 +45,14 @@ remaining:
   - verified: the Architect Icons scenario passes against the real Architect Icons (Workshop 1195427067) on 2026-09-21
   - unverified: read against each mod's own source (`Search-Workshop.sh`, per SEARCHING.md) to find what to test. Float Sub-Menus was already named: scenario 13 (`ModSteps.IntegrationsMatchLoadedMods`) asserts `FloatSubMenuCompat.Available` matches whether `kathanon.floatsubmenu` is loaded, in every pass. Two new scenarios (`-DepMap wsl-deps.avec-facultatifs.map`): `22e9` staged all 16 mods then Pickle exited 2 (0 scenarios played); `0169` retried the same and failed the same way, for a real reason this time: my `-Filter "08-category-create|10-delete-foreign-group"` is not a regex alternation, Pickle read it as one literal filter and matched nothing (`Player.log`: "filter '...' matched no scenarios"). Split into two tickets, one filter each: `8742` (§8) and `f3ae` (§10, not yet returned). `08-category-create.feature` (`@requires:ferny.betterarchitect`) creates a category under a parent and asserts `BetterArchitectCompat.ParentCategoryOf` reports it, the real nesting TESTING.md §5 and §8 call for, never driven before — **passed on `8742`, 4/4 of the feature, English**. `10-delete-foreign-group.feature` (`@requires:ferny.categoriesdropdowns`) dissolves one of that mod's own groups (`Ferny_Walls`) without crashing — its own `patch.xml` ships every building assignment commented out, so the group exists with no member on this list, which is enough to prove the dissolve path survives a rival mod's def — **passed on `f3ae`, 4/4 of the feature, English**. Searchable Menus stays untested on our side: by its own author's design (`FloatSubMenuCompat.cs`) it grafts a search field onto any menu directly, without our code calling into it, so there is nothing of ours to assert against; the with-optionals pass (it breaks nothing) is what coverage looks like for it
 session:      local_fe5827e4-3c40-40ba-860f-ab81f7108d72
-updated:      2026-10-01, audit against AUDIT.md (blob 38015d96): done to showcase, workflow_stage options (replaces "stage stays done" of 2026-09-25)
+updated:      2026-10-02, French validated by the owner (reported in chat), FRENCH_REVIEW.md regenerated from clean XML at b6e1f9f; state back to done (replaces the options of 2026-10-01); tested still needs the full suite
 ---
 
 # Architect Studio — status
 
 ## Audit — 2026-10-01
+
+**French review, 2026-10-02 (reported by the owner in chat, entered by me as her words, not my own review):** Virginie validated the French of `FRENCH_REVIEW.md` after two corrections (`Catégorie parente`; `détecté` / `non détecté`). `.Zero` singular forms accepted, no pawn agreement owed. Revision reviewed: `b6e1f9f` (XML committed, tree clean for `Mod/Languages`); the report was regenerated from it. `translation_fr: complete`, `workflow_stage: done`. Still open: the category editor look in game (clipping of the widened label) and the full suite, both in the pending tickets.
 
 Audited revision `5b5fe20` (HEAD of `main`, level with `origin/main`) with local changes that are not this audit's: the badge work on `Art/` and `Mod/About/{Preview,ModIcon}.png`, kept untouched. No game was launched and no Pickle request was deposited (the tree is not frozen).
 
