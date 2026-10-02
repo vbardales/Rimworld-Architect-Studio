@@ -31,9 +31,8 @@ carry is what we learned from them:
 
 - [ ] Adopt the one-Markdown-source description standard (`## Steam description` of `PUBLICATION.md`,
       `aboutDescription: true`) at the next publication; a new dry-run follows because the SHA changes.
-- [ ] The description lists Basic Dropdowns (ex Categories Dropdowns, `3455529827`) twice under two names; one entry.
-- [ ] Add Basic Dropdowns to `THANKS` and to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository):
-      feature 10 exercises it and the description names it.
+- [x] Basic Dropdowns (ex Categories Dropdowns, `3455529827`) named once and thanked in the description (2026-10-02). The Workshop page changes only with `update_description` or by hand.
+- [ ] Add Basic Dropdowns to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, not this repository's to edit): feature 10 exercises it.
 - [ ] `Mod/desktop.ini` was shipped by earlier releases (it was tracked until 2026-10-01). The next publication stops sending it.
 
 ## Verification

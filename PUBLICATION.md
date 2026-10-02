@@ -48,13 +48,13 @@ Detected automatically, none required.
 - [Architect Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067): category icon picking.
 - [Float Sub-Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430): nested subcategories in the pick menus.
 - [Searchable Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119): adds a search field to those menus by itself.
-- [Categories Dropdowns](https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827): the groups it adds can be edited, extended or taken apart like any other.
+- [Basic Dropdowns](https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827) (formerly Categories Dropdowns): the groups it adds can be edited, extended or taken apart like any other.
 
 # Also recommended
 
 - [Architect Icons: Improved](https://steamcommunity.com/sharedfiles/filedetails/?id=2879451234), and [Optional Icons for Architect Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=1966995052) — more icons for the picker to offer, since it browses whatever your active mods have loaded.
 - [Bradson's Main Button Icons (Forked + Expanded)](https://steamcommunity.com/sharedfiles/filedetails/?id=3532359201) — the same treatment for the bottom bar.
-- [Basic Dropdowns](https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827), and [Basic Dropdowns - Extended](https://steamcommunity.com/sharedfiles/filedetails/?id=3562304092) — around a hundred ready-made dropdown groups, which this mod then lets you edit, extend or take apart.
+- [Basic Dropdowns - Extended](https://steamcommunity.com/sharedfiles/filedetails/?id=3562304092) — an add-on to Basic Dropdowns with more ready-made dropdown groups, which this mod then lets you edit, extend or take apart.
 - [Even More Linkables Dropdown Patch](https://steamcommunity.com/sharedfiles/filedetails/?id=3150535403) — dropdowns for linkable buildings.
 
 # If I go quiet
@@ -68,6 +68,7 @@ This mod's code was written with Claude Code (Anthropic) and Codex (OpenAI), and
 # Thanks
 
 - ferny (fernyrepos) for [Better Architect Menu](https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422) and [Colored Categories](https://steamcommunity.com/sharedfiles/filedetails/?id=3323569935), MIT licensed, whose study showed where the right hooks were.
+- ferny also for [Basic Dropdowns](https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827), whose ready-made groups Architect Studio lets players edit.
 - bymarcin for [Architect Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067), kathanon for [Float Sub-Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430) and [Searchable Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119).
 - Andreas Pardeike for [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077).
 - [Pickle](https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678), [RimLogging](https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696), and [PickleTools](https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401) for development-only testing. They are not dependencies of Architect Studio.
@@ -79,7 +80,7 @@ See ATTRIBUTION.md. This mod is MIT licensed.
 ```
 
 One known gap: the settings page lists the integrations it **detects** (Better Architect Menu, Architect Icons,
-Float Sub-Menus). Searchable Menus and Categories Dropdowns have no detection, so they are named on the page but
+Float Sub-Menus). Searchable Menus and Basic Dropdowns have no detection, so they are named on the page but
 not on that screen, and the page does not claim the screen shows them.
 
 ## Screenshots, in the order to upload
@@ -107,7 +108,7 @@ open, was added on 2026-10-02 and has not been played yet.
 - **Hard dependency: Harmony only** (`modDependencies`). The code uses `HarmonyLib` and no other third-party
   assembly; every integration is resolved by reflection and the mod works without any of them.
 - **Optional, in `loadAfter`** so that they load first when present: Better Architect Menu, Architect Icons,
-  Categories Dropdowns, Float Sub-Menus, Searchable Menus, plus the base game and the five expansions for order.
+  Categories Dropdowns (now Basic Dropdowns), Float Sub-Menus, Searchable Menus, plus the base game and the five expansions for order.
 - **No expansion is required.** The one branch on an expansion is `ModsConfig.AnomalyActive` in
   `Source/Runtime/Patches/ResearchLockedVisibility.cs`, guarded, for the research-locked option. There is no
   `LoadFolders.xml`. Supported version: 1.6.
