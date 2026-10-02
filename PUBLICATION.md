@@ -99,8 +99,8 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 2. `Art/Gallery/2-categories.jpg` - **the category editor**: every category with its icon and building count, the empty ones greyed out, the up/down arrows among siblings.
 3. `Art/Gallery/3-settings.jpg` - **the settings page**: the two editors, the two toggles, the keyboard-shortcut hint and the detected integrations.
 
-The current 1 and 3 predate the counted-phrase and "not detected" wording; fresh captures are in
-`Tests/Pickle/Evidence/full-1001/gallery-en/` (not yet cropped or uploaded). A fourth scenario, the Architect menu with a group
+1, 2 and 3 were replaced on 2026-10-02 by crops of the captures in
+`Tests/Pickle/Evidence/full-1001/gallery-en/` (window plus 40 px, 1200x820, 700x800 and 980x780; not yet uploaded to Steam). A fourth scenario, the Architect menu with a group
 open, was added on 2026-10-02 and has not been played yet.
 
 ## Dependencies and DLC
