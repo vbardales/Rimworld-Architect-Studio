@@ -7,13 +7,14 @@ preference reset fix, name-validation extraction, translations and tests in this
 
 - Release build: successful, zero warnings/errors; shipped `Mod/Assemblies/ArchitectStudio.dll`
   rebuilt from these sources. Build references: RimWorld 1.6.4871, Harmony 2.4.2.
-- `pwsh -NoProfile -File Tests/Run-Behavior.ps1`: **27 assertions passed** against the shipped
+Latest run, 2026-10-02 (the 2026-09-13 numbers this file used to carry were superseded):
+
+- `pwsh -NoProfile -File Tests/Run-Behavior.ps1`: **34 assertions passed** against the shipped
   DLL and installed RimWorld assemblies. Every PASS line contains the expected condition;
   any failed assertion or engine error terminates the command unsuccessfully.
-- `pwsh -NoProfile -File Tests/Validate-Mod.ps1`: **739 static/XML assertions passed**,
+- `pwsh -NoProfile -File Tests/Validate-Mod.ps1`: **989 static/XML assertions passed**,
   including the hidden shortcut's metadata and EN/FR label/description.
-- `Check-DefInjected.ps1 -TransMod Mod`: **11,588 Defs indexed, three paths checked, zero errors**.
-- Shipped DLL SHA-256: `F674C2251982ECF06C6132A426535CA54D5EC4681DEF2D78B6BA3FC4ED70CB7C`.
+- `Check-DefInjected.ps1 -TransMod Mod`: not rerun for this revision (no DefInjected path changed since 2026-09-13).
 
 | Scenario | Observed result |
 | --- | --- |
