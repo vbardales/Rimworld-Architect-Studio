@@ -27,6 +27,10 @@ carry is what we learned from them:
 - [ ] If something is worth proposing: fork under the owner's account, one branch per proposal, a pull request in
       English, then record its number here and in `STATUS.md`.
 
+## Feature requests
+
+- [ ] **Move an existing category under another, as a subcategory** (request by Ali50 on the Better Architect Menu page, 2026-10-02/03; a reply there pointed to Architect Studio). Wanted: take a top-level tab that mods add for one item or one designator (Natural Paths, Prioritize) and consolidate it into Management, Floors or any other, and move a subcategory between main categories. Today the parent row of the category editor is offered for the categories Architect Studio created only (`Dialog_EditCategory.cs`, `CustomCategoryRuntime.IsCustom`), and it needs Better Architect Menu for subcategories at all. Not a defect: not designed yet. Open questions: does Better Architect Menu's nesting accept a foreign category as a child, and what happens to its key binding and research-locked state.
+
 ## Release
 
 - [ ] Adopt the one-Markdown-source description standard (`## Steam description` of `PUBLICATION.md`,
