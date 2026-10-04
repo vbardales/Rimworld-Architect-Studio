@@ -13,6 +13,8 @@ Feature: the windows as a player would show them
     Given the save "Nelims-tribe" is loaded
     And game speed is paused
     And god mode is disabled
+    And Nelim's Pickle Tools: all filth is cleaned
+    And Nelim's Pickle Tools: the animals are removed from the sanctuary "hearth-hall"
 
   Scenario: the group editor with a group of its own, filled
     Given four buildings "A", "B", "C" and "D" from one category, in no group
