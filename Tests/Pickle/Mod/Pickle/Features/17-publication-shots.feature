@@ -15,6 +15,7 @@ Feature: the windows as a player would show them
     And god mode is disabled
     And Nelim's Pickle Tools: all filth is cleaned
     And Nelim's Pickle Tools: the animals are removed from the sanctuary "hearth-hall"
+    And Nelim's Pickle Tools: the animals are removed from the sanctuary "sleeping-nook"
 
   Scenario: the group editor with a group of its own, filled
     Given four buildings "A", "B", "C" and "D" from one category, in no group
