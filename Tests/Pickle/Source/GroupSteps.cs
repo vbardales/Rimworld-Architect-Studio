@@ -238,6 +238,18 @@ namespace ArchitectStudio.PickleSteps
                 $"opening the dropdown of {groupLabel} should open a menu window; windows went from {before} to {Find.WindowStack.Windows.Count}");
         }
 
+        /// <summary>
+        /// No designator armed: the placement ghost, the "Cancel" button and the selected-designator
+        /// panel go away, which leaves the menu as a player sees it before choosing.
+        /// </summary>
+        [When("the Architect designator is disarmed")]
+        public async Task DisarmDesignator(PickleContext ctx)
+        {
+            Find.DesignatorManager.Deselect();
+            await ctx.WaitFrames(5);
+            ctx.Assert(Find.DesignatorManager.SelectedDesignator == null, "a designator is still armed");
+        }
+
         [Then("the Architect menu shows the group {string} as {int} button(s)")]
         public void ButtonCount(PickleContext ctx, string groupLabel, int count)
         {

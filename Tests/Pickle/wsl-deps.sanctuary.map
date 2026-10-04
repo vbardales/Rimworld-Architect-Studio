@@ -1,0 +1,5 @@
+# Workshop screenshots on Nelim's tribe (fixture Nelims-tribe.rws from PickleTools, copied into Fixtures, not committed).
+# Same tools as PickleTools' own wsl-deps.sanctuary.map, plus ScreenshotMode for the window framing step.
+nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
+nelim.pickletools.camerazoom path:PickleTools/CameraZoom/Mod
+nelim.pickletools.screenshotmode path:PickleTools/ScreenshotMode/Mod
