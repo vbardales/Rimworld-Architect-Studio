@@ -1,0 +1,4 @@
+# Presentation pass for the Workshop screenshots, on Nelim's tribe (fixture Nelims-tribe.rws, copied from
+# PickleTools, not committed). Same tools as wsl-deps.studio.map plus CameraZoom to frame a cell.
+nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
+nelim.pickletools.camerazoom       path:PickleTools/CameraZoom/Mod

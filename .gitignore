@@ -48,3 +48,6 @@ Mod/*.ico
 
 # Reproducible Preview diagnostics generated locally by the shared renderer.
 Art/.render/
+
+# Fixture saves are large; the Nelim's tribe copy comes from PickleTools.
+Tests/Pickle/Mod/Pickle/Fixtures/*.rws
