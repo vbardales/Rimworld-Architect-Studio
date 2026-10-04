@@ -21,7 +21,7 @@ Feature: the windows as a player would show them
     And I add "B" to the group "Monolith machines"
     And I add "C" to the group "Monolith machines"
     And I select the group "Monolith machines" in the editor
-    And Nelim's Pickle Tools: I frame the sanctuary "house"
+    And Nelim's Pickle Tools: I frame the cell (190, 115) at zoom 15
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "group editor, a filled group"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -31,7 +31,7 @@ Feature: the windows as a player would show them
     And I open the category editor
     And I wait 30 ticks
     Then window "Dialog_Categories" is open
-    When Nelim's Pickle Tools: I frame the sanctuary "house"
+    When Nelim's Pickle Tools: I frame the cell (190, 115) at zoom 15
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "category editor"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -40,7 +40,7 @@ Feature: the windows as a player would show them
     When I close all dialogs
     And I open the Architect Studio settings through the shortcut and let it draw
     Then window "Dialog_ModSettings" is open
-    When Nelim's Pickle Tools: I frame the sanctuary "house"
+    When Nelim's Pickle Tools: I frame the cell (190, 115) at zoom 15
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "settings page"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -57,7 +57,7 @@ Feature: the windows as a player would show them
     And I show the Architect menu on the category of the group "Workshop favourites"
     And I open the dropdown of the group "Workshop favourites" in the Architect menu
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the sanctuary "house"
+    And Nelim's Pickle Tools: I frame the cell (190, 115) at zoom 15
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "architect menu, a group opened"
     And Nelim's Pickle Tools: screenshot mode is disabled
