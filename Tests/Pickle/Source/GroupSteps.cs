@@ -326,6 +326,31 @@ namespace ArchitectStudio.PickleSteps
                 $" in {picked[0].designationCategory.defName}");
         }
 
+        /// <summary>The same four, restricted to buildings whose research is done: an open dropdown lists only those, and a group of locked ones opens an empty menu.</summary>
+        [Given("four buildings {string}, {string}, {string} and {string} from one category, in no group, that the player can already build")]
+        public void FourBuildableOfOneCategory(PickleContext ctx, string a, string b, string c, string d)
+        {
+            var names = new[] { a, b, c, d };
+            var picked = DropdownRuntime.AllBuildables()
+                .Where(x => x.designationCategory != null && x.designatorDropdown == null &&
+                            Driver.IsStandaloneIn(x, x.designationCategory) && x.IsResearchFinished)
+                .GroupBy(x => x.designationCategory)
+                .OrderBy(g => g.Key.defName)
+                .Select(g => g.OrderBy(x => x.defName).Take(names.Length).ToList())
+                .FirstOrDefault(g => g.Count == names.Length);
+            ctx.Require(picked != null, "no Architect category holds four buildings outside any group");
+
+            var aliases = new Driver.Aliases();
+            for (var i = 0; i < names.Length; i++)
+            {
+                aliases.ByName[names[i]] = picked[i];
+            }
+
+            ctx.Set(aliases);
+            ctx.Attach("buildings picked", string.Join(", ", names.Select((n, i) => $"{n} = {picked[i].defName}")) +
+                $" in {picked[0].designationCategory.defName}");
+        }
+
         /// <summary>
         /// Leaves the confirmation of the editor's Delete button on screen without confirming it:
         /// the text it shows is what a review capture needs, and confirming would remove the group.
