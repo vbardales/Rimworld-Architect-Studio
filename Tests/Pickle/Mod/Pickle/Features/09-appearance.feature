@@ -19,3 +19,17 @@ Feature: label, colour and icon of a category
     Then window "Dialog_EditCategory" is open
     And no errors were logged
     When I take a screenshot "appearance window, parent row"
+
+  # The parent row for a tab that is not ours: a button when it has no subcategory, a note when it has.
+  @review @requires:ferny.betterarchitect
+  Scenario: the parent row of a tab that is not ours, with and without subcategories
+    Given the save "test-colony" is loaded
+    When I open the appearance window of the category "Joy"
+    And I wait 30 ticks
+    Then window "Dialog_EditCategory" is open
+    When I take a screenshot "appearance window, a tab without subcategory"
+    And I close all dialogs
+    And I open the appearance window of the category "Structure"
+    And I wait 30 ticks
+    Then no errors were logged
+    When I take a screenshot "appearance window, a tab with subcategories"

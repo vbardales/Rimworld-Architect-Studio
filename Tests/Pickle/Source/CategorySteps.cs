@@ -99,7 +99,7 @@ namespace ArchitectStudio.PickleSteps
         [When("I open the appearance window of the category {string}")]
         public async Task OpenAppearance(PickleContext ctx, string label)
         {
-            Find.WindowStack.Add(new Dialog_EditCategory(Driver.CreatedCategory(ctx, label)));
+            Find.WindowStack.Add(new Dialog_EditCategory(Driver.Category(ctx, label)));
             await ctx.WaitFrames(10);
         }
 

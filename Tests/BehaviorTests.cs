@@ -73,6 +73,8 @@ namespace ArchitectStudioTests
             settings.categoryLabels["custom"] = "Étage & atelier";
             settings.categoryIcons["custom"] = "UI/ArchitectIcons/Test";
             settings.categoryColors["custom"] = "255,128,0";
+            settings.categoryParents["Joy"] = "Structure";
+            settings.categoryParents["Misc"] = "";
             string file = Path.Combine(output, "settings.xml");
             Scribe.saver.InitSaving(file, "settings");
             settings.ExposeData();
@@ -92,6 +94,8 @@ namespace ArchitectStudioTests
             Check(loaded.categoryOrders["custom"] == 123 && loaded.categoryLabels["custom"] == "Étage & atelier"
                 && loaded.categoryIcons["custom"] == "UI/ArchitectIcons/Test" && loaded.categoryColors["custom"] == "255,128,0",
                 "category order, label, icon and colour persist");
+            Check(loaded.categoryParents["Joy"] == "Structure" && loaded.categoryParents["Misc"] == "" && loaded.categoryParents.Count == 2,
+                "the parent forced on a category that is not ours persists, an empty one meaning top level");
 
             string legacyFile = Path.Combine(output, "legacy.xml");
             File.WriteAllText(legacyFile, "<settings />");
