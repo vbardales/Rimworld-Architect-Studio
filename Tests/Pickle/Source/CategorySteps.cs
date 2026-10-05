@@ -95,6 +95,14 @@ namespace ArchitectStudio.PickleSteps
             ctx.Assert(def != null, $"creating '{label}' returned no def");
         }
 
+        /// <summary>Opens the appearance window the way a click on the category's name does.</summary>
+        [When("I open the appearance window of the category {string}")]
+        public async Task OpenAppearance(PickleContext ctx, string label)
+        {
+            Find.WindowStack.Add(new Dialog_EditCategory(Driver.CreatedCategory(ctx, label)));
+            await ctx.WaitFrames(10);
+        }
+
         [When("I delete the category {string}")]
         public void Delete(PickleContext ctx, string label)
         {
