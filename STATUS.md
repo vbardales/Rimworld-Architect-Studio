@@ -76,3 +76,7 @@ Not established, so `tested` stays out of reach: the full suite on the revision 
 Copy, typography, layout and palette are consolidated in `Art/Preview.config.json`. The canonical inputs are `Art/Preview-source.png`, `Art/echo.png` and `Art/ModIcon-source.png`; the shared renderer writes temporary diagnostics under ignored `Art/.render/`. Existing distributed Preview, gallery and ICO outputs were preserved because they were present and coherent; no render was run for this migration. Superseded JSON files and generated QA intermediates were removed. Nothing published.
 
 `licence` vocabulary: `original` an original mod idea, not an update or continuation of another mod; studying other mods or integrating with them does not exclude this classification. For updates or continuations: `open` an explicit licence, `silent` no licence and a dead source, `alive` no licence but a living source, `forbidden` a written refusal.
+
+## Code review — 2026-10-05
+
+`/code-review` (low effort) of `Source/` from `v1.0.0` (`b919046`) to `2b16bdf252c8221a3d171c2ad9fd27162b7aa27d`: no finding. `Source/` last changed in `f553e8c`; `2b16bdf` only trims evidence. Tests and fixtures were not reviewed at this level.
