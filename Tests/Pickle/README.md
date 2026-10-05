@@ -344,12 +344,11 @@ binary** - `get_UiScale` and `HeldAtAnotherScale` present, `GUIToScreenPoint` pr
 `GUIToScreenRect` gone. Check it **case-sensitively**: a case-insensitive search for `UiScale`
 also matches `Prefs.UIScale` and answers yes on every build, guard or no guard.
 
-### What is on disk (2026-10-05)
+### What is on disk (2026-10-05, after the 1.0.6 deploy)
 
-`Tests/Pickle/Evidence/` is about 490 MB (it was 958 MB). Kept, one folder per proof; the latest report of each scenario, nothing older unless it is the only proof:
+`Tests/Pickle/Evidence/` is about 200 MB. Kept, one folder per proof, the latest report of each scenario:
 
-- `full-1001/`: `minimal-en`, `minimal-fr`, `optionals-en`, `studio-en`, `rimmsqol-en` (features 01 to 17 and 19, English; minimal French), `reviews-en-retry` and `reviews-fr-3` (feature 16 and the editor screenshots, in both languages), `counted-en-3` and `counted-fr-3` (feature 18, 10 of 10), `restart-en` and `replay02-en`, `gallery-sanctuary-5-en` (the four Workshop captures, cited in `PUBLICATION.md`).
-- `matrix-fddea0d/`: features 08 (category nesting) and 10 (Categories Dropdowns group dissolved), the two conditional scenarios whose mods only the optionals pass stages.
-- `matrix-b7f8833/`: the restart chain; `junit.xml` of `seq1` and `seq2` carries the two process ids.
+- `full-1006/`: the non-regression passes on the published revision `0880367`: `minimal-en`, `minimal-fr`, `optionals-en`, `reviews-en`, `reviews-fr`, `rimmsqol-en` and `restart-en` (`seq1`, `seq2`). All green, skipped scenarios are the conditional ones played in their own pass.
+- `full-1001/gallery-sanctuary-5-en/`: the four Workshop captures, cited in `PUBLICATION.md`.
 
-Dropped on 2026-10-05: `matrix-84b7476`, `matrix-current`, `matrix-3fb0b93`, `matrix-4e86e04` and the superseded `full-1001` runs (`counted-en`, `counted-fr`, `reviews-fr`, `gallery-en`, `gallery-menu-2`, `gallery-menu-3`): every scenario they proved was replayed in a kept folder. None of the kept runs is on the revision to publish; the full pass on that revision replaces them.
+Dropped on 2026-10-05: the 1.0.5-era folders `matrix-84b7476`, `matrix-current`, `matrix-3fb0b93`, `matrix-4e86e04`, `matrix-fddea0d`, `matrix-b7f8833` and every `full-1001` run but the gallery: each scenario they proved was replayed in `full-1006` on the published revision.
