@@ -5,21 +5,23 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
-## [1.0.6-beta.1] — 2026-09-26
-
-Pre-release to test the manual publication workflow (dry-run only; nothing is published to the Workshop).
+## [1.0.6] — 2026-10-05
 
 ### Fixed
 
 - Counted phrases read correctly in both languages: "1 building moved", "2 buildings moved", "1 group deleted" instead of
   "building(s)" and "group(s)", the delete confirmation says "Its 1 building" or "Its 3 buildings", and French reads 0 as a
-  singular ("0 bâtiment déplacé"). Each phrase is a family of keys chosen by the count (`.Zero`, `.One`, `.Many`); the
-  mod validator now requires every form in both languages and refuses a `(s)` suffix.
-- French interface text, second pass on the same rule: the "more results" line, the label of a group made by the
-  player and the forced-category tooltip no longer address the player with an order or with "toi".
+  singular ("0 bâtiment déplacé"). Each phrase is a family of keys chosen by the count (`.Zero`, `.One`, `.Many`).
+- French interface text reviewed by its owner: no order and no "toi" ("more results" line, label of a group made by the
+  player, forced-category tooltip), "Catégorie parente" for the parent row, and "détecté" / "non détecté" for each integration.
+- The parent row of the category editor: its label no longer clips in French, and the note shown without Better Architect
+  Menu wraps instead of being cut off.
 
 ### Changed
 
+- The mod description names Basic Dropdowns (formerly Categories Dropdowns) once, under "Works with", and thanks its author.
+- New ModIcon and Preview; screenshots of the Workshop page retaken.
+- `desktop.ini` is no longer shipped inside `Mod/`.
 - Publication goes through the manual workflow `publish-tag.yml` (generated from the `Rimworld-Release-Admin` template)
   instead of semantic-release. The Steam description and the `About.xml` one come from a single Markdown source in
   `PUBLICATION.md`.

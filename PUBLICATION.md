@@ -123,22 +123,29 @@ with blueprints and storage crates, a cartoon mascot in a hard hat, and three in
 - Steam creates a **new** item private and RimWorld never calls `SetItemVisibility`; this item is already public.
 - The release is **manual** (`.github/workflows/publish-tag.yml`, configured by `.github/publish.config.json`): the version is the `version` input of the workflow and must be above every existing tag, so no `feat:` or `fix:` commit is needed. The GitHub release notes are the `## [<version>]` section of `CHANGELOG.md` (dated, written by hand); the Steam change note is the fenced block under `### <version>` of this file, BBCode, sent as written. Both are checked and printed before any tag exists, and the dry-run stops on purpose when either is missing.
 - The workflow uploads to Steam first, then creates the tag and the GitHub release: a failed upload leaves no tag. If the upload timed out or its result is unknown, check the item on Steam before any new attempt.
-- `publish` takes the full 40-character SHA of a commit whose dry-run passed (`Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio publish-tag.yml <SHA> <version>`); only the owner approves `steam-production`. Rollback target: `v1.0.3` (`b316bfa`), the last version tested in full; each good version gets its tag, which is the next target.
+- `publish` takes the full 40-character SHA of a commit whose dry-run passed (`Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio publish-tag.yml <SHA> <version>`); only the owner approves `steam-production`. Rollback target: `v1.0.5` (`ccad168`), the last published version; each good version gets its tag, which is the next target.
 
 ## Steam change notes
 
 One fenced block per version, under `### <version>`, BBCode, sent to Steam as written by the release. The
 block of the version being published must exist before its dry-run. Start each block with the version heading, as the 1.0.4 note did (`[h2][url=…/compare/vA...vB]B[/url] (date)[/h2]`): without it the Workshop change notes list the entry with no version number.
 
-### 1.0.6-beta.1
+### 1.0.6
 
 ```
-[h2][url=https://github.com/vbardales/Rimworld-Architect-Studio/compare/v1.0.5...v1.0.6-beta.1]1.0.6-beta.1[/url] (2026-09-26)[/h2]
+[h2][url=https://github.com/vbardales/Rimworld-Architect-Studio/compare/v1.0.5...v1.0.6]1.0.6[/url] (2026-10-05)[/h2]
 
 [h3]Fixed[/h3]
 [list]
 [*]Counted phrases read correctly in English and French: "1 building moved" / "2 buildings moved", "1 group deleted", the delete confirmation for one or several buildings, and "0 bâtiment déplacé" in French.
-[*]French: the "more results" line, the label of a group made by the player and the forced-category tooltip no longer give orders or use "toi".
+[*]French interface text reviewed: no more orders or "toi", "Catégorie parente" for the parent row, "détecté" / "non détecté" for each integration.
+[*]Category editor: the parent label no longer clips in French, and the note shown without Better Architect Menu wraps instead of being cut off.
+[/list]
+
+[h3]Changed[/h3]
+[list]
+[*]Basic Dropdowns (formerly Categories Dropdowns) is named in the description, with thanks to its author.
+[*]New icon and Preview, new screenshots.
 [/list]
 ```
 
