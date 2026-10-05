@@ -1,23 +1,21 @@
 # Communication after 1.0.6 (drafted 2026-10-05, nothing posted yet)
 
-1.0.6 is published (tag `v1.0.6` on `08803670d6c0fe725fa0ef26dc3f52453313703b`, release 2026-10-05 17:17 UTC). Each text is under 1000 characters, the limit of a Steam comment. Posting is the owner's.
+1.0.6 is published (tag `v1.0.6` on `08803670d6c0fe725fa0ef26dc3f52453313703b`, release 2026-10-05 17:17 UTC). Voice, length and link follow `WORKSHOP_COMMENTS.md` (150 to 350 characters, one hidden `[url=]` link, no bare URL, one or two emoticons). Posting is the owner's.
 
-## 1. Thanks on Basic Dropdowns (ferny), the only row missing from the register
+## 1. Basic Dropdowns (ferny), the row missing from the register
 
-Page: https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827
-
-```
-Basic Dropdowns' ready-made groups are exactly what Architect Studio lets players edit: open the group editor and you can reorder them, add or remove buildings, force a category, or take a group apart when you want a different layout. Nothing is written to your files; it is all stored in the mod settings and reapplied at startup. Thank you for making the groups that so many players already rely on! 🥰
-https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
-```
-
-## 2. Answer to Ali50 (request to move a category under another)
-
-Where he asked: the Better Architect Menu page, then ours. A single reply there is enough.
+Page: https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827. Voice and shape per `WORKSHOP_COMMENTS.md` (short, plain, one link hidden, no stock phrase).
 
 ```
-Thank you for the precise request, Ali50! Moving a category that has no subcategories under another one (including another mod's) is on my list for Architect Studio. It is not in the version out today (1.0.6), and I will not promise a date. Today the parent choice only exists for categories created with Architect Studio. The first step is what you describe: a top-level tab with no children, moved under another tab. I will post here when it ships.
-https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018
+Your ready-made groups are what I tested the group editor on: you can open one in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018]Architect Studio[/url], reorder it, add a building, or take it apart. Thanks for them :)
+```
+
+## 2. Ali50 (move a category under another)
+
+Where he asked. Plain answer to a technical point, no ceremony.
+
+```
+Not in the version out today (1.0.6), sorry. The parent choice only exists for the categories [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018]Architect Studio[/url] creates itself. Moving a tab with no subcategories under another one, another mod's included, is the first thing I want to add. No date, I will say here when it is out :)
 ```
 
 ## 3. For the Architect Studio page, if wanted
