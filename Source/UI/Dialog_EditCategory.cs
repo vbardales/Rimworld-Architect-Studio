@@ -89,10 +89,13 @@ namespace ArchitectStudio
             if (!BetterArchitectCompat.SubcategoriesSupported)
             {
                 GUI.color = new Color(1f, 1f, 1f, 0.6f);
-                Widgets.Label(new Rect(inRect.x + 134f, y, inRect.width - 134f, 28f),
-                    "ArchitectStudio.Categories.NoNesting".Translate());
+                // The explanation is a sentence: it wraps, so the row grows with it instead of clipping.
+                string note = "ArchitectStudio.Categories.NoNesting".Translate();
+                float noteWidth = inRect.width - 134f;
+                float noteHeight = Mathf.Max(28f, Text.CalcHeight(note, noteWidth));
+                Widgets.Label(new Rect(inRect.x + 134f, y, noteWidth, noteHeight), note);
                 GUI.color = Color.white;
-                return y + 34f;
+                return y + noteHeight + 6f;
             }
 
             var parent = BetterArchitectCompat.ParentCategoryOf(category);
@@ -100,7 +103,7 @@ namespace ArchitectStudio
                 ? parent.LabelCap.ToString()
                 : "ArchitectStudio.Categories.TopLevel".Translate().ToString();
 
-            if (Widgets.ButtonText(new Rect(inRect.x + 94f, y, inRect.width - 94f, 28f), label))
+            if (Widgets.ButtonText(new Rect(inRect.x + 134f, y, inRect.width - 134f, 28f), label))
             {
                 CategoryMenu.Show("ArchitectStudio.Categories.TopLevel".Translate(), newParent =>
                 {
