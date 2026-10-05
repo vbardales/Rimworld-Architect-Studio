@@ -167,6 +167,30 @@ namespace ArchitectStudio.PickleSteps
                 $"'{def.defName}' should sit under '{expected.defName}'; its parent is {(actual == null ? "none" : actual.defName)}");
         }
 
+        private sealed class RememberedParent
+        {
+            public string Of;
+            public string Parent;
+        }
+
+        [When("I remember the parent of the category {string}")]
+        public void RememberParent(PickleContext ctx, string category)
+        {
+            var def = Driver.Category(ctx, category);
+            ctx.Set(new RememberedParent { Of = def.defName, Parent = BetterArchitectCompat.ParentCategoryOf(def)?.defName ?? "" });
+        }
+
+        [Then("the category {string} has the parent it had before")]
+        public void HasRememberedParent(PickleContext ctx, string category)
+        {
+            var def = Driver.Category(ctx, category);
+            var remembered = ctx.Get<RememberedParent>();
+            ctx.Require(remembered != null && remembered.Of == def.defName, $"no parent was remembered for '{def.defName}'");
+            var actual = BetterArchitectCompat.ParentCategoryOf(def)?.defName ?? "";
+            ctx.Assert(actual == remembered.Parent,
+                $"'{def.defName}' should be back under '{remembered.Parent}' (none if empty); its parent is '{actual}'");
+        }
+
         [Then("the category {string} has no parent")]
         public void HasNoParent(PickleContext ctx, string category)
         {
