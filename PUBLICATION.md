@@ -88,8 +88,7 @@ not on that screen, and the page does not claim the screen shows them.
 Steam shows the first one large. The folder `Art/Gallery/` holds only the images to upload, numbered in upload order,
 and `0-preview.png` is a byte-for-byte copy of `Mod/About/Preview.png` (uploaded by the owner on 2026-10-02). The others are
 English, taken by the Pickle presentation scenario (`Tests/Pickle/Mod/Pickle/Features/17-publication-shots.feature`)
-with `wsl-deps.studio.map`: no optional Architect Studio integration is staged, while Nelim's dedicated zen-meadow
-screenshot colony supplies the backdrop. The lists therefore show the game's own groups, not another mod's raw defNames.
+with `wsl-deps.sanctuary.map`: no optional Architect Studio integration is staged, while Nelim's tribe supplies the backdrop. The lists therefore show the game's own groups, not another mod's raw defNames.
 Menus and interface windows are shown as what they are, with no staged pawn.
 
 **Upload budget:** JPEGs at 1280×800 framed around the window, each at most **2 MB**, the batch at most **8 MB**.
@@ -99,9 +98,9 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 2. `Art/Gallery/2-categories.jpg` - **the category editor**: every category with its icon and building count, the empty ones greyed out, the up/down arrows among siblings.
 3. `Art/Gallery/3-settings.jpg` - **the settings page**: the two editors, the two toggles, the keyboard-shortcut hint and the detected integrations.
 
-1, 2 and 3 were replaced on 2026-10-02 by crops of the captures in
-`Tests/Pickle/Evidence/full-1001/gallery-en/` (window plus 40 px, 1200x820, 700x800 and 980x780; not yet uploaded to Steam). A fourth scenario, the Architect menu with a group
-open, was added on 2026-10-02 and has not been played yet.
+4. `Art/Gallery/4-architect-menu.jpg` - **the Architect menu**: a group as one button, its dropdown open, the placement tool disarmed.
+
+1 to 4 are crops (window plus 40 px; the menu is the bottom-left of the screen) of the captures in `Tests/Pickle/Evidence/full-1001/gallery-sanctuary-5-en/` (ticket `efd1`, 2026-10-05), played on Nelim's tribe (`Nelims-tribe`, the house, filth cleaned, animals removed from the hearth hall and the sleeping nook). Owner validated them on 2026-10-05; upload to Steam is the owner's.
 
 ## Dependencies and DLC
 
