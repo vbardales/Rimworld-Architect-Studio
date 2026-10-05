@@ -34,13 +34,13 @@ Feature: creating a category, and its keyboard shortcut
   # another tab. The def is not ours; Better Architect Menu's extension is grafted on it.
   @requires:ferny.betterarchitect
   Scenario: a tab that is not ours moves under another, then back, then is put back by the reset
-    When I move the category "Temperature" under the parent "Structure"
-    Then the category "Temperature" is listed under the parent "Structure"
-    And the Architect menu has no tab for the category "Temperature"
-    When I move the category "Temperature" back to the top level
-    Then the category "Temperature" has no parent
-    And the Architect menu has a tab for the category "Temperature"
-    When I move the category "Temperature" under the parent "Structure"
+    When I move the category "Recreation" under the parent "Structure"
+    Then the category "Recreation" is listed under the parent "Structure"
+    And the Architect menu has no tab for the category "Recreation"
+    When I move the category "Recreation" back to the top level
+    Then the category "Recreation" has no parent
+    And the Architect menu has a tab for the category "Recreation"
+    When I move the category "Recreation" under the parent "Structure"
     And I reset everything from the mod settings
-    Then the category "Temperature" has no parent
-    And the Architect menu has a tab for the category "Temperature"
+    Then the category "Recreation" has no parent
+    And the Architect menu has a tab for the category "Recreation"
