@@ -8,8 +8,8 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-stage:        done
-workflow_stage: done
+stage:        prepublished
+workflow_stage: prepublished
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -20,7 +20,7 @@ showcase:     complete
 tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
-  - unverified: the whole suite on the revision that will be published next (features 01 to 17 and 19 to 21 last played in full on `84b7476`, before the counted-phrase code of `4e86e04`); small tickets once the tree is frozen. Not a block under the fail-fast policy, but `tested` is not re-established until it is green
+  - unverified: the whole suite on the published revision (fail fast, owner decision 2026-10-05: it runs after the deploy; tickets db18 to f46b on `8e86471` are in flight, `minimal-en` green 35/0/30 skipped); a red afterwards means rollback to `v1.0.5` (`ccad168`)
   - unverified: the French reviews pass of `68fe26f` (42 passed of 51) has no report left on disk, only its line in `docs/runs/2026-09-25-pass-matrix.md`
   - defect: `Mod/desktop.ini` was tracked and shipped to subscribers; untracked and ignored on 2026-10-01, gone from the next publication
   - unverified: Basic Dropdowns (ex Categories Dropdowns, `3455529827`): the description now names it once and thanks ferny for it (About.xml and PUBLICATION.md, 2026-10-02, validator 989); the Workshop page still shows the old text until a description update, and the comment register (`WORKSHOP_COMMENTS.md`, protocols repository) has no row for it
@@ -30,7 +30,7 @@ remaining:
   - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 122f21f in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%. Played on 2026-09-21 against a Pickle built from that PR alone, the feature holding the scenario passes 3 of 3, the 150% one included
   - unverified: read against each mod's own source (`Search-Workshop.sh`, per SEARCHING.md) to find what to test. Float Sub-Menus was already named: scenario 13 (`ModSteps.IntegrationsMatchLoadedMods`) asserts `FloatSubMenuCompat.Available` matches whether `kathanon.floatsubmenu` is loaded, in every pass. Two new scenarios (`-DepMap wsl-deps.avec-facultatifs.map`): `22e9` staged all 16 mods then Pickle exited 2 (0 scenarios played); `0169` retried the same and failed the same way, for a real reason this time: my `-Filter "08-category-create|10-delete-foreign-group"` is not a regex alternation, Pickle read it as one literal filter and matched nothing (`Player.log`: "filter '...' matched no scenarios"). Split into two tickets, one filter each: `8742` (§8) and `f3ae` (§10, not yet returned). `08-category-create.feature` (`@requires:ferny.betterarchitect`) creates a category under a parent and asserts `BetterArchitectCompat.ParentCategoryOf` reports it, the real nesting TESTING.md §5 and §8 call for, never driven before — **passed on `8742`, 4/4 of the feature, English**. `10-delete-foreign-group.feature` (`@requires:ferny.categoriesdropdowns`) dissolves one of that mod's own groups (`Ferny_Walls`) without crashing — its own `patch.xml` ships every building assignment commented out, so the group exists with no member on this list, which is enough to prove the dissolve path survives a rival mod's def — **passed on `f3ae`, 4/4 of the feature, English**. Searchable Menus stays untested on our side: by its own author's design (`FloatSubMenuCompat.cs`) it grafts a search field onto any menu directly, without our code calling into it, so there is nothing of ours to assert against; the with-optionals pass (it breaks nothing) is what coverage looks like for it
 session:      local_fe5827e4-3c40-40ba-860f-ab81f7108d72
-updated:      2026-10-02, French validated by the owner (reported in chat), FRENCH_REVIEW.md regenerated from clean XML at b6e1f9f; state back to done (replaces the options of 2026-10-01); tested still needs the full suite
+updated:      2026-10-05, 1.0.6 prepublished: dry-run green (see Fail-fast publication below); non-regression runs after the deploy, by the owner's decision
 ---
 
 # Architect Studio — status
@@ -80,3 +80,7 @@ Copy, typography, layout and palette are consolidated in `Art/Preview.config.jso
 ## Code review — 2026-10-05
 
 `/code-review` (low effort) of `Source/` from `v1.0.0` (`b919046`) to `2b16bdf252c8221a3d171c2ad9fd27162b7aa27d`: no finding. `Source/` last changed in `f553e8c`; `2b16bdf` only trims evidence. Tests and fixtures were not reviewed at this level.
+
+## Fail-fast publication — 2026-10-05
+
+Owner decision: 1.0.6 is deployed before the non-regression passes, the gallery captures (`Art/Gallery/0` to `4`) being ready. Rollback target `v1.0.5` (`ccad168`). Dry-run of `8e8647131a2cb0dbf9bb4a6587e7ae10d00ad317` (run 37342232075, preview and description): green. The SHA to publish is the one of the dry-run recorded in `docs/runs/`.
