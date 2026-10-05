@@ -5,3 +5,4 @@
 - Publish run 37344885738 started for `0880367`, options preview and description, waiting for the owner's approval of `steam-production`.
 - Fail fast (owner, 2026-10-05): non-regression after the deploy. `minimal-en` on `8e86471`: 35 passed, 0 failed, 30 skipped (conditional). Others in flight: minimal-fr, optionals-en, reviews-en/fr, rimmsqol-en, restart-en. Rollback target `v1.0.5` (`ccad168`).
 - Publish run 37344885738 approved by the owner: success, tag `v1.0.6` and release created at 17:17 UTC on `0880367`.
+- Non-regression after the deploy, on `0880367` (tickets db18, 5d5c, 0e3c, d4b6, 0970, 7f85, f46b; evidence `Tests/Pickle/Evidence/full-1006/`): minimal en 35/0/30 skipped, minimal fr 35/0/30, optionals en 38/0/27, reviews en 43/0/22, reviews fr 43/0/22, rimmsqol en 38/0/27, restart seq1 1/1 and seq2 1/1. No red; rollback to `v1.0.5` not needed. Superseded 1.0.5-era evidence deleted (958 MB to 200 MB).
