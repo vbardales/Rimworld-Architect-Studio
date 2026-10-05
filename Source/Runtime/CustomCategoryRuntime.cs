@@ -166,6 +166,8 @@ namespace ArchitectStudio
                 settings.groupCategories.Remove(key);
             }
 
+            CategoryParentRuntime.ForgetParent(category);
+
             settings.categoryOrders.Remove(category.defName);
             settings.categoryLabels.Remove(category.defName);
             settings.categoryIcons.Remove(category.defName);
@@ -189,7 +191,7 @@ namespace ArchitectStudio
             Refresh();
         }
 
-        private static void Refresh()
+        internal static void Refresh()
         {
             CategoryRuntime.InvalidateCounts();
             BetterArchitectCompat.InvalidateEditModeCaches();

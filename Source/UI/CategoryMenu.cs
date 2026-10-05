@@ -12,7 +12,9 @@ namespace ArchitectStudio
     public static class CategoryMenu
     {
         /// <param name="noneLabel">Leading "none" entry, or null not to offer it.</param>
-        public static void Show(string noneLabel, Action<DesignationCategoryDef> onPick)
+        /// <param name="allow">Categories the caller can accept, or null for all of them.</param>
+        public static void Show(string noneLabel, Action<DesignationCategoryDef> onPick,
+            Func<DesignationCategoryDef, bool> allow = null)
         {
             var options = new List<FloatMenuOption>();
 
@@ -28,6 +30,11 @@ namespace ArchitectStudio
 
             foreach (var category in all)
             {
+                if (allow != null && !allow(category))
+                {
+                    continue;
+                }
+
                 var parent = BetterArchitectCompat.ParentCategoryOf(category);
                 if (parent == null)
                 {

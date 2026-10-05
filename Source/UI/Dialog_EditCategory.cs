@@ -52,7 +52,7 @@ namespace ArchitectStudio
 
             y = DrawLabelRow(inRect, y);
 
-            if (CustomCategoryRuntime.IsCustom(category))
+            if (CustomCategoryRuntime.IsCustom(category) || CategoryParentRuntime.CanHaveParent(category))
             {
                 y = DrawParentRow(inRect, y);
             }
@@ -81,7 +81,10 @@ namespace ArchitectStudio
             return y + 34f;
         }
 
-        /// <summary>Parent, for the categories we created ourselves only.</summary>
+        /// <summary>
+        /// Parent: free for the categories we created, and for any other category that has no
+        /// subcategory of its own (a tab that is a parent cannot become a child).
+        /// </summary>
         private float DrawParentRow(Rect inRect, float y)
         {
             Widgets.Label(new Rect(inRect.x, y, 130f, 28f), "ArchitectStudio.EditCategory.Parent".Translate());
@@ -98,6 +101,18 @@ namespace ArchitectStudio
                 return y + noteHeight + 6f;
             }
 
+            var ours = CustomCategoryRuntime.IsCustom(category);
+            if (!ours && CategoryParentRuntime.HasChildren(category))
+            {
+                GUI.color = new Color(1f, 1f, 1f, 0.6f);
+                string blocked = "ArchitectStudio.EditCategory.ParentBlocked".Translate();
+                float blockedWidth = inRect.width - 134f;
+                float blockedHeight = Mathf.Max(28f, Text.CalcHeight(blocked, blockedWidth));
+                Widgets.Label(new Rect(inRect.x + 134f, y, blockedWidth, blockedHeight), blocked);
+                GUI.color = Color.white;
+                return y + blockedHeight + 6f;
+            }
+
             var parent = BetterArchitectCompat.ParentCategoryOf(category);
             var label = parent != null
                 ? parent.LabelCap.ToString()
@@ -108,11 +123,20 @@ namespace ArchitectStudio
                 CategoryMenu.Show("ArchitectStudio.Categories.TopLevel".Translate(), newParent =>
                 {
                     // A category cannot be its own parent.
-                    if (newParent != category)
+                    if (newParent == category)
+                    {
+                        return;
+                    }
+
+                    if (ours)
                     {
                         CustomCategoryRuntime.SetParent(category, newParent);
                     }
-                });
+                    else
+                    {
+                        CategoryParentRuntime.SetParent(category, newParent);
+                    }
+                }, ours ? (Func<DesignationCategoryDef, bool>)null : c => CategoryParentRuntime.CanBeParent(category, c));
             }
 
             return y + 34f;

@@ -29,6 +29,7 @@ namespace ArchitectStudio
                 // Created categories must exist before anything else: ordering, labels and groups
                 // can all reference them.
                 CustomCategoryRuntime.EnsureDefs();
+                CategoryParentRuntime.Apply();
                 CategoryAppearance.ApplyLabels();
                 CategoryRuntime.Apply();
                 DropdownRuntime.Apply();

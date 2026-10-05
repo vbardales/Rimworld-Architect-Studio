@@ -59,6 +59,12 @@ namespace ArchitectStudio
         /// </summary>
         public bool showResearchLocked;
 
+        /// <summary>
+        /// Parent forced on a category that is not ours: child defName to parent defName. Categories
+        /// we created keep their parent in their own record (<see cref="CustomCategoryEntry.parentId"/>).
+        /// </summary>
+        public Dictionary<string, string> categoryParents = new Dictionary<string, string>();
+
 
         /// <summary>
         /// Groups shipped by the game or by a mod that the user has deleted. The def itself cannot
@@ -91,6 +97,7 @@ namespace ArchitectStudio
             Scribe_Collections.Look(ref categoryLabels, "categoryLabels", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref categoryIcons, "categoryIcons", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref categoryColors, "categoryColors", LookMode.Value, LookMode.Value);
+            Scribe_Collections.Look(ref categoryParents, "categoryParents", LookMode.Value, LookMode.Value);
 
             if (Scribe.mode == LoadSaveMode.LoadingVars || Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -133,6 +140,10 @@ namespace ArchitectStudio
                 if (categoryColors == null)
                 {
                     categoryColors = new Dictionary<string, string>();
+                }
+                if (categoryParents == null)
+                {
+                    categoryParents = new Dictionary<string, string>();
                 }
             }
 

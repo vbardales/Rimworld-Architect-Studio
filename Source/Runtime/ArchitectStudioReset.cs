@@ -11,6 +11,8 @@ namespace ArchitectStudio
         /// </summary>
         public static void All()
         {
+            CategoryParentRuntime.ResetAll();
+
             foreach (var entry in ArchitectStudioMod.Settings.customCategories.ToList())
             {
                 var def = DefDatabase<DesignationCategoryDef>.GetNamedSilentFail(entry.id);
@@ -41,6 +43,7 @@ namespace ArchitectStudio
                        s.hiddenGroupIds.Count > 0 ||
                        s.groupCategories.Count > 0 ||
                        s.categoryOrders.Count > 0 ||
+                       s.categoryParents.Count > 0 ||
                        s.customCategories.Count > 0 ||
                        CategoryAppearance.HasOverrides;
             }

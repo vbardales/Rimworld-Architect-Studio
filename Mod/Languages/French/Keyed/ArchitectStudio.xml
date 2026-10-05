@@ -86,6 +86,7 @@
   <ArchitectStudio.Categories.New>Nouvelle catégorie…</ArchitectStudio.Categories.New>
   <ArchitectStudio.Categories.TopLevel>— catégorie de premier niveau</ArchitectStudio.Categories.TopLevel>
   <ArchitectStudio.EditCategory.Parent>Catégorie parente</ArchitectStudio.EditCategory.Parent>
+  <ArchitectStudio.EditCategory.ParentBlocked>Cette catégorie contient déjà des sous-catégories : elle ne peut pas devenir elle-même une sous-catégorie.</ArchitectStudio.EditCategory.ParentBlocked>
   <ArchitectStudio.EditCategory.Delete>Supprimer cette catégorie</ArchitectStudio.EditCategory.Delete>
   <ArchitectStudio.EditCategory.ConfirmDelete>Supprimer la catégorie « {0} » ? Ses bâtiments retourneront dans leur catégorie d&apos;origine.</ArchitectStudio.EditCategory.ConfirmDelete>
 

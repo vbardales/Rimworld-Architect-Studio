@@ -134,6 +134,53 @@ namespace ArchitectStudio.PickleSteps
                 $"Better Architect Menu reports its parent as {(actualParent == null ? "none" : actualParent.defName)}");
         }
 
+        // ---------------------------------------------------------------- categories of other mods
+
+        [When("I move the category {string} under the parent {string}")]
+        public void MoveUnder(PickleContext ctx, string category, string parent)
+        {
+            CategoryParentRuntime.SetParent(Driver.Category(ctx, category), Driver.Category(ctx, parent));
+        }
+
+        [When("I move the category {string} back to the top level")]
+        public void MoveToTopLevel(PickleContext ctx, string category)
+        {
+            CategoryParentRuntime.SetParent(Driver.Category(ctx, category), null);
+        }
+
+        [Then("the category {string} is listed under the parent {string}")]
+        public void ListedUnder(PickleContext ctx, string category, string parent)
+        {
+            var def = Driver.Category(ctx, category);
+            var expected = Driver.Category(ctx, parent);
+            var actual = BetterArchitectCompat.ParentCategoryOf(def);
+            ctx.Assert(actual == expected,
+                $"'{def.defName}' should sit under '{expected.defName}'; its parent is {(actual == null ? "none" : actual.defName)}");
+        }
+
+        [Then("the category {string} has no parent")]
+        public void HasNoParent(PickleContext ctx, string category)
+        {
+            var def = Driver.Category(ctx, category);
+            var actual = BetterArchitectCompat.ParentCategoryOf(def);
+            ctx.Assert(actual == null, $"'{def.defName}' should be a top-level tab; its parent is {actual?.defName}");
+        }
+
+        [Then("the Architect menu has a tab for the category {string}")]
+        public void HasTabFor(PickleContext ctx, string category)
+        {
+            var def = Driver.Category(ctx, category);
+            ctx.Assert(Driver.ArchitectTabs().Contains(def), $"no tab for '{def.defName}'");
+        }
+
+        [Then("the Architect menu has no tab for the category {string}")]
+        public void HasNoTabFor(PickleContext ctx, string category)
+        {
+            var def = Driver.Category(ctx, category);
+            ctx.Assert(!Driver.ArchitectTabs().Contains(def), $"'{def.defName}' is still a tab of the bar");
+        }
+
+
         [Then("the Architect menu has a tab labelled {string}")]
         public void HasTab(PickleContext ctx, string label)
         {
