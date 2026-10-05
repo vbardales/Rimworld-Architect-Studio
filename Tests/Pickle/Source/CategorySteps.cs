@@ -139,7 +139,16 @@ namespace ArchitectStudio.PickleSteps
         [When("I move the category {string} under the parent {string}")]
         public void MoveUnder(PickleContext ctx, string category, string parent)
         {
-            CategoryParentRuntime.SetParent(Driver.Category(ctx, category), Driver.Category(ctx, parent));
+            var child = Driver.Category(ctx, category);
+            var newParent = Driver.Category(ctx, parent);
+            ctx.Require(CategoryParentRuntime.CanHaveParent(child), "subcategories are not supported: Better Architect Menu is not resolved");
+            ctx.Require(!CategoryParentRuntime.HasChildren(child),
+                $"'{child.defName}' has subcategories of its own: {string.Join(", ", DefDatabase<DesignationCategoryDef>.AllDefsListForReading.Where(c => BetterArchitectCompat.ParentCategoryOf(c) == child).Select(c => c.defName))}");
+            ctx.Require(CategoryParentRuntime.CanBeParent(child, newParent),
+                $"'{newParent.defName}' cannot be a parent; its own parent is {BetterArchitectCompat.ParentCategoryOf(newParent)?.defName ?? "none"}");
+
+            CategoryParentRuntime.SetParent(child, newParent);
+            ctx.Attach("parent after the move", BetterArchitectCompat.ParentCategoryOf(child)?.defName ?? "none");
         }
 
         [When("I move the category {string} back to the top level")]
