@@ -349,6 +349,6 @@ also matches `Prefs.UIScale` and answers yes on every build, guard or no guard.
 `Tests/Pickle/Evidence/` is about 200 MB. Kept, one folder per proof, the latest report of each scenario:
 
 - `full-1006/`: the non-regression passes on the published revision `0880367`: `minimal-en`, `minimal-fr`, `optionals-en`, `reviews-en`, `reviews-fr`, `rimmsqol-en` and `restart-en` (`seq1`, `seq2`). All green, skipped scenarios are the conditional ones played in their own pass.
-- `full-1001/gallery-backdrop-2-en/`: the four Workshop captures, cited in `PUBLICATION.md`.
+- `full-1001/gallery-backdrop-3-en/`: the four Workshop captures, cited in `PUBLICATION.md`.
 
 Dropped on 2026-10-05: the 1.0.5-era folders `matrix-84b7476`, `matrix-current`, `matrix-3fb0b93`, `matrix-4e86e04`, `matrix-fddea0d`, `matrix-b7f8833` and every `full-1001` run but the gallery: each scenario they proved was replayed in `full-1006` on the published revision.
