@@ -44,3 +44,12 @@ Feature: creating a category, and its keyboard shortcut
     When I move the category "Joy" under the parent "Structure"
     And I reset everything from the mod settings
     Then the category "Joy" has the parent it had before
+
+  # The reset puts the def back, and the bar has to follow without a restart: Better Architect
+  # Menu's caches are purged by it (a defect found in review, 2026-10-06).
+  @requires:ferny.betterarchitect
+  Scenario: the reset brings a moved tab back to the bar at once
+    When I move the category "Misc" under the parent "Structure"
+    Then the Architect menu has no tab for the category "Misc"
+    When I reset everything from the mod settings
+    Then the Architect menu has a tab for the category "Misc"

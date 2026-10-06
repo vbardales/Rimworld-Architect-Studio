@@ -20,7 +20,7 @@ showcase:     complete
 tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
-  - feature: `feature/move-category` (BACKLOG.md): code, scenario 08 and behavior check green, parent row seen in game in both languages; the new French string `ArchitectStudio.EditCategory.ParentBlocked` was confirmed by the owner on 2026-10-06 (`FRENCH_REVIEW.md` regenerated from the committed XML); left: the research-locked case played once on a moved tab, a code review of the branch, then a version above `v1.0.6`
+  - feature: move a category under another (BACKLOG.md, merged into main on 2026-10-06, after the published `v1.0.6`): code, scenario 08 and behavior check green, parent row seen in game in both languages; the new French string `ArchitectStudio.EditCategory.ParentBlocked` was confirmed by the owner on 2026-10-06 (`FRENCH_REVIEW.md` regenerated from the committed XML); left: the research-locked case played once on a moved tab, a code review of the branch, then a version above `v1.0.6`
   - defect: `Mod/desktop.ini` was tracked and shipped to subscribers; untracked and ignored on 2026-10-01, gone from the next publication
   - unverified: Basic Dropdowns (ex Categories Dropdowns, `3455529827`): the description now names it once and thanks ferny for it (About.xml and PUBLICATION.md, 2026-10-02, validator 989); the Workshop page still shows the old text until a description update, and the comment register (`WORKSHOP_COMMENTS.md`, protocols repository) has no row for it
   - feature: pull requests to the origin repositories `fernyrepos/Better-Architect-Menu` and `fernyrepos/Colored-Categories` (`BACKLOG.md`, owner rule of 2026-09-28; nothing is sent without her agreement)
@@ -86,4 +86,4 @@ Owner decision: 1.0.6 is deployed before the non-regression passes, the gallery 
 
 ## Next version — 2026-10-06
 
-1.0.6 is published and its non-regression is green (see the fail-fast section above). Work goes on in `feature/move-category`; `main` stays on the published code. The state is `preTest` because the branch adds code that is not yet reviewed nor fully played; its one new French string is confirmed by the owner.
+1.0.6 is published and its non-regression is green (see the fail-fast section above). The branch `feature/move-category` was merged into `main` on 2026-10-06 (`main` now carries code newer than the published `v1.0.6`). The state is `preTest` because the branch adds code that is not yet reviewed nor fully played; its one new French string is confirmed by the owner.
