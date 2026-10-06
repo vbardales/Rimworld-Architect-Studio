@@ -10,12 +10,12 @@ Page: https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827. Voice a
 Your ready-made groups are what I tested the group editor on: you can open one in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018]Architect Studio[/url], reorder it, add a building, or take it apart. Thanks for them :)
 ```
 
-## 2. Ali50 (move a category under another)
+## 2. Ali50 (move a category under another): to post with the version that contains it, not before
 
-Where he asked. Plain answer to a technical point, no ceremony.
+Thread state: Ali50 asked, then said "it takes some time to migrate singular tabs into sub-categories, one designator at a time"; the owner answered on 2026-10-03 that she oversold it and had noted it as a feature request. Nothing more to say until it ships. Then, one line in her voice:
 
 ```
-Not in the version out today (1.0.6), sorry. The parent choice only exists for the categories [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018]Architect Studio[/url] creates itself. Moving a tab with no subcategories under another one, another mod's included, is the first thing I want to add. No date, I will say here when it is out :)
+Ali50, it is in the new version of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018]Architect Studio[/url]: open a tab's name in the category editor and pick its parent. It only works for a tab that has no subcategory of its own :)
 ```
 
 ## 3. For the Architect Studio page, if wanted
