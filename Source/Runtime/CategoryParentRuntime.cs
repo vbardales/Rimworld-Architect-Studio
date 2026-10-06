@@ -109,16 +109,27 @@ namespace ArchitectStudio
 
         public static void ResetAll()
         {
+            var restored = false;
+
             foreach (var key in ArchitectStudioMod.Settings.categoryParents.Keys.ToList())
             {
                 var category = DefDatabase<DesignationCategoryDef>.GetNamedSilentFail(key);
                 if (category != null)
                 {
                     Restore(category);
+                    restored = true;
                 }
             }
 
             ArchitectStudioMod.Settings.categoryParents.Clear();
+
+            // The def is back where it was, but Better Architect Menu's tab and tree caches still
+            // show it where we had put it until they are purged: only a created category's deletion
+            // refreshed them, and a reset with nothing else to delete did not.
+            if (restored)
+            {
+                CustomCategoryRuntime.Refresh();
+            }
         }
 
         private static void Remember(DesignationCategoryDef category)
