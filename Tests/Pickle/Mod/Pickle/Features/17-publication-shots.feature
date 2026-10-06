@@ -1,6 +1,6 @@
 # Captures meant for the Workshop page and for nothing else - they assert nothing.
 #
-# The shots use Nelim's tribe (fixture Nelims-tribe.rws, the house at (190, 115)), not the generic functional fixture. The game's
+# The shots use Nelim's tribe (fixture Nelims-tribe.rws, the exhibition zone), not the generic functional fixture. The game's
 # screenshot mode hides the tab bar, alerts, colonist bar, dev toolbar and Pickle panel, leaving
 # each real window over a deliberate colony view rather than over an incidental test map.
 #
@@ -14,8 +14,7 @@ Feature: the windows as a player would show them
     And game speed is paused
     And god mode is disabled
     And Nelim's Pickle Tools: all filth is cleaned
-    And Nelim's Pickle Tools: the animals are removed from the sanctuary "hearth-hall"
-    And Nelim's Pickle Tools: the animals are removed from the sanctuary "sleeping-nook"
+    And Nelim's Pickle Tools: the animals are removed from the sanctuary "exhibition-zone"
 
   Scenario: the group editor with a group of its own, filled
     Given four buildings "A", "B", "C" and "D" from one category, in no group
@@ -24,7 +23,11 @@ Feature: the windows as a player would show them
     And I add "B" to the group "Monolith machines"
     And I add "C" to the group "Monolith machines"
     And I select the group "Monolith machines" in the editor
-    And Nelim's Pickle Tools: I frame the cell (190, 115) at zoom 15
+    And Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: all animals are removed
+    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-height"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "group editor, a filled group"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -34,7 +37,11 @@ Feature: the windows as a player would show them
     And I open the category editor
     And I wait 30 ticks
     Then window "Dialog_Categories" is open
-    When Nelim's Pickle Tools: I frame the cell (190, 115) at zoom 15
+    When Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: all animals are removed
+    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-height"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "category editor"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -43,7 +50,11 @@ Feature: the windows as a player would show them
     When I close all dialogs
     And I open the Architect Studio settings through the shortcut and let it draw
     Then window "Dialog_ModSettings" is open
-    When Nelim's Pickle Tools: I frame the cell (190, 115) at zoom 15
+    When Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: all animals are removed
+    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-height"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "settings page"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -60,7 +71,7 @@ Feature: the windows as a player would show them
     And I show the Architect menu on the category of the group "Workshop favourites"
     And I open the dropdown of the group "Workshop favourites" in the Architect menu
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the cell (190, 115) at zoom 15
+    And Nelim's Pickle Tools: I frame the cell (213, 168) at zoom 21
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "architect menu, a group opened"
     And Nelim's Pickle Tools: screenshot mode is disabled

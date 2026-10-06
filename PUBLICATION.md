@@ -100,7 +100,7 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 
 4. `Art/Gallery/4-architect-menu.jpg` - **the Architect menu**: a group as one button, its dropdown open, the placement tool disarmed.
 
-1 to 4 are crops (window plus 40 px; the menu is the bottom-left of the screen) of the captures in `Tests/Pickle/Evidence/full-1001/gallery-sanctuary-5-en/` (ticket `efd1`, 2026-10-05), played on Nelim's tribe (`Nelims-tribe`, the house, filth cleaned, animals removed from the hearth hall and the sleeping nook). Owner validated them on 2026-10-05; upload to Steam is the owner's.
+1 to 4 are crops (window plus 40 px; the menu is the bottom-left of the screen) of the captures in `Tests/Pickle/Evidence/full-1001/gallery-backdrop-3-en/` (ticket `5b7d`, 2026-10-06), played on Nelim's tribe (`Nelims-tribe`): the three windows over `window-backdrop-for-height` of the sanctuary, kept at full height so that the two smileys stay visible, and the menu over the exhibition zone. Owner validated them on 2026-10-06; upload to Steam is the owner's.
 
 ## Dependencies and DLC
 
