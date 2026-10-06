@@ -41,7 +41,7 @@ Feature: the windows as a player would show them
     And I set the hour to 12
     And I set the weather to "Clear"
     And Nelim's Pickle Tools: all animals are removed
-    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-width"
+    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-height"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "category editor"
     And Nelim's Pickle Tools: screenshot mode is disabled
