@@ -23,7 +23,11 @@ Feature: the windows as a player would show them
     And I add "B" to the group "Monolith machines"
     And I add "C" to the group "Monolith machines"
     And I select the group "Monolith machines" in the editor
-    And Nelim's Pickle Tools: I frame the cell (213, 168) at zoom 21
+    And Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: all animals are removed
+    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-width"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "group editor, a filled group"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -33,7 +37,11 @@ Feature: the windows as a player would show them
     And I open the category editor
     And I wait 30 ticks
     Then window "Dialog_Categories" is open
-    When Nelim's Pickle Tools: I frame the cell (213, 168) at zoom 21
+    When Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: all animals are removed
+    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-width"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "category editor"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -42,7 +50,11 @@ Feature: the windows as a player would show them
     When I close all dialogs
     And I open the Architect Studio settings through the shortcut and let it draw
     Then window "Dialog_ModSettings" is open
-    When Nelim's Pickle Tools: I frame the cell (213, 168) at zoom 21
+    When Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: all animals are removed
+    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-width"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "settings page"
     And Nelim's Pickle Tools: screenshot mode is disabled
