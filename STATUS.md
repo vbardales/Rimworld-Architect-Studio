@@ -2,7 +2,7 @@
 settings_audit: complete
 localization: complete
 translation_en: complete
-translation_fr: partial
+translation_fr: complete
 mod:          Architect Studio
 packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
@@ -20,7 +20,7 @@ showcase:     complete
 tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
-  - feature: `feature/move-category` (BACKLOG.md): code, scenario 08 and behavior check green, parent row seen in game in both languages; left: the new French string `ArchitectStudio.EditCategory.ParentBlocked` for the owner's review (`translation_fr: partial` until then), the research-locked case played once on a moved tab, a code review of the branch, then a version above `v1.0.6`
+  - feature: `feature/move-category` (BACKLOG.md): code, scenario 08 and behavior check green, parent row seen in game in both languages; the new French string `ArchitectStudio.EditCategory.ParentBlocked` was confirmed by the owner on 2026-10-06 (`FRENCH_REVIEW.md` regenerated from the committed XML); left: the research-locked case played once on a moved tab, a code review of the branch, then a version above `v1.0.6`
   - defect: `Mod/desktop.ini` was tracked and shipped to subscribers; untracked and ignored on 2026-10-01, gone from the next publication
   - unverified: Basic Dropdowns (ex Categories Dropdowns, `3455529827`): the description now names it once and thanks ferny for it (About.xml and PUBLICATION.md, 2026-10-02, validator 989); the Workshop page still shows the old text until a description update, and the comment register (`WORKSHOP_COMMENTS.md`, protocols repository) has no row for it
   - feature: pull requests to the origin repositories `fernyrepos/Better-Architect-Menu` and `fernyrepos/Colored-Categories` (`BACKLOG.md`, owner rule of 2026-09-28; nothing is sent without her agreement)
@@ -29,7 +29,7 @@ remaining:
   - external: the Pickle defect behind that scenario is fixed on `fix/tag-rect-interface-scale`, 122f21f in the fork, sent to RimWorks as PR 23 (github.com/RimWorks/Rimworld-Pickle/pull/23) and not merged yet; a Workshop Pickle still sends the pointer off screen at 150%. Played on 2026-09-21 against a Pickle built from that PR alone, the feature holding the scenario passes 3 of 3, the 150% one included
   - unverified: read against each mod's own source (`Search-Workshop.sh`, per SEARCHING.md) to find what to test. Float Sub-Menus was already named: scenario 13 (`ModSteps.IntegrationsMatchLoadedMods`) asserts `FloatSubMenuCompat.Available` matches whether `kathanon.floatsubmenu` is loaded, in every pass. Two new scenarios (`-DepMap wsl-deps.avec-facultatifs.map`): `22e9` staged all 16 mods then Pickle exited 2 (0 scenarios played); `0169` retried the same and failed the same way, for a real reason this time: my `-Filter "08-category-create|10-delete-foreign-group"` is not a regex alternation, Pickle read it as one literal filter and matched nothing (`Player.log`: "filter '...' matched no scenarios"). Split into two tickets, one filter each: `8742` (§8) and `f3ae` (§10, not yet returned). `08-category-create.feature` (`@requires:ferny.betterarchitect`) creates a category under a parent and asserts `BetterArchitectCompat.ParentCategoryOf` reports it, the real nesting TESTING.md §5 and §8 call for, never driven before — **passed on `8742`, 4/4 of the feature, English**. `10-delete-foreign-group.feature` (`@requires:ferny.categoriesdropdowns`) dissolves one of that mod's own groups (`Ferny_Walls`) without crashing — its own `patch.xml` ships every building assignment commented out, so the group exists with no member on this list, which is enough to prove the dissolve path survives a rival mod's def — **passed on `f3ae`, 4/4 of the feature, English**. Searchable Menus stays untested on our side: by its own author's design (`FloatSubMenuCompat.cs`) it grafts a search field onto any menu directly, without our code calling into it, so there is nothing of ours to assert against; the with-optionals pass (it breaks nothing) is what coverage looks like for it
 session:      local_fe5827e4-3c40-40ba-860f-ab81f7108d72
-updated:      2026-10-06, next version in progress: `feature/move-category` (move a category that is not ours under another). 1.0.6 stays published and tested; state back to preTest for the new code, one new French string not yet reviewed
+updated:      2026-10-06, next version in progress: `feature/move-category` (move a category that is not ours under another). 1.0.6 stays published and tested; state back to preTest for the new code, its one new French string confirmed by the owner
 ---
 
 # Architect Studio — status
@@ -86,4 +86,4 @@ Owner decision: 1.0.6 is deployed before the non-regression passes, the gallery 
 
 ## Next version — 2026-10-06
 
-1.0.6 is published and its non-regression is green (see the fail-fast section above). Work goes on in `feature/move-category`; `main` stays on the published code. The state is `preTest` because the branch adds code and one French string the owner has not reviewed.
+1.0.6 is published and its non-regression is green (see the fail-fast section above). Work goes on in `feature/move-category`; `main` stays on the published code. The state is `preTest` because the branch adds code that is not yet reviewed nor fully played; its one new French string is confirmed by the owner.

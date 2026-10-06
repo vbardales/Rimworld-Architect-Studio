@@ -1,6 +1,6 @@
 # Architect Studio: French review
 
-Generated from revision `b6e1f9f` by `Tests/New-FrenchReview.ps1` (reads the shipped XML; do not edit by hand). Working tree clean for `Mod/Languages` and `Mod/Defs`.
+Generated from revision `3b5b2f8` by `Tests/New-FrenchReview.ps1` (reads the shipped XML; do not edit by hand). Working tree clean for `Mod/Languages` and `Mod/Defs`.
 
 The mod has no source in another language (it is original work, studying two English mods), so the **Original** column repeats the English text.
 
@@ -85,6 +85,7 @@ Source: `Mod/Languages/French/Keyed/ArchitectStudio.xml` (English: `Mod/Language
 | `ArchitectStudio.Categories.New` | New category… | New category… | Nouvelle catégorie… |  |
 | `ArchitectStudio.Categories.TopLevel` | — top-level category | — top-level category | — catégorie de premier niveau |  |
 | `ArchitectStudio.EditCategory.Parent` | Parent category | Parent category | Catégorie parente |  |
+| `ArchitectStudio.EditCategory.ParentBlocked` | This category already has subcategories: it cannot become a subcategory itself. | This category already has subcategories: it cannot become a subcategory itself. | Cette catégorie contient déjà des sous-catégories : elle ne peut pas devenir elle-même une sous-catégorie. |  |
 | `ArchitectStudio.EditCategory.Delete` | Delete this category | Delete this category | Supprimer cette catégorie |  |
 | `ArchitectStudio.EditCategory.ConfirmDelete` | Delete the category "{0}"? Its buildings will return to their original category. | Delete the category "{0}"? Its buildings will return to their original category. | Supprimer la catégorie « {0} » ? Ses bâtiments retourneront dans leur catégorie d'origine. |  |
 | `ArchitectStudio.Categories.NoNesting` | Without Better Architect Menu there are no subcategories: the category is created at top level. | Without Better Architect Menu there are no subcategories: the category is created at top level. | Sans Better Architect Menu, les sous-catégories n'existent pas : la catégorie est créée au premier niveau. |  |
