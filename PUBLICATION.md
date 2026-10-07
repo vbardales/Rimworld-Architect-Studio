@@ -86,12 +86,12 @@ not on that screen, and the page does not claim the screen shows them.
 ## Screenshots, in the order to upload
 
 Steam shows the first one large. The folder `Art/Gallery/` holds only the images to upload, numbered in upload order,
-and `0-preview.png` is a byte-for-byte copy of `Mod/About/Preview.png` (uploaded by the owner on 2026-10-02). The others are
+and `0-preview.png` is a byte-for-byte copy of `Mod/About/Preview.png` (the Preview was regenerated on 2026-10-05 with the new ModIcon at the bottom left: the version on the page is the earlier one until the owner uploads this copy). The others are
 English, taken by the Pickle presentation scenario (`Tests/Pickle/Mod/Pickle/Features/17-publication-shots.feature`)
 with `wsl-deps.sanctuary.map`: no optional Architect Studio integration is staged, while Nelim's tribe supplies the backdrop. The lists therefore show the game's own groups, not another mod's raw defNames.
 Menus and interface windows are shown as what they are, with no staged pawn.
 
-**Upload budget:** JPEGs at 1280×800 framed around the window, each at most **2 MB**, the batch at most **8 MB**.
+**Upload budget** (owner, 2026-10-06): as many images as wanted, each under **2 MB**, the folder under **8 MB**. Today 0 to 4 weigh about 1.3 MB in all. JPEGs, framed around the window; the three windows are kept at full screen height so that the backdrop shows.
 
 0. `Art/Gallery/0-preview.png` - the Preview.
 1. `Art/Gallery/1-groups.jpg` - **the group editor**: three columns, a group of three buildings selected, its members with their order arrows, and the buildings available to add. The *Category* button reads "— none (members stay where they …", truncated at that width; it is the real interface.
@@ -114,8 +114,10 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 
 ## Content boxes
 
-No adult content. The Preview, the ModIcon and the three screenshots above were opened on 2026-09-21: a workbench
-with blueprints and storage crates, a cartoon mascot in a hard hat, and three interface windows over a map.
+No adult content. The Preview, the ModIcon and the screenshots were opened: a workbench with blueprints and storage
+crates, a cartoon mascot in a hard hat, and four interface views (three windows and the Architect menu) over
+bamboo fields, the exhibition zone and the river of Nelim's tribe, with orange smileys and no pawn (re-read on 2026-10-06 for
+the 1.0.6 set).
 
 ## After an upload
 
@@ -123,7 +125,7 @@ with blueprints and storage crates, a cartoon mascot in a hard hat, and three in
 - Steam creates a **new** item private and RimWorld never calls `SetItemVisibility`; this item is already public.
 - The release is **manual** (`.github/workflows/publish-tag.yml`, configured by `.github/publish.config.json`): the version is the `version` input of the workflow and must be above every existing tag, so no `feat:` or `fix:` commit is needed. The GitHub release notes are the `## [<version>]` section of `CHANGELOG.md` (dated, written by hand); the Steam change note is the fenced block under `### <version>` of this file, BBCode, sent as written. Both are checked and printed before any tag exists, and the dry-run stops on purpose when either is missing.
 - The workflow uploads to Steam first, then creates the tag and the GitHub release: a failed upload leaves no tag. If the upload timed out or its result is unknown, check the item on Steam before any new attempt.
-- `publish` takes the full 40-character SHA of a commit whose dry-run passed (`Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio publish-tag.yml <SHA> <version>`); only the owner approves `steam-production`. Rollback target: `v1.0.5` (`ccad168`), the last published version; each good version gets its tag, which is the next target.
+- `publish` takes the full 40-character SHA of a commit whose dry-run passed (`Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio publish-tag.yml <SHA> <version>`); only the owner approves `steam-production`. Rollback target: `v1.0.6` (`0880367`), the last version published and tested in full (non-regression green on 2026-10-05); each good version gets its tag, which is the next target.
 
 ## Steam change notes
 
@@ -151,4 +153,12 @@ block of the version being published must exist before its dry-run. Start each b
 
 ## Thanks to post on the mods' pages
 
-All posted; the register is `WORKSHOP_COMMENTS.md` of the protocols repository (rows Better Architect Menu, Colored Categories, Architect Icons, Float Sub-Menus, Searchable Menus, Harmony, Pickle, RimLogging, RIMMSQOL: `posted`). Missing: Basic Dropdowns (`3455529827`), see `BACKLOG.md`. The drafts that were sent are in `docs/runs/2026-10-02-publication-sent.md`.
+The register is `WORKSHOP_COMMENTS.md` of the protocols repository (rows Better Architect Menu, Colored Categories, Architect Icons, Float Sub-Menus, Searchable Menus, Harmony, Pickle, RimLogging, RIMMSQOL: `posted`; PickleTools: `not_applicable`). The drafts that were sent are in `docs/runs/2026-10-02-publication-sent.md`.
+
+**Basic Dropdowns** (ferny, `3455529827`): `drafted`, not posted (owner, 2026-10-05: later), no row in the register yet. Page: https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827
+
+```
+Your ready-made groups are what I tested the group editor on: you can open one in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018]Architect Studio[/url], reorder it, add a building, or take it apart. Thanks for them :)
+```
+
+The reply to Ali50 (not a thank-you; to post with the version that carries the feature) is in `docs/runs/2026-10-05-communication.md`.
