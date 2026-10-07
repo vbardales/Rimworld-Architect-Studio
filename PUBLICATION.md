@@ -86,7 +86,7 @@ not on that screen, and the page does not claim the screen shows them.
 ## Screenshots, in the order to upload
 
 Steam shows the first one large. The folder `Art/Gallery/` holds only the images to upload, numbered in upload order,
-and `0-preview.png` is a byte-for-byte copy of `Mod/About/Preview.png` (the Preview was regenerated on 2026-10-05 with the new ModIcon at the bottom left: the version on the page is the earlier one until the owner uploads this copy). The others are
+and `0-preview.png` is a byte-for-byte copy of `Mod/About/Preview.png` (the Preview was regenerated on 2026-10-05 with the new ModIcon at the bottom left: the version on the page is the earlier one until the owner uploads this copy). `Mod/About/ModIcon.png` is never resized by hand: `scripts/Render-Preview.cjs bottom-left` generates it, and the two ICOs, from `Art/ModIcon-source.png` (the owner's own file, which only the owner changes) through the key `modIconSource` of `Art/Preview.config.json`. The owner validated keeping the file on 2026-10-06. The others are
 English, taken by the Pickle presentation scenario (`Tests/Pickle/Mod/Pickle/Features/17-publication-shots.feature`)
 with `wsl-deps.sanctuary.map`: no optional Architect Studio integration is staged, while Nelim's tribe supplies the backdrop. The lists therefore show the game's own groups, not another mod's raw defNames.
 Menus and interface windows are shown as what they are, with no staged pawn.
