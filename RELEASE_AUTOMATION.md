@@ -50,7 +50,7 @@ scope.  `release-dry-run` must hold no Steam secrets.
 3. A human runs the relevant Pickle scenarios and reviews their captured media. Green automation is
    route evidence, not a visual or gameplay sign-off; preserve the report/archive before another run
    overwrites it. See `Tests/Pickle/README.md` and `TESTING.md`.
-4. A human checks `Art/steam/01-groups.jpg`, `02-categories.jpg` and `03-settings.jpg` and decides
+4. A human checks the images of `Art/Gallery/` (`1-groups.jpg` to `4-architect-menu.jpg`) and decides
    whether they should replace Workshop media. This automation never uploads screenshots.
 5. Only then dispatch `publish-tag.yml` with `publish`, the same `version` and the full SHA of the dry-run
    (the run stops if `main` moved), and approve `steam-production`. The configured

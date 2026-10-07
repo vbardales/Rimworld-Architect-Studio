@@ -132,6 +132,17 @@ the 1.0.6 set).
 One fenced block per version, under `### <version>`, BBCode, sent to Steam as written by the release. The
 block of the version being published must exist before its dry-run. Start each block with the version heading, as the 1.0.4 note did (`[h2][url=…/compare/vA...vB]B[/url] (date)[/h2]`): without it the Workshop change notes list the entry with no version number.
 
+### 1.0.7
+
+```
+[h2][url=https://github.com/vbardales/Rimworld-Architect-Studio/compare/v1.0.6...v1.0.7]1.0.7[/url] (2026-10-07)[/h2]
+
+[h3]Added[/h3]
+[list]
+[*]A category added by another mod or by the game can be moved under another one as a subcategory, from its appearance window (needs Better Architect Menu). A category that already has subcategories stays where it is. The choice is saved, reapplied at startup, and "Reset everything" puts the tab back.
+[/list]
+```
+
 ### 1.0.6
 
 ```

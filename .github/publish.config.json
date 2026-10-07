@@ -8,7 +8,7 @@
   ],
   "forbidPaths": [],
   "previewFile": "About/Preview.png",
-  "galleryDir": "Art/steam",
+  "galleryDir": "Art/Gallery",
   "aboutFromDescription": true,
   "build": {
     "project": "Source/ArchitectStudio.csproj"

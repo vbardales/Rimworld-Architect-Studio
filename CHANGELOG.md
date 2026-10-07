@@ -5,9 +5,15 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+## [1.0.7] — 2026-10-07
+
 ### Added
 
 - A category that is not ours can be moved under another one as a subcategory, from its appearance window (the parent row, until now offered for the categories Architect Studio creates only). Needs Better Architect Menu. A category that already has subcategories is not moved; the parent must be a top-level tab. Stored in the settings, reapplied at startup, put back by "Reset everything" and when its parent is deleted.
+
+### Fixed
+
+- The gallery folder of the publication config points to `Art/Gallery` (it named a folder that does not exist).
 
 ## [1.0.6] — 2026-10-05
 
