@@ -200,6 +200,8 @@ emblem behind the real windows, and creates and fills a group of its own rather 
 from another mod, whose raw defName would read as debug output on a store page. It must stay
 separate from functional scenarios and from the optional-integrations pass.
 
+Two families of steps meet in `17`, told apart by their prefix: `Nelim's Sanctuary:` (Nelim's Sanctuary Backlot, own repository: the save `Nelims-tribe` and its named places - frame, animals removed from a place) and `Nelim's Pickle Tools:` (generic: filth, eclipse, all animals, frame a cell, screenshot mode). `wsl-deps.sanctuary.map` stages the Backlot by `path:SanctuaryBacklot/Mod`; this mod keeps no copy of the save.
+
 Both hide the surrounding interface through `Nelim's Pickle Tools: screenshot mode is enabled around the open windows`,
 which turns on the game's own screenshot mode. That mode hides everything that is not a window -
 the tab bar, the alerts, the colonist bar, the dev toolbar. Windows themselves keep drawing unless

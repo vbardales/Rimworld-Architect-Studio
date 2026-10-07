@@ -1,5 +1,7 @@
-# Workshop screenshots on Nelim's tribe (fixture Nelims-tribe.rws from PickleTools, copied into Fixtures, not committed).
-# Same tools as PickleTools' own wsl-deps.sanctuary.map, plus ScreenshotMode for the window framing step.
+# Workshop screenshots on Nelim's tribe. The save Nelims-tribe.rws and the place steps ("Nelim's Sanctuary: ...") come from
+# Nelim's Sanctuary Backlot (own repository, SanctuaryBacklot/); the generic steps ("Nelim's Pickle Tools: ...": filth,
+# eclipse, all animals, frame the cell, screenshot mode) stay in Nelim's Pickle Tools. This mod keeps no copy of the save.
+nelim.sanctuarybacklot path:SanctuaryBacklot/Mod
 nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
 nelim.pickletools.camerazoom path:PickleTools/CameraZoom/Mod
 nelim.pickletools.screenshotmode path:PickleTools/ScreenshotMode/Mod

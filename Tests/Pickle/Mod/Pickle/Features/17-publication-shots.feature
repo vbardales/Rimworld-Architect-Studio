@@ -1,12 +1,12 @@
 # Captures meant for the Workshop page and for nothing else - they assert nothing.
 #
-# The shots use Nelim's tribe (fixture Nelims-tribe.rws, the exhibition zone), not the generic functional fixture. The game's
+# The shots use Nelim's tribe (fixture Nelims-tribe.rws of Nelim's Sanctuary Backlot, the exhibition zone), not the generic functional fixture. The game's
 # screenshot mode hides the tab bar, alerts, colonist bar, dev toolbar and Pickle panel, leaving
 # each real window over a deliberate colony view rather than over an incidental test map.
 #
 # The group here is created and filled by the scenario rather than borrowed from the mod list: a
 # group belonging to another mod shows its raw defName, which reads as debug output on a store page.
-@review @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
+@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
 Feature: the windows as a player would show them
 
   Background:
@@ -14,7 +14,7 @@ Feature: the windows as a player would show them
     And game speed is paused
     And god mode is disabled
     And Nelim's Pickle Tools: all filth is cleaned
-    And Nelim's Pickle Tools: the animals are removed from the sanctuary "exhibition-zone"
+    And Nelim's Sanctuary: the animals are removed from the sanctuary "exhibition-zone"
 
   Scenario: the group editor with a group of its own, filled
     Given four buildings "A", "B", "C" and "D" from one category, in no group
@@ -27,7 +27,7 @@ Feature: the windows as a player would show them
     And I set the hour to 12
     And I set the weather to "Clear"
     And Nelim's Pickle Tools: all animals are removed
-    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-height"
+    And Nelim's Sanctuary: I am at the sanctuary "window-backdrop-for-height"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "group editor, a filled group"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -41,7 +41,7 @@ Feature: the windows as a player would show them
     And I set the hour to 12
     And I set the weather to "Clear"
     And Nelim's Pickle Tools: all animals are removed
-    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-height"
+    And Nelim's Sanctuary: I am at the sanctuary "window-backdrop-for-height"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "category editor"
     And Nelim's Pickle Tools: screenshot mode is disabled
@@ -54,7 +54,7 @@ Feature: the windows as a player would show them
     And I set the hour to 12
     And I set the weather to "Clear"
     And Nelim's Pickle Tools: all animals are removed
-    And Nelim's Pickle Tools: I am at the sanctuary "window-backdrop-for-height"
+    And Nelim's Sanctuary: I am at the sanctuary "window-backdrop-for-height"
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "settings page"
     And Nelim's Pickle Tools: screenshot mode is disabled
