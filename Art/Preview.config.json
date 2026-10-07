@@ -12,6 +12,7 @@
   "copyLines": [
     "Reorganise the Architect menu from inside the game."
   ],
+  "modIconSource": "ModIcon-source.png",
   "layout": "panel",
   "panelAnchor": "top-left",
   "backgroundFile": "Preview-source.png",
