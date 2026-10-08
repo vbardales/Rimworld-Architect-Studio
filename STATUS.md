@@ -93,7 +93,7 @@ Owner decision: 1.0.6 is deployed before the non-regression passes, the gallery 
 
 ## Next version — 2026-10-06
 
-**1.0.7 published, 2026-10-08.** SHA `5869dc26632c43336915c469602c4c355253688a`, dry-run 37799121470, publish 37799288436, release https://github.com/vbardales/Rimworld-Architect-Studio/releases/tag/v1.0.7. Owner steps left: upload `Art/Gallery/0-preview.png` and `1` to `4` on the Steam page, verify the public page. Non-regression after the deploy: evidence `Tests/Pickle/Evidence/full-1007/`. Rollback target while it runs: `v1.0.6` (`0880367`).
+**1.0.7 published, 2026-10-08.** SHA `5869dc26632c43336915c469602c4c355253688a`, dry-run 37799121470, publish 37799288436, release https://github.com/vbardales/Rimworld-Architect-Studio/releases/tag/v1.0.7. Owner, 2026-10-08: gallery uploaded by hand and up to date, reply to Ali50 posted; Basic Dropdowns thanks not posted yet. Non-regression after the deploy: evidence `Tests/Pickle/Evidence/full-1007/`. Rollback target while it runs: `v1.0.6` (`0880367`).
 
 **Fail fast again, 2026-10-08 (owner):** the full non-regression is not required before the deploy of 1.0.7; it passes after it, as for 1.0.6. Gallery `Art/Gallery/0` to `4` ready and validated. Rollback target `v1.0.6` (`0880367`).
 
