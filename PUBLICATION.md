@@ -171,7 +171,7 @@ block of the version being published must exist before its dry-run. Start each b
 
 The register is `WORKSHOP_COMMENTS.md` of the protocols repository (rows Better Architect Menu, Colored Categories, Architect Icons, Float Sub-Menus, Searchable Menus, Harmony, Pickle, RimLogging, RIMMSQOL: `posted`; PickleTools: `not_applicable`). The drafts that were sent are in `docs/runs/2026-10-02-publication-sent.md`.
 
-**Basic Dropdowns** (ferny, `3455529827`): `drafted`, not posted (owner, 2026-10-05: later), no row in the register yet. Page: https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827
+**Basic Dropdowns** (ferny, `3455529827`): `posted` by the owner on 2026-10-08; no row in the register yet (protocols repository). Page: https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827
 
 ```
 Your ready-made groups are what I tested the group editor on: you can open one in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3792784018]Architect Studio[/url], reorder it, add a building, or take it apart. Thanks for them :)
