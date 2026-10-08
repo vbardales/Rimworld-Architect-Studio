@@ -82,6 +82,11 @@ Copy, typography, layout and palette are consolidated in `Art/Preview.config.jso
 
 `/code-review` (low effort) of `Source/` from `v1.0.0` (`b919046`) to `2b16bdf252c8221a3d171c2ad9fd27162b7aa27d`: no finding. `Source/` last changed in `f553e8c`; `2b16bdf` only trims evidence. Tests and fixtures were not reviewed at this level.
 
+
+## Code review — 2026-10-08
+
+`/code-review` (low effort) of `Source/` from `2b16bdf252c8221a3d171c2ad9fd27162b7aa27d` (the previous review) to `2a21877af903eb97978d23f40664cb3f00c1b37a`: no finding. Reviewed SHA of the 1.0.7 code: `2a21877` (`Source/` last changed in `edabe4d`). The review of the branch before the merge had found the reset defect fixed in `edabe4d`.
+
 ## Fail-fast publication — 2026-10-05
 
 Owner decision: 1.0.6 is deployed before the non-regression passes, the gallery captures (`Art/Gallery/0` to `4`) being ready. Rollback target `v1.0.5` (`ccad168`). Dry-run of `8e8647131a2cb0dbf9bb4a6587e7ae10d00ad317` (run 37342232075, preview and description): green. The SHA to publish is the one of the dry-run recorded in `docs/runs/`.
