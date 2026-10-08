@@ -1,6 +1,6 @@
 # Architect Studio: French review
 
-Generated from revision `3b5b2f8` by `Tests/New-FrenchReview.ps1` (reads the shipped XML; do not edit by hand). Working tree clean for `Mod/Languages` and `Mod/Defs`.
+Generated from revision `c1e942a` by `Tests/New-FrenchReview.ps1` (reads the shipped XML; do not edit by hand). Uncommitted changes in `Mod/Languages` or `Mod/Defs` at generation: M Mod/Languages/French/Keyed/ArchitectStudio.xml.
 
 The mod has no source in another language (it is original work, studying two English mods), so the **Original** column repeats the English text.
 
@@ -39,7 +39,7 @@ Source: `Mod/Languages/French/Keyed/ArchitectStudio.xml` (English: `Mod/Language
 | `ArchitectStudio.Dropdowns.NoSelection` | Select a group on the left, or create one. | Select a group on the left, or create one. | Sélectionner un groupe à gauche ou en créer un. |  |
 | `ArchitectStudio.Dropdowns.Rename` | Rename | Rename | Renommer |  |
 | `ArchitectStudio.Dropdowns.Delete` | Delete | Delete | Supprimer |  |
-| `ArchitectStudio.Dropdowns.ConfirmDelete` | Delete the group "{0}"? Its buildings will revert to their original group. | Delete the group "{0}"? Its buildings will revert to their original group. | Supprimer le groupe « {0} » ? Ses bâtiments reprendront leur groupe d'origine. |  |
+| `ArchitectStudio.Dropdowns.ConfirmDelete` | Delete the group "{0}"? Its buildings will revert to their original group. | Delete the group "{0}"? Its buildings will revert to their original group. | Supprimer le groupe « {0} » ? Ses bâtiments retourneront dans leur groupe d'origine. |  |
 | `ArchitectStudio.Dropdowns.Add` | Add a building | Add a building | Ajouter un bâtiment |  |
 | `ArchitectStudio.Dropdowns.Category` | Category: | Category: | Catégorie : |  |
 | `ArchitectStudio.Dropdowns.AllCategories` | All categories | All categories | Toutes les catégories |  |
@@ -69,7 +69,7 @@ Source: `Mod/Languages/French/Keyed/ArchitectStudio.xml` (English: `Mod/Language
 | `ArchitectStudio.ArchitectButtonCategories` | Categories… | Categories… | Catégories… |  |
 | `ArchitectStudio.ArchitectButtonCategoriesTip` | Reorder categories and their subcategories. | Reorder categories and their subcategories. | Réordonner les catégories et leurs sous-catégories. |  |
 | `ArchitectStudio.Categories.Title` | Categories | Categories | Catégories |  |
-| `ArchitectStudio.Categories.Intro` | The arrows move a category among its siblings. Click its name to change label, colour and icon. | The arrows move a category among its siblings. Click its name to change label, colour and icon. | Les flèches changent l'ordre d'affichage des catégories. Cliquer sur une catégorie permet de modifier son libellé, sa couleur et son icône. |  |
+| `ArchitectStudio.Categories.Intro` | The arrows move a category among its siblings. Click its name to change label, colour and icon. | The arrows move a category among its siblings. Click its name to change label, colour and icon. | Les flèches déplacent une catégorie parmi celles de même niveau. Cliquer sur son nom permet de modifier son libellé, sa couleur et son icône. |  |
 | `ArchitectStudio.Categories.ResetOrder` | Reset order | Reset order | Réinitialiser l'ordre |  |
 | `ArchitectStudio.Categories.ConfirmResetOrder` | Put every category back in its original order? | Put every category back in its original order? | Remettre toutes les catégories dans leur ordre d'origine ? |  |
 | `ArchitectStudio.Categories.EmptyTip` | Nothing to build here (subcategories included). | Nothing to build here (subcategories included). | Aucun bâtiment à construire ici (sous-catégories comprises). |  |

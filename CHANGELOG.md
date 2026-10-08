@@ -13,6 +13,7 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ### Fixed
 
+- French, reviewed by its owner: the intro of the categories window says the arrows move a category among those of the same level, and the group deletion confirmation says the buildings "retourneront dans leur groupe d'origine".
 - The gallery folder of the publication config points to `Art/Gallery` (it named a folder that does not exist).
 
 ## [1.0.6] — 2026-10-05

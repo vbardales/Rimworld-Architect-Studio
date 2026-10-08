@@ -141,6 +141,11 @@ block of the version being published must exist before its dry-run. Start each b
 [list]
 [*]A category added by another mod or by the game can be moved under another one as a subcategory, from its appearance window (needs Better Architect Menu). A category that already has subcategories stays where it is. The choice is saved, reapplied at startup, and "Reset everything" puts the tab back.
 [/list]
+
+[h3]Fixed[/h3]
+[list]
+[*]French interface text reviewed: the categories window intro and the group deletion confirmation.
+[/list]
 ```
 
 ### 1.0.6
