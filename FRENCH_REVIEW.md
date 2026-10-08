@@ -1,6 +1,6 @@
 # Architect Studio: French review
 
-Generated from revision `c1e942a` by `Tests/New-FrenchReview.ps1` (reads the shipped XML; do not edit by hand). Uncommitted changes in `Mod/Languages` or `Mod/Defs` at generation: M Mod/Languages/French/Keyed/ArchitectStudio.xml.
+Generated from revision `9e7c8e2` by `Tests/New-FrenchReview.ps1` (reads the shipped XML; do not edit by hand). Working tree clean for `Mod/Languages` and `Mod/Defs`.
 
 The mod has no source in another language (it is original work, studying two English mods), so the **Original** column repeats the English text.
 

@@ -36,6 +36,8 @@ updated:      2026-10-06, next version in progress: `feature/move-category` (mov
 
 ## Audit — 2026-10-01
 
+**French review, 2026-10-08 (reported by the owner in chat, entered as her words):** after a review of the French by a reader of hers, Virginie kept two corrections out of five: `ArchitectStudio.Categories.Intro` (the arrows move a category among those of the same level) and `ArchitectStudio.Dropdowns.ConfirmDelete` ("retourneront dans leur groupe d'origine"), commit `9e7c8e2`. She kept `ShowResearchLocked`, `GroupCategoryTip` and `SplitWarning` as they were, without a final full stop on the setting label. English judged good. Not replayed in game yet (`reviews-fr` of the 1.0.7 non-regression).
+
 **French review, 2026-10-02 (reported by the owner in chat, entered by me as her words, not my own review):** Virginie validated the French of `FRENCH_REVIEW.md` after two corrections (`Catégorie parente`; `détecté` / `non détecté`). `.Zero` singular forms accepted, no pawn agreement owed. Revision reviewed: `b6e1f9f` (XML committed, tree clean for `Mod/Languages`); the report was regenerated from it. `translation_fr: complete`, `workflow_stage: done`. Still open: the category editor look in game (clipping of the widened label) and the full suite, both in the pending tickets.
 
 Audited revision `5b5fe20` (HEAD of `main`, level with `origin/main`) with local changes that are not this audit's: the badge work on `Art/` and `Mod/About/{Preview,ModIcon}.png`, kept untouched. No game was launched and no Pickle request was deposited (the tree is not frozen).
