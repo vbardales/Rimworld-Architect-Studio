@@ -24,3 +24,24 @@ Feature: showing what research still locks
     When I turn on showing what research still locks
     And I turn off showing what research still locks
     Then the Architect menu hides "EndTable"
+
+  # Request of Ali50, case left open on 2026-10-06: a tab moved under another one keeps the research
+  # lock it had. The lock is the category's own Visible, so it must not depend on where the tab sits.
+  # A leaf category is given a prerequisite for the scenario (the game's locked categories are
+  # parents of Better Architect Menu, or need a DLC).
+  @requires:ferny.betterarchitect
+  Scenario: a moved tab that research still locks follows the option and the research
+    Given research "Electricity" is not finished
+    And the category "Misc" needs the research "Electricity"
+    When I move the category "Misc" under the parent "Structure"
+    Then the category "Misc" is listed under the parent "Structure"
+    And the category "Misc" is hidden from the game
+    When I turn on showing what research still locks
+    Then the category "Misc" is visible to the game
+    And the Architect menu has no tab for the category "Misc"
+    When I turn off showing what research still locks
+    Then the category "Misc" is hidden from the game
+    When I turn on showing what research still locks
+    And research "Electricity" is finished
+    Then the category "Misc" is visible to the game
+

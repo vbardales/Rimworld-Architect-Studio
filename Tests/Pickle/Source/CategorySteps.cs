@@ -199,6 +199,51 @@ namespace ArchitectStudio.PickleSteps
             ctx.Assert(actual == null, $"'{def.defName}' should be a top-level tab; its parent is {actual?.defName}");
         }
 
+        // The game's own categories that research locks (Power, Ship, Biotech) are parents of Better
+        // Architect Menu or need a DLC. A leaf category gets a prerequisite for the length of one scenario instead.
+        private static readonly Dictionary<DesignationCategoryDef, List<ResearchProjectDef>> prerequisitesBefore =
+            new Dictionary<DesignationCategoryDef, List<ResearchProjectDef>>();
+
+        [Given("the category {string} needs the research {string}")]
+        public void NeedsResearch(PickleContext ctx, string category, string projectDefName)
+        {
+            var def = Driver.Category(ctx, category);
+            var project = DefDatabase<ResearchProjectDef>.GetNamedSilentFail(projectDefName);
+            ctx.Require(project != null, $"no research project is named '{projectDefName}'");
+            if (!prerequisitesBefore.ContainsKey(def))
+            {
+                prerequisitesBefore[def] = def.researchPrerequisites;
+            }
+
+            def.researchPrerequisites = new List<ResearchProjectDef> { project };
+            ctx.Require(!def.Visible || project.IsFinished, $"'{def.defName}' reads as visible although '{projectDefName}' is not finished");
+        }
+
+        [AfterScenario]
+        public void ForgetResearchPrerequisites(PickleContext ctx)
+        {
+            foreach (var pair in prerequisitesBefore)
+            {
+                pair.Key.researchPrerequisites = pair.Value;
+            }
+
+            prerequisitesBefore.Clear();
+        }
+
+        [Then("the category {string} is visible to the game")]
+        public void IsVisible(PickleContext ctx, string category)
+        {
+            var def = Driver.Category(ctx, category);
+            ctx.Assert(def.Visible, $"'{def.defName}' should be visible; it is hidden");
+        }
+
+        [Then("the category {string} is hidden from the game")]
+        public void IsHidden(PickleContext ctx, string category)
+        {
+            var def = Driver.Category(ctx, category);
+            ctx.Assert(!def.Visible, $"'{def.defName}' should be hidden; it is visible");
+        }
+
         [Then("the Architect menu has a tab for the category {string}")]
         public void HasTabFor(PickleContext ctx, string category)
         {
