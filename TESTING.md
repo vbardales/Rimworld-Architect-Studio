@@ -179,6 +179,25 @@ than ask a question whose answer it would ignore.
 Deleting the category afterwards is the already-confirmed half: its buildings return to their
 original category before the def is removed.
 
+## 8b — Moving a category that is not ours under another
+
+**Proves** the request of Ali50 (Workshop, 2026-10): a tab added by the game or by another mod can be put
+under another tab as a subcategory. Needs Better Architect Menu, which owns the only nesting mechanism: its
+`NestedCategoryExtension` is grafted on the foreign def, nothing is written to the def's file.
+
+Open the appearance window of a category (click its name in the Categories editor).
+
+- The *Parent category* row is there for every category. A category that already has subcategories shows a note
+  instead of the button: it cannot become a subcategory itself (two levels only).
+- Choose a top-level tab as the parent: the tab leaves the bar and appears under its parent. Choose *Top level*:
+  it comes back to the bar. A category cannot be its own parent.
+- Restart the game: the choice is still applied. *Reset everything* puts the tab back where the game had it, at once.
+- Delete a category of ours that adopted a tab: the adopted tab goes back where it was.
+- A tab that research still locks follows *Show what research still locks* wherever it sits (scenario 11).
+- Without Better Architect Menu the row says so and nothing can be moved.
+
+Not played by hand: the greyed sub-tab drawn in the parent's dropdown for a locked category.
+
 ## 9 — Appearance: label, colour, icon
 
 **Proves** three different mechanisms that happen to share one window. Colours are confirmed at both
