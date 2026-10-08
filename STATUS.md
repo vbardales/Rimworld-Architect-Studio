@@ -88,6 +88,8 @@ Owner decision: 1.0.6 is deployed before the non-regression passes, the gallery 
 
 ## Next version — 2026-10-06
 
+**Fail fast again, 2026-10-08 (owner):** the full non-regression is not required before the deploy of 1.0.7; it passes after it, as for 1.0.6. Gallery `Art/Gallery/0` to `4` ready and validated. Rollback target `v1.0.6` (`0880367`).
+
 **2026-10-08, `preTest → done`.** On `106cf19` (`main`): `Tests/Validate-Mod.ps1` 1000 checks passed, `Tests/Run-Behavior.ps1` 35 assertions passed against the shipped DLL, which a rebuild of `Source/` leaves unchanged; `TESTING.md` has scenario 8b for the feature and its note on scenario 11; the Pickle scenarios are written and were played green (08 `move-category-6-en`, 09 `parent-row-en/fr`, 11 the moved tab locked by research, ticket `fedc`; `docs/runs/2026-10-07-move-category.md`). `done` is not `tested`: the whole suite on the SHA to publish, in every pass, with its captures read, and the greyed sub-tab of a locked category in the parent dropdown, not seen by hand, remain for `done → tested`. The code review of `Source/` recorded in this file stops at `2b16bdf`, before the feature: the review of the branch found the reset defect fixed in `edabe4d`, but no SHA of it was recorded.
 
 1.0.6 is published and its non-regression is green (see the fail-fast section above). The branch `feature/move-category` was merged into `main` on 2026-10-06 (`main` now carries code newer than the published `v1.0.6`). The state is `preTest` because the branch adds code that is not yet reviewed nor fully played; its one new French string is confirmed by the owner.
