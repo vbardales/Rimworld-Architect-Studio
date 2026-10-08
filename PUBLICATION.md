@@ -122,7 +122,7 @@ the 1.0.6 set).
 ## After an upload
 
 - `Mod/About/PublishedFileId.txt` is unchanged for an update. `git status` must stay clean.
-- Steam creates a **new** item private and RimWorld never calls `SetItemVisibility`; this item is already public.
+- Steam creates a new item privately only on an initial upload, and RimWorld never calls `SetItemVisibility`; this existing item is already public.
 - The release is **manual** (`.github/workflows/publish-tag.yml`, configured by `.github/publish.config.json`): the version is the `version` input of the workflow and must be above every existing tag, so no `feat:` or `fix:` commit is needed. The GitHub release notes are the `## [<version>]` section of `CHANGELOG.md` (dated, written by hand); the Steam change note is the fenced block under `### <version>` of this file, BBCode, sent as written. Both are checked and printed before any tag exists, and the dry-run stops on purpose when either is missing.
 - The workflow uploads to Steam first, then creates the tag and the GitHub release: a failed upload leaves no tag. If the upload timed out or its result is unknown, check the item on Steam before any new attempt.
 - `publish` takes the full 40-character SHA of a commit whose dry-run passed (`Rimworld-Release-Admin/scripts/dispatch-publish.sh vbardales/Rimworld-Architect-Studio publish-tag.yml <SHA> <version>`); only the owner approves `steam-production`. Rollback target: `v1.0.6` (`0880367`), the last version published and tested in full (non-regression green on 2026-10-05); each good version gets its tag, which is the next target.
