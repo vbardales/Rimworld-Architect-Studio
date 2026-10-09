@@ -353,13 +353,13 @@ binary** - `get_UiScale` and `HeldAtAnotherScale` present, `GUIToScreenPoint` pr
 `GUIToScreenRect` gone. Check it **case-sensitively**: a case-insensitive search for `UiScale`
 also matches `Prefs.UIScale` and answers yes on every build, guard or no guard.
 
-### What is on disk (2026-10-05, after the 1.0.6 deploy)
+### What is on disk (2026-10-09, after the 1.0.7 deploy)
 
-`Tests/Pickle/Evidence/` is about 300 MB. Kept, one folder per proof, the latest report of each scenario:
+`Tests/Pickle/Evidence/` is about 260 MB. Kept, one folder per proof, the latest report of each scenario:
 
 - `full-1007/`: the non-regression passes on the published revision `5869dc2` (1.0.7): `minimal-en`, `minimal-fr`, `optionals-en`, `reviews-en`, `reviews-fr`, `reviews-fr-research` (the one scenario of `reviews-fr` that lost its fixture save, replayed alone), `rimmsqol-en` and `restart-en` (`seq1`, `seq2`). It replaces `full-1006` (1.0.6), deleted on 2026-10-09: every scenario passed there passes here. `reviews-fr/screenshots` holds only this mod's captures: the batched launch also carried another mod's scenarios, whose five captures were dropped.
-- `locked-tab-1008/`: scenario 11 on a moved tab locked by research (`fedc`).
-- `feature-move-category/`: `move-category-6-en` (feature 08) and `parent-row-en`, `parent-row-fr` (feature 09), the proof of the moved-tab feature on `main`.
+- `gallery-candidate-5/`: the capture of gallery image `5-parent-row.jpg` (feature 17, `wsl-deps.sanctuary-bam.map`), and `full-1007/delete-confirm-fr/`: the French delete confirmation of a group the player made (feature 18, `wsl-deps.avec-infobulles.map`).
+- `sb-staging-1007/`: feature 17, settings page over the map, on SanctuaryBacklot staging. `locked-tab-1008/` and `feature-move-category/` were deleted on 2026-10-09: every scenario they proved passes in `full-1007`.
 - `full-1001/gallery-backdrop-3-en/`: the four Workshop captures, cited in `PUBLICATION.md`.
 
 Dropped on 2026-10-05: the 1.0.5-era folders `matrix-84b7476`, `matrix-current`, `matrix-3fb0b93`, `matrix-4e86e04`, `matrix-fddea0d`, `matrix-b7f8833` and every `full-1001` run but the gallery: each scenario they proved was replayed in `full-1006` on the published revision.
