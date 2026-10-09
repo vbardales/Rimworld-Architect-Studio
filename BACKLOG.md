@@ -44,5 +44,5 @@ carry is what we learned from them:
 
 ## Verification
 
-- [ ] Complete the post-publication regression suite of 1.0.7 (played: `minimal-en/fr`, `optionals-en`, `reviews-en`, `rimmsqol-en`): `reviews-fr` (queued replay after the missing fixture save) and `restart-en`.
+- [x] Post-publication regression suite of 1.0.7 complete (2026-10-09, `Tests/Pickle/Evidence/full-1007/`): `minimal-en/fr`, `optionals-en`, `reviews-en`, `rimmsqol-en`, `restart-en` green; `reviews-fr` 42 passed, its one failure (research unlock, fixture save `__pickle_fixture.rws` missing) replayed alone and passed (`reviews-fr-research`).
 - [x] French review by the owner of `FRENCH_REVIEW.md`: validated 2026-10-02, `translation_fr: complete`.
