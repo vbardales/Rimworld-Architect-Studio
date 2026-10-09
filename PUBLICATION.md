@@ -7,77 +7,17 @@ must never be lost: without it the next upload creates a second item.
 ## Steam description
 
 The release sends the Workshop description with **every** publication, and it **overwrites what is on the
-page**. Its source is the Markdown block below, the only one for the whole mod: the release converts it to Steam
+page**. Its source is [`docs/STEAM_DESCRIPTION.md`](docs/STEAM_DESCRIPTION.md), the only one for the whole mod (the
+whole file is the Markdown; it lives outside `Mod/` so it never ships to players): the release converts it to Steam
 BBCode for the Workshop page and generates the plain-text `<description>` of `Mod/About/About.xml` from it, and
-every run checks that `About.xml` says the same. It refuses to run if the block is missing or above the 8000 bytes
-Steam accepts once converted. Edit the block, never the Steam page (a hand edit there is lost at the next release)
+every run checks that `About.xml` says the same. It refuses to run if the file is missing or above the 8000 bytes
+Steam accepts once converted. Edit the file, never the Steam page (a hand edit there is lost at the next release)
 and never the `<description>` of `About.xml`: run `node .github/scripts/sync-about-description.mjs --write` to
-regenerate it. The dry-run prints the whole converted text with its size and SHA-256. There is no
-`Mod/README.template.md`; `Mod/.steamignore` still keeps a `README.template.md` or `README.md` out of what ships
-to players.
-
-```
-Organise the Architect menu from inside the game, without restarting.
-
-# Dropdown groups
-
-- Create a group, put buildings into it, take them out.
-- Order the members of a group, by dragging or with up/down arrows.
-- Force a category on a whole group: its members are moved there, and any you add later follow. Without this, a group has no category of its own and splits into one button per category its members happen to sit in.
-- Grid or list menu, and choice of icon source.
-- Delete a group. Groups provided by another mod are dissolved and hidden instead, since their def is recreated on every startup; a button restores them.
-- Warns when a group is spread across several categories, where the game silently produces several separate buttons.
-
-# Categories and subcategories
-
-- Create a category, or a subcategory when [Better Architect Menu](https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422) is present.
-- Reorder with up/down buttons, among siblings.
-- Change the label, colour and icon of any category, vanilla ones included.
-- Icon picker browsing every icon already loaded by your active mods.
-- Empty categories greyed out, with a building count that includes their subcategories.
-
-Nothing is written to the game's def files, nor to another mod's: everything is stored in the mod settings and reapplied on startup. The mod can be added to or removed from a game in progress.
-
-Embedded English and French translations. Designed to stay usable without a keyboard, with the Steam Deck in mind.
-
-# Works with
-
-Detected automatically, none required.
-
-- [Better Architect Menu](https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422): subcategories, and invalidation of its display caches.
-- [Architect Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067): category icon picking.
-- [Float Sub-Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430): nested subcategories in the pick menus.
-- [Searchable Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119): adds a search field to those menus by itself.
-- [Basic Dropdowns](https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827) (formerly Categories Dropdowns): the groups it adds can be edited, extended or taken apart like any other.
-
-# Also recommended
-
-- [Architect Icons: Improved](https://steamcommunity.com/sharedfiles/filedetails/?id=2879451234), and [Optional Icons for Architect Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=1966995052) — more icons for the picker to offer, since it browses whatever your active mods have loaded.
-- [Bradson's Main Button Icons (Forked + Expanded)](https://steamcommunity.com/sharedfiles/filedetails/?id=3532359201) — the same treatment for the bottom bar.
-- [Basic Dropdowns - Extended](https://steamcommunity.com/sharedfiles/filedetails/?id=3562304092) — an add-on to Basic Dropdowns with more ready-made dropdown groups, which this mod then lets you edit, extend or take apart.
-- [Even More Linkables Dropdown Patch](https://steamcommunity.com/sharedfiles/filedetails/?id=3150535403) — dropdowns for linkable buildings.
-
-# If I go quiet
-
-If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
-
-# AI-generated
-
-This mod's code was written with Claude Code (Anthropic) and Codex (OpenAI), and its images generated with DALL-E (OpenAI), under human direction, review and testing. Stated openly: designing with these tools is my job.
-
-# Thanks
-
-- ferny (fernyrepos) for [Better Architect Menu](https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422) and [Colored Categories](https://steamcommunity.com/sharedfiles/filedetails/?id=3323569935), MIT licensed, whose study showed where the right hooks were.
-- ferny also for [Basic Dropdowns](https://steamcommunity.com/sharedfiles/filedetails/?id=3455529827), whose ready-made groups Architect Studio lets players edit.
-- bymarcin for [Architect Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=1195427067), kathanon for [Float Sub-Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2864015430) and [Searchable Menus](https://steamcommunity.com/sharedfiles/filedetails/?id=2928608119).
-- Andreas Pardeike for [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077).
-- [Pickle](https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678), [RimLogging](https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696), and [PickleTools](https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401) for development-only testing. They are not dependencies of Architect Studio.
-- [RIMMSQOL](https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457) for exercising the optional MainButtons customization path during testing.
-
-See ATTRIBUTION.md. This mod is MIT licensed.
-
-[Source code on GitHub](https://github.com/vbardales/Rimworld-Architect-Studio)
-```
+regenerate it. The dry-run prints the whole converted text with its size and SHA-256. A description-only run does
+not exist: the text goes out with the next publication, dry-run with `update_description=true` first, its text read
+against the live page. There is no `Mod/README.template.md`; `Mod/.steamignore` still keeps a `README.template.md`
+or `README.md` out of what ships to players. (Owner choice, 2026-10-09: a dedicated file rather than the
+`## Steam description` heading form; both are supported by the template.)
 
 One known gap: the settings page lists the integrations it **detects** (Better Architect Menu, Architect Icons,
 Float Sub-Menus). Searchable Menus and Basic Dropdowns have no detection, so they are named on the page but

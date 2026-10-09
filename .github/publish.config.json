@@ -14,8 +14,7 @@
     "project": "Source/ArchitectStudio.csproj"
   },
   "description": {
-    "file": "PUBLICATION.md",
-    "format": "markdown",
-    "heading": "^## Steam description$"
+    "file": "docs/STEAM_DESCRIPTION.md",
+    "format": "markdown"
   }
 }
