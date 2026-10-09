@@ -17,6 +17,7 @@ upstream_mod_remotes:
   - https://github.com/fernyrepos/Colored-Categories.git
 dependencies: declared
 showcase:     complete
+publication_changelog_review: reviewed (confirmed 2026-10-09) on d872414864755165c000a1cc83aa038e80619c0c, PUBLICATION.md and CHANGELOG.md; the BACKLOG.md reliquat noted in the same review is fixed in bd7c48b
 tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
