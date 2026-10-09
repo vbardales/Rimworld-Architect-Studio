@@ -53,6 +53,22 @@ Feature: counted phrases and tooltips in the language the game runs in
     And I take a screenshot "delete confirmation with one building"
     And Nelim's Pickle Tools: screenshot mode is disabled
 
+  # The confirmation of a group the player made is a different key from the two above
+  # (Dropdowns.ConfirmDelete, "its buildings return to their original group"): the foreign-group
+  # captures never reach it. The step builds the text the editor's Delete button builds and leaves
+  # the question open, so the group is not deleted.
+  Scenario: the delete confirmation of a group the player made
+    When I close all dialogs
+    And I open the "Architect" tab
+    And I click the Architect Studio button keyed "ArchitectStudio.ArchitectButton"
+    Then window "Dialog_DropdownGroups" is open
+    When I create the group "Reading room"
+    And I ask to delete the group "Reading room" and leave the question open
+    And I wait 30 ticks
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "delete confirmation of a group the player made"
+    And Nelim's Pickle Tools: screenshot mode is disabled
+
   Scenario: the footer after one deleted group
     Given the group "Floor_Carpet" has at least 2 members
     When I close all dialogs
