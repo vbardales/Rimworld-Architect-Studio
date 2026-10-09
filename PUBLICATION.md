@@ -91,7 +91,7 @@ English, taken by the Pickle presentation scenario (`Tests/Pickle/Mod/Pickle/Fea
 with `wsl-deps.sanctuary.map`: no optional Architect Studio integration is staged, while Nelim's tribe supplies the backdrop. The lists therefore show the game's own groups, not another mod's raw defNames.
 Menus and interface windows are shown as what they are, with no staged pawn.
 
-**Upload budget** (owner, 2026-10-06): as many images as wanted, each under **2 MB**, the folder under **8 MB**. Today 0 to 4 weigh about 1.3 MB in all. JPEGs, framed around the window; the three windows are kept at full screen height so that the backdrop shows.
+**Upload budget** (owner, 2026-10-06): as many images as wanted, each under **2 MB**, the folder under **8 MB**. Today 0 to 5 weigh about 1.7 MB in all. JPEGs, framed around the window; the three windows are kept at full screen height so that the backdrop shows.
 
 0. `Art/Gallery/0-preview.png` - the Preview.
 1. `Art/Gallery/1-groups.jpg` - **the group editor**: three columns, a group of three buildings selected, its members with their order arrows, and the buildings available to add. The *Category* button reads "— none (members stay where they …", truncated at that width; it is the real interface.
@@ -99,6 +99,7 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 3. `Art/Gallery/3-settings.jpg` - **the settings page**: the two editors, the two toggles, the keyboard-shortcut hint and the detected integrations.
 
 4. `Art/Gallery/4-architect-menu.jpg` - **the Architect menu**: a group as one button, its dropdown open, the placement tool disarmed.
+5. `Art/Gallery/5-parent-row.jpg` - **the appearance window of a tab moved under another** (1.0.7): "Parent category" set to "Build" on the Recreation tab, over the same bamboo backdrop (accepted by the owner, 2026-10-09; needs Better Architect Menu and Architect Icons, scenario `17-publication-shots.feature`, map `wsl-deps.sanctuary-bam.map`, evidence `Tests/Pickle/Evidence/gallery-candidate-5/`). Not uploaded yet: it goes with the next publication.
 
 1 to 4 are crops (window plus 40 px; the menu is the bottom-left of the screen) of the captures in `Tests/Pickle/Evidence/full-1001/gallery-backdrop-3-en/` (ticket `5b7d`, 2026-10-06), played on Nelim's tribe (`Nelims-tribe`): the three windows over `window-backdrop-for-height` of the sanctuary, kept at full height so that the two smileys stay visible, and the menu over the exhibition zone. Owner validated them on 2026-10-06; upload to Steam is the owner's.
 
