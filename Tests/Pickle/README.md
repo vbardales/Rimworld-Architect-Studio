@@ -355,9 +355,9 @@ also matches `Prefs.UIScale` and answers yes on every build, guard or no guard.
 
 ### What is on disk (2026-10-05, after the 1.0.6 deploy)
 
-`Tests/Pickle/Evidence/` is about 200 MB. Kept, one folder per proof, the latest report of each scenario:
+`Tests/Pickle/Evidence/` is about 300 MB. Kept, one folder per proof, the latest report of each scenario:
 
-- `full-1006/`: the non-regression passes on the published revision `0880367`: `minimal-en`, `minimal-fr`, `optionals-en`, `reviews-en`, `reviews-fr`, `rimmsqol-en` and `restart-en` (`seq1`, `seq2`). All green, skipped scenarios are the conditional ones played in their own pass.
+- `full-1007/`: the non-regression passes on the published revision `5869dc2` (1.0.7): `minimal-en`, `minimal-fr`, `optionals-en`, `reviews-en`, `reviews-fr`, `reviews-fr-research` (the one scenario of `reviews-fr` that lost its fixture save, replayed alone), `rimmsqol-en` and `restart-en` (`seq1`, `seq2`). It replaces `full-1006` (1.0.6), deleted on 2026-10-09: every scenario passed there passes here. `reviews-fr/screenshots` holds only this mod's captures: the batched launch also carried another mod's scenarios, whose five captures were dropped.
 - `locked-tab-1008/`: scenario 11 on a moved tab locked by research (`fedc`).
 - `feature-move-category/`: `move-category-6-en` (feature 08) and `parent-row-en`, `parent-row-fr` (feature 09), the proof of the moved-tab feature on `main`.
 - `full-1001/gallery-backdrop-3-en/`: the four Workshop captures, cited in `PUBLICATION.md`.
