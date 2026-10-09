@@ -24,9 +24,9 @@ workshop:     3792784018
 remaining:
   - external: the Workshop page still shows the pre-1.0.6 description (1.0.7 did not send it: `update_description` is off by default). It goes out with the next publication: dry-run with `update_description=true` on the new SHA, its text read against the live page, `dispatch-publish.sh ... --description`, the owner approves `steam-production`, the page checked afterwards (`update_description` is not yet proven against real steamcmd). The two English description edits wait for it (BACKLOG.md)
   - unverified: Basic Dropdowns (ex Categories Dropdowns, `3455529827`) has no row in the comment register (`WORKSHOP_COMMENTS.md`, protocols repository); the owner posted the thanks on 2026-10-08
-  - feature: gallery image `Art/Gallery/5-parent-row.jpg` accepted by the owner on 2026-10-09 (appearance window of a tab moved under another, 900x1080, 298 KB, folder 1.7 MB; evidence `Tests/Pickle/Evidence/gallery-candidate-5/`); to upload by hand with the next publication. The delete confirmation of a group the player made is captured in French (`full-1007/delete-confirm-fr`, ticket `b22d`, passed): the reviewed wording, whole, no clipping
+  - feature: gallery image `Art/Gallery/5-parent-row.jpg` accepted by the owner on 2026-10-09 (appearance window of a tab moved under another, 900x1080, 298 KB, folder 1.7 MB; evidence `Tests/Pickle/Evidence/gallery-candidate-5/`); uploaded by hand by the owner on 2026-10-09 (her word, not checked on the page). The delete confirmation of a group the player made is captured in French (`full-1007/delete-confirm-fr`, ticket `b22d`, passed): the reviewed wording, whole, no clipping
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
-updated:      2026-10-09, 1.0.7 published (stage `published[1.0.7]`); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery image 5 accepted (to upload with the next publication); delete-confirmation capture read (French)
+updated:      2026-10-09, 1.0.7 published (stage `published[1.0.7]`); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery image 5 accepted and uploaded by the owner; delete-confirmation capture read (French)
 ---
 
 # Architect Studio — status
