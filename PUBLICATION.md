@@ -6,7 +6,7 @@ must never be lost: without it the next upload creates a second item.
 
 ## Steam description
 
-The release sends the Workshop description with **every** publication, and it **overwrites what is on the
+The release sends the Workshop description only when `update_description` is enabled; when it does, it **overwrites what is on the
 page**. Its source is the Markdown block below, the only one for the whole mod: the release converts it to Steam
 BBCode for the Workshop page and generates the plain-text `<description>` of `Mod/About/About.xml` from it, and
 every run checks that `About.xml` says the same. It refuses to run if the block is missing or above the 8000 bytes
@@ -86,7 +86,7 @@ not on that screen, and the page does not claim the screen shows them.
 ## Screenshots, in the order to upload
 
 Steam shows the first one large. The folder `Art/Gallery/` holds only the images to upload, numbered in upload order,
-and `0-preview.png` is a byte-for-byte copy of `Mod/About/Preview.png` (the Preview was regenerated on 2026-10-05 with the new ModIcon at the bottom left: the version on the page is the earlier one until the owner uploads this copy). `Mod/About/ModIcon.png` is never resized by hand: `scripts/Render-Preview.cjs bottom-left` generates it, and the two ICOs, from `Art/ModIcon-source.png` (the owner's own file, which only the owner changes) through the key `modIconSource` of `Art/Preview.config.json`. The owner validated keeping the file on 2026-10-06. The others are
+and `0-preview.png` is a byte-for-byte copy of `Mod/About/Preview.png` (the Preview was regenerated on 2026-10-05 with the new ModIcon at the bottom left: the page showed the earlier version until the owner uploaded this copy with the 1.0.7 gallery). `Mod/About/ModIcon.png` is never resized by hand: `scripts/Render-Preview.cjs bottom-left` generates it, and the two ICOs, from `Art/ModIcon-source.png` (the owner's own file, which only the owner changes) through the key `modIconSource` of `Art/Preview.config.json`. The owner validated keeping the file on 2026-10-06. The others are
 English, taken by the Pickle presentation scenario (`Tests/Pickle/Mod/Pickle/Features/17-publication-shots.feature`)
 with `wsl-deps.sanctuary.map`: no optional Architect Studio integration is staged, while Nelim's tribe supplies the backdrop. The lists therefore show the game's own groups, not another mod's raw defNames.
 Menus and interface windows are shown as what they are, with no staged pawn.
@@ -135,7 +135,7 @@ block of the version being published must exist before its dry-run. Start each b
 ### 1.0.7
 
 ```
-[h2][url=https://github.com/vbardales/Rimworld-Architect-Studio/compare/v1.0.6...v1.0.7]1.0.7[/url] (2026-10-07)[/h2]
+[h2][url=https://github.com/vbardales/Rimworld-Architect-Studio/compare/v1.0.6...v1.0.7]1.0.7[/url] (2026-10-08)[/h2]
 
 [h3]Added[/h3]
 [list]

@@ -5,7 +5,7 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
-## [1.0.7] — 2026-10-07
+## [1.0.7] — 2026-10-08
 
 ### Added
 

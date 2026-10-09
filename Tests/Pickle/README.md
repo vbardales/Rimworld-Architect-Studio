@@ -184,6 +184,15 @@ asserts the translated binding fields for an accented category; `17` prepares Wo
 captures RIMMSQOL's list/edit page and the settings route it reveals. A green capture or film proves that
 the route ran, not that its pixels are correct.
 
+**What goes to the owner, and what does not.** The owner is asked only for what the agent cannot do itself.
+Every media file is opened and read by the agent first: raw keys, English in French, clipped or overlapping
+text, a missing or misplaced control, wrong counts and labels are checked there and reported as findings, not
+put to the owner as questions ("is the label whole?" is the agent's to answer). The owner reads what needs her
+judgment: whether a wording sounds right in French, whether a look is acceptable, whether a capture is good
+enough for the gallery. One question per media at most, phrased as the decision to take, sent only after the
+agent's own reading, with that reading stated (what was checked, what was found). Media the agent found
+defective are never sent: the defect is fixed or ticketed first.
+
 Play `03`, `04b` and `16` with `wsl-deps.avec-revues.map`; it stages FilmTicks, InterfaceScale and
 ScreenshotMode. `16` hides the game's HUD for its editor captures so tutorial overlays cannot cover
 translated text. `04b`
@@ -327,9 +336,7 @@ open`, so a real click has to land on the button for it to pass.
 
 Two things that green does **not** say, and should not be read into it. `16` is `@review`: it
 asserts nothing about the images, so the 150% screenshots now exist and still need a person to
-read them. And the fix is with RimWorks as PR 23: it is `fix/tag-rect-interface-scale`, 122f21f in
-the fork at `github.com/vbardales/Rimworld-Pickle`, so a Workshop Pickle - anyone else's, and the
-WSL staging unless told otherwise - still has the defect.
+read them. The 150% pointer defect behind it was PR 23 to RimWorks (`fix/tag-rect-interface-scale`, 122f21f); the PR was closed on 2026-10-02 because Pickle v6 takes clicks at the widget and no longer moves the real pointer. The `the interface scale is {int} percent` step and its scenario came in through RimWorks PR 42 (Pickle v6.6.3); the paragraphs on `Pickle-local` below are the history of that fix.
 
 ### The trap in rebuilding Pickle from that checkout
 
