@@ -20,12 +20,9 @@ Architect Studio studied these two mods and shares no code with them (`ATTRIBUTI
 history was not forked, and rebuilding on their code is not an option now: 1.0.5 is public. What a pull request can
 carry is what we learned from them:
 
-- [ ] Decide with the owner what is worth proposing to ferny: for example the hooks Better Architect Menu exposes
-      that Architect Studio invalidates (display caches), or a defect found while testing against it
-      (`08-category-create.feature`, `bam-nesting`). Nothing is drafted yet, because no defect of theirs is
-      recorded in `STATUS.md`.
-- [ ] If something is worth proposing: fork under the owner's account, one branch per proposal, a pull request in
-      English, then record its number here and in `STATUS.md`.
+- [x] Owner decision, 2026-10-09: no pull request to Better Architect Menu for now. No defect of theirs is recorded
+      (sources, STATUS.md, test reports), so there is nothing to carry. Reopen if testing against it finds one.
+- [x] Colored Categories: no pull request, the project is abandoned (owner, 2026-10-09).
 
 ## Feature requests
 
@@ -37,8 +34,9 @@ carry is what we learned from them:
 
 ## Release
 
-- [ ] Adopt the one-Markdown-source description standard (`## Steam description` of `PUBLICATION.md`,
-      `aboutDescription: true`) at the next publication; a new dry-run follows because the SHA changes.
+- [ ] Send the description to the Workshop page at the next publication: the Markdown source and the workflow are
+      already in place (no plugin pull request owed, CI/CD 2026-10-09); the run needs `update_description=true`,
+      its text compared with the live page, and the page checked afterwards.
 - [x] Basic Dropdowns (ex Categories Dropdowns, `3455529827`) named once and thanked in the description (2026-10-02). The Workshop page changes only with `update_description` or by hand.
 - [ ] Add Basic Dropdowns to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, not this repository's to edit): feature 10 exercises it.
 - [ ] `Mod/desktop.ini` was shipped by earlier releases (it was tracked until 2026-10-01). The next publication stops sending it.
