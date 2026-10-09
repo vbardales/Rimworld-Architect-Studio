@@ -1,0 +1,11 @@
+# Workshop screenshots on Nelim's tribe. The save Nelims-tribe.rws and the place steps ("Nelim's Sanctuary: ...") come from
+# Nelim's Sanctuary Backlot (own repository, SanctuaryBacklot/); the generic steps ("Nelim's Pickle Tools: ...": filth,
+# eclipse, all animals, frame the cell, screenshot mode) stay in Nelim's Pickle Tools. This mod keeps no copy of the save.
+nelim.sanctuarybacklot path:SanctuaryBacklot/Mod
+nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
+nelim.pickletools.camerazoom path:PickleTools/CameraZoom/Mod
+nelim.pickletools.screenshotmode path:PickleTools/ScreenshotMode/Mod
+# The same stage plus the two integrations the category-editor candidate needs: Better Architect Menu (the parent row
+# is a button only with it) and Architect Icons (the editor then fills with the icon picker instead of a note).
+com.bymarcin.architecticons      1195427067
+ferny.betterarchitect            3563882422

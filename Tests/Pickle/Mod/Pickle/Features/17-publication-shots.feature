@@ -75,3 +75,22 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "architect menu, a group opened"
     And Nelim's Pickle Tools: screenshot mode is disabled
+
+  # Candidate for the next gallery (1.0.7 feature, Ali50's request): a tab the game ships, moved under another one
+  # from its own appearance window. Needs both integrations, hence `wsl-deps.sanctuary-bam.map`; play it with
+  # `-Filter '::the appearance window of a tab moved under another'`.
+  @requires:ferny.betterarchitect @requires:com.bymarcin.architecticons
+  Scenario: the appearance window of a tab moved under another
+    When I close all dialogs
+    And I move the category "Joy" under the parent "Structure"
+    And I open the appearance window of the category "Joy"
+    And I wait 30 ticks
+    Then window "Dialog_EditCategory" is open
+    When Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: all animals are removed
+    And Nelim's Sanctuary: I am at the sanctuary "window-backdrop-for-height"
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "appearance window, a tab moved under another"
+    And Nelim's Pickle Tools: screenshot mode is disabled
