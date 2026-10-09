@@ -8,8 +8,8 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-stage:        published
-workflow_stage: published
+stage:        published[1.0.7]
+workflow_stage: published[1.0.7]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:

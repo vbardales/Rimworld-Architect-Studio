@@ -27,7 +27,6 @@ carry is what we learned from them:
 ## Feature requests
 
 - [x] **Move an existing category under another, as a subcategory** (request by Ali50 on the Better Architect Menu page, 2026-10-02/03): delivered in 1.0.7 (published 2026-10-08). A category that is not ours moves under another from its appearance window, through the parent row; it needs Better Architect Menu, which accepts a foreign category as a child. Proof: scenario 08 and the behavior check green, parent row read in both languages, the research-locked case played on a moved tab (`locked-tab-1008`, scenario 11 passed), the French string `ArchitectStudio.EditCategory.ParentBlocked` confirmed by the owner (2026-10-06), code review of `2b16bdf..2a21877` without finding.
-- [ ] Post-publication regression of 1.0.7, after the deploy (fail fast): `minimal-en/fr`, `optionals-en`, `reviews-en` and `rimmsqol-en` played; open: `reviews-fr` (one scenario failed on a missing fixture save, replay queued) and `restart-en`.
 - [ ] Two English improvements to the public description, to go out with the next publication run with `update_description=true` (they change the Workshop page and `About.xml`): `...and any you add later follow.` becomes `...and any buildings added later follow.`; `...where the game silently produces several separate buttons.` becomes `...: the game silently produces several separate buttons.` (after "several categories").
 
 ## Gallery
@@ -45,6 +44,5 @@ carry is what we learned from them:
 
 ## Verification
 
-- [ ] Full suite on the revision that will be published, once the tree is frozen (small tickets, one per pass,
-      `-Label` carries the SHA): minimal, optionals, reviews in both languages, restart chain.
+- [ ] Complete the post-publication regression suite of 1.0.7 (played: `minimal-en/fr`, `optionals-en`, `reviews-en`, `rimmsqol-en`): `reviews-fr` (queued replay after the missing fixture save) and `restart-en`.
 - [x] French review by the owner of `FRENCH_REVIEW.md`: validated 2026-10-02, `translation_fr: complete`.
