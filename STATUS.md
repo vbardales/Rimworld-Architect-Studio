@@ -17,14 +17,14 @@ upstream_mod_remotes:
   - https://github.com/fernyrepos/Colored-Categories.git
 dependencies: declared
 showcase:     complete
-publication_changelog_review: reviewed (confirmed 2026-10-09) on d872414864755165c000a1cc83aa038e80619c0c, PUBLICATION.md and CHANGELOG.md; the BACKLOG.md reliquat noted in the same review is fixed in bd7c48b
+publication_changelog_review_sha: d872414864755165c000a1cc83aa038e80619c0c  # was `publication_changelog_review`: reviewed (confirmed 2026-10-09) on <sha>, PUBLICATION.md and CHANGELOG.md; the BACKLOG.md reliquat noted in the same review is fixed in bd7c48b
 code_review_sha: 2a21877af903eb97978d23f40664cb3f00c1b37a
 tested_on:    2026-09-21
 workshop:     3792784018
 remaining:
   - external: the Workshop page still shows the pre-1.0.6 description (1.0.7 did not send it: `update_description` is off by default). It goes out with the next publication: dry-run with `update_description=true` on the new SHA, its text read against the live page, `dispatch-publish.sh ... --description`, the owner approves `steam-production`, the page checked afterwards (`update_description` is not yet proven against real steamcmd). The two English description edits wait for it (BACKLOG.md)
   - unverified: Basic Dropdowns (ex Categories Dropdowns, `3455529827`) has no row in the comment register (`WORKSHOP_COMMENTS.md`, protocols repository); the owner posted the thanks on 2026-10-08
-  - feature: gallery candidate `5` (appearance window of a tab moved under another, ticket `bee2`) and the capture of the delete confirmation of a group the player made (ticket `cfe7`): read, then the owner decides
+  - feature: gallery candidate `Art/Gallery/5-candidate-parent-row.jpg` (appearance window of a tab moved under another, 900x1080, 298 KB, folder 1.7 MB; evidence `Tests/Pickle/Evidence/gallery-candidate-5/`) read by me, no defect: the owner accepts (drops `candidate`) or refuses (deleted). The delete-confirmation capture of a group the player made is in the queue (ticket `b22d`)
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
 updated:      2026-10-09, 1.0.7 published (stage `published[1.0.7]`); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery candidate 5 and the delete-confirmation capture in the Pickle queue
 ---
