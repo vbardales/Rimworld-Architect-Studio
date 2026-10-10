@@ -19,6 +19,7 @@ showcase:     complete
 publication_changelog_review_sha: 21c3354a2ddeffb8b5e3b887c5c854086f9ea980  # reviewed (confirmed 2026-10-10) on this commit, PUBLICATION.md and CHANGELOG.md
 code_review_sha: 2a21877af903eb97978d23f40664cb3f00c1b37a
 echo_review_sha: f9b264500faf675d635429ff65330f425f8b7244  # echo validated by the owner on 2026-10-10 (keep): it still fits the accepted gallery, the subject of the mod has not moved
+social_preview_sha256: 6d36e22e6a97b34d75f501c334b5b5ef2b8a0eb35c4e5696454e603f299f1805  # uploaded by the owner on 2026-10-10; the image served by GitHub is byte-identical to Mod/About/Preview.png
 tested_on:    2026-10-09
 workshop:     3792784018
 remaining:
