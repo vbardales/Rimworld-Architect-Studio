@@ -8,8 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-stage:        published[1.0.7]
-workflow_stage: published[1.0.7]
+workflow_stage: followUp[1.0.7]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -26,7 +25,7 @@ remaining:
   - feature: two English edits to the public description, to go out with the next publication run with `update_description=true` (they change the Workshop page and `About.xml`; owner agreement implied by the next-publication rule, wording from the review of 2026-10-09): `...and any you add later follow.` becomes `...and any buildings added later follow.`; `...where the game silently produces several separate buttons.` becomes `...: the game silently produces several separate buttons.` (the full stop of the preceding clause replaced by the colon); detail in BACKLOG.md
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
-updated:      2026-10-09, 1.0.7 published (stage `published[1.0.7]`); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery image 5 accepted and uploaded by the owner, images 1 to 4 replayed on SanctuaryBacklot staging (identical); delete-confirmation capture read (French)
+updated:      2026-10-09, 1.0.7 published (workflow_stage `followUp[1.0.7]`); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery image 5 accepted and uploaded by the owner, images 1 to 4 replayed on SanctuaryBacklot staging (identical); delete-confirmation capture read (French)
 ---
 
 # Architect Studio — status
