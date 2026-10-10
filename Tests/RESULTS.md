@@ -42,7 +42,7 @@ Initial experiments under Windows PowerShell and without the fixtures could not 
 of Unity native ECall calls and missing active-mod discovery. The final suite above passes.
 Directly invoking native MainButtonWorker.Visible also requires Unity-backed ModsConfig startup;
 that attempted headless check was not counted as passed or retained as a fake implementation.
-No game UI was run. Scratch XML and test build outputs are ignored under `.build/`.
+No game UI was run. Scratch XML and test build outputs are ignored under `build/`.
 
 ## Access and integration review
 

@@ -76,7 +76,7 @@ Mod/            <- the published mod, and the junction target
   Languages/      English and French
   LICENSE         MIT requires the notice to travel with the distribution
 Source/         C# sources, never published
-.build/         build intermediates, git-ignored, never published
+build/          build intermediates, git-ignored, never published
 ```
 
 What has been played and what has only been compiled is recorded in
