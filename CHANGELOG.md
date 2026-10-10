@@ -5,6 +5,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+### Fixed
+
+- French: the "more results" line of the group editor is complete and clear ("… et {0} autre. Affiner la recherche pour réduire le nombre de résultats.").
+
 ## [1.0.7] — 2026-10-08
 
 ### Added

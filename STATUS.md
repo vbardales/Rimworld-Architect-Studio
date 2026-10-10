@@ -49,7 +49,7 @@ protocols_read_sha: 62af5f82742c841b95ec95288e9ac77833517ac0
 
 **Evidence kept:** `full-1007/` (latest report of each scenario, scenarios 08, 09 and 11 included), `gallery-sb/` (feature 17 on SanctuaryBacklot staging, 2026-10-09: the sources of gallery images 1 to 4, identical to the images online) and `gallery-candidate-5/` (image 5), both cited in `PUBLICATION.md`. `full-1006/`, `locked-tab-1008/`, `feature-move-category/`, `full-1001/` and `sb-staging-1007/` deleted on 2026-10-09 (every scenario they proved passes in `full-1007`). History in `docs/runs/`.
 
-**Gallery (`Art/Gallery/`, order as online, 0 to 5 contiguous, 1.4 MB in all):** 0 `0-preview.png` the Preview (byte-identical to `Mod/About/Preview.png`); 1 `1-groups.jpg` the group editor; 2 `2-categories.jpg` the category editor; 3 `3-settings.jpg` the settings page; 4 `4-architect-menu.jpg` the Architect menu with a group open; 5 `5-parent-row.jpg` the appearance window of a tab moved under another (1.0.7, accepted by the owner 2026-10-09). The order is the one of `PUBLICATION.md`.
+**Gallery (`Art/Gallery/`, order as online, 0 to 5 contiguous, 1.7 MB in all):** 0 `0-preview.png` the Preview (byte-identical to `Mod/About/Preview.png`); 1 `1-groups.jpg` the group editor; 2 `2-categories.jpg` the category editor; 3 `3-settings.jpg` the settings page; 4 `4-architect-menu.jpg` the Architect menu with a group open; 5 `5-parent-row.jpg` the appearance window of a tab moved under another (1.0.7, accepted by the owner 2026-10-09). The order is the one of `PUBLICATION.md`.
 
 **ModIcon:** `Mod/About/ModIcon.png` is 128 x 128 and 31 360 bytes, a little above the 20-30 KB guide; the owner validated it as it stands on 2026-10-11.
 
