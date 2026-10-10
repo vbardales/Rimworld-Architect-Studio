@@ -17,7 +17,7 @@ upstream_mod_remotes:
 dependencies: declared
 showcase:     complete
 publication_changelog_review_sha: 4729cc811625e283ce1187b08319946daa415701  # reviewed (confirmed 2026-10-10) on this commit, PUBLICATION.md and CHANGELOG.md
-code_review_sha: 2a21877af903eb97978d23f40664cb3f00c1b37a
+code_review_sha: d01891d7743a7d59ce6808474c2a47adaea9b89f
 echo_review_sha: f9b264500faf675d635429ff65330f425f8b7244  # echo validated by the owner on 2026-10-10 (keep): it still fits the accepted gallery, the subject of the mod has not moved
 social_preview_sha256: 6d36e22e6a97b34d75f501c334b5b5ef2b8a0eb35c4e5696454e603f299f1805  # uploaded by the owner on 2026-10-10; the image served by GitHub is byte-identical to Mod/About/Preview.png
 tested_on:    2026-10-09
@@ -28,7 +28,7 @@ remaining:
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
 updated:      2026-10-09, 1.0.7 published (workflow_stage `followUp[1.0.7]`); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery image 5 accepted and uploaded by the owner, images 1 to 4 replayed on SanctuaryBacklot staging (identical); delete-confirmation capture read (French)
-protocols_read_sha: 3f0f61bff6203d1bb16a8a5c3dd865a1ad714b45
+protocols_read_sha: 6591dbc87e6e41defa0dcf1fc510aac5ca522048
 ---
 
 # Architect Studio — status
@@ -43,7 +43,7 @@ protocols_read_sha: 3f0f61bff6203d1bb16a8a5c3dd865a1ad714b45
 
 **Gates, on the published revision:** `Tests/Validate-Mod.ps1` 1000 checks; `Tests/Run-Behavior.ps1` 35 assertions; Pickle non-regression after the deploy complete on 2026-10-09 in `Tests/Pickle/Evidence/full-1007/` (`minimal-en/fr`, `optionals-en`, `reviews-en`, `rimmsqol-en`, `restart-en` green; `reviews-fr` 42 passed, its one failure a missing fixture save, replayed alone and passed). Scenario 08 (a tab moved under another), 09 and 11 (moved tab locked by research, `full-1007`) played green. `translation_fr` and `translation_en` complete (French reviewed by the owner, `FRENCH_REVIEW.md` regenerated from the committed XML).
 
-**Reviews:** `code_review_sha` `2a21877` (code review of `Source/`, no finding; `Source/` and `Mod/` unchanged since). `publication_changelog_review_sha` `4729cc8` (confirmed by the owner, 2026-10-10, after the em dash fix). `echo_review_sha` `f9b2645`: echo kept (owner, 2026-10-10), it still fits the accepted gallery and the subject of the mod has not moved. `social_preview_sha256`: the GitHub social preview is `Mod/About/Preview.png` of 2026-10-05, uploaded by the owner on 2026-10-10 and checked byte-identical.
+**Reviews:** `code_review_sha` `d01891d` (code review of `Source/`, no finding; `Source/` unchanged since, `Mod/` only About.xml punctuation, owner-confirmed 2026-10-10). `publication_changelog_review_sha` `4729cc8` (confirmed by the owner, 2026-10-10, after the em dash fix). `echo_review_sha` `f9b2645`: echo kept (owner, 2026-10-10), it still fits the accepted gallery and the subject of the mod has not moved. `social_preview_sha256`: the GitHub social preview is `Mod/About/Preview.png` of 2026-10-05, uploaded by the owner on 2026-10-10 and checked byte-identical.
 
 **Evidence kept:** `full-1007/` (latest report of each scenario, scenarios 08, 09 and 11 included), `gallery-sb/` (feature 17 on SanctuaryBacklot staging, 2026-10-09: the sources of gallery images 1 to 4, identical to the images online) and `gallery-candidate-5/` (image 5), both cited in `PUBLICATION.md`. `full-1006/`, `locked-tab-1008/`, `feature-move-category/`, `full-1001/` and `sb-staging-1007/` deleted on 2026-10-09 (every scenario they proved passes in `full-1007`). History in `docs/runs/`.
 
