@@ -36,9 +36,9 @@
   <ArchitectStudio.Dropdowns.Add>Ajouter un bâtiment</ArchitectStudio.Dropdowns.Add>
   <ArchitectStudio.Dropdowns.Category>Catégorie :</ArchitectStudio.Dropdowns.Category>
   <ArchitectStudio.Dropdowns.AllCategories>Toutes les catégories</ArchitectStudio.Dropdowns.AllCategories>
-  <ArchitectStudio.Dropdowns.MoreResults.Zero>… et {0} autre. La recherche permet d'affiner.</ArchitectStudio.Dropdowns.MoreResults.Zero>
-  <ArchitectStudio.Dropdowns.MoreResults.One>… et {0} autre. La recherche permet d'affiner.</ArchitectStudio.Dropdowns.MoreResults.One>
-  <ArchitectStudio.Dropdowns.MoreResults.Many>… et {0} autres. La recherche permet d'affiner.</ArchitectStudio.Dropdowns.MoreResults.Many>
+  <ArchitectStudio.Dropdowns.MoreResults.Zero>… et {0} autre. Affiner la recherche pour réduire le nombre de résultats.</ArchitectStudio.Dropdowns.MoreResults.Zero>
+  <ArchitectStudio.Dropdowns.MoreResults.One>… et {0} autre. Affiner la recherche pour réduire le nombre de résultats.</ArchitectStudio.Dropdowns.MoreResults.One>
+  <ArchitectStudio.Dropdowns.MoreResults.Many>… et {0} autres. Affiner la recherche pour réduire le nombre de résultats.</ArchitectStudio.Dropdowns.MoreResults.Many>
 
   <ArchitectStudio.Dropdowns.OverrideCount.Zero>{0} bâtiment déplacé par rapport aux réglages d'origine.</ArchitectStudio.Dropdowns.OverrideCount.Zero>
   <ArchitectStudio.Dropdowns.OverrideCount.One>{0} bâtiment déplacé par rapport aux réglages d'origine.</ArchitectStudio.Dropdowns.OverrideCount.One>
