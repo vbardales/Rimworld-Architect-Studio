@@ -74,7 +74,7 @@ First release published by the automated pipeline (semantic-release, then Steam)
   RIMMSQOL as development-only testing tools (not dependencies), and says "Embedded English and French
   translations".
 - The distributed Workshop description and its publication source now link every cited Workshop mod
-  directly to its own Workshop page. Until 1.0.4 the description came from `Mod/README.template.md`; from the next release it comes from `PUBLICATION.md` (see Unreleased).
+  directly to its own Workshop page. Until 1.0.4 the description came from `Mod/README.template.md`; from version 1.0.5 it comes from `PUBLICATION.md` (see 1.0.5).
 
 ### Tests
 
