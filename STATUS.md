@@ -18,7 +18,7 @@ dependencies: declared
 showcase:     complete
 publication_changelog_review_sha: 21c3354a2ddeffb8b5e3b887c5c854086f9ea980  # reviewed (confirmed 2026-10-10) on this commit, PUBLICATION.md and CHANGELOG.md
 code_review_sha: 2a21877af903eb97978d23f40664cb3f00c1b37a
-echo_review:  2026-10-10 keep - validated by the owner (2026-10-10); the echo still fits the gallery and the subject of the mod has not moved
+echo_review_sha: f9b264500faf675d635429ff65330f425f8b7244  # echo validated by the owner on 2026-10-10 (keep): it still fits the accepted gallery, the subject of the mod has not moved
 tested_on:    2026-10-09
 workshop:     3792784018
 remaining:
