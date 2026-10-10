@@ -18,7 +18,7 @@ dependencies: declared
 showcase:     complete
 publication_changelog_review_sha: d872414864755165c000a1cc83aa038e80619c0c  # was `publication_changelog_review`: reviewed (confirmed 2026-10-09) on <sha>, PUBLICATION.md and CHANGELOG.md; the BACKLOG.md reliquat noted in the same review is fixed in bd7c48b
 code_review_sha: 2a21877af903eb97978d23f40664cb3f00c1b37a
-tested_on:    2026-09-21
+tested_on:    2026-10-09
 workshop:     3792784018
 remaining:
   - external: the Workshop page still shows the pre-1.0.6 description (1.0.7 did not send it: `update_description` is off by default). It goes out with the next publication: dry-run with `update_description=true` on the new SHA, its text read against the live page, `dispatch-publish.sh ... --description`, the owner approves `steam-production`, the page checked afterwards (`update_description` is not yet proven against real steamcmd). The two English description edits (next entry) wait for it

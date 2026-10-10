@@ -97,7 +97,6 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 1. `Art/Gallery/1-groups.jpg` - **the group editor**: three columns, a group of three buildings selected, its members with their order arrows, and the buildings available to add. The *Category* button reads "— none (members stay where they …", truncated at that width; it is the real interface.
 2. `Art/Gallery/2-categories.jpg` - **the category editor**: every category with its icon and building count, the empty ones greyed out, the up/down arrows among siblings.
 3. `Art/Gallery/3-settings.jpg` - **the settings page**: the two editors, the two toggles, the keyboard-shortcut hint and the detected integrations.
-
 4. `Art/Gallery/4-architect-menu.jpg` - **the Architect menu**: a group as one button, its dropdown open, the placement tool disarmed.
 5. `Art/Gallery/5-parent-row.jpg` - **the appearance window of a tab moved under another** (1.0.7): "Parent category" set to "Build" on the Recreation tab, over the same bamboo backdrop (accepted by the owner, 2026-10-09; needs Better Architect Menu and Architect Icons, scenario `17-publication-shots.feature`, map `wsl-deps.sanctuary-bam.map`, evidence `Tests/Pickle/Evidence/gallery-candidate-5/`). Uploaded to the Workshop gallery by hand by the owner on 2026-10-09 (reported by her in chat, not checked on the page: Steam answered 429 to the check).
 
@@ -118,7 +117,7 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 No adult content. The Preview, the ModIcon and the screenshots were opened: a workbench with blueprints and storage
 crates, a cartoon mascot in a hard hat, and four interface views (three windows and the Architect menu) over
 bamboo fields, the exhibition zone and the river of Nelim's tribe, with orange smileys and no pawn (re-read on 2026-10-06 for
-the 1.0.6 set).
+the 1.0.6 set). Image 5 (1.0.7), a fifth window over the same bamboo backdrop, was accepted by the owner on 2026-10-09 after she looked at it; no session re-read it for this box.
 
 ## After an upload
 
@@ -153,4 +152,4 @@ The notes already sent (1.0.6, 1.0.7) are in `docs/runs/2026-10-09-publication-t
 
 ## Thanks to post on the mods' pages
 
-The register is `WORKSHOP_COMMENTS.md` of the protocols repository (all rows `posted`, PickleTools `not_applicable`; Basic Dropdowns posted by the owner on 2026-10-08, no row yet). The texts that were sent are in `docs/runs/2026-10-09-publication-texts-sent.md` and `docs/runs/2026-10-02-publication-sent.md`. Nothing is waiting to be posted.
+The register is `WORKSHOP_COMMENTS.md` of the protocols repository (all rows `posted`, PickleTools `not_applicable`; Basic Dropdowns has its row, `posted`, confirmed 2026-10-08). The texts that were sent are in `docs/runs/2026-10-09-publication-texts-sent.md` and `docs/runs/2026-10-02-publication-sent.md`. Nothing is waiting to be posted.
