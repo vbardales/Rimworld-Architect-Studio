@@ -34,7 +34,7 @@ Each scenario says what it proves. A test whose failure you cannot interpret is 
 Both editors open from the bottom row of the Architect window, **Groups…** and **Categories…**, or
 from the mod settings. The settings route always works; the buttons are themselves under test.
 
-## 1 — The mod loads and its patches apply
+## 1: The mod loads and its patches apply
 
 **Proves** the Harmony patches, the deferred ones included, and the startup pass that rebuilds the
 created defs. Every other scenario depends on this one.
@@ -47,25 +47,25 @@ What a failure looks like:
 - Any unhandled exception naming `ArchitectStudio`. The stack trace names the step: `StartupInit`,
   `CustomCategoryRuntime.EnsureDefs`, `CategoryAppearance.ApplyLabels`, `CategoryRuntime.Apply` or
   `DropdownRuntime.Apply`.
-- *"Tried to get a resource … from a different thread"* — the v1.0.0 crash. Two patches are applied
+- *"Tried to get a resource … from a different thread"*: the v1.0.0 crash. Two patches are applied
   late, from `StartupInit`, precisely to avoid it: `ArchitectIconsCompat` and `CategoryColorPainter`.
   If this comes back, one of them has drifted back into the mod constructor.
-- *"The runtime refused access to a non-public member of the game …"* — the build lost the
+- *"The runtime refused access to a non-public member of the game …"*: the build lost the
   publicizer waiver. The mod reads four non-public members of the game, and the attribute that
   makes that legal is applied through a generated file this project switches off, so a rebuild
   without `Source/AccessChecks.cs` produces a clean, silent, broken assembly. The probe that
   prints this line is the only thing that says so; without it the failure shows up later, one
-  feature at a time, as an exception at first use. **If you ever see this line, copy it out** —
+  feature at a time, as an exception at first use. **If you ever see this line, copy it out**:
   no one has yet seen the game's own runtime refuse such an access, and that log would be the
   missing evidence for every mod of this collection built the same way.
-- *"Dropdown group not found: '…'"* — a saved assignment names a group no longer present. Not a
+- *"Dropdown group not found: '…'"*: a saved assignment names a group no longer present. Not a
   failure in itself: the buildings fall back to their default and the assignment is kept in case the
   mod returns. Only worrying if you did not change your mod list.
-- *"Better Architect Menu is loaded, but none of its cache …"* — BAM renamed or removed the methods
+- *"Better Architect Menu is loaded, but none of its cache …"*: BAM renamed or removed the methods
   this mod calls by reflection. Everything still applies to the defs, but nothing will refresh until
   a restart. This one is a real break, and it is the most likely to arrive with a BAM update.
 
-## 2 — The two buttons appear in the Architect window
+## 2: The two buttons appear in the Architect window
 
 **Proves** the window-height patch and the drawing patch agree. If the height patch works and the
 drawing one does not, you get an empty band; the reverse overlaps the buttons with the tabs.
@@ -73,11 +73,11 @@ drawing one does not, you get an empty band; the reverse overlaps the buttons wi
 Open the Architect menu. **A row of two buttons, `Groups…` and `Categories…`, sits at the bottom of
 the window**, and nothing else is clipped or overlapping.
 
-Turn *Button in the Architect menu* off in the settings, **reopen the Architect menu** — the tip
-says so, the window height is only recomputed when it opens — and the row is gone with no gap left
+Turn *Button in the Architect menu* off in the settings, **reopen the Architect menu** (the tip
+says so, the window height is only recomputed when it opens) and the row is gone with no gap left
 behind.
 
-## 3 — Dragging a group member, downwards
+## 3: Dragging a group member, downwards
 
 **Proves** the reordering path, which has carried two separate bugs and has never been played since
 either was fixed. This is the single most likely thing to still be wrong.
@@ -98,7 +98,7 @@ Open **Groups…**, pick a group with at least four members, and drag the **firs
 Then **open the Architect menu and click the group's button**: the menu order must match the editor,
 top to bottom.
 
-## 4 — The up/down arrows, including at 150% interface scale
+## 4: The up/down arrows, including at 150% interface scale
 
 **Proves** the v1.0.2 rewrite. In v1.0.0 these arrows were drawn rotated around a pivot that was not
 multiplied by `Prefs.UIScale`, so they flew out of their button at any scale other than 100%. They
@@ -110,10 +110,10 @@ member moves one place.
 Then set the interface scale to **150%** in Options and look again, in both editors. The arrows must
 sit in their buttons at every scale.
 
-The first and last rows carry a disabled arrow: it is drawn faded and **must not be clickable** — no
+The first and last rows carry a disabled arrow: it is drawn faded and **must not be clickable**: no
 click sound, no highlight on hover.
 
-## 5 — Reordering categories
+## 5: Reordering categories
 
 **Proves** that writing `DesignationCategoryDef.order` moves both a top-level category and a
 subcategory, and that the whole sibling set is renumbered rather than just the two rows swapped.
@@ -121,7 +121,7 @@ subcategory, and that the whole sibling set is renumbered rather than just the t
 Open **Categories…**, move a category up, close the editor, open the Architect menu: the tabs are in
 the new order.
 
-Do the same with a **subcategory** — this needs Better Architect Menu, which owns the only nesting
+Do the same with a **subcategory**: this needs Better Architect Menu, which owns the only nesting
 mechanism there is. Without it the tree is flat and there is nothing to test here.
 
 Move a category several times in a row without closing the window. Each click redraws from a fresh
@@ -129,7 +129,7 @@ tree, so nothing should jump two places or bounce back.
 
 *Reset order* puts everything back.
 
-## 6 — Creating a group and filling it
+## 6: Creating a group and filling it
 
 **Proves** the whole dropdown chain: a def created in memory, buildings reassigned onto it, and the
 category rebuilt so the menu shows it without a restart.
@@ -143,7 +143,7 @@ Remove one member: it becomes its own button again at once.
 The search field and the category filter are both ways to find a building. On a Steam Deck the
 filter is the one that matters, since searching means opening the virtual keyboard.
 
-## 7 — A category forced on a whole group
+## 7: A category forced on a whole group
 
 **Proves** the one feature with no equivalent anywhere: natively a group has no category of its own,
 it follows its members and splits into as many buttons as they occupy categories.
@@ -158,10 +158,10 @@ without touching the setting again.
 
 Set the category back to *— none*: the members go back where they came from.
 
-## 8 — Creating a category, and its keyboard shortcut
+## 8: Creating a category, and its keyboard shortcut
 
 **Proves** the hand-built `KeyBindingCategoryDef`. The game only generates one when defs are
-created, at startup, so a category made mid-game would otherwise have none — and the code that reads
+created, at startup, so a category made mid-game would otherwise have none, and the code that reads
 it does not expect null.
 
 *New category…* in the Categories editor. Give it a name, then a parent if Better Architect Menu is
@@ -179,7 +179,7 @@ than ask a question whose answer it would ignore.
 Deleting the category afterwards is the already-confirmed half: its buildings return to their
 original category before the def is removed.
 
-## 8b — Moving a category that is not ours under another
+## 8b: Moving a category that is not ours under another
 
 **Proves** the request of Ali50 (Workshop, 2026-10): a tab added by the game or by another mod can be put
 under another tab as a subcategory. Needs Better Architect Menu, which owns the only nesting mechanism: its
@@ -198,24 +198,24 @@ Open the appearance window of a category (click its name in the Categories edito
 
 Not played by hand: the greyed sub-tab drawn in the parent's dropdown for a locked category.
 
-## 9 — Appearance: label, colour, icon
+## 9: Appearance: label, colour, icon
 
 **Proves** three different mechanisms that happen to share one window. Colours are confirmed at both
 levels; labels and icons are not.
 
 Click a category's name in the Categories editor.
 
-- **Label** — rewritten on the def at startup. Change it, and the Architect tab follows.
-- **Colour** — laid down as the button is drawn. Confirmed working on top-level categories and on
+- **Label**: rewritten on the def at startup. Change it, and the Architect tab follows.
+- **Colour**: laid down as the button is drawn. Confirmed working on top-level categories and on
   Better Architect Menu's subcategory rows.
-- **Icon** — needs Architect Icons. The choice must show **immediately**, not at the next startup:
+- **Icon**: needs Architect Icons. The choice must show **immediately**, not at the next startup:
   Architect Icons caches a category's icon permanently, and this mod evicts that entry by hand. A
   change that only appears after a restart means the eviction missed.
 
 Without Architect Icons the icon section says it is unavailable, which is the correct behaviour and
 not a bug to chase.
 
-## 10 — Deleting a group that belongs to another mod
+## 10: Deleting a group that belongs to another mod
 
 **Proves** the only available approach: the def cannot be erased, its mod recreates it at every
 startup, so it is emptied of its members instead and remembered as hidden.
@@ -223,13 +223,13 @@ startup, so it is emptied of its members instead and remembered as hidden.
 Delete a vanilla or modded group from the list. It disappears from the Architect menu and from the
 editor, and the footer counts it under deleted groups.
 
-**Restart the game.** It must still be gone — that is the whole point, and it is the half a single
+**Restart the game.** It must still be gone: that is the whole point, and it is the half a single
 session cannot check. The restart pass automates it (`20-restart-write`, then `21-restart-read`: two real
 game launches under one lock hold); do it by hand only to see it with your own eyes.
 
 *Restore deleted groups* brings it back with its members.
 
-## 11 — Showing what research still locks
+## 11: Showing what research still locks
 
 **Proves** the one option where a mistake is serious rather than cosmetic. `Designator_Build.Visible`
 is the only lock: nothing revalidates research when a blueprint is placed, so making a designator
@@ -247,7 +247,7 @@ Turn *Show what research still locks* on, in a save with unfinished research.
 A building hidden by your faction's tech level stays hidden either way. That is a different lock and
 this option does not touch it.
 
-## 12 — Everything survives a restart
+## 12: Everything survives a restart
 
 **Proves** the settings round-trip and the startup replay, which is where created defs are rebuilt
 from scratch.
@@ -256,7 +256,7 @@ With a group created, a category created, an order changed and a colour set: qui
 relaunch, and look again. Everything is back, and `Player.log` is silent. The restart pass plays this in
 two real launches (group, category, order, colour, deleted group); a manual run is optional.
 
-## 13 — Without the optional mods
+## 13: Without the optional mods
 
 **Proves** that the reflection bridges are soft, as the Workshop page claims.
 
@@ -271,7 +271,7 @@ silent, and subcategories, icon selection and nested pick menus are simply absen
 optional mods the same scenario proves every bridge resolved. It replaces a version tagged `@wip` that
 asserted three absences: Pickle can skip a scenario on the presence of a mod but not on its absence, so
 that version could only be hidden, not played.
-## 14 — Reset everything
+## 14: Reset everything
 
 **Proves** that the reset unwinds in the right order: created categories go through their normal
 deletion, so their buildings are handed back before the def disappears.
@@ -282,7 +282,7 @@ returns to how it looked with the mod absent, and nothing is logged.
 ## Translation gate and in-game language checks
 
 Repeat the source/text inventory and resource validation after UI, Def or translation changes,
-before entering `preTest`. Record evidence in `STATUS.md` under `Translation audit` and reset
+before entering `writeTests`. Record evidence in `STATUS.md` under `Translation audit` and reset
 affected localization/language fields to `unchecked` until revalidated.
 
 Run the following through the Pickle passes in English and French (`-Language English` and
@@ -318,7 +318,7 @@ runtime assemblies; `-Managed PATH` overrides their location. It tests real Scri
 and compiled mod logic. See `Tests/RESULTS.md` for setup boundaries and actual results.
 The CI static checks remain independent; CI does not contain the game's runtime assemblies.
 
-## 15 — Optional MainButtons shortcut and preferences reset
+## 15: Optional MainButtons shortcut and preferences reset
 
 Preconditions: Core, Harmony and Architect Studio; a disposable new game and a copy of an
 existing save. Keep both user saves and current global settings backed up before changing them.
@@ -370,5 +370,5 @@ Expected: 989 static checks pass and the Release build has zero warnings and err
 validator; last run in `docs/runs/`). The script checks every shipped XML, metadata, translation keys and placeholders, C# literal
 translation references, the keybinding and its injected label, and distribution notices/content.
 It throws on the first failure and exits unsuccessfully. The static validator does not execute
-the C# runtime or prove the in-game scenarios above. The separate local behavioral suite (34 checks)
+the C# runtime or prove the in-game scenarios above. The separate local behavioral suite (35 checks)
 executes compiled mod logic and Scribe; neither suite proves the in-game scenarios.

@@ -1,4 +1,4 @@
-# CI and release automation — deliberately gated
+# CI and release automation: deliberately gated
 
 This is a design and a dry-run path, not authorization to publish.  No workflow in this repository
 uploads to Steam or creates a release until a maintainer manually dispatches it and approves the

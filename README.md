@@ -2,9 +2,9 @@
 
 A RimWorld 1.6 mod that organises the Architect menu from inside the game, without restarting.
 
-- **Dropdown groups** — create a group, put buildings into it, order its members, and force a
+- **Dropdown groups**: create a group, put buildings into it, order its members, and force a
   category on the whole group so its members follow.
-- **Categories and subcategories** — create them, reorder them, and change their label, colour
+- **Categories and subcategories**: create them, reorder them, and change their label, colour
   and icon, vanilla ones included.
 
 Nothing is written to the game's def files, nor to another mod's: everything is stored in the mod
@@ -23,7 +23,7 @@ editor-button preference to on and research-locked visibility to off.
 
 ## Works with
 
-None is required — the mod works on its own, and the settings screen shows which ones were
+None is required: the mod works on its own, and the settings screen shows which ones were
 detected. All are resolved by reflection; no third-party assembly is referenced at build time.
 
 | Mod | What it adds |
@@ -35,7 +35,7 @@ detected. All are resolved by reflection; no third-party assembly is referenced 
 
 ## Also recommended
 
-Not integrated with, but they pair well — the icon packs feed the picker, and the dropdown packs
+Not integrated with, but they pair well: the icon packs feed the picker, and the dropdown packs
 give you groups worth editing.
 
 | Mod | Why |
@@ -59,7 +59,7 @@ dotnet build Source/ArchitectStudio.csproj -c Release
 The assembly is written straight into `Mod/Assemblies/`.
 
 For a quick iteration loop, make `RimWorld/Mods/ArchitectStudio` an NTFS junction pointing at
-**`Mod/`** — not at the repository root: a rebuild then lands in the game with nothing to copy.
+**`Mod/`**: not at the repository root: a rebuild then lands in the game with nothing to copy.
 
 ## Layout
 
@@ -84,7 +84,7 @@ What has been played and what has only been compiled is recorded in
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE).
+MIT: see [LICENSE](LICENSE).
 
 This mod studies, but does not copy, several MIT-licensed mods; what was learned from each is
 detailed in [ATTRIBUTION.md](ATTRIBUTION.md).
