@@ -77,9 +77,7 @@ here:
   each scenario's outcome, failure message and attachments without waiting for the end.
 - **Starting a run destroys the evidence of the one before it.** The queue copies each report and its screenshots to the ticket's `-EvidenceDir` before it releases the lock: keep what is needed there. Launching the game by hand copies nothing.
 
-An archive is a reprieve, not storage: five runs later it is gone. A session that needs a report -
-a failure to quote, a screenshot to compare against - **copies what it needs somewhere of its own,
-and cleans up after itself**. Nothing in `PickleReports` survives by default.
+A session that needs a report (a failure to quote, a screenshot to compare against) **copies what it needs somewhere of its own, and cleans up after itself**. Nothing in `PickleReports` survives by default.
 
 ## What the suite does to your settings
 
