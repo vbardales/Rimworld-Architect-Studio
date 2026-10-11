@@ -12,14 +12,8 @@ protected `steam-production` GitHub environment.
 | Workflow | Trigger | Effect |
 | --- | --- | --- |
 | `build.yml` | push to `main`, pull request, manual | Builds the mod and validates shipped XML/resources. |
-| `game-image.yml` | manual only, exact `PUSH_PRIVATE_IMAGE` confirmation | Builds a managed-assemblies-only RimWorld image and pushes it to private GHCR. It has no schedule or automatic trigger. |
 | `publish-tag.yml` | manual only | Inputs `ref`, `version`, `mode`. Defaults to a credential-free dry run. `publish` needs the full 40-character SHA that the dry-run printed and pauses at `steam-production`; only after approval can it create the tag, the GitHub release and update the existing Workshop item. |
 
-The reference image is `ghcr.io/<owner>/rimworld-game`, built with
-`RimWorks/steam-game-image-action@v1`, `runnable: false`, and only
-`RimWorldLinux_Data/Managed`.  It contains proprietary game assemblies.  Keep the package private,
-do not make it public, and do not use it outside CI.  The image builder's `skip-if-unchanged` gate
-means a confirmed run does not fetch or push when Steam's build ID has not changed.
 
 ## Required GitHub configuration
 
@@ -27,9 +21,9 @@ Create repository secrets; never place their values in workflow files, logs, iss
 
 | Secret | Used by | Purpose |
 | --- | --- | --- |
-| `STEAM_USERNAME` | confirmed image build; protected publish | Steam account name for an account that owns RimWorld and can update Workshop item `3792784018`. |
-| `STEAM_CONFIG_VDF` | confirmed image build; protected publish | Base64 SteamCMD `config.vdf` with a saved login. Rotate it if the Steam session expires. |
-| `GITHUB_TOKEN` | supplied automatically by Actions | GHCR authentication for the image builder and GitHub tag/release creation. No stored PAT is required. |
+| `STEAM_USERNAME` | protected publish | Steam account name for an account that owns RimWorld and can update Workshop item `3792784018`. |
+| `STEAM_CONFIG_VDF` | protected publish | Base64 SteamCMD `config.vdf` with a saved login. Rotate it if the Steam session expires. |
+| `GITHUB_TOKEN` | supplied automatically by Actions | GitHub tag and release creation. No stored PAT is required. |
 
 Create a GitHub Environment named `steam-production`, require named maintainer approval, and restrict
 its Steam secrets to that environment.  Do **not** add Steam secrets to the repository-wide secret
@@ -67,8 +61,6 @@ the Workshop ID of `.github/publish.config.json`.
 
 ## First activation checks
 
-Before authorizing the first image push, set the GHCR package visibility to **private** and confirm
-the repository owner has package write/read access.  Before authorizing the first publish, verify the
-Steam account can update item `3792784018`, then create/verify the `steam-production` environment
+Before authorizing the first publish, verify the Steam account can update item `3792784018`, then create/verify the `steam-production` environment
 approval rule.  Leave branch protection and human PR review in place: a merged conventional commit
 is not enough to publish because the publish workflow is manual-only.
