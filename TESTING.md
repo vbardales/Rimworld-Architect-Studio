@@ -279,6 +279,16 @@ deletion, so their buildings are handed back before the def disappears.
 With several things configured, use *Reset everything* in the mod settings. The Architect menu
 returns to how it looked with the mod absent, and nothing is logged.
 
+## 22: The Unsorted tab (1.1.0)
+
+**Proves** that the opt-in catch-all gathers the buildings no other tab provides, and nothing else.
+
+An orphan is a building with a blueprint (a category) whose default designator is off and which no other
+tab offers. With the preference off (the default) there is no tab. Turned on, `22-unsorted-tab.feature`
+switches one vanilla building's default designator off, checks no other tab offers it, then checks the
+Unsorted tab does and that the category editor's count equals what the tab offers. A building another tab
+shows is not offered there. Turning the option off, or *Reset everything*, removes the tab.
+
 ## Translation gate and in-game language checks
 
 Repeat the source/text inventory and resource validation after UI, Def or translation changes,

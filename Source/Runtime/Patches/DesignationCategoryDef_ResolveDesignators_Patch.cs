@@ -12,6 +12,7 @@ namespace ArchitectStudio
     {
         public static void Postfix(DesignationCategoryDef __instance)
         {
+            UnsortedRuntime.Fill(__instance);
             DropdownOrderRuntime.ApplyOrder(__instance);
         }
     }

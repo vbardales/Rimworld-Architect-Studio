@@ -24,6 +24,7 @@ namespace ArchitectStudio
 
             ArchitectStudioMod.Settings.customCategories.Clear();
             ArchitectStudioMod.Settings.ResetPreferences();
+            UnsortedRuntime.Apply();
 
             CategoryAppearance.ResetAll();
             CategoryRuntime.ResetOrders();

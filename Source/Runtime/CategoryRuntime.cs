@@ -165,6 +165,11 @@ namespace ArchitectStudio
         /// <summary>Number of buildings visible in this category, subcategories included.</summary>
         public static int ContentCountOf(DesignationCategoryDef category)
         {
+            if (UnsortedRuntime.IsUnsorted(category))
+            {
+                return UnsortedRuntime.Count;
+            }
+
             EnsureCounts();
             return totalCounts.TryGetValue(category.defName, out var count) ? count : 0;
         }

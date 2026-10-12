@@ -5,6 +5,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+### Added
+
+- Optional "Unsorted" tab in the Architect menu (mod settings, off by default): it gathers the buildings no other tab provides (a blueprint exists, the default designator is off, nothing else offers them), so none stays out of reach. The category editor shows its count. It changes no building; turning it off, or "Reset everything", removes the tab. Requested by SarahSH.
+
 ### Fixed
 
 - French: the "more results" line of the group editor is complete and clear ("… et {0} autre. Affiner la recherche pour réduire le nombre de résultats.").

@@ -60,6 +60,12 @@ namespace ArchitectStudio
         public bool showResearchLocked;
 
         /// <summary>
+        /// Adds an "Unsorted" Architect tab gathering the buildings no other tab provides. Off by
+        /// default: it adds a button to the menu.
+        /// </summary>
+        public bool showUnsorted;
+
+        /// <summary>
         /// Parent forced on a category that is not ours: child defName to parent defName. Categories
         /// we created keep their parent in their own record (<see cref="CustomCategoryEntry.parentId"/>).
         /// </summary>
@@ -73,12 +79,13 @@ namespace ArchitectStudio
         /// </summary>
         public List<string> hiddenGroupIds = new List<string>();
 
-        public bool HasNonDefaultPreferences => !showArchitectButton || showResearchLocked;
+        public bool HasNonDefaultPreferences => !showArchitectButton || showResearchLocked || showUnsorted;
 
         public void ResetPreferences()
         {
             showArchitectButton = true;
             showResearchLocked = false;
+            showUnsorted = false;
         }
 
         public override void ExposeData()
@@ -87,6 +94,7 @@ namespace ArchitectStudio
             Scribe_Values.Look(ref schemaVersion, "schemaVersion", 1);
             Scribe_Values.Look(ref showArchitectButton, "showArchitectButton", true);
             Scribe_Values.Look(ref showResearchLocked, "showResearchLocked", false);
+            Scribe_Values.Look(ref showUnsorted, "showUnsorted", false);
             Scribe_Collections.Look(ref customGroups, "customGroups", LookMode.Deep);
             Scribe_Collections.Look(ref dropdownAssignments, "dropdownAssignments", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref groupOrders, "groupOrders", LookMode.Deep);

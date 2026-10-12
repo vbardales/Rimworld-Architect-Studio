@@ -58,7 +58,7 @@ namespace ArchitectStudio
         /// generated, at startup. A category created during a game would have it null: we redo here
         /// what <c>KeyBindingDefGenerator</c> does.
         /// </summary>
-        private static void EnsureKeyBindingCategory(DesignationCategoryDef category)
+        internal static void EnsureKeyBindingCategory(DesignationCategoryDef category)
         {
             var defName = "Architect_" + category.defName;
 

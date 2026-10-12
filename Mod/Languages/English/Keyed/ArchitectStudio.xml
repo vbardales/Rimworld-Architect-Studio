@@ -103,6 +103,9 @@
 
   <ArchitectStudio.Settings.ShowResearchLocked>Show what research still locks</ArchitectStudio.Settings.ShowResearchLocked>
   <ArchitectStudio.Settings.ShowResearchLockedTip>Reveals the buildings and categories still hidden behind unfinished research. They stay greyed out and cannot be built: this is for organising, not for bypassing research.</ArchitectStudio.Settings.ShowResearchLockedTip>
+  <ArchitectStudio.Settings.ShowUnsorted>Add an Unsorted tab</ArchitectStudio.Settings.ShowUnsorted>
+  <ArchitectStudio.Settings.ShowUnsortedTip>Adds a tab to the Architect menu gathering the buildings that no other tab provides, so none stays out of reach. Off by default: the tab adds a button. It changes no building and can be turned off at any time.</ArchitectStudio.Settings.ShowUnsortedTip>
+  <ArchitectStudio.Unsorted.Label>Unsorted</ArchitectStudio.Unsorted.Label>
   <ArchitectStudio.ResearchLocked.Reason>Research not completed</ArchitectStudio.ResearchLocked.Reason>
 
   <ArchitectStudio.KeyBindings.CategoryLabel>{0} tab</ArchitectStudio.KeyBindings.CategoryLabel>

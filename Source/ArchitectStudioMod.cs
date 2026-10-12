@@ -78,6 +78,18 @@ namespace ArchitectStudio
 
             listing.Gap();
 
+            var showUnsorted = Settings.showUnsorted;
+            listing.CheckboxLabeled("ArchitectStudio.Settings.ShowUnsorted".Translate(), ref showUnsorted,
+                "ArchitectStudio.Settings.ShowUnsortedTip".Translate());
+            if (showUnsorted != Settings.showUnsorted)
+            {
+                Settings.showUnsorted = showUnsorted;
+                WriteSettings();
+                UnsortedRuntime.Apply();
+            }
+
+            listing.Gap();
+
             GUI.color = new Color(1f, 1f, 1f, 0.6f);
             var keyDef = ArchitectStudioKeyBindingDefOf.ArchitectStudio_OpenDropdowns;
             var bound = keyDef != null && keyDef.MainKey != KeyCode.None;
