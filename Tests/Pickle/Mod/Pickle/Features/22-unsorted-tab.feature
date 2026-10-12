@@ -10,15 +10,15 @@ Feature: the Unsorted tab
     Then the Architect menu has no Unsorted tab
 
   Scenario: on, an orphan building is offered there and nowhere else
-    Given the building "EndTable" has no default designator
-    Then no other tab offers "EndTable"
+    Given the building "EndTable" has its default Architect designator switched off
+    Then no Architect tab other than Unsorted offers "EndTable"
     When I turn on the Unsorted tab
     Then the Architect menu has an Unsorted tab
     And the Unsorted tab offers "EndTable"
     And the category editor counts as many buildings in the Unsorted tab as it offers
 
   Scenario: a building another tab shows is not an orphan
-    Given the building "EndTable" has no default designator
+    Given the building "EndTable" has its default Architect designator switched off
     When I turn on the Unsorted tab
     Then the Unsorted tab does not offer "Bed"
 

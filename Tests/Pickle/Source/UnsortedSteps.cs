@@ -20,7 +20,7 @@ namespace ArchitectStudio.PickleSteps
         /// orphan of the request. A vanilla building is switched off for the length of one scenario
         /// and its own tab rebuilt, so that the game really stops showing it.
         /// </summary>
-        [Given("the building {string} has no default designator")]
+        [Given("the building {string} has its default Architect designator switched off")]
         public void NoDefaultDesignator(PickleContext ctx, string defName)
         {
             BuildableDef def = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
@@ -84,7 +84,7 @@ namespace ArchitectStudio.PickleSteps
             ctx.Assert(offered.Contains(defName), $"the Unsorted tab should offer '{defName}'; it offers: {string.Join(", ", offered)}");
         }
 
-        [Then("no other tab offers {string}")]
+        [Then("no Architect tab other than Unsorted offers {string}")]
         public void NoOtherTab(PickleContext ctx, string defName)
         {
             var holders = DefDatabase<DesignationCategoryDef>.AllDefsListForReading
