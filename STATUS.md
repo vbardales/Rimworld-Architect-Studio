@@ -18,8 +18,8 @@ dependencies: declared
 showcase:     complete
 publication_changelog_review_sha: 6059cb345fe7b473acbbf94eaa864de26fc65f17  # reviewed (confirmed 2026-10-11) on this commit, PUBLICATION.md and CHANGELOG.md
 code_review_sha: 6059cb345fe7b473acbbf94eaa864de26fc65f17
-echo_review_sha: f9b264500faf675d635429ff65330f425f8b7244  # echo validated by the owner on 2026-10-10 (keep): it still fits the accepted gallery, the subject of the mod has not moved
-social_preview_sha256: 6d36e22e6a97b34d75f501c334b5b5ef2b8a0eb35c4e5696454e603f299f1805  # uploaded by the owner on 2026-10-10; the image served by GitHub is byte-identical to Mod/About/Preview.png
+echo_review_sha: 003abeeb72a52007d0d0be582da47074a4b46eec  # echo-source.png (audit) mounted 2026-10-12
+social_preview_sha256: fb86c747bd61d427f7658c40bba6d0939602c398f0d5b910f7cb1716f7549515  # uploaded 2026-10-12 (new echo-source.png); the image served by GitHub is byte-identical to Mod/About/Preview.png
 tested_on:    2026-10-09
 workshop:     3792784018
 remaining:
