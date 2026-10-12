@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: code[1.1.0]
+workflow_stage: declareDependencies[1.1.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -27,11 +27,11 @@ remaining:
   - feature: two English edits to the public description, to go out with the next publication run with `update_description=true` (they change the Workshop page and `About.xml`; owner agreement implied by the next-publication rule, wording from the review of 2026-10-09): `...and any you add later follow.` becomes `...and any buildings added later follow.`; `...where the game silently produces several separate buttons.` becomes `...: the game silently produces several separate buttons.` (the full stop of the preceding clause replaced by the colon); detail in BACKLOG.md
   - closed on 2026-10-11: settings replay in French and English on `d52167b`, four tickets green (`20261011-012324-702-33a2` RIMMSQOL shortcut fr, `-012325-790-8463` restart chain fr, `-012326-678-5550` and `-012327-608-eec6` Architect button tooltip en, fr; `Tests/Pickle/Evidence/settings-replay/`); `settings_audit: passed`
   - closed on 2026-10-11: the review line of `FRENCH_REVIEW.md` is filled (owner, 2026-10-11, `6059cb3`)
-  - feature: 1.1.0, an opt-in "Unsorted" Architect tab for buildable defs no visible tab shows (owner, 2026-10-11, request by SarahSH on the Better Architect Menu page, BACKLOG.md). Starts on main after the four settings replay tickets end (they stage the working tree); then protocols re-read and `workflow_stage: code[1.1.0]`
+  - closed on 2026-10-12: feature 1.1.0, the opt-in "Unsorted" Architect tab, coded in `f88c331` (UnsortedRuntime, setting `showUnsorted`, count in the category editor, EN/FR keys, Pickle feature 22, TESTING.md 22); to play at playTests, French to review before leaving writeTests
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
 updated:      2026-10-10, workflow_stage `dormant` (1.0.7 published 2026-10-09; non-regression, thanks comments, cleanup and branches checked against AUDIT 14.a to 14.d); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery image 5 accepted and uploaded by the owner, images 1 to 4 replayed on SanctuaryBacklot staging (identical); delete-confirmation capture read (French)
-protocols_read_sha: 8c994dd5dd3d812d3c117029a445eafb4814182a
+protocols_read_sha: 3bb4b9701f253249217d7e830afcd62aa2eb1da9
 ---
 
 # Architect Studio: status
