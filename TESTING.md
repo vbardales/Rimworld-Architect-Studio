@@ -380,5 +380,5 @@ Expected: 989 static checks pass and the Release build has zero warnings and err
 validator; last run in `docs/runs/`). The script checks every shipped XML, metadata, translation keys and placeholders, C# literal
 translation references, the keybinding and its injected label, and distribution notices/content.
 It throws on the first failure and exits unsuccessfully. The static validator does not execute
-the C# runtime or prove the in-game scenarios above. The separate local behavioral suite (35 checks)
+the C# runtime or prove the in-game scenarios above. The separate local behavioral suite (37 checks)
 executes compiled mod logic and Scribe; neither suite proves the in-game scenarios.

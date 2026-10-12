@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: localize[1.1.0]
+workflow_stage: writeTests[1.1.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -58,7 +58,7 @@ protocols_read_sha: 3bb4b9701f253249217d7e830afcd62aa2eb1da9
 
 **Dependencies and DLC (2026-10-12, 1.1.0 on `f88c331`):** unchanged. The Unsorted tab references only Core types (`DesignationCategoryDef`, `Designator_Build`, `BuildableDef`): no new mod, no DLC; `About.xml` and `LoadFolders` stand as declared (Harmony required; Better Architect Menu, Architect Icons, Float Sub-Menus optional by reflection).
 
-**Settings audit 1.1.0 (2026-10-12, `settings_audit: partial`):** a third preference, `showUnsorted` (off by default, global to all saves, applied at once: the tab is created or removed without a restart; a restart rebuilds it from the file). Real use: SarahSH asked that no building stay out of reach; an opt-in tab adds a button, hence off by default. Tip text says what it does and that it changes no building. Reached by Options > Mod settings, same page; part of `HasNonDefaultPreferences`, so "Reset everything" is offered and puts it back off (Pickle scenario "the reset puts the preference back"). Persisted as `showUnsorted` in `ExposeData`. Automated: `Validate-Mod.ps1` 1033 checks green, `Run-Behavior.ps1` 35 green, Pickle feature 22 written (five scenarios). In game, English and French: `unverified` until `playTests`.
+**Settings audit 1.1.0 (2026-10-12, `settings_audit: partial`):** a third preference, `showUnsorted` (off by default, global to all saves, applied at once: the tab is created or removed without a restart; a restart rebuilds it from the file). Real use: SarahSH asked that no building stay out of reach; an opt-in tab adds a button, hence off by default. Tip text says what it does and that it changes no building. Reached by Options > Mod settings, same page; part of `HasNonDefaultPreferences`, so "Reset everything" is offered and puts it back off (Pickle scenario "the reset puts the preference back"). Persisted as `showUnsorted` in `ExposeData`. Automated: `Validate-Mod.ps1` 1033 checks green, `Run-Behavior.ps1` 37 green, Pickle feature 22 written (five scenarios). In game, English and French: `unverified` until `playTests`.
 
 **Settings audit (2026-10-11, `settings_audit: passed`):** two preferences, `showArchitectButton` (on by default) and `showResearchLocked` (off by default), plus the stored edits of the two editors (groups, categories, labels, icons, colours, parents); the page is reached by Options > Mod settings, the MainButtons shortcut is hidden by default and offered by RIMMSQOL. In `Tests/Pickle/Evidence/full-1007/` the reset of each preference (en and fr), the settings page opened through the shortcut (en and fr), the deleted-group replay (en and fr), the restart chain (en) and the RIMMSQOL shortcut, revealed and hidden again (en), are green. Replay filed on 2026-10-11 and green: the RIMMSQOL shortcut in French (3 scenarios, the settings page read in French on the screenshot), the restart chain in French (2 launches, both passed; no screenshot, the language is the one of the ticket), the tooltip of the Architect button setting in English and in French (the two screenshots read: tooltip text and page in the right language). `passed` is claimed on that evidence.
 

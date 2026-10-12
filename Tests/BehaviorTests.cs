@@ -138,6 +138,11 @@ namespace ArchitectStudioTests
                 "nondefault preferences are detected for reset");
             Check(ResearchLockedVisibility.Enabled, "research visibility reads the persisted enabled preference");
             loaded.ResetPreferences();
+            loaded.showUnsorted = true;
+            Check(loaded.HasNonDefaultPreferences && ArchitectStudioReset.HasAnything,
+                "the Unsorted preference alone is a nondefault preference and offers the reset");
+            loaded.ResetPreferences();
+            Check(!loaded.showUnsorted && !loaded.HasNonDefaultPreferences, "reset puts the Unsorted preference back off");
             Check(!loaded.HasNonDefaultPreferences && !ResearchLockedVisibility.Enabled && loaded.showArchitectButton,
                 "reset restores both toggles and changes the runtime research flag");
             Check(loaded.customGroups.Count == 1, "preference reset leaves group data to the full reset pipeline");

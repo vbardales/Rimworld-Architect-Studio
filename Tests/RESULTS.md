@@ -7,7 +7,7 @@ preference reset fix, name-validation extraction, translations and tests in this
 
 - Release build: successful, zero warnings/errors; shipped `Mod/Assemblies/ArchitectStudio.dll`
   rebuilt from these sources. Build references: RimWorld 1.6.4871, Harmony 2.4.2.
-Latest run, 2026-10-08, on `106cf19` (the shipped DLL is the build of the current `Source/`): `Run-Behavior.ps1` **35 assertions passed** (the 34 of 2026-10-02 plus the category parents round-trip), `Validate-Mod.ps1` **1000 static/XML assertions passed**. The paragraph below is the 2026-10-02 record.
+Latest run, 2026-10-12, on the 1.1.0 working tree: `Run-Behavior.ps1` **37 assertions passed** (the 35 of 2026-10-08 plus two for the Unsorted preference), `Validate-Mod.ps1` **1033 passed**. Previous record, 2026-10-08, on `106cf19` (the shipped DLL is the build of the current `Source/`): `Run-Behavior.ps1` **35 assertions passed** (the 34 of 2026-10-02 plus the category parents round-trip), `Validate-Mod.ps1` **1000 static/XML assertions passed**. The paragraph below is the 2026-10-02 record.
 
 Run of 2026-10-02 (the 2026-09-13 numbers this file used to carry were superseded):
 
