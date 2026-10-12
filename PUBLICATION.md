@@ -23,15 +23,16 @@ Organise the Architect menu from inside the game, without restarting.
 
 - Create a group, put buildings into it, take them out.
 - Order the members of a group, by dragging or with up/down arrows.
-- Force a category on a whole group: its members are moved there, and any you add later follow. Without this, a group has no category of its own and splits into one button per category its members happen to sit in.
+- Force a category on a whole group: its members are moved there, and any buildings added later follow. Without this, a group has no category of its own and splits into one button per category its members happen to sit in.
 - Grid or list menu, and choice of icon source.
 - Delete a group. Groups provided by another mod are dissolved and hidden instead, since their def is recreated on every startup; a button restores them.
-- Warns when a group is spread across several categories, where the game silently produces several separate buttons.
+- Warns when a group is spread across several categories: the game silently produces several separate buttons.
 
 # Categories and subcategories
 
 - Create a category, or a subcategory when [Better Architect Menu](https://steamcommunity.com/sharedfiles/filedetails/?id=3563882422) is present.
 - Reorder with up/down buttons, among siblings.
+- Optional "Unsorted" tab gathering the buildings that no other Architect tab offers. Off by default; it can be disabled at any time without changing the buildings themselves.
 - Change the label, colour and icon of any category, vanilla ones included.
 - Icon picker browsing every icon already loaded by your active mods.
 - Empty categories greyed out, with a building count that includes their subcategories.
