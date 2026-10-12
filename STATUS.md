@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: dormant
+workflow_stage: code[1.1.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -31,7 +31,7 @@ remaining:
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
 updated:      2026-10-10, workflow_stage `dormant` (1.0.7 published 2026-10-09; non-regression, thanks comments, cleanup and branches checked against AUDIT 14.a to 14.d); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery image 5 accepted and uploaded by the owner, images 1 to 4 replayed on SanctuaryBacklot staging (identical); delete-confirmation capture read (French)
-protocols_read_sha: 62af5f82742c841b95ec95288e9ac77833517ac0
+protocols_read_sha: 8c994dd5dd3d812d3c117029a445eafb4814182a
 ---
 
 # Architect Studio: status
