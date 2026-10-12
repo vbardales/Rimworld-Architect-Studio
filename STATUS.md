@@ -18,8 +18,8 @@ dependencies: declared
 showcase:     complete
 publication_changelog_review_sha: 6059cb345fe7b473acbbf94eaa864de26fc65f17  # reviewed (confirmed 2026-10-11) on this commit, PUBLICATION.md and CHANGELOG.md
 code_review_sha: 6059cb345fe7b473acbbf94eaa864de26fc65f17
-echo_review_sha: 003abeeb72a52007d0d0be582da47074a4b46eec  # echo-source.png (audit) mounted 2026-10-12
-social_preview_sha256: fb86c747bd61d427f7658c40bba6d0939602c398f0d5b910f7cb1716f7549515  # uploaded 2026-10-12 (new echo-source.png); the image served by GitHub is byte-identical to Mod/About/Preview.png
+echo_review_sha: 003abeeb72a52007d0d0be582da47074a4b46eec  # echo-source.png (audit) mounted 2026-10-12; ModIcon badge cropped at f506f2c
+social_preview_sha256: bcb3f205674595d74059a911a7b6fabe006bfb9cb9ca02fc020e17a13e2616f5  # uploaded 2026-10-12 (new echo-source.png); the image served by GitHub is byte-identical to Mod/About/Preview.png
 tested_on:    2026-10-09
 workshop:     3792784018
 remaining:
