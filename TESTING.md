@@ -289,6 +289,9 @@ switches one vanilla building's default designator off, checks no other tab offe
 Unsorted tab does and that the category editor's count equals what the tab offers. A building another tab
 shows is not offered there. Turning the option off, or *Reset everything*, removes the tab.
 
+`23-unsorted-language.feature` (`@review`, needs `hoversteps`) adds two screenshots a person reads in English and
+in French: the tooltip of the setting on the settings page, and the Architect menu with the tab on.
+
 ## Translation gate and in-game language checks
 
 Repeat the source/text inventory and resource validation after UI, Def or translation changes,
