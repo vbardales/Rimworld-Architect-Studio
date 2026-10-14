@@ -23,7 +23,7 @@ social_preview_sha256: bcb3f205674595d74059a911a7b6fabe006bfb9cb9ca02fc020e17a13
 tested_on:    2026-10-14
 workshop:     3792784018
 remaining:
-  - followUp 1.1.0: non-regression Pickle pass on the published build (14.a, small tickets, verdict here and in docs/runs/); Workshop replies to Bone (hiding a whole tab: not possible yet, feature request, answer drafted 2026-10-14, not posted) and Ali50 (short thanks), then cleanup (14.c) and dormant
+  - followUp 1.1.0: non-regression Pickle pass on the published build, filed 2026-10-14 at 17:32 (14.a): minimal en/fr `a1ab` `f185`, optionals en `f3a3`, reviews en/fr `ebcd` `aa34`, RIMMSQOL en `7de2`, restart en `7785`, evidence in `Tests/Pickle/Evidence/full-110/`; verdict here and in docs/runs/; Workshop replies to Bone (hiding a whole tab: not possible yet, feature request, answer drafted 2026-10-14, not posted) and Ali50 (short thanks), then cleanup (14.c) and dormant
   - closed on 2026-10-14: 1.1.0 published, the Workshop description (two English edits, Unsorted line), Preview, tags and change notes sent by CI and read on the public page; gallery 0 to 6 uploaded by the owner; SarahSH answered by the owner on the Better Architect Menu page
   - closed on 2026-10-11: settings replay in French and English on `d52167b`, four tickets green (`20261011-012324-702-33a2` RIMMSQOL shortcut fr, `-012325-790-8463` restart chain fr, `-012326-678-5550` and `-012327-608-eec6` Architect button tooltip en, fr; `Tests/Pickle/Evidence/settings-replay/`); `settings_audit: passed`
   - closed on 2026-10-11: the review line of `FRENCH_REVIEW.md` is filled (owner, 2026-10-11, `6059cb3`)
