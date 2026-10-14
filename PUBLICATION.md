@@ -92,7 +92,7 @@ English, taken by the Pickle presentation scenario (`Tests/Pickle/Mod/Pickle/Fea
 with `wsl-deps.sanctuary.map`: no optional Architect Studio integration is staged, while Nelim's tribe supplies the backdrop. The lists therefore show the game's own groups, not another mod's raw defNames.
 Menus and interface windows are shown as what they are, with no staged pawn.
 
-**Upload budget** (owner, 2026-10-06): as many images as wanted, each under **2 MB**, the folder under **8 MB**. Today 0 to 5 weigh about 1.7 MB in all. JPEGs, framed around the window; the three windows are kept at full screen height so that the backdrop shows.
+**Upload budget** (owner, 2026-10-06): as many images as wanted, each under **2 MB**, the folder under **8 MB**. Today 0 to 6 weigh about 1.9 MB in all. JPEGs, framed around the window; the three windows are kept at full screen height so that the backdrop shows.
 
 0. `Art/Gallery/0-preview.png` - the Preview.
 1. `Art/Gallery/1-groups.jpg` - **the group editor**: three columns, a group of three buildings selected, its members with their order arrows, and the buildings available to add. The *Category* button reads "— none (members stay where they …", truncated at that width; it is the real interface.
@@ -119,7 +119,7 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 No adult content. The Preview, the ModIcon and the screenshots were opened: a workbench with blueprints and storage
 crates, a cartoon mascot in a hard hat, and four interface views (three windows and the Architect menu) over
 bamboo fields, the exhibition zone and the river of Nelim's tribe, with orange smileys and no pawn (re-read on 2026-10-06 for
-the 1.0.6 set). Image 5 (1.0.7), a fifth window over the same bamboo backdrop, was accepted by the owner on 2026-10-09 after she looked at it; no session re-read it for this box.
+the 1.0.6 set). Image 5 (1.0.7), a fifth window over the same bamboo backdrop, was accepted by the owner on 2026-10-09 after she looked at it; no session re-read it for this box. Image 6 (1.1.0), the Architect menu on the Unsorted tab over the exhibition zone (an orange smiley, no pawn, furniture and altar icons), was opened by the session and accepted by the owner on 2026-10-14: no adult content.
 
 ## After an upload
 
@@ -150,6 +150,24 @@ block of the version being published must exist before its dry-run. Start each b
 [/list]
 ```
 
+
+### 1.1.0
+
+The date and the compare link are filled at the dry-run (12.e), with the version of `CHANGELOG.md`.
+
+```
+[h2][url=https://github.com/vbardales/Rimworld-Architect-Studio/compare/v1.0.7...v1.1.0]1.1.0[/url] (<date>)[/h2]
+
+[h3]Added[/h3]
+[list]
+[*]An optional "Unsorted" tab in the Architect menu, off by default (mod settings): it gathers the buildings no other tab provides, so none stays out of reach. The category editor shows its count. It changes no building, and turning it off, or "Reset everything", removes the tab. Requested by SarahSH.
+[/list]
+
+[h3]Fixed[/h3]
+[list]
+[*]French: the "more results" line of the group editor is complete and clear.
+[/list]
+```
 The notes already sent (1.0.6, 1.0.7) are in `docs/runs/2026-10-09-publication-texts-sent.md`. The block of the next version is written from the `## [<version>]` section of `CHANGELOG.md` before its dry-run.
 
 ## Thanks to post on the mods' pages
