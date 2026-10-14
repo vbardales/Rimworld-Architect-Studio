@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: shootGallery[1.1.0]
+workflow_stage: mountPreview[1.1.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -28,11 +28,11 @@ remaining:
   - closed on 2026-10-11: settings replay in French and English on `d52167b`, four tickets green (`20261011-012324-702-33a2` RIMMSQOL shortcut fr, `-012325-790-8463` restart chain fr, `-012326-678-5550` and `-012327-608-eec6` Architect button tooltip en, fr; `Tests/Pickle/Evidence/settings-replay/`); `settings_audit: passed`
   - closed on 2026-10-11: the review line of `FRENCH_REVIEW.md` is filled (owner, 2026-10-11, `6059cb3`)
   - closed on 2026-10-12: feature 1.1.0, the opt-in "Unsorted" Architect tab, coded in `f88c331` (UnsortedRuntime, setting `showUnsorted`, count in the category editor, EN/FR keys, Pickle feature 22, TESTING.md 22); to play at playTests, French to review before leaving writeTests; steps declared to NPT (PickleTools `Elsewhere/ArchitectStudio.md`, 2026-10-12); tested on the commit of this state, `Run-Behavior.ps1` 37 and `Validate-Mod.ps1` 1033 green
-  - feature: gallery image 6 for 1.1.0 (session decision): the Unsorted tab open in the Architect menu, scenario in feature 17 (ticket `17a8`, `Tests/Pickle/Evidence/gallery-candidate-6/`, `wsl-deps.sanctuary.map`, 2026-10-14); read by the session and judged serious: same frame as image 4, two rows of buildings no other tab offers. Candidate `Art/Gallery/6-candidate-unsorted.jpg` (1760 x 640, 212 KB) waits for the owner to accept or refuse; accepted, drop `candidate`, add the row to the gallery table of `PUBLICATION.md` and `STATUS.md`
+  - closed on 2026-10-14: gallery image 6 for 1.1.0 accepted by the owner, `Art/Gallery/6-unsorted-tab.jpg` (ticket `17a8`, `gallery-candidate-6/`); uploaded to the Workshop with the next publication
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
-updated:      2026-10-14, workflow_stage `shootGallery[1.1.0]` (playTests of 1.1.0 done: Unsorted tab played green in English and French, setting tooltip and tab read on screenshots, code review of 6059cb3..1a645f3 without finding)
-protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
+updated:      2026-10-14, workflow_stage `mountPreview[1.1.0]` (gallery 0 to 6 contiguous, image 6 accepted by the owner; echo review to redo against the new gallery)
+protocols_read_sha: 727cbcb5511d4532a3ec767e70630bb1334d2b9d
 ---
 
 # Architect Studio: status
@@ -51,7 +51,7 @@ protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
 
 **Evidence kept:** `settings-replay/` (2026-10-11, four tickets), `full-1007/ (latest report of each scenario, scenarios 08, 09 and 11 included), `gallery-sb/` (feature 17 on SanctuaryBacklot staging, 2026-10-09: the sources of gallery images 1 to 4, identical to the images online) and `gallery-candidate-5/` (image 5), both cited in `PUBLICATION.md`. `full-1006/`, `locked-tab-1008/`, `feature-move-category/`, `full-1001/` and `sb-staging-1007/` deleted on 2026-10-09 (every scenario they proved passes in `full-1007`). History in `docs/runs/`.
 
-**Gallery (`Art/Gallery/`, order as online, 0 to 5 contiguous, 1.7 MB in all):** 0 `0-preview.png` the Preview (byte-identical to `Mod/About/Preview.png`); 1 `1-groups.jpg` the group editor; 2 `2-categories.jpg` the category editor; 3 `3-settings.jpg` the settings page; 4 `4-architect-menu.jpg` the Architect menu with a group open; 5 `5-parent-row.jpg` the appearance window of a tab moved under another (1.0.7, accepted by the owner 2026-10-09). The order is the one of `PUBLICATION.md`.
+**Gallery (`Art/Gallery/`, 0 to 6 contiguous, 1.9 MB in all; 6 not online yet):** 0 `0-preview.png` the Preview (byte-identical to `Mod/About/Preview.png`); 1 `1-groups.jpg` the group editor; 2 `2-categories.jpg` the category editor; 3 `3-settings.jpg` the settings page; 4 `4-architect-menu.jpg` the Architect menu with a group open; 5 `5-parent-row.jpg` the appearance window of a tab moved under another (1.0.7, accepted by the owner 2026-10-09).; 6 `6-unsorted-tab.jpg` the Architect menu on the Unsorted tab (1.1.0, accepted by the owner 2026-10-14, to upload at publication). The order is the one of `PUBLICATION.md`.
 
 **ModIcon:** `Mod/About/ModIcon.png` is 128 x 128 and 31 360 bytes, a little above the 20-30 KB guide; the owner validated it as it stands on 2026-10-11.
 
