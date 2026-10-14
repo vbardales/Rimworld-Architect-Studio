@@ -85,6 +85,20 @@ namespace ArchitectStudio
             Refresh();
         }
 
+        /// <summary>A tab was hidden or shown: the orphans, the counts and the tab lists change.</summary>
+        public static void OnVisibilityChanged()
+        {
+            InvalidateOrphans();
+            var def = DefDatabase<DesignationCategoryDef>.GetNamedSilentFail(DefName);
+            if (def != null)
+            {
+                def.ResolveDesignators();
+                def.DirtyCache();
+            }
+
+            Refresh();
+        }
+
         public static void InvalidateOrphans()
         {
             orphansCache = null;
@@ -99,6 +113,7 @@ namespace ArchitectStudio
             }
 
             var shown = new HashSet<BuildableDef>();
+            var inHiddenTab = new HashSet<BuildableDef>();
             foreach (var category in DefDatabase<DesignationCategoryDef>.AllDefsListForReading)
             {
                 if (IsUnsorted(category) || category.AllResolvedDesignators == null)
@@ -106,15 +121,18 @@ namespace ArchitectStudio
                     continue;
                 }
 
+                // A tab the player has hidden offers nothing: its buildings count as shown nowhere.
+                var target = CategoryVisibilityRuntime.IsHidden(category) ? inHiddenTab : shown;
                 foreach (var designator in category.AllResolvedDesignators)
                 {
-                    CollectShown(designator, shown);
+                    CollectShown(designator, target);
                 }
             }
 
             orphansCache = DefDatabase<ThingDef>.AllDefsListForReading.Cast<BuildableDef>()
                 .Concat(DefDatabase<TerrainDef>.AllDefsListForReading.Cast<BuildableDef>())
-                .Where(d => d.BuildableByPlayer && !d.canGenerateDefaultDesignator && !shown.Contains(d))
+                .Where(d => d.BuildableByPlayer && !shown.Contains(d) &&
+                            (!d.canGenerateDefaultDesignator || inHiddenTab.Contains(d)))
                 .OrderBy(d => d.label ?? d.defName)
                 .ThenBy(d => d.defName)
                 .ToList();

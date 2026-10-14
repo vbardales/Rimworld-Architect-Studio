@@ -77,6 +77,9 @@
   <ArchitectStudio.EditCategory.Label>Libellé</ArchitectStudio.EditCategory.Label>
   <ArchitectStudio.EditCategory.Apply>Appliquer</ArchitectStudio.EditCategory.Apply>
   <ArchitectStudio.EditCategory.Color>Couleur</ArchitectStudio.EditCategory.Color>
+  <ArchitectStudio.EditCategory.Hide>Masquer cet onglet</ArchitectStudio.EditCategory.Hide>
+  <ArchitectStudio.EditCategory.HideTip>L&apos;onglet disparaît du menu Architecte. Ses bâtiments restent dans le jeu : avec l&apos;onglet « Non classé » activé, ils y sont proposés. Rien n&apos;est supprimé, et la case peut être décochée à tout moment.</ArchitectStudio.EditCategory.HideTip>
+  <ArchitectStudio.Categories.HiddenTag>masqué</ArchitectStudio.Categories.HiddenTag>
   <ArchitectStudio.EditCategory.NoColor>Aucune</ArchitectStudio.EditCategory.NoColor>
   <ArchitectStudio.EditCategory.Icon>Icône</ArchitectStudio.EditCategory.Icon>
   <ArchitectStudio.EditCategory.DefaultIcon>Icône par défaut</ArchitectStudio.EditCategory.DefaultIcon>

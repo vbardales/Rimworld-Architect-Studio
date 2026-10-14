@@ -79,6 +79,12 @@ namespace ArchitectStudio
         /// </summary>
         public List<string> hiddenGroupIds = new List<string>();
 
+        /// <summary>
+        /// Architect tabs the user has hidden, by defName. The def and its buildings stay; only the tab
+        /// stops being shown (<see cref="CategoryVisibilityRuntime"/>).
+        /// </summary>
+        public List<string> hiddenCategories = new List<string>();
+
         public bool HasNonDefaultPreferences => !showArchitectButton || showResearchLocked || showUnsorted;
 
         public void ResetPreferences()
@@ -99,6 +105,7 @@ namespace ArchitectStudio
             Scribe_Collections.Look(ref dropdownAssignments, "dropdownAssignments", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref groupOrders, "groupOrders", LookMode.Deep);
             Scribe_Collections.Look(ref hiddenGroupIds, "hiddenGroupIds", LookMode.Value);
+            Scribe_Collections.Look(ref hiddenCategories, "hiddenCategories", LookMode.Value);
             Scribe_Collections.Look(ref groupCategories, "groupCategories", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref categoryOrders, "categoryOrders", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref customCategories, "customCategories", LookMode.Deep);
@@ -124,6 +131,10 @@ namespace ArchitectStudio
                 if (hiddenGroupIds == null)
                 {
                     hiddenGroupIds = new List<string>();
+                }
+                if (hiddenCategories == null)
+                {
+                    hiddenCategories = new List<string>();
                 }
                 if (groupCategories == null)
                 {

@@ -77,6 +77,9 @@
   <ArchitectStudio.EditCategory.Label>Label</ArchitectStudio.EditCategory.Label>
   <ArchitectStudio.EditCategory.Apply>Apply</ArchitectStudio.EditCategory.Apply>
   <ArchitectStudio.EditCategory.Color>Colour</ArchitectStudio.EditCategory.Color>
+  <ArchitectStudio.EditCategory.Hide>Hide this tab</ArchitectStudio.EditCategory.Hide>
+  <ArchitectStudio.EditCategory.HideTip>The tab disappears from the Architect menu. Its buildings stay in the game: with the Unsorted tab on, they are offered there. Nothing is deleted, and the box can be unticked at any time.</ArchitectStudio.EditCategory.HideTip>
+  <ArchitectStudio.Categories.HiddenTag>hidden</ArchitectStudio.Categories.HiddenTag>
   <ArchitectStudio.EditCategory.NoColor>None</ArchitectStudio.EditCategory.NoColor>
   <ArchitectStudio.EditCategory.Icon>Icon</ArchitectStudio.EditCategory.Icon>
   <ArchitectStudio.EditCategory.DefaultIcon>Default icon</ArchitectStudio.EditCategory.DefaultIcon>
