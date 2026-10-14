@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: publish[1.1.0]
+workflow_stage: followUp[1.1.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -23,21 +23,22 @@ social_preview_sha256: bcb3f205674595d74059a911a7b6fabe006bfb9cb9ca02fc020e17a13
 tested_on:    2026-10-14
 workshop:     3792784018
 remaining:
-  - external: the Workshop page still shows the pre-1.0.6 description (1.0.7 did not send it: `update_description` is off by default). It goes out with the next publication: dry-run with `update_description=true` on the new SHA, its text read against the live page, `dispatch-publish.sh ... --description`, the owner approves `steam-production`, the page checked afterwards (`update_description` is not yet proven against real steamcmd). The two English description edits (next entry) wait for it
-  - feature: two English edits to the public description (applied to PUBLICATION.md and About.xml on 2026-10-12, with the Unsorted sentence; still goes out with `update_description=true`); to go out with the next publication run with `update_description=true` (they change the Workshop page and `About.xml`; owner agreement implied by the next-publication rule, wording from the review of 2026-10-09): `...and any you add later follow.` becomes `...and any buildings added later follow.`; `...where the game silently produces several separate buttons.` becomes `...: the game silently produces several separate buttons.` (the full stop of the preceding clause replaced by the colon); detail in BACKLOG.md
+  - followUp 1.1.0: non-regression Pickle pass on the published build (14.a, small tickets, verdict here and in docs/runs/); Workshop replies to Bone (hiding a whole tab: not possible yet, feature request, answer drafted 2026-10-14, not posted) and Ali50 (short thanks), then cleanup (14.c) and dormant
+  - closed on 2026-10-14: 1.1.0 published, the Workshop description (two English edits, Unsorted line), Preview, tags and change notes sent by CI and read on the public page; gallery 0 to 6 uploaded by the owner; SarahSH answered by the owner on the Better Architect Menu page
   - closed on 2026-10-11: settings replay in French and English on `d52167b`, four tickets green (`20261011-012324-702-33a2` RIMMSQOL shortcut fr, `-012325-790-8463` restart chain fr, `-012326-678-5550` and `-012327-608-eec6` Architect button tooltip en, fr; `Tests/Pickle/Evidence/settings-replay/`); `settings_audit: passed`
   - closed on 2026-10-11: the review line of `FRENCH_REVIEW.md` is filled (owner, 2026-10-11, `6059cb3`)
   - closed on 2026-10-12: feature 1.1.0, the opt-in "Unsorted" Architect tab, coded in `f88c331` (UnsortedRuntime, setting `showUnsorted`, count in the category editor, EN/FR keys, Pickle feature 22, TESTING.md 22); to play at playTests, French to review before leaving writeTests; steps declared to NPT (PickleTools `Elsewhere/ArchitectStudio.md`, 2026-10-12); tested on the commit of this state, `Run-Behavior.ps1` 37 and `Validate-Mod.ps1` 1033 green
   - closed on 2026-10-14: gallery image 6 for 1.1.0 accepted by the owner, `Art/Gallery/6-unsorted-tab.jpg` (ticket `17a8`, `gallery-candidate-6/`); to upload to the Workshop with the next publication
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
-updated:      2026-10-14, workflow_stage `publish[1.1.0]` (prepareRelease done: code review current, dependencies unchanged, lint clean, DLL SAME after a local rebuild, CHANGELOG dated, dry-run of 7c34a44 green; final dry-run on the commit carrying this state)
+updated:      2026-10-14, workflow_stage `followUp[1.1.0]` (1.1.0 published with preview, description and tags; tag and release v1.1.0 by CI; gallery 0 to 6 uploaded by the owner; regression pass and Workshop replies still open)
 protocols_read_sha: 583ce1259235b54ebacca29e1116689d1d24e589
 ---
 
 # Architect Studio: status
 
 ## State
+- Publication of 1.1.0 (2026-10-14): publish run 38587531042 on `81a8439c62a29c8e90797232f6078dc83c83968e` (options preview, description, tags; dry-run 38587371650 green with the same options), approved by the owner on `steam-production`; jobs `publish` and `tag-and-release` success; tag and release `v1.1.0` on that SHA. Public page read: description with the Unsorted line, change notes 1.1.0 (9 entries), Preview, tags `Mod, 1.6`, updated 14 Oct 17:15. Gallery uploaded by the owner. `STEAM_REFRESH_TOKEN` was added to `steam-production` for the tags.
 
 **Published: 1.0.7, 2026-10-08** (tag and release `v1.0.7`, SHA `5869dc26632c43336915c469602c4c355253688a`, dry-run 37799121470, publish 37799288436 approved by the owner). Workshop item `3792784018`. Rollback target for the next publication: `v1.0.7`. Previous: `v1.0.6` (2026-10-05), `v1.0.5` (2026-09-25).
 

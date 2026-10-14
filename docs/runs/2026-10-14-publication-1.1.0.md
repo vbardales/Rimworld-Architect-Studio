@@ -2,3 +2,6 @@
 - Description diff against the live page, read: the two English edits (`any buildings added later follow`, the colon after `several categories`), the "Unsorted" line, and the dashes of "Also recommended" turned into colons (no em dash rule).
 - Open point, not a blocker: for 1.1.0 the runner's rebuild of `Mod/Assemblies/ArchitectStudio.dll` differs from the tracked one (committed `30ef2442`, rebuilt `f19659b9`), whereas 1.0.7 reproduced byte for byte. A local `Build-Mod.ps1` rebuild is SAME as the committed DLL, so the DLL is the tested one built from `f88c331`; the workflow ships the committed file. Cause not found (line endings are LF in the index); to report to CI/CD.
 - Rollback target for 1.1.0: `v1.0.7` (`5869dc26632c43336915c469602c4c355253688a`).
+
+## Sent (2026-10-14)
+Dry-run 38587371650 (options preview, description, tags) then publish run 38587531042 on 81a8439c62a29c8e90797232f6078dc83c83968e: publish and tag-and-release success, tag v1.1.0. Public page read afterwards: Unsorted line in the description, change notes 1.1.0, Preview, tags Mod and 1.6. Gallery 0 to 6 uploaded by the owner.
