@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: prepareRelease[1.1.0]
+workflow_stage: publish[1.1.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -31,7 +31,7 @@ remaining:
   - closed on 2026-10-14: gallery image 6 for 1.1.0 accepted by the owner, `Art/Gallery/6-unsorted-tab.jpg` (ticket `17a8`, `gallery-candidate-6/`); to upload to the Workshop with the next publication
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
-updated:      2026-10-14, workflow_stage `prepareRelease[1.1.0]` (writeDocs done: Steam description and About.xml in sync, 1.1.0 change notes written, PUBLICATION.md and CHANGELOG.md reviewed by the owner)
+updated:      2026-10-14, workflow_stage `publish[1.1.0]` (prepareRelease done: code review current, dependencies unchanged, lint clean, DLL SAME after a local rebuild, CHANGELOG dated, dry-run of 7c34a44 green; final dry-run on the commit carrying this state)
 protocols_read_sha: 583ce1259235b54ebacca29e1116689d1d24e589
 ---
 
