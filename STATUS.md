@@ -1,5 +1,5 @@
 ---
-settings_audit: partial
+settings_audit: passed
 localization: complete
 translation_en: complete
 translation_fr: complete
@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: playTests[1.1.0]
+workflow_stage: shootGallery[1.1.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -17,10 +17,10 @@ upstream_mod_remotes:
 dependencies: declared
 showcase:     complete
 publication_changelog_review_sha: 6059cb345fe7b473acbbf94eaa864de26fc65f17  # reviewed (confirmed 2026-10-11) on this commit, PUBLICATION.md and CHANGELOG.md
-code_review_sha: 6059cb345fe7b473acbbf94eaa864de26fc65f17
+code_review_sha: 1a645f359b08c4472ec234d1cd9667a4be452a79
 echo_review_sha: 003abeeb72a52007d0d0be582da47074a4b46eec  # echo-source.png (audit) mounted 2026-10-12; ModIcon badge cropped at f506f2c
 social_preview_sha256: bcb3f205674595d74059a911a7b6fabe006bfb9cb9ca02fc020e17a13e2616f5  # uploaded 2026-10-12 (new echo-source.png); the image served by GitHub is byte-identical to Mod/About/Preview.png
-tested_on:    2026-10-09
+tested_on:    2026-10-14
 workshop:     3792784018
 remaining:
   - external: the Workshop page still shows the pre-1.0.6 description (1.0.7 did not send it: `update_description` is off by default). It goes out with the next publication: dry-run with `update_description=true` on the new SHA, its text read against the live page, `dispatch-publish.sh ... --description`, the owner approves `steam-production`, the page checked afterwards (`update_description` is not yet proven against real steamcmd). The two English description edits (next entry) wait for it
@@ -31,8 +31,8 @@ remaining:
   - feature: gallery image 6 for 1.1.0 (session decision, 2026-10-12): the Unsorted tab open in the Architect menu with orphan buildings offered, over a staged SanctuaryBacklot scene; scripted at `shootGallery` after the feature 22 tickets are green, judged by the session first, candidate `Art/Gallery/6-candidate-unsorted.png` only if serious
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
-updated:      2026-10-10, workflow_stage `dormant` (1.0.7 published 2026-10-09; non-regression, thanks comments, cleanup and branches checked against AUDIT 14.a to 14.d); closing pass and cleanup at `published` done (STATUS.md, `Art/`, mod root, evidence); gallery image 5 accepted and uploaded by the owner, images 1 to 4 replayed on SanctuaryBacklot staging (identical); delete-confirmation capture read (French)
-protocols_read_sha: 8ca1edc7ab50f4a7d9ecf725bcfa2641baa8fc8c
+updated:      2026-10-14, workflow_stage `shootGallery[1.1.0]` (playTests of 1.1.0 done: Unsorted tab played green in English and French, setting tooltip and tab read on screenshots, code review of 6059cb3..1a645f3 without finding)
+protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
 ---
 
 # Architect Studio: status
@@ -60,6 +60,8 @@ protocols_read_sha: 8ca1edc7ab50f4a7d9ecf725bcfa2641baa8fc8c
 **Dependencies and DLC (2026-10-12, 1.1.0 on `f88c331`):** unchanged. The Unsorted tab references only Core types (`DesignationCategoryDef`, `Designator_Build`, `BuildableDef`): no new mod, no DLC; `About.xml` and `LoadFolders` stand as declared (Harmony required; Better Architect Menu, Architect Icons, Float Sub-Menus optional by reflection).
 
 **Settings audit 1.1.0 (2026-10-12, `settings_audit: partial`):** a third preference, `showUnsorted` (off by default, global to all saves, applied at once: the tab is created or removed without a restart; a restart rebuilds it from the file). Real use: SarahSH asked that no building stay out of reach; an opt-in tab adds a button, hence off by default. Tip text says what it does and that it changes no building. Reached by Options > Mod settings, same page; part of `HasNonDefaultPreferences`, so "Reset everything" is offered and puts it back off (Pickle scenario "the reset puts the preference back"). Persisted as `showUnsorted` in `ExposeData`. Automated: `Validate-Mod.ps1` 1033 checks green, `Run-Behavior.ps1` 37 green, Pickle feature 22 written (five scenarios). In game, English and French: `unverified` until `playTests`.
+
+**Playtests 1.1.0 (2026-10-14, `settings_audit: passed`):** feature 22 (five scenarios) green in English and French on `e640e2e` (`Tests/Pickle/Evidence/unsorted-en/`, `unsorted-fr/`, code unchanged since `f88c331`); feature 23 (two `@review` captures, `unsorted-lang-en/` ticket `422f`, `unsorted-lang-fr/` ticket `031f`, `avec-infobulles` map, on `3ed48ee`) green and read: the tooltip of "Add an Unsorted tab" / « Ajouter un onglet « Non classé » » is complete and not truncated, no raw key, the Unsorted / Non classé tab shows in the Architect menu. `Player.log`: nothing from Architect Studio (only WSL audio and the empty companion tools). The first French ticket (`40c4`) was lost by the dispatcher and refiled. `TESTING.md` stands for `TEST_SCENARIOS.md` (owner, 2026-10-14).
 
 **Settings audit (2026-10-11, `settings_audit: passed`):** two preferences, `showArchitectButton` (on by default) and `showResearchLocked` (off by default), plus the stored edits of the two editors (groups, categories, labels, icons, colours, parents); the page is reached by Options > Mod settings, the MainButtons shortcut is hidden by default and offered by RIMMSQOL. In `Tests/Pickle/Evidence/full-1007/` the reset of each preference (en and fr), the settings page opened through the shortcut (en and fr), the deleted-group replay (en and fr), the restart chain (en) and the RIMMSQOL shortcut, revealed and hidden again (en), are green. Replay filed on 2026-10-11 and green: the RIMMSQOL shortcut in French (3 scenarios, the settings page read in French on the screenshot), the restart chain in French (2 launches, both passed; no screenshot, the language is the one of the ticket), the tooltip of the Architect button setting in English and in French (the two screenshots read: tooltip text and page in the right language). `passed` is claimed on that evidence.
 
