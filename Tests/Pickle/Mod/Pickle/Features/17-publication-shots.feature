@@ -76,6 +76,33 @@ Feature: the windows as a player would show them
     And I take a screenshot "architect menu, a group opened"
     And Nelim's Pickle Tools: screenshot mode is disabled
 
+  # Gallery image 6 (1.1.0, the opt-in Unsorted tab; session decision, 2026-10-14). Plan: Nelim's tribe, same frame and
+  # light as image 4 (cell 213,168, zoom 21, noon, clear), so the two menu shots read as a pair. Subject: the Architect
+  # menu on the Unsorted tab, its bottom bar full of furniture no other tab offers (twelve vanilla buildings are switched
+  # off for the length of the scenario to be the orphans a modded colony collects). Says: nothing stays out of reach.
+  # A menu is shown for what it is: no colonists or decor staged. Needs `wsl-deps.sanctuary.map` and the setting turned on.
+  Scenario: the Architect menu on the Unsorted tab, buildings no other tab offers
+    Given the building "Stool" has its default Architect designator switched off
+    And the building "DiningChair" has its default Architect designator switched off
+    And the building "EndTable" has its default Architect designator switched off
+    And the building "Dresser" has its default Architect designator switched off
+    And the building "Couch" has its default Architect designator switched off
+    And the building "Armchair" has its default Architect designator switched off
+    And the building "TorchLamp" has its default Architect designator switched off
+    And the building "PlantPot" has its default Architect designator switched off
+    And the building "Bedroll" has its default Architect designator switched off
+    And the building "SleepingSpot" has its default Architect designator switched off
+    And the building "Table2x2c" has its default Architect designator switched off
+    And the building "Table1x2c" has its default Architect designator switched off
+    When I turn on the Unsorted tab
+    And I close all dialogs
+    And I show the Architect menu on the Unsorted tab
+    And the Architect designator is disarmed
+    And Nelim's Pickle Tools: I frame the cell (213, 168) at zoom 21
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "architect menu, the unsorted tab"
+    And Nelim's Pickle Tools: screenshot mode is disabled
+
   # Candidate for the next gallery (1.0.7 feature, Ali50's request): a tab the game ships, moved under another one
   # from its own appearance window. Needs both integrations, hence `wsl-deps.sanctuary-bam.map`; play it with
   # `-Filter '::the appearance window of a tab moved under another'`.

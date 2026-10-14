@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using RimWorld;
 using RimWorks.Pickle;
 using Verse;
@@ -62,6 +63,22 @@ namespace ArchitectStudio.PickleSteps
             ArchitectStudioMod.Settings.showUnsorted = onOff == "on";
             ArchitectStudioMod.Instance.WriteSettings();
             UnsortedRuntime.Apply();
+        }
+
+        /// <summary>Opens the Architect tab on the Unsorted tab, as a player sees it after clicking it.</summary>
+        [When("I show the Architect menu on the Unsorted tab")]
+        public async Task ShowArchitectOnUnsorted(PickleContext ctx)
+        {
+            ctx.Require(Tab != null, "there is no Unsorted tab");
+            Find.MainTabsRoot.SetCurrentTab(MainButtonDefOf.Architect, false);
+            await ctx.WaitFrames(10);
+
+            var window = MainButtonDefOf.Architect.TabWindow as MainTabWindow_Architect;
+            ctx.Require(window != null, "the Architect tab window is not open");
+            var panel = window.desPanelsCached.FirstOrDefault(t => t.def == Tab);
+            ctx.Require(panel != null, "the Architect window has no panel for the Unsorted tab");
+            window.selectedDesPanel = panel;
+            await ctx.WaitFrames(10);
         }
 
         [Then("the Architect menu has no Unsorted tab")]
