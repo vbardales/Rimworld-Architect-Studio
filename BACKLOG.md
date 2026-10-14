@@ -47,3 +47,10 @@ carry is what we learned from them:
 
 - [x] Post-publication regression suite of 1.0.7 complete (2026-10-09, `Tests/Pickle/Evidence/full-1007/`): `minimal-en/fr`, `optionals-en`, `reviews-en`, `rimmsqol-en`, `restart-en` green; `reviews-fr` 42 passed, its one failure (research unlock, fixture save `__pickle_fixture.rws` missing) replayed alone and passed (`reviews-fr-research`).
 - [x] French review by the owner of `FRENCH_REVIEW.md`: validated 2026-10-02, `translation_fr: complete`.
+
+## After the next publication: Workshop comments to answer (2026-10-14)
+
+Do not answer before the next version is published (owner, 2026-10-14).
+
+- **Bone, "Is there anyway to hide an entire category?"** Yes: the group editor deletes a group (PUBLICATION.md: a group provided by another mod is dissolved and hidden, and a button restores it). Answer with that, and check the wording is clear for a category the player sees in the Architect menu.
+- **Ali50, "Thank you for the quick work! Will update immediately!"** A thank-you for the 1.0.7 subcategory feature; a short thanks once the next version is out.
