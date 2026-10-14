@@ -75,6 +75,7 @@ namespace ArchitectStudioTests
             settings.categoryColors["custom"] = "255,128,0";
             settings.categoryParents["Joy"] = "Structure";
             settings.categoryParents["Misc"] = "";
+            settings.hiddenCategories.Add("Furniture");
             string file = Path.Combine(output, "settings.xml");
             Scribe.saver.InitSaving(file, "settings");
             settings.ExposeData();
@@ -96,6 +97,7 @@ namespace ArchitectStudioTests
                 "category order, label, icon and colour persist");
             Check(loaded.categoryParents["Joy"] == "Structure" && loaded.categoryParents["Misc"] == "" && loaded.categoryParents.Count == 2,
                 "the parent forced on a category that is not ours persists, an empty one meaning top level");
+            Check(loaded.hiddenCategories.Single() == "Furniture", "a hidden tab persists by its defName");
 
             string legacyFile = Path.Combine(output, "legacy.xml");
             File.WriteAllText(legacyFile, "<settings />");
