@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: mountPreview[1.1.0]
+workflow_stage: writeDocs[1.1.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -18,7 +18,7 @@ dependencies: declared
 showcase:     complete
 publication_changelog_review_sha: 6059cb345fe7b473acbbf94eaa864de26fc65f17  # reviewed (confirmed 2026-10-11) on this commit, PUBLICATION.md and CHANGELOG.md
 code_review_sha: 1a645f359b08c4472ec234d1cd9667a4be452a79
-echo_review_sha: 003abeeb72a52007d0d0be582da47074a4b46eec  # echo-source.png (audit) mounted 2026-10-12; ModIcon badge cropped at f506f2c
+echo_review_sha: 41c67f2fbdc7cee30f4ba3af68afd7f379bdb8cc  # echo-source.png kept at mountPreview 2026-10-14 against gallery 0 to 6; ModIcon badge cropped at f506f2c
 social_preview_sha256: bcb3f205674595d74059a911a7b6fabe006bfb9cb9ca02fc020e17a13e2616f5  # uploaded 2026-10-12 (new echo-source.png); the image served by GitHub is byte-identical to Mod/About/Preview.png
 tested_on:    2026-10-14
 workshop:     3792784018
@@ -31,7 +31,7 @@ remaining:
   - closed on 2026-10-14: gallery image 6 for 1.1.0 accepted by the owner, `Art/Gallery/6-unsorted-tab.jpg` (ticket `17a8`, `gallery-candidate-6/`); uploaded to the Workshop with the next publication
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
-updated:      2026-10-14, workflow_stage `mountPreview[1.1.0]` (gallery 0 to 6 contiguous, image 6 accepted by the owner; echo review to redo against the new gallery)
+updated:      2026-10-14, workflow_stage `writeDocs[1.1.0]` (mountPreview done: echo kept against gallery 0 to 6, Preview unchanged and byte-identical to the GitHub social preview, `Art/` clean)
 protocols_read_sha: 727cbcb5511d4532a3ec767e70630bb1334d2b9d
 ---
 
@@ -47,7 +47,7 @@ protocols_read_sha: 727cbcb5511d4532a3ec767e70630bb1334d2b9d
 
 **Gates, on the published revision:** `Tests/Validate-Mod.ps1` 1000 checks; `Tests/Run-Behavior.ps1` 35 assertions; Pickle non-regression after the deploy complete on 2026-10-09 in `Tests/Pickle/Evidence/full-1007/` (`minimal-en/fr`, `optionals-en`, `reviews-en`, `rimmsqol-en`, `restart-en` green; `reviews-fr` 42 passed, its one failure a missing fixture save, replayed alone and passed). Scenario 08 (a tab moved under another), 09 and 11 (moved tab locked by research, `full-1007`) played green. `translation_fr` and `translation_en` complete (French reviewed by the owner, `FRENCH_REVIEW.md` regenerated from the committed XML).
 
-**Reviews:** `code_review_sha` `6059cb3` (code review of `Source/`, no finding; since the last review only About.xml punctuation, the build/ path in the Directory.Build.props files and the French MoreResults text, owner-confirmed 2026-10-11). `publication_changelog_review_sha` `6059cb3` (confirmed by the owner, 2026-10-11). `echo_review_sha` `f9b2645`: echo kept (owner, 2026-10-10), it still fits the accepted gallery and the subject of the mod has not moved. `social_preview_sha256`: the GitHub social preview is `Mod/About/Preview.png` of 2026-10-05, uploaded by the owner on 2026-10-10 and checked byte-identical.
+**Reviews:** `code_review_sha` `1a645f3` (code review of `Source/` and the 1.1.0 keys, `6059cb3..1a645f3`, no finding, 2026-10-14; the 1.1.0 code is `f88c331`). `publication_changelog_review_sha` `6059cb3` (confirmed by the owner, 2026-10-11; reviewed at 1.0.x, to repeat at `writeDocs` for the 1.1.x line). `echo_review_sha` `41c67f2`: echo kept at `mountPreview` (2026-10-14), a menu window with an empty search bar, a row of slots and five category icons: it still shows what the gallery shows (the Architect menu, groups and tabs, now also the Unsorted tab), the subject of the mod has not moved; the Preview is not reopened. `social_preview_sha256`: the GitHub social preview is the `Mod/About/Preview.png` of 2026-10-12, byte-identical to it today (sha256 `bcb3f205`); no new upload owed.
 
 **Evidence kept:** `settings-replay/` (2026-10-11, four tickets), `full-1007/ (latest report of each scenario, scenarios 08, 09 and 11 included), `gallery-sb/` (feature 17 on SanctuaryBacklot staging, 2026-10-09: the sources of gallery images 1 to 4, identical to the images online) and `gallery-candidate-5/` (image 5), both cited in `PUBLICATION.md`. `full-1006/`, `locked-tab-1008/`, `feature-move-category/`, `full-1001/` and `sb-staging-1007/` deleted on 2026-10-09 (every scenario they proved passes in `full-1007`). History in `docs/runs/`.
 
