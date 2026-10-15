@@ -122,7 +122,19 @@ namespace ArchitectStudio
                 GUI.color = new Color(1f, 1f, 1f, 0.75f);
             }
 
-            Widgets.Label(labelRect, row.def.LabelCap.ToString().Truncate(labelRect.width));
+            var hiddenRow = CategoryVisibilityRuntime.IsHidden(row.def);
+            if (hiddenRow)
+            {
+                GUI.color = new Color(1f, 1f, 1f, 0.4f);
+            }
+
+            var rowLabel = row.def.LabelCap.ToString();
+            if (hiddenRow)
+            {
+                rowLabel += " (" + "ArchitectStudio.Categories.HiddenTag".Translate() + ")";
+            }
+
+            Widgets.Label(labelRect, rowLabel.Truncate(labelRect.width));
 
             GUI.color = new Color(1f, 1f, 1f, count == 0 ? 0.3f : 0.5f);
             var anchor = Text.Anchor;

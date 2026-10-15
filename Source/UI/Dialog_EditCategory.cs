@@ -142,6 +142,27 @@ namespace ArchitectStudio
             return y + 34f;
         }
 
+        /// <summary>Hides the tab from the Architect menu. Its buildings stay in the game.</summary>
+        private float DrawHideRow(Rect inRect, float y)
+        {
+            if (!CategoryVisibilityRuntime.CanHide(category))
+            {
+                return y;
+            }
+
+            var hidden = CategoryVisibilityRuntime.IsHidden(category);
+            var rect = new Rect(inRect.x, y, inRect.width, 28f);
+            var before = hidden;
+            Widgets.CheckboxLabeled(rect, "ArchitectStudio.EditCategory.Hide".Translate(), ref hidden);
+            TooltipHandler.TipRegion(rect, "ArchitectStudio.EditCategory.HideTip".Translate());
+            if (hidden != before)
+            {
+                CategoryVisibilityRuntime.Set(category, hidden);
+            }
+
+            return y + 34f;
+        }
+
         private float DrawColorRow(Rect inRect, float y)
         {
             Widgets.Label(new Rect(inRect.x, y, 90f, 28f), "ArchitectStudio.EditCategory.Color".Translate());

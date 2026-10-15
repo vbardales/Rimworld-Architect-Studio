@@ -12,6 +12,7 @@ namespace ArchitectStudio
         public static void All()
         {
             CategoryParentRuntime.ResetAll();
+            CategoryVisibilityRuntime.ResetAll();
 
             foreach (var entry in ArchitectStudioMod.Settings.customCategories.ToList())
             {
@@ -42,6 +43,7 @@ namespace ArchitectStudio
                        s.dropdownAssignments.Count > 0 ||
                        s.groupOrders.Count > 0 ||
                        s.hiddenGroupIds.Count > 0 ||
+                       s.hiddenCategories.Count > 0 ||
                        s.groupCategories.Count > 0 ||
                        s.categoryOrders.Count > 0 ||
                        s.categoryParents.Count > 0 ||
