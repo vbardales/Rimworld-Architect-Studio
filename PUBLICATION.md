@@ -117,7 +117,7 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 ## Content boxes
 
 No adult content. The Preview, the ModIcon and the screenshots were opened: a workbench with blueprints and storage
-crates, a cartoon mascot in a hard hat, and four interface views (three windows and the Architect menu) over
+crates, a cartoon mascot in a hard hat, and interface views, four at first (three windows and the Architect menu, images 1 to 4) over
 bamboo fields, the exhibition zone and the river of Nelim's tribe, with orange smileys and no pawn (re-read on 2026-10-06 for
 the 1.0.6 set). Image 5 (1.0.7), a fifth window over the same bamboo backdrop, was accepted by the owner on 2026-10-09 after she looked at it; no session re-read it for this box. Image 6 (1.1.0), the Architect menu on the Unsorted tab over the exhibition zone (an orange smiley, no pawn, furniture and altar icons), was opened by the session and accepted by the owner on 2026-10-14: no adult content.
 
