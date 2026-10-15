@@ -5,3 +5,6 @@
 
 ## Sent (2026-10-14)
 Dry-run 38587371650 (options preview, description, tags) then publish run 38587531042 on 81a8439c62a29c8e90797232f6078dc83c83968e: publish and tag-and-release success, tag v1.1.0. Public page read afterwards: Unsorted line in the description, change notes 1.1.0, Preview, tags Mod and 1.6. Gallery 0 to 6 uploaded by the owner.
+
+## Non-regression on the published revision 81a8439 (read 2026-10-15)
+Evidence `Tests/Pickle/Evidence/full-110/`, all exitReason passed, 0 failed (skipped = scenarios of another pass): minimal-en 40/79, minimal-fr 40/79, optionals-en 47/79, reviews-en 48/79, reviews-fr 48/79, rimmsqol-en 43/79, restart-en 1/1. Studio pass (feature 17, captures) not replayed.
