@@ -20,16 +20,8 @@ Architect Studio studied these two mods and shares no code with them (`ATTRIBUTI
 history was not forked, and rebuilding on their code is not an option now: 1.0.5 is public. What a pull request can
 carry is what we learned from them:
 
-- [x] Owner decision, 2026-10-09: no pull request to Better Architect Menu for now. No defect of theirs is recorded
-      (sources, STATUS.md, test reports), so there is nothing to carry. Reopen if testing against it finds one.
-- [x] Colored Categories: no pull request, the project is abandoned (owner, 2026-10-09).
 
-## Feature requests
 
-- [x] **Move an existing category under another, as a subcategory** (request by Ali50 on the Better Architect Menu page, 2026-10-02/03): delivered in 1.0.7 (published 2026-10-08). A category that is not ours moves under another from its appearance window, through the parent row; it needs Better Architect Menu, which accepts a foreign category as a child. Proof: scenario 08 and the behavior check green, parent row read in both languages, the research-locked case played on a moved tab (`full-1007`, scenario 11 passed; the earlier `locked-tab-1008` run was deleted as superseded), the French string `ArchitectStudio.EditCategory.ParentBlocked` confirmed by the owner (2026-10-06), code review of `2b16bdf..2a21877` without finding.
-- [ ] Two English improvements to the public description, to go out with the next publication run with `update_description=true` (they change the Workshop page and `About.xml`): `...and any you add later follow.` becomes `...and any buildings added later follow.`; `...where the game silently produces several separate buttons.` becomes `...: the game silently produces several separate buttons.` (after "several categories").
-- [x] **A catch-all for buildings no category shows** (delivered in 1.1.0, published 2026-10-14; reply posted by the owner on the Better Architect Menu page, 2026-10-14, worded to agree with ferny that that mod removes nothing) --- original note:
-  - [ ] **A catch-all for buildings no category shows, planned for 1.1.0** (owner decision, 2026-10-11: an "Unsorted" Architect tab, opt-in preference off by default, gathering the buildable defs no visible tab shows, with their count in the category editor; developed on main once the four settings replay tickets are done) (request by SarahSH on the Better Architect Menu page, 2026-10-11, reported by the owner): "is there a way to make sure all available items are at least somewhere? Like a fallback unsorted category or something as a catch all." A fallback category, or a count of orphan buildings in the category editor, so that nothing disappears unnoticed. Not designed yet: define what an orphan is without changing what the game shows, then cover it with Pickle scenarios. Useful without Better Architect Menu too.
 
 ## Gallery
 
@@ -37,21 +29,10 @@ carry is what we learned from them:
 
 ## Release
 
-- [ ] Send the description to the Workshop page at the next publication: the Markdown source and the workflow are
-      already in place (no plugin pull request owed, CI/CD 2026-10-09); the run needs `update_description=true`,
-      its text compared with the live page, and the page checked afterwards.
-- [x] Basic Dropdowns (ex Categories Dropdowns, `3455529827`) named once and thanked in the description (2026-10-02). The Workshop page changes only with `update_description` or by hand.
-- [ ] Add Basic Dropdowns to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, not this repository's to edit): feature 10 exercises it.
 - [ ] `Mod/desktop.ini` was shipped by earlier releases (it was tracked until 2026-10-01). The next publication stops sending it.
 
-## Verification
 
-- [x] Post-publication regression suite of 1.0.7 complete (2026-10-09, `Tests/Pickle/Evidence/full-1007/`): `minimal-en/fr`, `optionals-en`, `reviews-en`, `rimmsqol-en`, `restart-en` green; `reviews-fr` 42 passed, its one failure (research unlock, fixture save `__pickle_fixture.rws` missing) replayed alone and passed (`reviews-fr-research`).
-- [x] French review by the owner of `FRENCH_REVIEW.md`: validated 2026-10-02, `translation_fr: complete`.
 
-## After the next publication: Workshop comments to answer (2026-10-14)
+## 1.2.0: hide a whole Architect tab
 
-Do not answer before the next version is published (owner, 2026-10-14).
-
-- **Bone, "Is there anyway to hide an entire category?"** Yes: the group editor deletes a group (PUBLICATION.md: a group provided by another mod is dissolved and hidden, and a button restores it). Answer with that, and check the wording is clear for a category the player sees in the Architect menu.
-- **Ali50, "Thank you for the quick work! Will update immediately!"** A thank-you for the 1.0.7 subcategory feature; a short thanks once the next version is out.
+- [ ] **Hide an entire category** (request by Bone on the Workshop page, 2026-10-14). Owner choices 2026-10-14: any tab, base game included; the buildings of a hidden tab fall into the Unsorted tab when it is on; a checkbox in the category editor, undone by it or by "Reset everything". Coded on branch `feature/hide-tab`; open points in `STATUS.md` (`remaining`). Reply to Bone only once 1.2.0 is published, saying the feature is in.
