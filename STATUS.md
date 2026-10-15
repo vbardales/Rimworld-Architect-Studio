@@ -33,7 +33,7 @@ remaining:
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_4a8e2ff6-9358-4fba-9a31-f91aae222ed1
 updated:      2026-10-14, workflow_stage `followUp[1.1.0]` (1.1.0 published with preview, description and tags; tag and release v1.1.0 by CI; gallery 0 to 6 uploaded by the owner; regression pass and Workshop replies still open)
-protocols_read_sha: 583ce1259235b54ebacca29e1116689d1d24e589
+protocols_read_sha: 228c98ab061efe4883c879bd8e5be6d97c22c128
 ---
 
 # Architect Studio: status
