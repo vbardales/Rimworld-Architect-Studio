@@ -292,6 +292,19 @@ shows is not offered there. Turning the option off, or *Reset everything*, remov
 `23-unsorted-language.feature` (`@review`, needs `hoversteps`) adds two screenshots a person reads in English and
 in French: the tooltip of the setting on the settings page, and the Architect menu with the tab on.
 
+## 24: Hiding a whole Architect tab (1.2.0)
+
+**Proves** that a tab can be hidden from the category editor without deleting anything.
+
+`24-hide-tab.feature` hides the tab `Furniture` and checks the game no longer shows it (its `Visible` answer),
+that the editor lists it as hidden and that `Bed` is still a building the player can build; showing it again
+brings it back. With the Unsorted tab on, the buildings of a hidden tab are offered there and the editor's count
+matches. The Unsorted tab itself cannot be hidden this way (it has its own setting). *Reset everything* shows every
+hidden tab again. The setting persists by defName (`hiddenCategories`, checked in `Tests/BehaviorTests.cs`).
+
+Not covered in game yet: a hidden parent tab with Better Architect Menu children, and the order of the `Visible`
+patches against the research-locked option.
+
 ## Translation gate and in-game language checks
 
 Repeat the source/text inventory and resource validation after UI, Def or translation changes,
