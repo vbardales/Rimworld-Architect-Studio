@@ -1,0 +1,20 @@
+# RimWorld 1.7 diagnostic pass (AUDIT.md "Passe 1.7"): the generic NPT tools as net10.0 builds of the 1.7 session (WSL ~/pt17/mods), no Sanctuary Backlot.
+# Provisional local paths: path: is relative to REPO=/mnt/c/Users/nelim/Documents/rimworld, six levels up reach /. Run with -Game /home/nelim/rimworld17 -PickleSrc /home/nelim/Rimworld-Pickle and -Filter '!15-gallery'.
+# No No Version Warning mod is staged (the staging script has no support for it): the undeclared 1.7 gives a yellow warning only; the proof is the log and the report.
+nelim.pickletools.expansions       path:../../../../../../home/nelim/pt17/mods/ExpansionSteps
+nelim.pickletools.keyedclick       path:../../../../../../home/nelim/pt17/mods/KeyedClick
+nelim.pickletools.interfacescale   path:../../../../../../home/nelim/pt17/mods/InterfaceScale
+nelim.pickletools.inspecttabs      path:../../../../../../home/nelim/pt17/mods/InspectTabs
+nelim.pickletools.clearscreen      path:../../../../../../home/nelim/pt17/mods/ClearScreen
+nelim.pickletools.hoversteps       path:../../../../../../home/nelim/pt17/mods/HoverSteps
+nelim.pickletools.clickdiagnostics path:../../../../../../home/nelim/pt17/mods/ClickDiagnostics
+nelim.pickletools.filmticks        path:../../../../../../home/nelim/pt17/mods/FilmTicks
+nelim.pickletools.screenshotmode   path:../../../../../../home/nelim/pt17/mods/ScreenshotMode
+nelim.pickletools.textureowner     path:../../../../../../home/nelim/pt17/mods/TextureOwner
+nelim.pickletools.research         path:../../../../../../home/nelim/pt17/mods/ResearchSteps
+nelim.pickletools.screenshotstudio path:../../../../../../home/nelim/pt17/mods/ScreenshotStudio
+nelim.pickletools.colonistrace     path:../../../../../../home/nelim/pt17/mods/ColonistRace
+# The bundle is committed under PickleTools/Mod (net48): this shell replaces it (see StandaloneBase).
+nelim.pickletools   path:PickleTools/Tests/Pickle/StandaloneBase/Mod
+# The 1.7 build of the mod's own steps (net10.0, scripts/build-pickle-steps-net10.sh, 2026-10-15): overlays the committed Tests/Pickle/Mod.
+nelim.architectstudio.pickletests path:../../../../../../home/nelim/pt17/mods/ArchitectStudioSteps
