@@ -8,7 +8,7 @@ packageId:    nelim.architectstudio
 repo:         Rimworld-Architect-Studio
 visibility:   public
 detached:     yes
-workflow_stage: playTests[1.2.0]
+workflow_stage: shootGallery[1.2.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos)
 upstream_mod_remotes:
@@ -24,6 +24,7 @@ tested_on:    2026-10-14
 tested_1_7:   yes  # ticket 5a0d, 2026-10-17, 14 of 14 on 1.7 net10.0 (p17-small-en/); English only (1.7 install has no French pack), Preview redone with badge 1.7 in the same commit
 workshop:     3792784018
 remaining:
+  - shootGallery 1.2.0 (session choice, 2026-10-18): no new image, replace gallery 2 `2-categories.jpg` (category editor) by a capture where the editor shows the "Hide this tab" box; candidate `Art/Gallery/2-candidate-categories.png` from a Sanctuary Backlot scenario, to open and show the owner
   - steps to declare to NPT (7.d) via the Ticket Manager (DONE 2026-10-18, PickleTools commit 4ebb7fa, `Elsewhere/ArchitectStudio.md`; declared as `HideTabSteps` and `UnsortedSteps`, sources `Tests/Pickle/Source/HideTabSteps.cs`, `UnsortedSteps.cs`): `HideTabSteps` (hide, show, shown, hidden, still buildable, listed hidden, Unsorted lacks) and `ShowArchitectOnUnsorted`, local to this mod, no second consumer yet; dependencies (4) rechecked 2026-10-15: unchanged, the new code uses only Core types and the existing reflection on Better Architect Menu; settings audit (5): one persisted field `hiddenCategories` (no new preference page entry), cleared by Reset everything, persistence checked in Run-Behavior (38 green)
   - translation 1.2.0: three keys added in both languages (`EditCategory.Hide`, `EditCategory.HideTip`, `Categories.HiddenTag`); `Check-Translations.ps1` green (81 Keyed calls), `FRENCH_REVIEW.md` regenerated; French of those three validated by the owner on 2026-10-15 (FRENCH_REVIEW.md review line, texts unchanged since `e895bbe`); 2026-10-17: ChatGPT review, owner agreed to two older French keys (`ShowResearchLockedTip`, `ResearchLocked.Reason`: "recherche inachevée", fa87bcd), FRENCH_REVIEW.md regenerated (77b0f03); a third remark on the PUBLICATION.md ellipsis "its images generated" refused as correct English, no change
   - 1.7 diagnostic (owner, 2026-10-15, after a Better Architect Menu thread about 1.7): both the mod source and the Pickle steps compile for 1.7 net10.0 with `scripts/build-pickle-steps-net10.sh` (mod DLL fcfb1fa4 in WSL `~/pt17/out-as`, not committed; steps 7d581f4a). Mod has no `1.7/` folder, no LoadFolders, no asset bundle. Ticket `cb7e` filed: net48 DLL as is, `wsl-deps.minimal-17.map`, English, filter `!17-publication-shots`; it ran the whole suite (81 scenarios, none of the mod's), exit 134, `watchdog-timeout` after 3 h 55, report in `p17-minimal-en/`: no verdict. Refiled 2026-10-17 on 4a21c12 as `5a0d` (features 01, 22, 24 only, same map and DLL, evidence `p17-small-en/`); if the mod's scenarios still do not run, check that `~/pt17/mods/ArchitectStudioSteps` exists and is the one staged. Ticket `5a0d` ended 2026-10-17, exit 0, 14 of 14 passed on 1.7 net10.0 (features 01, 22, 24, `p17-small-en/`, attempts 1): mod loads, patches in place, Unsorted tab and hide-tab scenarios green. `tested_1_7` field and `<li>1.7</li>` left to the owner (no 1.7 folder; Better Architect Menu on 1.7 unverified). Unverified: how Better Architect Menu behaves on 1.7 (its thread is on its own page)
@@ -38,7 +39,7 @@ remaining:
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_6311d8c7-188f-47af-a57a-a7f48ce77a84
 updated:      2026-10-15, workflow_stage `code[1.2.0]` (reopened from dormant for Bone's request; feature/hide-tab merged into main, CHANGELOG [Unreleased] written; Pickle 24 and 22 refiled as 3957 and 92c5)
-protocols_read_sha: c283fedfcc80166d175245f9553ab4095716c1fa
+protocols_read_sha: 117fb9642df7e57bece2318904c644a9c39296df
 ---
 # Architect Studio: status
 
