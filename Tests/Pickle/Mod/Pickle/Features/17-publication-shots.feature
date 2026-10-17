@@ -121,3 +121,21 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "appearance window, a tab moved under another"
     And Nelim's Pickle Tools: screenshot mode is disabled
+
+  # Candidate for gallery image 2 (1.2.0, hide a whole tab; session decision, 2026-10-18). Same frame and light as the
+  # category editor shot, but one vanilla tab is hidden, so the row reads "Furniture (Hidden)" and greyed: the new feature
+  # shows in the list a player opens first. Play it with `-Filter '::the category editor with a hidden tab'`.
+  Scenario: the category editor with a hidden tab
+    When I close all dialogs
+    And I hide the Architect tab "Furniture"
+    And I open the category editor
+    And I wait 30 ticks
+    Then window "Dialog_Categories" is open
+    When Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: all animals are removed
+    And Nelim's Sanctuary: I am at the sanctuary "window-backdrop-for-height"
+    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "category editor, a hidden tab"
+    And Nelim's Pickle Tools: screenshot mode is disabled
