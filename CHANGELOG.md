@@ -9,6 +9,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 - A whole Architect tab can be hidden: a "Hide this tab" box in the category editor, base game tabs included (requested by Bone). Nothing is deleted: the tab stops being shown, its buildings stay in the game and, with the Unsorted tab on, are offered there. Untick the box, or use "Reset everything", to bring the tab back.
 
+### Changed
+
+- Declared for RimWorld 1.7 as well as 1.6. The same build loads and passes its scenarios on 1.7 (tested in English).
+
 ## [1.1.0] - 2026-10-14
 
 ### Added

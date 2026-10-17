@@ -21,7 +21,7 @@ code_review_sha: 44b87b775b50a0c7c609bd2ee79dc06fe720f648  # review of Source/ 1
 echo_review_sha: 41c67f2fbdc7cee30f4ba3af68afd7f379bdb8cc  # echo-source.png kept at mountPreview 2026-10-14 against gallery 0 to 6; ModIcon badge cropped at f506f2c
 social_preview_sha256: bcb3f205674595d74059a911a7b6fabe006bfb9cb9ca02fc020e17a13e2616f5  # uploaded 2026-10-12 (new echo-source.png); the image served by GitHub is byte-identical to Mod/About/Preview.png
 tested_on:    2026-10-14
-tested_1_7:   yes  # ticket 5a0d, 2026-10-17, 14 of 14 on 1.7 net10.0 (p17-small-en/)
+tested_1_7:   yes  # ticket 5a0d, 2026-10-17, 14 of 14 on 1.7 net10.0 (p17-small-en/); English only (1.7 install has no French pack), Preview redone with badge 1.7 in the same commit
 workshop:     3792784018
 remaining:
   - steps to declare to NPT (7.d) via the Ticket Manager (asked 2026-10-17, TM: NPT away, not done, retry when NPT is back): `HideTabSteps` (hide, show, shown, hidden, still buildable, listed hidden, Unsorted lacks) and `ShowArchitectOnUnsorted`, local to this mod, no second consumer yet; dependencies (4) rechecked 2026-10-15: unchanged, the new code uses only Core types and the existing reflection on Better Architect Menu; settings audit (5): one persisted field `hiddenCategories` (no new preference page entry), cleared by Reset everything, persistence checked in Run-Behavior (38 green)
