@@ -17,7 +17,7 @@ upstream_mod_remotes:
 dependencies: declared
 showcase:     complete
 publication_changelog_review_sha: 7c34a444f1baeab83498663311513ce1e7b187aa  # content reviewed and validated by the owner in chat on 2e0a58b, 2026-10-14 (1.1.x line); 7c34a44 only adds the date to the changelog heading and the Steam change note (12.e)
-code_review_sha: 1a645f359b08c4472ec234d1cd9667a4be452a79
+code_review_sha: 44b87b775b50a0c7c609bd2ee79dc06fe720f648  # review of Source/ 1a645f3..44b87b7 (hide tab, Unsorted orphans), no finding, 2026-10-17
 echo_review_sha: 41c67f2fbdc7cee30f4ba3af68afd7f379bdb8cc  # echo-source.png kept at mountPreview 2026-10-14 against gallery 0 to 6; ModIcon badge cropped at f506f2c
 social_preview_sha256: bcb3f205674595d74059a911a7b6fabe006bfb9cb9ca02fc020e17a13e2616f5  # uploaded 2026-10-12 (new echo-source.png); the image served by GitHub is byte-identical to Mod/About/Preview.png
 tested_on:    2026-10-14
