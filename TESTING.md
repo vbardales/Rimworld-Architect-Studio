@@ -1,400 +1,370 @@
 # Testing Architect Studio in game
 
-Three versions have been published, v1.0.0 to v1.0.2, and parts of the mod have been played. Other
-parts have only ever been compiled. This file separates the two, because the point of testing is to
-spend the time on what has never run.
+Three versions published, v1.0.0 to v1.0.2. Parts of mod played. Other parts only compiled. File separates the two: spend test time on what never ran.
 
-Already seen working, by hand, in a real save: category colours, subcategory colours, deleting a
-category that was created here, and editing the parent of a created category.
+Already seen working, by hand, in real save: category colours, subcategory colours, deleting category created here, editing parent of created category.
 
-Never run once: the drag of a group member, the up/down arrows since v1.0.2 rewrote them, a category
-forced on a whole group, creating a category, and the research-locked option. Two bugs have already
-been fixed on the drag path alone without either fix ever being replayed, which is why it comes
-first below.
+Never run once: drag of group member, up/down arrows since v1.0.2 rewrote them, category forced on whole group, creating category, research-locked option. Two bugs already fixed on drag path alone, neither fix ever replayed, so drag comes first below.
 
-Each scenario says what it proves. A test whose failure you cannot interpret is not worth running.
+Each scenario says what it proves. Test whose failure you cannot interpret not worth running.
 
 ## Before anything
 
-1. **Harmony must be active, and this mod after it.** It is the only hard dependency, declared in
-   `About.xml`; the mod list says so if it is missing.
-2. **The packageId is `nelim.architectstudio`.** Unchanged since the first release, so a saved mod
-   list keeps it.
-3. **Keep `Player.log`.** Everything this mod complains about is prefixed `[Architect Studio]`. The
-   file is overwritten at the next launch and moved to `Player-prev.log`, so copy it out before
-   relaunching.
-4. **Note which optional mods are active**, because half the scenarios below change
+1. **Harmony must be active, this mod after it.** Only hard dependency, declared in `About.xml`; mod list says so if missing.
+2. **The packageId is `nelim.architectstudio`.** Unchanged since first release, so saved mod list keeps it.
+3. **Keep `Player.log`.** Everything this mod complains about is prefixed `[Architect Studio]`. File overwritten at next launch, moved to `Player-prev.log`, so copy out before relaunching.
+4. **Note which optional mods active**, because half the scenarios change
    shape without them: Better Architect Menu, Architect Icons, Float Sub-Menus, Searchable Menus.
-   The mod settings list the first three under *Detected integrations*, and that list is the fastest way to
-   find out that a feature is missing because a mod is, not because the code is wrong.
-5. **There is no default keyboard shortcut.** F1 to F11 are taken by the main tabs, and F9 in
-   particular collided with the history tab. Assign one in Options if you want it; the normal way in
-   is the buttons in the Architect window.
+   Mod settings list first three under *Detected integrations*; fastest way to
+   learn a feature is missing because a mod is, not because code is wrong.
+5. **No default keyboard shortcut.** F1 to F11 taken by main tabs, F9 in
+   particular collided with history tab. Assign one in Options if wanted; normal way in
+   is buttons in Architect window.
 
-Both editors open from the bottom row of the Architect window, **Groups…** and **Categories…**, or
-from the mod settings. The settings route always works; the buttons are themselves under test.
+Both editors open from bottom row of Architect window, **Groups…** and **Categories…**, or
+from mod settings. Settings route always works; buttons themselves under test.
 
 ## 1: The mod loads and its patches apply
 
-**Proves** the Harmony patches, the deferred ones included, and the startup pass that rebuilds the
-created defs. Every other scenario depends on this one.
+**Proves** Harmony patches, deferred ones included, and startup pass rebuilding created defs. Every other scenario depends on this.
 
-Start the game, reach the main menu, quit. Search `Player.log` for `[Architect Studio]`.
+Start game, reach main menu, quit. Search `Player.log` for `[Architect Studio]`.
 **Silence is the pass.**
 
-What a failure looks like:
+Failure looks like:
 
-- Any unhandled exception naming `ArchitectStudio`. The stack trace names the step: `StartupInit`,
+- Any unhandled exception naming `ArchitectStudio`. Stack trace names step: `StartupInit`,
   `CustomCategoryRuntime.EnsureDefs`, `CategoryAppearance.ApplyLabels`, `CategoryRuntime.Apply` or
   `DropdownRuntime.Apply`.
-- *"Tried to get a resource … from a different thread"*: the v1.0.0 crash. Two patches are applied
+- *"Tried to get a resource … from a different thread"*: the v1.0.0 crash. Two patches applied
   late, from `StartupInit`, precisely to avoid it: `ArchitectIconsCompat` and `CategoryColorPainter`.
-  If this comes back, one of them has drifted back into the mod constructor.
-- *"The runtime refused access to a non-public member of the game …"*: the build lost the
-  publicizer waiver. The mod reads four non-public members of the game, and the attribute that
-  makes that legal is applied through a generated file this project switches off, so a rebuild
-  without `Source/AccessChecks.cs` produces a clean, silent, broken assembly. The probe that
-  prints this line is the only thing that says so; without it the failure shows up later, one
-  feature at a time, as an exception at first use. **If you ever see this line, copy it out**:
-  no one has yet seen the game's own runtime refuse such an access, and that log would be the
-  missing evidence for every mod of this collection built the same way.
-- *"Dropdown group not found: '…'"*: a saved assignment names a group no longer present. Not a
-  failure in itself: the buildings fall back to their default and the assignment is kept in case the
-  mod returns. Only worrying if you did not change your mod list.
-- *"Better Architect Menu is loaded, but none of its cache …"*: BAM renamed or removed the methods
-  this mod calls by reflection. Everything still applies to the defs, but nothing will refresh until
-  a restart. This one is a real break, and it is the most likely to arrive with a BAM update.
+  If it returns, one drifted back into mod constructor.
+- *"The runtime refused access to a non-public member of the game …"*: build lost publicizer waiver. Mod reads four non-public game members; attribute making that legal applied through generated file this project switches off, so rebuild
+  without `Source/AccessChecks.cs` produces clean, silent, broken assembly. Probe printing this line only thing that says so; without it failure shows up later, one
+  feature at a time, as exception at first use. **If you ever see this line, copy it out**:
+  no one yet seen game's own runtime refuse such access, and that log would be missing evidence for every mod of this collection built same way.
+- *"Dropdown group not found: '…'"*: saved assignment names group no longer present. Not failure itself: buildings fall back to default, assignment kept in case mod returns. Worrying only if mod list unchanged.
+- *"Better Architect Menu is loaded, but none of its cache …"*: BAM renamed or removed methods
+  this mod calls by reflection. Everything still applies to defs, but nothing refreshes until
+  restart. Real break, most likely to arrive with BAM update.
 
 ## 2: The two buttons appear in the Architect window
 
-**Proves** the window-height patch and the drawing patch agree. If the height patch works and the
-drawing one does not, you get an empty band; the reverse overlaps the buttons with the tabs.
+**Proves** window-height patch and drawing patch agree. Height patch works but drawing not: empty band; reverse overlaps buttons with tabs.
 
-Open the Architect menu. **A row of two buttons, `Groups…` and `Categories…`, sits at the bottom of
-the window**, and nothing else is clipped or overlapping.
+Open Architect menu. **Row of two buttons, `Groups…` and `Categories…`, sits at bottom of
+window**, nothing else clipped or overlapping.
 
-Turn *Button in the Architect menu* off in the settings, **reopen the Architect menu** (the tip
-says so, the window height is only recomputed when it opens) and the row is gone with no gap left
-behind.
+Turn *Button in the Architect menu* off in settings, **reopen Architect menu** (tip
+says so, window height only recomputed on open) and row gone, no gap left.
 
 ## 3: Dragging a group member, downwards
 
-**Proves** the reordering path, which has carried two separate bugs and has never been played since
-either was fixed. This is the single most likely thing to still be wrong.
+**Proves** reordering path, carried two separate bugs, never played since
+either fixed. Single most likely thing still wrong.
 
-Open **Groups…**, pick a group with at least four members, and drag the **first** member down to
+Open **Groups…**, pick group with at least four members, drag **first** member down to
 **last**.
 
-- **It must land last.** One slot short of the end is the signature of the older bug: the callback
-  hands back an insertion index computed *before* removal, and vanilla inserts then removes while
-  this code removes then inserts. Only downward drags were affected, which is what made it hard to
+- **Must land last.** One slot short of end is signature of older bug: callback
+  hands back insertion index computed *before* removal; vanilla inserts then removes while
+  this code removes then inserts. Only downward drags affected, hence hard to
   see.
-- **The drag must start at all.** If nothing moves and the row never lifts, the reordering group id
-  has gone back into a local variable: `NewGroup` only returns a real value on Repaint, so a local
-  records -1 and the drag never begins.
-- Drag upwards too, and drag the last member to first. Both directions have to be right, not just
-  the one you tried.
+- **Drag must start at all.** If nothing moves and row never lifts, reordering group id
+  went back into local variable: `NewGroup` only returns real value on Repaint, so local
+  records -1, drag never begins.
+- Drag upwards too, and drag last member to first. Both directions must be right, not just
+  one tried.
 
-Then **open the Architect menu and click the group's button**: the menu order must match the editor,
+Then **open Architect menu, click group's button**: menu order must match editor,
 top to bottom.
 
 ## 4: The up/down arrows, including at 150% interface scale
 
-**Proves** the v1.0.2 rewrite. In v1.0.0 these arrows were drawn rotated around a pivot that was not
-multiplied by `Prefs.UIScale`, so they flew out of their button at any scale other than 100%. They
-are now two ready-made textures and rotate nothing, but that has never been seen on screen.
+**Proves** v1.0.2 rewrite. In v1.0.0 arrows drawn rotated around pivot not
+multiplied by `Prefs.UIScale`, so flew out of button at any scale other than 100%. Now
+two ready-made textures, rotate nothing, but never seen on screen.
 
-In the members column, use the arrows on a middle row: **the arrow stays inside its button** and the
-member moves one place.
+In members column, use arrows on middle row: **arrow stays inside its button**, member
+moves one place.
 
-Then set the interface scale to **150%** in Options and look again, in both editors. The arrows must
-sit in their buttons at every scale.
+Then set interface scale to **150%** in Options, look again, in both editors. Arrows must
+sit in buttons at every scale.
 
-The first and last rows carry a disabled arrow: it is drawn faded and **must not be clickable**: no
+First and last rows carry disabled arrow: drawn faded, **must not be clickable**: no
 click sound, no highlight on hover.
 
 ## 5: Reordering categories
 
-**Proves** that writing `DesignationCategoryDef.order` moves both a top-level category and a
-subcategory, and that the whole sibling set is renumbered rather than just the two rows swapped.
+**Proves** writing `DesignationCategoryDef.order` moves both top-level category and subcategory, and whole sibling set renumbered, not just two rows swapped.
 
-Open **Categories…**, move a category up, close the editor, open the Architect menu: the tabs are in
-the new order.
+Open **Categories…**, move category up, close editor, open Architect menu: tabs in
+new order.
 
-Do the same with a **subcategory**: this needs Better Architect Menu, which owns the only nesting
-mechanism there is. Without it the tree is flat and there is nothing to test here.
+Same with **subcategory**: needs Better Architect Menu, owns only nesting
+mechanism. Without it tree flat, nothing to test.
 
-Move a category several times in a row without closing the window. Each click redraws from a fresh
+Move category several times in a row without closing window. Each click redraws from fresh
 tree, so nothing should jump two places or bounce back.
 
 *Reset order* puts everything back.
 
 ## 6: Creating a group and filling it
 
-**Proves** the whole dropdown chain: a def created in memory, buildings reassigned onto it, and the
-category rebuilt so the menu shows it without a restart.
+**Proves** whole dropdown chain: def created in memory, buildings reassigned onto it, category rebuilt so menu shows it without restart.
 
-*New group…*, name it, then add three or four buildings **from the same category** with the
-right-hand column. **The Architect menu collapses them into one button immediately**, without
-closing and reopening the game.
+*New group…*, name it, add three or four buildings **from same category** with
+right-hand column. **Architect menu collapses them into one button immediately**, without
+closing and reopening game.
 
-Remove one member: it becomes its own button again at once.
+Remove one member: becomes own button again at once.
 
-The search field and the category filter are both ways to find a building. On a Steam Deck the
-filter is the one that matters, since searching means opening the virtual keyboard.
+Search field and category filter both ways to find building. On Steam Deck filter is
+the one that matters, since searching means opening virtual keyboard.
 
 ## 7: A category forced on a whole group
 
-**Proves** the one feature with no equivalent anywhere: natively a group has no category of its own,
-it follows its members and splits into as many buttons as they occupy categories.
+**Proves** the one feature with no equivalent anywhere: natively group has no category of its own,
+follows its members, splits into as many buttons as they occupy categories.
 
-Build a group from buildings **taken from two different categories**. The editor warns that the
-group is split, and the Architect menu indeed shows two separate buttons.
+Build group from buildings **taken from two different categories**. Editor warns group
+is split, Architect menu indeed shows two separate buttons.
 
-Now set the group's *Category*. **Every member moves there at once** and the two buttons become one.
+Now set group's *Category*. **Every member moves there at once**, two buttons become one.
 
-Then add a further building from a third category to the group: **it must follow on its own**,
-without touching the setting again.
+Then add further building from third category to group: **must follow on its own**,
+without touching setting again.
 
-Set the category back to *— none*: the members go back where they came from.
+Set category back to *— none*: members go back where they came from.
 
 ## 8: Creating a category, and its keyboard shortcut
 
-**Proves** the hand-built `KeyBindingCategoryDef`. The game only generates one when defs are
-created, at startup, so a category made mid-game would otherwise have none, and the code that reads
+**Proves** hand-built `KeyBindingCategoryDef`. Game only generates one when defs created, at startup, so category made mid-game would otherwise have none, and code reading
 it does not expect null.
 
-*New category…* in the Categories editor. Give it a name, then a parent if Better Architect Menu is
-present. Without it the editor says outright that the category will be created at top level, rather
-than ask a question whose answer it would ignore.
+*New category…* in Categories editor. Give name, then parent if Better Architect Menu present. Without it editor says outright category will be created at top level, rather
+than ask question whose answer it would ignore.
 
-- The new tab appears in the Architect menu.
-- **Open Options → Keyboard configuration.** The dialog must draw with the new category defined, and
-  the log must stay silent. The category is **not listed** there: the dialog draws a category only if
-  it has bindings, and this one has none, so no screenshot of it can show the entry. The scenario
-  asserts the generated binding category on the def instead, and its translated label and description.
-- Move a building into it with Better Architect Menu's own Edit Mode, the pencil left of the sort
-  buttons. Architect Studio deliberately does not duplicate that.
+- New tab appears in Architect menu.
+- **Open Options → Keyboard configuration.** Dialog must draw with new category defined, log must stay silent. Category **not listed** there: dialog draws category only if
+  it has bindings, this one has none, so no screenshot can show entry. Scenario asserts generated binding category on def instead, and its translated label and description.
+- Move building into it with Better Architect Menu's own Edit Mode, pencil left of
+  sort buttons. Architect Studio deliberately does not duplicate that.
 
-Deleting the category afterwards is the already-confirmed half: its buildings return to their
-original category before the def is removed.
+Deleting category afterwards is already-confirmed half: buildings return to original category before def removed.
 
 ## 8b: Moving a category that is not ours under another
 
-**Proves** the request of Ali50 (Workshop, 2026-10): a tab added by the game or by another mod can be put
-under another tab as a subcategory. Needs Better Architect Menu, which owns the only nesting mechanism: its
-`NestedCategoryExtension` is grafted on the foreign def, nothing is written to the def's file.
+**Proves** request of Ali50 (Workshop, 2026-10): tab added by game or another mod can be put
+under another tab as subcategory. Needs Better Architect Menu, owns only nesting mechanism: its
+`NestedCategoryExtension` grafted on foreign def, nothing written to def's file.
 
-Open the appearance window of a category (click its name in the Categories editor).
+Open appearance window of category (click its name in Categories editor).
 
-- The *Parent category* row is there for every category. A category that already has subcategories shows a note
-  instead of the button: it cannot become a subcategory itself (two levels only).
-- Choose a top-level tab as the parent: the tab leaves the bar and appears under its parent. Choose *Top level*:
-  it comes back to the bar. A category cannot be its own parent.
-- Restart the game: the choice is still applied. *Reset everything* puts the tab back where the game had it, at once.
-- Delete a category of ours that adopted a tab: the adopted tab goes back where it was.
-- A tab that research still locks follows *Show what research still locks* wherever it sits (scenario 11).
-- Without Better Architect Menu the row says so and nothing can be moved.
+- *Parent category* row there for every category. Category already having subcategories shows note
+  instead of button: cannot become subcategory itself (two levels only).
+- Choose top-level tab as parent: tab leaves bar, appears under parent. Choose *Top level*:
+  comes back to bar. Category cannot be own parent.
+- Restart game: choice still applied. *Reset everything* puts tab back where game had it, at once.
+- Delete category of ours that adopted tab: adopted tab goes back where it was.
+- Tab research still locks follows *Show what research still locks* wherever it sits (scenario 11).
+- Without Better Architect Menu row says so, nothing can be moved.
 
-Not played by hand: the greyed sub-tab drawn in the parent's dropdown for a locked category.
+Not played by hand: greyed sub-tab drawn in parent's dropdown for locked category.
 
 ## 9: Appearance: label, colour, icon
 
-**Proves** three different mechanisms that happen to share one window. Colours are confirmed at both
-levels; labels and icons are not.
+**Proves** three different mechanisms sharing one window. Colours confirmed at both
+levels; labels and icons not.
 
-Click a category's name in the Categories editor.
+Click category's name in Categories editor.
 
-- **Label**: rewritten on the def at startup. Change it, and the Architect tab follows.
-- **Colour**: laid down as the button is drawn. Confirmed working on top-level categories and on
+- **Label**: rewritten on def at startup. Change it, Architect tab follows.
+- **Colour**: laid down as button drawn. Confirmed working on top-level categories and on
   Better Architect Menu's subcategory rows.
-- **Icon**: needs Architect Icons. The choice must show **immediately**, not at the next startup:
-  Architect Icons caches a category's icon permanently, and this mod evicts that entry by hand. A
-  change that only appears after a restart means the eviction missed.
+- **Icon**: needs Architect Icons. Choice must show **immediately**, not at next startup:
+  Architect Icons caches category's icon permanently, this mod evicts that entry by hand. Change that only appears after restart means eviction missed.
 
-Without Architect Icons the icon section says it is unavailable, which is the correct behaviour and
-not a bug to chase.
+Without Architect Icons icon section says unavailable, correct behaviour, not bug to chase.
 
 ## 10: Deleting a group that belongs to another mod
 
-**Proves** the only available approach: the def cannot be erased, its mod recreates it at every
-startup, so it is emptied of its members instead and remembered as hidden.
+**Proves** only available approach: def cannot be erased, its mod recreates it at every
+startup, so emptied of members instead and remembered as hidden.
 
-Delete a vanilla or modded group from the list. It disappears from the Architect menu and from the
-editor, and the footer counts it under deleted groups.
+Delete vanilla or modded group from list. Disappears from Architect menu and from
+editor, footer counts it under deleted groups.
 
-**Restart the game.** It must still be gone: that is the whole point, and it is the half a single
-session cannot check. The restart pass automates it (`20-restart-write`, then `21-restart-read`: two real
-game launches under one lock hold); do it by hand only to see it with your own eyes.
+**Restart game.** Must still be gone: whole point, and the half single
+session cannot check. Restart pass automates it (`20-restart-write`, then `21-restart-read`: two real
+game launches under one lock hold); do by hand only to see with own eyes.
 
-*Restore deleted groups* brings it back with its members.
+*Restore deleted groups* brings it back with members.
 
 ## 11: Showing what research still locks
 
-**Proves** the one option where a mistake is serious rather than cosmetic. `Designator_Build.Visible`
-is the only lock: nothing revalidates research when a blueprint is placed, so making a designator
+**Proves** the one option where mistake is serious, not cosmetic. `Designator_Build.Visible`
+is only lock: nothing revalidates research when blueprint placed, so making designator
 visible without also disabling it would let you build unresearched buildings.
 
-Turn *Show what research still locks* on, in a save with unfinished research.
+Turn *Show what research still locks* on, in save with unfinished research.
 
 - Locked buildings appear, **greyed out**.
-- **Click one.** It must refuse, with *Research not completed*. If a blueprint can be placed, stop
-  and say so: that is the failure this scenario exists for.
-- Finish the research: the same building becomes buildable, without a restart and without the greyed
+- **Click one.** Must refuse, with *Research not completed*. If blueprint can be placed, stop
+  and say so: failure this scenario exists for.
+- Finish research: same building becomes buildable, no restart, no greyed
   state sticking.
-- Turn the option off: they disappear again.
+- Turn option off: they disappear again.
 
-A building hidden by your faction's tech level stays hidden either way. That is a different lock and
-this option does not touch it.
+Building hidden by faction's tech level stays hidden either way. Different lock, this option does not touch it.
 
 ## 12: Everything survives a restart
 
-**Proves** the settings round-trip and the startup replay, which is where created defs are rebuilt
+**Proves** settings round-trip and startup replay, where created defs rebuilt
 from scratch.
 
-With a group created, a category created, an order changed and a colour set: quit the game entirely,
-relaunch, and look again. Everything is back, and `Player.log` is silent. The restart pass plays this in
-two real launches (group, category, order, colour, deleted group); a manual run is optional.
+With group created, category created, order changed, colour set: quit game entirely,
+relaunch, look again. Everything back, `Player.log` silent. Restart pass plays this in
+two real launches (group, category, order, colour, deleted group); manual run optional.
 
 ## 13: Without the optional mods
 
-**Proves** that the reflection bridges are soft, as the Workshop page claims.
+**Proves** reflection bridges soft, as Workshop page claims.
 
-Played by `13-optional-mods.feature` in **every** pass. It asserts what holds in all of them: each
+Played by `13-optional-mods.feature` in **every** pass. Asserts what holds in all: each
 bridge (Better Architect Menu, Architect Icons, Float Sub-Menus) reports itself exactly when its mod
-is loaded, the editors open, a group can be created and filled, and the log stays silent. Which world
-it ran in is attached to the report.
+loaded, editors open, group can be created and filled, log stays silent. Which world
+it ran in attached to report.
 
-In the **minimal pass** (Core, Harmony and Architect Studio, nothing else) that is the scenario as
-first written: the mod loads with none of the optional mods, both editors open, groups work, the log is
-silent, and subcategories, icon selection and nested pick menus are simply absent. In the pass with the
-optional mods the same scenario proves every bridge resolved. It replaces a version tagged `@wip` that
-asserted three absences: Pickle can skip a scenario on the presence of a mod but not on its absence, so
+In **minimal pass** (Core, Harmony and Architect Studio, nothing else) that is scenario as
+first written: mod loads with none of optional mods, both editors open, groups work, log
+silent, subcategories, icon selection and nested pick menus simply absent. In pass with optional
+mods same scenario proves every bridge resolved. Replaces version tagged `@wip` that
+asserted three absences: Pickle can skip scenario on presence of mod but not on absence, so
 that version could only be hidden, not played.
 ## 14: Reset everything
 
-**Proves** that the reset unwinds in the right order: created categories go through their normal
-deletion, so their buildings are handed back before the def disappears.
+**Proves** reset unwinds in right order: created categories go through normal
+deletion, so buildings handed back before def disappears.
 
-With several things configured, use *Reset everything* in the mod settings. The Architect menu
-returns to how it looked with the mod absent, and nothing is logged.
+With several things configured, use *Reset everything* in mod settings. Architect menu
+returns to how it looked with mod absent, nothing logged.
 
 ## 22: The Unsorted tab (1.1.0)
 
-**Proves** that the opt-in catch-all gathers the buildings no other tab provides, and nothing else.
+**Proves** opt-in catch-all gathers buildings no other tab provides, nothing else.
 
-An orphan is a building with a blueprint (a category) whose default designator is off and which no other
-tab offers. With the preference off (the default) there is no tab. Turned on, `22-unsorted-tab.feature`
-switches one vanilla building's default designator off, checks no other tab offers it, then checks the
-Unsorted tab does and that the category editor's count equals what the tab offers. A building another tab
-shows is not offered there. Turning the option off, or *Reset everything*, removes the tab.
+Orphan is building with blueprint (a category) whose default designator off and which no other
+tab offers. With preference off (default) no tab. Turned on, `22-unsorted-tab.feature`
+switches one vanilla building's default designator off, checks no other tab offers it, then checks Unsorted tab does and category editor's count equals what tab offers. Building another tab
+shows not offered there. Turning option off, or *Reset everything*, removes tab.
 
-`23-unsorted-language.feature` (`@review`, needs `hoversteps`) adds two screenshots a person reads in English and
-in French: the tooltip of the setting on the settings page, and the Architect menu with the tab on.
+`23-unsorted-language.feature` (`@review`, needs `hoversteps`) adds two screenshots person reads in English and
+French: tooltip of setting on settings page, and Architect menu with tab on.
 
 ## 24: Hiding a whole Architect tab (1.2.0)
 
-**Proves** that a tab can be hidden from the category editor without deleting anything.
+**Proves** tab can be hidden from category editor without deleting anything.
 
-`24-hide-tab.feature` hides the tab `Furniture` and checks the game no longer shows it (its `Visible` answer),
-that the editor lists it as hidden and that `Bed` is still a building the player can build; showing it again
-brings it back. With the Unsorted tab on, the buildings of a hidden tab are offered there and the editor's count
-matches. The Unsorted tab itself cannot be hidden this way (it has its own setting). *Reset everything* shows every
-hidden tab again. The setting persists by defName (`hiddenCategories`, checked in `Tests/BehaviorTests.cs`).
+`24-hide-tab.feature` hides tab `Furniture`, checks game no longer shows it (its `Visible` answer),
+editor lists it as hidden and `Bed` still building player can build; showing again
+brings it back. With Unsorted tab on, buildings of hidden tab offered there and editor's count
+matches. Unsorted tab itself cannot be hidden this way (own setting). *Reset everything* shows every
+hidden tab again. Setting persists by defName (`hiddenCategories`, checked in `Tests/BehaviorTests.cs`).
 
-Not covered in game yet: a hidden parent tab with Better Architect Menu children, and the order of the `Visible`
-patches against the research-locked option.
+Not covered in game yet: hidden parent tab with Better Architect Menu children, and order of `Visible`
+patches against research-locked option.
 
 ## Translation gate and in-game language checks
 
-Repeat the source/text inventory and resource validation after UI, Def or translation changes,
-before entering `writeTests`. Record evidence in `STATUS.md` under `Translation audit` and reset
+Repeat source/text inventory and resource validation after UI, Def or translation changes,
+before entering `writeTests`. Record evidence in `STATUS.md` under `Translation audit`, reset
 affected localization/language fields to `unchecked` until revalidated.
 
-Run the following through the Pickle passes in English and French (`-Language English` and
-`-Language French`), preserving the attached media for review:
+Run following through Pickle passes in English and French (`-Language English` and
+`-Language French`), preserving attached media for review:
 
 - Open mod settings, both Architect editors, naming dialogs, category appearance and parent
   menus. Exercise confirmations, empty lists, search filters, counters, split-group warnings,
-  integration availability and research-locked tooltips. Check for raw keys, English fallback
-  in French, wrong parameters and clipping at 100% and 150% interface scale.
-- Create a category with an accented name and assert the generated binding category's label
-  and description in the selected language. A category with no key bindings is not drawn in
-  the keyboard dialog, so a screenshot of that dialog cannot verify this text. Restart coverage
+  integration availability, research-locked tooltips. Check for raw keys, English fallback
+  in French, wrong parameters, clipping at 100% and 150% interface scale.
+- Create category with accented name, assert generated binding category's label
+  and description in selected language. Category with no key bindings not drawn in
+  keyboard dialog, so screenshot of dialog cannot verify this text. Restart coverage
   for game-generated bindings remains separate.
-- Check the mod's dropdown shortcut label, OK and Close buttons. User-entered names and
+- Check mod's dropdown shortcut label, OK and Close buttons. User-entered names and
   integration product names must remain unchanged; existing building/category labels come
-  from their owning mods' translations.
+  from owning mods' translations.
 
-The scenarios set up each route and attach the screenshots/video; the remaining human action is reading
-that media for layout and language correctness. They never switch the language inside a running game.
+Scenarios set up each route, attach screenshots/video; remaining human action is reading
+that media for layout and language correctness. Never switch language inside running game.
 
 ## Automated in game: Pickle
 
-All scenarios are written in Gherkin under `Tests/Pickle/`, played inside RimWorld by the Pickle test
-mod. `Tests/Pickle/README.md` defines the named minimal, optional-integration, review and RIMMSQOL passes.
-There is no separate manual action checklist: `@review` scenarios reduce human validation to their attached
+All scenarios written in Gherkin under `Tests/Pickle/`, played inside RimWorld by Pickle test
+mod. `Tests/Pickle/README.md` defines named minimal, optional-integration, review and RIMMSQOL passes.
+No separate manual action checklist: `@review` scenarios reduce human validation to attached
 screenshots or video. Execution and media review remain pending where `STATUS.md` says so.
 
 ## Local behavioral checks
 
-Current local behavioral suite (added 2026-09-13): after building the shipped DLL, run
+Current local behavioral suite (added 2026-09-13): after building shipped DLL, run
 `pwsh -NoProfile -File Tests/Run-Behavior.ps1`. Requires .NET 8 and installed RimWorld 1.6
-runtime assemblies; `-Managed PATH` overrides their location. It tests real Scribe XML round-trips
+runtime assemblies; `-Managed PATH` overrides location. Tests real Scribe XML round-trips
 and compiled mod logic. See `Tests/RESULTS.md` for setup boundaries and actual results.
-The CI static checks remain independent; CI does not contain the game's runtime assemblies.
+CI static checks remain independent; CI lacks game's runtime assemblies.
 
 ## 15: Optional MainButtons shortcut and preferences reset
 
-Preconditions: Core, Harmony and Architect Studio; a disposable new game and a copy of an
-existing save. Keep both user saves and current global settings backed up before changing them.
+Preconditions: Core, Harmony and Architect Studio; disposable new game and copy of
+existing save. Keep both user saves and current global settings backed up before changing.
 Repeat in English and French at 100% and 150% UI scale.
 
-1. With no customization override, verify there is no visible or greyed-out Architect Studio
-   Main Button. Open Options -> Mod settings -> Architect Studio, change each toggle and reopen.
-   The same values remain, and the effects match scenarios 2 and 11.
-2. Enable RIMMSQOL, find Architect Studio in its Main Buttons editor and set Visible to true.
-   The button must appear and open the same native settings page, including both editor links.
-   Change a toggle through it; reopen through Mod settings and verify the value is shared.
-3. Restart, reload the existing save and verify Architect Studio's own settings persist. Disable
-   RIMMSQOL and verify the primary settings access still works. No error should appear in Player.log.
-4. Starting with no editor customizations, change only the Architect button preference; reset
+1. With no customization override, verify no visible or greyed-out Architect Studio
+   Main Button. Open Options -> Mod settings -> Architect Studio, change each toggle, reopen.
+   Same values remain, effects match scenarios 2 and 11.
+2. Enable RIMMSQOL, find Architect Studio in its Main Buttons editor, set Visible to true.
+   Button must appear and open same native settings page, including both editor links.
+   Change toggle through it; reopen through Mod settings, verify value shared.
+3. Restart, reload existing save, verify Architect Studio's own settings persist. Disable
+   RIMMSQOL, verify primary settings access still works. No error in Player.log.
+4. Starting with no editor customizations, change only Architect button preference; reset
    must become available and restore it to on. Repeat with only research visibility changed;
    reset restores it to off. Repeat scenario 14 with customizations and both toggles changed.
-   Reopen the Architect menu to refresh its height after reset, then restart to check persistence.
-5. Try blank, whitespace-only, accented and long group names. Empty names are not accepted;
-   accents survive saving. Names have no imposed length cap: verify long labels do not make the
-   editors unusable. Check the reset confirmation and shortcut tooltip in both languages.
+   Reopen Architect menu to refresh height after reset, then restart to check persistence.
+5. Try blank, whitespace-only, accented and long group names. Empty names not accepted;
+   accents survive saving. Names have no imposed length cap: verify long labels do not make
+   editors unusable. Check reset confirmation and shortcut tooltip in both languages.
 
-15.4 and 15.5 are not manual checks:
-- **15.4** is covered out of game by `Tests/BehaviorTests.cs` ("changing only the Architect toggle enables reset",
-  "changing only research visibility enables reset", "reset restores both toggles") and in game by the two
+15.4 and 15.5 not manual checks:
+- **15.4** covered out of game by `Tests/BehaviorTests.cs` ("changing only the Architect toggle enables reset",
+  "changing only research visibility enables reset", "reset restores both toggles") and in game by two
   scenarios of `14-reset.feature`.
-- **15.5**: the rules (blank and whitespace-only refused, boundaries trimmed, accents kept, nothing truncated)
-  are covered by `BehaviorTests.cs`. What only eyes can judge is whether a very long accented name breaks the
+- **15.5**: rules (blank and whitespace-only refused, boundaries trimmed, accents kept, nothing truncated)
+  covered by `BehaviorTests.cs`. Only eyes can judge whether very long accented name breaks
   editors: scenario "a very long accented name in both editors" in `16-language-review.feature` attaches one
-  capture of each editor, in the language of the pass.
-- New game versus existing save: not applicable. The mod writes nothing into a save (groups, categories and
-  preferences live in the mod settings, global to all saves, and the mod can be added to or removed from a
-  game in progress); every scenario loads the same fixture save, `test-colony`, and the restart chain proves the
-  settings survive a new process.
+  capture of each editor, in language of pass.
+- New game versus existing save: not applicable. Mod writes nothing into save (groups, categories and
+  preferences live in mod settings, global to all saves, mod can be added to or removed from
+  game in progress); every scenario loads same fixture save, `test-colony`, restart chain proves
+  settings survive new process.
 
-Feature 19 uses the shared `PickleTools/RimmsqolSteps` companion to drive RIMMSQOL's settings instance and
-capture the integration. Results per revision are one line each in `docs/runs/`.
+Feature 19 uses shared `PickleTools/RimmsqolSteps` companion to drive RIMMSQOL's settings instance and
+capture integration. Results per revision one line each in `docs/runs/`.
 
 ## Automated validation commands
 
-From the repository root, run:
+From repository root, run:
 
 ```powershell
 pwsh -NoProfile -File Tests/Validate-Mod.ps1
 dotnet build Source/ArchitectStudio.csproj -c Release --no-restore
 ```
 
-On a fresh checkout, omit `--no-restore` for the first build to restore NuGet dependencies.
-Expected: 989 static checks pass and the Release build has zero warnings and errors (counts change with the
-validator; last run in `docs/runs/`). The script checks every shipped XML, metadata, translation keys and placeholders, C# literal
-translation references, the keybinding and its injected label, and distribution notices/content.
-It throws on the first failure and exits unsuccessfully. The static validator does not execute
-the C# runtime or prove the in-game scenarios above. The separate local behavioral suite (37 checks)
-executes compiled mod logic and Scribe; neither suite proves the in-game scenarios.
+On fresh checkout, omit `--no-restore` for first build to restore NuGet dependencies.
+Expected: 989 static checks pass, Release build zero warnings and errors (counts change with
+validator; last run in `docs/runs/`). Script checks every shipped XML, metadata, translation keys and placeholders, C# literal
+translation references, keybinding and its injected label, distribution notices/content.
+Throws on first failure, exits unsuccessfully. Static validator does not execute
+C# runtime or prove in-game scenarios above. Separate local behavioral suite (37 checks)
+executes compiled mod logic and Scribe; neither suite proves in-game scenarios.
