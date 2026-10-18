@@ -47,6 +47,19 @@ protocols_read_sha: e552fd9823504a685ddedd14953c3f62a699851b
 - **Published: 1.1.0, 2026-10-14** (tag and release `v1.1.0`, SHA `81a8439c62a29c8e90797232f6078dc83c83968e`, dry-run 38587371650, publish 38587531042 approved by owner; options preview, description, tags). Workshop item `3792784018`, page read after upload. Rollback target for next publication: `v1.1.0` (then `v1.0.7`). Non-regression of 1.1.0 green on that revision (`full-110/`, 2026-10-15). History of 1.0.x and 1.1.0 audits: `docs/runs/2026-10-09-status-history.md`, `docs/runs/2026-10-15-status-history.md`, `docs/runs/2026-10-14-publication-1.1.0.md`.
 - Next: 1.2.0, hide whole Architect tab (Bone), coded on branch `feature/hide-tab`; see `remaining`. Policy: fail fast (owner, 2026-09-25).
 
+**Shotlist 1.2.0 (estimate, 2026-10-18, write-shotlist; story: a day in Nelim's tribe, the menu sorting what a modded colony collects; windows stay screenshots on `window-backdrop-for-height`, only the map behind a menu is staged):**
+
+| # | Shot | Type | Score | Main risk |
+|---|---|---|---|---|
+| 1 | `1-groups.jpg` group editor, filled group | window, online | 4 | none known, accepted 2026-10-06 |
+| 2 | `2-categories.jpg` replaced: editor with "Furniture (Hidden)" greyed | window, ticket `eaf8` | 4 | greyed row may read low contrast |
+| 3 | `3-settings.jpg` settings page | window, online | 4 | none known |
+| 4 | `4-architect-menu.jpg` to recompose: menu with a group of modded buildings over a lived corner (Nelim, dog, grown plants) | menu over staged map | 3 | building defNames not known yet (NPT listing ticket `d056`), outfit and animal facing untested |
+| 5 | `5-parent-row.jpg` appearance window, tab under another | window, online | 4 | none known |
+| 6 | `6-unsorted-tab.jpg` to recompose: Unsorted tab with modded orphans over the same corner | menu over staged map | 3 | same as 4 |
+
+Lowest 3 (shots 4 and 6): no ticket for them until NPT's catalogue (`CATALOGUE-BUILDINGS.md`) lets me name the buildings and raise them to 4. Shots 1, 3, 5 are accepted and online: not redone.
+
 **Reviews:** `code_review_sha` `1a645f3` (code review of `Source/` and 1.1.0 keys, `6059cb3..1a645f3`, no finding, 2026-10-14; 1.1.0 code is `f88c331`). `publication_changelog_review_sha` `7c34a44` (content confirmed by owner in chat on `2e0a58b`, 2026-10-14, for 1.1.x line; `7c34a44` only dates heading; previous one, `6059cb3`, covered 1.0.x). `echo_review_sha` `41c67f2`: echo kept at `mountPreview` (2026-10-14), menu window with empty search bar, row of slots, five category icons: still shows what gallery shows (Architect menu, groups and tabs, now also Unsorted tab), mod subject not moved; Preview not reopened. `social_preview_sha256`: GitHub social preview is `Mod/About/Preview.png` of 2026-10-12, byte-identical today (sha256 `bcb3f205`); no new upload owed.
 
 **Evidence kept:** `full-110/` (non-regression of 1.1.0 on `81a8439`), `settings-replay/`, `unsorted-en/fr/` and `unsorted-lang-en/fr/` (features 22 and 23, 1.1.0), `gallery-sb/` and `gallery-candidate-5/`, `gallery-candidate-6/` (sources of gallery images 1 to 6, cited in `PUBLICATION.md`); `full-1007/` superseded by `full-110/`.
