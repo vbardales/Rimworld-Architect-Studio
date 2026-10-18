@@ -17,7 +17,8 @@
 #
 # Image 4 "the morning list" (episode 1): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
 #   Subject: the menu on a group of buildings; says: "she builds from a list she made herself".
-#   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle BraidedKnot,
+#   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Long (loose, shown under the
+#   headwrap by Show Hair Under Stuff, RaccoonCuddler.ShowHair, already in the Sanctuary map: hat rule, no bun, no ponytail),
 #   smile (MouthSmile + LidCheerful), carries a WoodLog towards the build site (action). Shogun the labrador sits left
 #   of her facing South (front view). Decor (placed, removed after the take): PlantPot with Plant_Daylily fully grown,
 #   an Apparel-free corner, two buildings from the group (one from each of two Nelim mods, picked in the d056 listing,
