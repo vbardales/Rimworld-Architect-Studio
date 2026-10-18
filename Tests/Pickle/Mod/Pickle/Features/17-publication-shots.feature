@@ -6,6 +6,32 @@
 #
 # The group here is created and filled by the scenario rather than borrowed from the mod list: a
 # group belonging to another mod shows its raw defName, which reads as debug output on a store page.
+#
+# SHOTLIST 1.2.0 (2026-10-18, written before anything is played; a scene not listed here is not written).
+# Story: one working day of Nelim in her tribe, the Architect menu being what keeps her colony's buildings in order.
+# Morning: she picks what to build from a tab she arranged. Dusk: she gathers the leftovers in the Unsorted tab. The
+# windows (images 1, 2, 3, 5) are interface shots on `window-backdrop-for-height`, cropped, no subtitle, not staged.
+# Only the two menu shots below are staged scenes; the menu stays what it is, the map behind it lives. Time: start 10 h,
+# then +1 h of game time wait per episode is replaced here by an explicit hour (`I set the hour`), 2 500 ticks per hour.
+#
+# Image 4 "the morning list" (episode 1): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
+#   Subject: the menu on a group of buildings; says: "she builds from a list she made herself".
+#   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle BraidedKnot,
+#   smile (MouthSmile + LidCheerful), carries a WoodLog towards the build site (action). Shogun the labrador sits left
+#   of her facing South (front view). Decor (placed, removed after the take): PlantPot with Plant_Daylily fully grown,
+#   an Apparel-free corner, two buildings from the group (one from each of two Nelim mods, picked in the d056 listing,
+#   buildable without research). Composition: Nelim off-centre right, menu bottom bar full width, statues behind, light
+#   from the south. Mods: Sanctuary map + Better Architect Menu + nelim.* building mods. Risk: a building defName does not
+#   resolve or needs research; plan: take defNames only from the d056 listing marked N, the step fails with the list.
+#
+# Image 6 "the evening shelf" (episode 2): place `hut` (141, 72, zoom 9), 18 h, Clear, the lit lamps warm the porch.
+#   Subject: the Unsorted tab with the buildings no other tab offers; says: "nothing she owns gets lost".
+#   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair let down (Long), tattoo Face_Stars, calm
+#   (default own face), carries a bolt of Cloth (action, different from image 4). Yuki the husky lies on the porch facing
+#   the camera. Decor (removed after): two TorchLamp lit, PlantPot with Plant_Rose fully grown. Orphans: the twelve vanilla
+#   buildings already switched off in the scenario below plus one building of a Nelim mod switched off the same way.
+#   Composition: hut at left, Nelim at the door, river behind on the left, menu full width. Mods: as image 4.
+#   Risk: the husky leaves the frame or faces away; plan: spawn at its cell, `facing South`, frame then capture with no tick between.
 @review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
 Feature: the windows as a player would show them
 

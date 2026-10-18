@@ -54,11 +54,11 @@ protocols_read_sha: e552fd9823504a685ddedd14953c3f62a699851b
 | 1 | `1-groups.jpg` group editor, filled group | window, online | 4 | none known, accepted 2026-10-06 |
 | 2 | `2-categories.jpg` replaced: editor with "Furniture (Hidden)" greyed | window, ticket `eaf8` | 4 | greyed row may read low contrast |
 | 3 | `3-settings.jpg` settings page | window, online | 4 | none known |
-| 4 | `4-architect-menu.jpg` to recompose: menu with a group of modded buildings over a lived corner (Nelim, dog, grown plants) | menu over staged map | 3 | building defNames not known yet (NPT listing ticket `d056`), outfit and animal facing untested |
+| 4 | `4-architect-menu.jpg` to recompose, "the morning list": `statue-garden`, 10 h Clear; Nelim ochre shirt + teal headwrap, BraidedKnot, smile, carries WoodLog; Shogun facing South; PlantPot + Daylily; two buildings of two Nelim mods in the group | menu over staged map | 4 (a-k met in the feature header) | a building defName unresolved or needing research; plan: only defNames marked N in the `d056` listing |
 | 5 | `5-parent-row.jpg` appearance window, tab under another | window, online | 4 | none known |
-| 6 | `6-unsorted-tab.jpg` to recompose: Unsorted tab with modded orphans over the same corner | menu over staged map | 3 | same as 4 |
+| 6 | `6-unsorted-tab.jpg` to recompose, "the evening shelf": `hut`, 18 h Clear; Nelim plum robe + corset, Long hair, Face_Stars, carries Cloth; Yuki lying facing the camera; 2 lit TorchLamp, PlantPot + Rose; orphans = 12 vanilla + 1 Nelim-mod building | menu over staged map | 4 (a-k met in the feature header) | husky out of frame or turned away; plan: spawn `facing South`, frame and capture with no tick between |
 
-Lowest 3 (shots 4 and 6): no ticket for them until NPT's catalogue (`CATALOGUE-BUILDINGS.md`) lets me name the buildings and raise them to 4. Shots 1, 3, 5 are accepted and online: not redone.
+Lowest 4. Story and per-scene lines are in the header of `17-publication-shots.feature`. Scenes 4 and 6 wait for the `d056` listing (building defNames) before any ticket; windows 1, 2, 3, 5 are interface shots, set aside by the rule, accepted and online.
 
 **Reviews:** `code_review_sha` `1a645f3` (code review of `Source/` and 1.1.0 keys, `6059cb3..1a645f3`, no finding, 2026-10-14; 1.1.0 code is `f88c331`). `publication_changelog_review_sha` `7c34a44` (content confirmed by owner in chat on `2e0a58b`, 2026-10-14, for 1.1.x line; `7c34a44` only dates heading; previous one, `6059cb3`, covered 1.0.x). `echo_review_sha` `41c67f2`: echo kept at `mountPreview` (2026-10-14), menu window with empty search bar, row of slots, five category icons: still shows what gallery shows (Architect menu, groups and tabs, now also Unsorted tab), mod subject not moved; Preview not reopened. `social_preview_sha256`: GitHub social preview is `Mod/About/Preview.png` of 2026-10-12, byte-identical today (sha256 `bcb3f205`); no new upload owed.
 
