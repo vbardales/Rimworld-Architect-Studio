@@ -379,5 +379,24 @@ namespace ArchitectStudio.PickleSteps
                     $"Architect Icons still caches '{cached?.name ?? "null"}' for '{category.defName}': the eviction missed");
             }
         }
+
+        /// <summary>Opens the Architect window on one tab by its category defName (building catalogue shots).</summary>
+        [When("I show the Architect menu on the tab {string}")]
+        public async Task ShowArchitectOnTab(PickleContext ctx, string defName)
+        {
+            var category = DefDatabase<DesignationCategoryDef>.GetNamedSilentFail(defName);
+            ctx.Require(category != null, $"no Architect category named {defName}");
+
+            Find.MainTabsRoot.SetCurrentTab(MainButtonDefOf.Architect, false);
+            await ctx.WaitFrames(10);
+
+            var window = MainButtonDefOf.Architect.TabWindow as MainTabWindow_Architect;
+            ctx.Require(window != null, "the Architect tab window is not open");
+            var panel = window.desPanelsCached.FirstOrDefault(t => t.def == category);
+            ctx.Require(panel != null, $"the Architect window has no panel for {defName}");
+            window.selectedDesPanel = panel;
+            await ctx.WaitFrames(10);
+            ctx.Attach("tab shown", defName);
+        }
     }
 }
