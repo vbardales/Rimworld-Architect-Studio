@@ -11,8 +11,9 @@
 # Story: one working day of Nelim in her tribe, the Architect menu being what keeps her colony's buildings in order.
 # Morning: she picks what to build from a tab she arranged. Dusk: she gathers the leftovers in the Unsorted tab. The
 # windows (images 1, 2, 3, 5) are interface shots on `window-backdrop-for-height`, cropped, no subtitle, not staged.
-# Only the two menu shots below are staged scenes; the menu stays what it is, the map behind it lives. Time: start 10 h,
-# then +1 h of game time wait per episode is replaced here by an explicit hour (`I set the hour`), 2 500 ticks per hour.
+# Only the two menu shots below are staged scenes; the menu stays what it is, the map behind it lives. Who: Nelim, alone
+# with her dogs. Where: the Sanctuary, statue garden then tea hut. Which day: one working day. Rhythm: episode 1 at 10 h,
+# episode 2 at 18 h, each set with `I set the hour` (8 hours between, the light turns from white to amber).
 #
 # Image 4 "the morning list" (episode 1): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
 #   Subject: the menu on a group of buildings; says: "she builds from a list she made herself".
