@@ -7,33 +7,56 @@
 # The group here is created and filled by the scenario rather than borrowed from the mod list: a
 # group belonging to another mod shows its raw defName, which reads as debug output on a store page.
 #
-# SHOTLIST 1.2.0 (2026-10-18, written before anything is played; a scene not listed here is not written).
-# Story: one working day of Nelim in her tribe, the Architect menu being what keeps her colony's buildings in order.
-# Morning: she picks what to build from a tab she arranged. Dusk: she gathers the leftovers in the Unsorted tab. The
-# windows (images 1, 2, 3, 5) are interface shots on `window-backdrop-for-height`, cropped, no subtitle, not staged.
-# Only the two menu shots below are staged scenes; the menu stays what it is, the map behind it lives. Who: Nelim, alone
-# with her dogs. Where: the Sanctuary, statue garden then tea hut. Which day: one working day. Rhythm: episode 1 at 10 h,
-# episode 2 at 18 h, each set with `I set the hour` (8 hours between, the light turns from white to amber).
+# SHOTLIST 1.2.0 (2026-10-18, extended 2026-10-23 with an opening and a closing, director pass by an Opus sub-agent; written
+# before anything is played; a scene not listed here is not written). Upload indexes are assigned at reindex (names below
+# are story order).
+# Story: one working day of Nelim in her Sanctuary, the Architect menu being what keeps her colony's buildings in order.
+# Who: Nelim (protagonist) with her dogs Shogun (in all four scenes) and Yuki (scene 3). Where: house door, statue garden,
+# tea hut, hearth hall. Which day: one working day; she works off screen between 10 h and 18 h (the gap is part of the story).
+# Rhythm: 6 h, 10 h, 18 h, 21 h, each set with `I set the hour`. Variety: wide (1), medium (2, 3), close (4). The windows
+# (group editor, category editor, settings, appearance window) are interface shots on `window-backdrop-for-height`,
+# cropped, no subtitle, not staged, not scored. The menu stays what it is, the map behind it lives. Echo: the opening and
+# the closing share the same door and the same two lit torches (1 outside, 4 from inside).
+# Every gesture is caught mid-act by pausing at a set tick through a Pickle step, never by hand; selection brackets and
+# labels hidden, nothing selected. No face expression is written for a scene wider than zoom 9 (invisible).
 #
-# Image 4 "the morning list" (episode 1): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
-#   Subject: the menu on a group of buildings; says: "she builds from a list she made herself".
-#   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Long (loose, shown under the
-#   headwrap by Show Hair Under Stuff, RaccoonCuddler.ShowHair, already in the Sanctuary map: hat rule, no bun, no ponytail),
-#   smile (MouthSmile + LidCheerful), carries a WoodLog towards the build site (action). Shogun the labrador sits left
-#   of her facing South (front view). Decor (placed, removed after the take): PlantPot with Plant_Daylily fully grown,
-#   an Apparel-free corner, two buildings from the group (one from each of two Nelim mods, picked in the d056 listing,
-#   buildable without research). Composition: Nelim off-centre right, menu bottom bar full width, statues behind, light
-#   from the south. Mods: Sanctuary map + Better Architect Menu + nelim.* building mods. Risk: a building defName does not
-#   resolve or needs research; plan: take defNames only from the d056 listing marked N, the step fails with the list.
-#
-# Image 6 "the evening shelf" (episode 2): place `hut` (141, 72, zoom 9), 18 h, Clear, the lit lamps warm the porch.
+# 1 "workshop-1-dawn" (OPENING, WIDE): place `house` (190, 115, zoom 15), 6 h, Clear, game time: none beyond setup (60 ticks).
+#   Subject: the colony wakes and its menu is already tidy; says: "the tab bar she tidied waits for the day". Menu: tab
+#   bar only, no tab open, Furniture hidden (set by `I hide the Architect tab "Furniture"`), Unsorted on, the Unsorted
+#   button hovered so it reads lit; the subtitle names what was hidden.
+#   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Long loose under
+#   the headwrap (hat-hair mod of the Sanctuary map, no bun, no ponytail). Instant: the door has just opened, she stands on
+#   the threshold tile facing South; obtained: a move order to the door cell, paused when the door reads open. Shogun beside
+#   her facing South (front view). Decor (removed after): two TorchLamp lit by the door (6 h light, glow checked before), PlantPot
+#   + Plant_Daylily fully grown. Composition: house centred, door at lower right, river left, menu bar bottom-left.
+#   Risk: pawns a few pixels tall; plan: they are never the subject of the thumbnail, the tab grid and the torch glow are.
+# 2 "workshop-2-morning-list" (MEDIUM): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
+#   Subject: the menu on a group of buildings; says: "she builds from a list she made herself". Menu open on her group, dropdown
+#   on the side the build site is not.
+#   Nelim: same outfit as scene 1 (same morning). Instant: she has just placed one building of the group from the dropdown and
+#   starts work on its frame; action: the Construct job on that frame, tool-less mid-motion, paused two seconds after start.
+#   Shogun lies facing South to her left (no sitting pose exists for animals). Decor: PlantPot + Plant_Daylily fully grown, the
+#   blueprint frame of one building from the group. Two buildings of two Nelim mods in the group (defNames only from the
+#   `d056` listing marked N, buildable without research). Composition: Nelim off-centre right, menu bottom bar full width, statues
+#   behind, light from the south. Risk: a defName does not resolve or needs research; plan: take defNames only from the listing,
+#   the step fails with the list.
+# 3 "workshop-3-evening-shelf" (MEDIUM): place `hut` (141, 72, zoom 9), 18 h, Clear (dusk), the lit lamps warm the porch.
 #   Subject: the Unsorted tab with the buildings no other tab offers; says: "nothing she owns gets lost".
-#   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair let down (Long), tattoo Face_Stars, calm
-#   (default own face), carries a bolt of Cloth (action, different from image 4). Yuki the husky lies on the porch facing
-#   the camera. Decor (removed after): two TorchLamp lit, PlantPot with Plant_Rose fully grown. Orphans: the twelve vanilla
-#   buildings already switched off in the scenario below plus one building of a Nelim mod switched off the same way.
-#   Composition: hut at left, Nelim at the door, river behind on the left, menu full width. Mods: as image 4.
+#   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair let down (Long), default own face. She changed after
+#   the day's work (the scene sets the outfit with the wears step; the story says so). Instant: she has just come in from
+#   work; action: a haul job carrying a bolt of Cloth to the Dresser of the hut, paused mid-walk. Yuki the husky lies on the
+#   porch facing the camera. Decor (removed after): two TorchLamp lit, PlantPot + Plant_Rose fully grown. Orphans: the twelve
+#   vanilla buildings switched off in the scenario below plus one building of a Nelim mod, its row first and recoloured so it
+#   reads in the thumbnail. Composition: hut at left, Nelim at the door, river behind on the left, menu full width.
 #   Risk: the husky leaves the frame or faces away; plan: spawn at its cell, `facing South`, frame then capture with no tick between.
+# 4 "workshop-4-night-fire" (CLOSING, CLOSE): place `sleeping-nook`/`fire-pit` side of `hearth-hall` (177, 121, zoom 6.5), 21 h,
+#   braziers lit, subjects kept inside their light. Seen from inside the same door as scene 1, the same two TorchLamp lit.
+#   Subject: the last feature, her own categories; says: "the day ends, the list stays hers". Menu open on a category she
+#   relabelled and recoloured in teal (`I relabel the category` and `I colour the category` steps).
+#   Nelim: still the plum robe (continuity from scene 3). Instant: she has just taken her meal; action: the eat job, MealSimple
+#   in hand on the way to a chair, paused mid-walk. Shogun asleep on an animal sleeping spot inside the room, facing South,
+#   paused once the sleep marks show. Decor (removed after): the sleeping spot, two TorchLamp lit at the door.
+#   Risk: no step pauses a pawn mid-eat-job; plan: ask NPT for it (Ticket Manager), fall back to a placed meal and a move order.
 @review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
 Feature: the windows as a player would show them
 
