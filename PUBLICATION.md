@@ -104,6 +104,15 @@ Menus and interface windows are shown as what they are, with no staged pawn.
 
 1 to 4 are crops (window plus 40 px; the menu is the bottom-left of the screen) of the captures of the SB replay (folder deleted 2026-10-19 by the evidence rule; ticket `5984`, 2026-10-09, SanctuaryBacklot staging; the online images come from the 2026-10-06 run `5b7d`, played before the steps moved from Nelim's Pickle Tools to SanctuaryBacklot, and the SB replay reproduces them: SSIM 0.95 to 0.97 on 1, 3 and 4, the 0.79 of image 2 is a 10 px crop offset only), played on Nelim's tribe (`Nelims-tribe`): the three windows over `window-backdrop-for-height` of the sanctuary, kept at full height so that the two smileys stay visible, and the menu over the exhibition zone. Owner validated them on 2026-10-06; upload to Steam is the owner's.
 
+## Gallery subtitles
+
+One line of English burned into the bottom of each staged scene (`GALLERY.md`, "Sous-titres"); interface windows (1, 2, 3, 5) and `0-` carry none. Written 2026-10-23 from the 1.2.0 shotlist; burned in only once images 4 and 6 are recomposed, accepted and reindexed, from the originals in `Art/Gallery-clean/`.
+
+| index | file | line |
+|---|---|---|
+| 4 | `4-architect-menu.jpg` | Nelim builds from a list she made herself. |
+| 6 | `6-unsorted-tab.jpg` | Nothing she owns gets lost. |
+
 ## Dependencies and DLC
 
 - **Hard dependency: Harmony only** (`modDependencies`). The code uses `HarmonyLib` and no other third-party
