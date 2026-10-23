@@ -49,14 +49,20 @@
 #   vanilla buildings switched off in the scenario below plus one building of a Nelim mod, its row first and recoloured so it
 #   reads in the thumbnail. Composition: hut at left, Nelim at the door, river behind on the left, menu full width.
 #   Risk: the husky leaves the frame or faces away; plan: spawn at its cell, `facing South`, frame then capture with no tick between.
-# 4 "workshop-4-night-fire" (CLOSING, CLOSE): place `sleeping-nook`/`fire-pit` side of `hearth-hall` (177, 121, zoom 6.5), 21 h,
-#   braziers lit, subjects kept inside their light. Seen from inside the same door as scene 1, the same two TorchLamp lit.
-#   Subject: the last feature, her own categories; says: "the day ends, the list stays hers". Menu open on a category she
-#   relabelled and recoloured in teal (`I relabel the category` and `I colour the category` steps).
-#   Nelim: still the plum robe (continuity from scene 3). Instant: she has just taken her meal; action: the eat job, MealSimple
-#   in hand on the way to a chair, paused mid-walk. Shogun asleep on an animal sleeping spot inside the room, facing South,
-#   paused once the sleep marks show. Decor (removed after): the sleeping spot, two TorchLamp lit at the door.
-#   Risk: no step pauses a pawn mid-eat-job; plan: ask NPT for it (Ticket Manager), fall back to a placed meal and a move order.
+# 4 "workshop-4-night-fire" (CLOSING, CLOSE): place `dining-nook` (176, 108, zoom 3.7), 21 h, Clear (roof on, night inside), game
+#   time: 60 ticks of setup, then paused one second after she leaves the table. The same two TorchLamp as scene 1, lit, one each
+#   side of the table, are the light of the frame; the room braziers add warmth from the east.
+#   Subject: the last feature, her own categories; says: "the day ends, the list stays hers". Menu open on the category
+#   "Structure" relabelled and recoloured in teal (`I relabel the category "Structure" as "Her walls"` and
+#   `I colour the category "Structure" with palette colour N`, N the teal one of the palette).
+#   Nelim: Apparel_Robe dyed plum (110, 50, 120) + Apparel_Corset as in scene 3 (continuity, same evening), hair Long let down,
+#   default own face (`Nelim has her own face`). Instant: she has just taken her meal from the table and walks to the chair;
+#   action: she carries a MealSimple (carries-the-item step) on a move order to the chair cell, paused mid-walk, no eat job
+#   needed. Shogun asleep on an animal sleeping spot (defName to confirm in the building listing) at lower right, facing South,
+#   sleep marks shown. Composition: close, table in the foreground with a bowl, Nelim off-centre left, Shogun lower right,
+#   wardrobes behind, light from the two torches. Decor (removed after): the two TorchLamp, the sleeping spot, MealSimple.
+#   Risk: the sleeping spot defName, and Shogun waking; plan: read the defName in the listing, spawn him asleep and frame
+#   with no tick between. An eat job would need a step from NPT (Ticket Manager); not required.
 @review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
 Feature: the windows as a player would show them
 
