@@ -153,12 +153,17 @@ Feature: the windows as a player would show them
   # Candidate for gallery image 2 (1.2.0, hide a whole tab; session decision, 2026-10-18). Same frame and light as the
   # category editor shot, but one vanilla tab is hidden, so the row reads "Furniture (Hidden)" and greyed: the new feature
   # shows in the list a player opens first. Play it with `-Filter '::the category editor with a hidden tab'`.
+  # Orders and Zone hold no building, so the editor greys them too (count 0): they are sent to the end of the list and
+  # the window is shortened so they scroll out of frame, leaving "Furniture (Hidden)" the only greyed row in view.
   Scenario: the category editor with a hidden tab
     When I close all dialogs
     And I hide the Architect tab "Furniture"
+    And I move the category "Orders" to the end of its siblings
+    And I move the category "Zone" to the end of its siblings
     And I open the category editor
     And I wait 30 ticks
     Then window "Dialog_Categories" is open
+    When the category editor shows 14 rows
     When Nelim's Pickle Tools: the eclipse of the map is ended
     And I set the hour to 12
     And I set the weather to "Clear"

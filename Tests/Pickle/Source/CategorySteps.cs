@@ -49,6 +49,33 @@ namespace ArchitectStudio.PickleSteps
             ctx.Assert(CategoryRuntime.Move(def, delta), $"moving '{category}' {direction} reported no change");
         }
 
+        [When("I move the category {string} to the end of its siblings")]
+        public void MoveToEnd(PickleContext ctx, string category)
+        {
+            var def = Driver.Category(ctx, category);
+            while (CategoryRuntime.CanMove(def, 1))
+            {
+                ctx.Assert(CategoryRuntime.Move(def, 1), $"moving '{category}' down reported no change");
+            }
+        }
+
+        /// <summary>
+        /// Shortens the open category editor so its list scrolls: rows past the first <paramref name="rows"/>
+        /// are out of the frame. Re-centred, because the window keeps its top edge when only the height changes.
+        /// </summary>
+        [When("the category editor shows {int} rows")]
+        public async Task ShortenCategoryEditor(PickleContext ctx, int rows)
+        {
+            var window = Find.WindowStack.WindowOfType<Dialog_Categories>();
+            ctx.Require(window != null, "the category editor is not open");
+            const float rowHeight = 32f;
+            const float chrome = 150f; // title, intro, bottom bar and window margins
+            var height = rows * rowHeight + chrome;
+            window.windowRect.height = height;
+            window.windowRect.y = (UI.screenHeight - height) / 2f;
+            await ctx.WaitFrames(10);
+        }
+
         [Then("the category {string} can not move {word}")]
         public void CannotMove(PickleContext ctx, string category, string direction)
         {
