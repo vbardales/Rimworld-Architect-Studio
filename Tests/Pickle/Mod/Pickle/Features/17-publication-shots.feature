@@ -21,6 +21,21 @@
 # labels hidden, nothing selected. Nelim smiles in every scene (owner, 2026-10-24): `Nelim has her own face`, then `mouth is "MouthSmile"` and `lids are "LidCheerful"` as the last steps before the
 # screenshot, even where the face is too small to read.
 #
+# STEPS (answer of NPT, 2026-10-25; compiled by NPT, NOT played yet, fidelity unverified unless said):
+#   pause mid-job = no dedicated step; recipe: `<pawn> is forced into the job "Construct" on ...` or `is forced to walk to`, then
+#   `I let N ticks pass`, then `time is paused for the capture` (N in game ticks). A door stays open only while a pawn stands
+#   on it and the game runs (not verified paused): scene 1 uses `stands at (x, z)` on the door cell; NPT can build "advance N
+#   ticks then pause" if the recipe is not exact enough.
+#   held item: `Nelim's Pickle Tools: {string} carries the item {string}`; a move order may make the pawn drop it (not verified),
+#   so the item is given after the walk order has run for a few ticks, just before the pause.
+#   animal collar: `the animal "Shogun" is dressed in "Apparel_leatherdogcollar"`; asleep: `the animal "Shogun" lies at (x, z)
+#   facing South` (new, on a cell: for scene 4 the cell of the sleeping spot, the spot itself is decor); hover: package HoverSteps
+#   (not verified against the Architect bar or screenshot mode: needs a ticket); smile: `"Nelim" mouth is "MouthSmile"` and
+#   `"Nelim" lids are "LidCheerful"` exist, `LidCheerful` in the Sanctuary map (VEFA) not verified: run `face state is logged`.
+#   Building defNames: ticket d056 (PickleTools, 2026-10-18) ended exit 3 with no evidence, so no listing exists; ArS files its
+#   own listing ticket before scenes 2 to 4. The DepMap of this suite still lacks the hair mod (Roo's HD Hairstyles), the
+#   hat-hair mod and VEFA: added to `wsl-deps.sanctuary.map` (or a copy) before the first scene ticket.
+#
 # 1 "workshop-1-dawn" (OPENING, WIDE): place `house` (190, 115, zoom 15), 6 h, Clear, game time: none beyond setup (60 ticks).
 #   Subject: the colony wakes and its menu is already tidy; says: "the tab bar she tidied waits for the day". Menu: tab
 #   bar only, no tab open, Furniture hidden (set by `I hide the Architect tab "Furniture"`), Unsorted on, the Unsorted
