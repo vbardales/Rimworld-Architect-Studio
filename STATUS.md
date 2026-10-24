@@ -19,7 +19,7 @@ showcase:     complete
 publication_changelog_review_sha: 7c34a444f1baeab83498663311513ce1e7b187aa  # content reviewed and validated by the owner in chat on 2e0a58b, 2026-10-14 (1.1.x line); 7c34a44 only adds the date to the changelog heading and the Steam change note (12.e)
 code_review_sha: 44b87b775b50a0c7c609bd2ee79dc06fe720f648  # review of Source/ 1a645f3..44b87b7 (hide tab, Unsorted orphans), no finding, 2026-10-17
 echo_review_sha: 557dcf2b7694e8c86f2e4ae5dc6f16ca166342bf  # echo-source.png untouched, kept again 2026-10-24: Preview regenerated with the echo narrowed to 25 percent (clear of the copy), accepted by the owner in chat; still matches gallery 0 to 6
-social_preview_sha256: 64eed19bd6287f3d430db637c41e2710fe6ebc02ed8803b4fd160b2908aab535  # Mod/About/Preview.png of 2026-10-24 (echo 25 percent), accepted by the owner; GitHub upload owed by the owner (not done yet, the served image is still the 2026-10-17 one)
+social_preview_sha256: 64eed19bd6287f3d430db637c41e2710fe6ebc02ed8803b4fd160b2908aab535  # Mod/About/Preview.png of 2026-10-24 (echo 25 percent), accepted by the owner; uploaded by the owner 2026-10-25; the image served by GitHub (og:image) is byte-identical to Mod/About/Preview.png
 tested_on:    2026-10-14
 tested_1_7:   yes  # ticket 5a0d, 2026-10-17, 14 of 14 on 1.7 net10.0 (p17-small-en/); English only (1.7 install has no French pack), Preview redone with badge 1.7 in the same commit
 workshop:     3792784018
