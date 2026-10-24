@@ -18,7 +18,8 @@
 # cropped, no subtitle, not staged, not scored. The menu stays what it is, the map behind it lives. Echo: the opening and
 # the closing share the same door and the same two lit torches (1 outside, 4 from inside).
 # Every gesture is caught mid-act by pausing at a set tick through a Pickle step, never by hand; selection brackets and
-# labels hidden, nothing selected. No face expression is written for a scene wider than zoom 9 (invisible).
+# labels hidden, nothing selected. Nelim smiles in every scene (owner, 2026-10-24): `Nelim has her own face`, then `mouth is "MouthSmile"` and `lids are "LidCheerful"` as the last steps before the
+# screenshot, even where the face is too small to read.
 #
 # 1 "workshop-1-dawn" (OPENING, WIDE): place `house` (190, 115, zoom 15), 6 h, Clear, game time: none beyond setup (60 ticks).
 #   Subject: the colony wakes and its menu is already tidy; says: "the tab bar she tidied waits for the day". Menu: tab
@@ -42,7 +43,7 @@
 #   the step fails with the list.
 # 3 "workshop-3-evening-shelf" (MEDIUM): place `hut` (141, 72, zoom 9), 18 h, Clear (dusk), the lit lamps warm the porch.
 #   Subject: the Unsorted tab with the buildings no other tab offers; says: "nothing she owns gets lost".
-#   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair Roo_HD_Hair_Highpony (canon, no hat so a ponytail is allowed), default own face. She changed after
+#   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair Roo_HD_Hair_Highpony (canon, no hat so a ponytail is allowed), own face then the smile (MouthSmile + LidCheerful). She changed after
 #   the day's work (the scene sets the outfit with the wears step; the story says so). Instant: she has just come in from
 #   work; action: a haul job carrying a bolt of Cloth to the Dresser of the hut, paused mid-walk. Yuki the husky lies on the
 #   porch facing the camera, Apparel_leatherdogcollar. Decor (removed after): two TorchLamp lit, PlantPot + Plant_Rose fully grown. Orphans: the twelve
