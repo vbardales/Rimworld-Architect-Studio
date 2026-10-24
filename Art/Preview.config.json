@@ -1,45 +1,25 @@
 {
-  "title": "Architect Studio",
-  "titleSize": 46,
-  "titleParts": [
-    {
-      "text": "Architect Studio",
-      "scale": 1
-    }
-  ],
-  "suffix": "",
-  "tag": "",
-  "copyLines": [
-    "Reorganise the Architect menu from inside the game."
-  ],
-  "modIconSource": "ModIcon-source.png",
-  "layout": "panel",
-  "panelAnchor": "top-left",
+  "panel": {
+    "title": "Architect Studio",
+    "titleSize": 46,
+    "titleParts": [
+      {
+        "text": "Architect Studio",
+        "scale": 1
+      }
+    ],
+    "copyLines": [
+      "Reorganise the Architect menu from inside the game."
+    ]
+  },
   "backgroundFile": "Preview-source.png",
-  "backgroundPosition": "center",
-  "backgroundSize": "cover",
   "echo": {
     "file": "echo-source.png",
-    "preSized": true,
     "color": "var(--accent)",
-    "width": 250,
-    "height": 260,
-    "opacity": 1,
-    "veil": false,
-    "panelTop": 6,
-    "panelRight": 2,
-    "panelWidth": 26
+    "panelMaxWidth": 25
   },
-  "iconBadge": {
-    "file": "ModIcon-source.png",
-    "corner": "bottom-left",
-    "translate": "-12.5%,12.5%",
-    "width": 220,
-    "outline": false,
-    "veil": "radial",
-    "veilSize": 275,
-    "veilLeft": -55,
-    "veilBottom": -61
+  "icon": {
+    "file": "ModIcon-source.png"
   },
   "palette": {
     "veil": "#293747",
