@@ -80,7 +80,7 @@
 #   wardrobes behind, light from the two torches. Decor (removed after): the two TorchLamp, the sleeping spot, MealSimple.
 #   Risk: the sleeping spot defName, and Shogun waking; plan: read the defName in the listing, spawn him asleep and frame
 #   with no tick between. An eat job would need a step from NPT (Ticket Manager); not required.
-@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
+@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.camerazoom @requires:nelim.pickletools.colonistrace @requires:nelim.pickletools.hoversteps @requires:nelim.pickletools.stagedecor
 Feature: the windows as a player would show them
 
   Background:
@@ -218,3 +218,44 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "category editor, a hidden tab"
     And Nelim's Pickle Tools: screenshot mode is disabled
+
+  # Gallery scene 1 of 1.2.0, "workshop-1-dawn" (opening, wide; plan in the header). Cells of the door and the decor are the proposal of NSB
+  # (2026-10-29, from Nelims-tribe.rws, NOT verified in game): door Door59718 at (186, 105), torches (185, 104) and (187, 104),
+  # pot (184, 104); the first run lists the free cells. The tab bar is kept, the other interface is hidden by its own steps (screenshot
+  # mode would hide the tab bar and leave the hover nothing to touch). Play it with `-Filter '::workshop-1-dawn'`.
+  Scenario: workshop-1-dawn, the tab bar she tidied waits for the day
+    When I close all dialogs
+    And I hide the Architect tab "Furniture"
+    And I turn on the Unsorted tab
+    And Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 6
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Sanctuary: I am at the sanctuary "house"
+    And Nelim's Pickle Tools: the free standable cells of the area from (182, 100) to (192, 106) are listed
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" at (185, 104)
+    And Nelim's Pickle Tools: the decor "TorchLamp" at (185, 104) is lit
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" at (187, 104)
+    And Nelim's Pickle Tools: the decor "TorchLamp" at (187, 104) is lit
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (184, 104)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (184, 104) fully grown
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
+    And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
+    And Nelim's Pickle Tools: the animal "Shogun" lies at (186, 103) facing South
+    And Nelim's Pickle Tools: "Nelim" stands at (186, 105) facing South
+    And Nelim's Pickle Tools: I let 30 ticks pass
+    And Nelim's Pickle Tools: the colonist bar is hidden
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: the resource readout is hidden
+    And Nelim's Pickle Tools: the alerts are hidden
+    And Nelim's Pickle Tools: the selection brackets are hidden
+    And Nelim's Pickle Tools: the item and name labels are hidden
+    And Nelim's Sanctuary: Nelim has her own face
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And Nelim's Pickle Tools: I hover over the tooltip containing "Unsorted"
+    And Nelim's Pickle Tools: time is paused for the capture
+    And I take a screenshot "workshop 1, the dawn"
+    And Nelim's Pickle Tools: the decor is removed

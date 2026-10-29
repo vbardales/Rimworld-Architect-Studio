@@ -5,7 +5,7 @@
 # Orders and Zone hold no building: skipped. Mod tabs are unknown until NPT's listing ran.
 # A tab of a DLC that is not loaded fails with "no Architect category named X": play with the DLCs staged.
 # Play with `-Filter '::the Architect tab '` after the maps of NPT's catalogue are staged.
-@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
+@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.camerazoom
 Feature: the Architect menu, one tab per photograph
 
   Background:
