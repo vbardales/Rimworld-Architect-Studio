@@ -237,8 +237,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the decor "TorchLamp" at (185, 104) is lit
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (187, 104)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (187, 104) is lit
-    And Nelim's Pickle Tools: I place the decor "PlantPot" at (184, 104)
-    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (184, 104) fully grown
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (184, 104)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
