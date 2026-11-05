@@ -14,7 +14,7 @@ Run of 2026-10-02 (the 2026-09-13 numbers this file used to carry were supersede
 - `pwsh -NoProfile -File Tests/Run-Behavior.ps1`: **34 assertions passed** against the shipped
   DLL and installed RimWorld assemblies. Every PASS line contains the expected condition;
   any failed assertion or engine error terminates the command unsuccessfully.
-- `pwsh -NoProfile -File Tests/Validate-Mod.ps1`: **989 static/XML assertions passed**,
+- (historical, script replaced 2026-11-05 by `Tests/Rule-OwnValues.ps1`) `Tests/Validate-Mod.ps1`: **989 static/XML assertions passed**,
   including the hidden shortcut's metadata and EN/FR label/description.
 - `Check-DefInjected.ps1 -TransMod Mod`: not rerun for this revision (no DefInjected path changed since 2026-09-13).
 

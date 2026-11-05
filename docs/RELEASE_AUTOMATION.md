@@ -34,7 +34,7 @@ scope.  `release-dry-run` must hold no Steam secrets.
 1. Run `publish-tag.yml` in `dry-run` mode with the commit (`ref`) and the `version` to release. It
    rebuilds `Mod/`, compares the rebuilt files with the tracked ones (a difference is named in the run
    summary with both hashes, then the tracked, tested files are put back: what ships is what is
-   committed), runs `Tests/Validate-Mod.ps1`, and only checks that the version can be released and
+   committed), runs the generated `Tests/Test-Mod.ps1` (shared checks, then `Tests/Rule-OwnValues.ps1`), and only checks that the version can be released and
    prints the notes and the Steam description. It stops if the version is not the next patch, minor or
    major of the last tag, or if the `## [<version>]` section of `CHANGELOG.md` or the `### <version>`
    change note of `PUBLICATION.md` is missing. It cannot create a tag, GitHub release, or Steam
