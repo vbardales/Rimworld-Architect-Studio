@@ -61,7 +61,7 @@
 #   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair Roo_HD_Hair_Highpony (canon, no hat so a ponytail is allowed), own face then the smile (MouthSmile + LidCheerful). She changed after
 #   the day's work (the scene sets the outfit with the wears step; the story says so). Instant: she has just come in from
 #   work; action: a haul job carrying a bolt of Cloth to the Dresser of the hut, paused mid-walk. Yuki the husky lies on the
-#   porch facing the camera, Apparel_leatherdogcollar. Decor (removed after): two TorchLamp lit, PlantPot + Plant_Rose fully grown. Orphans: the twelve
+#   porch facing the camera, Apparel_leatherdogcollar dyed fuchsia (NSB YUKI-PROFIL, her visual marker, 2026-11-05). Decor (removed after): two TorchLamp lit, PlantPot + Plant_Rose fully grown. Orphans: the twelve
 #   vanilla buildings switched off in the scenario below plus one building of a Nelim mod, its row first and recoloured so it
 #   reads in the thumbnail. Composition: hut at left, Nelim at the door, river behind on the left, menu full width.
 #   Risk: the husky leaves the frame or faces away; plan: spawn at its cell, `facing South`, frame then capture with no tick between.
