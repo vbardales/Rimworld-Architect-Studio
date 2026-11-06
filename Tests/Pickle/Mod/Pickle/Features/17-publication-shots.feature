@@ -225,8 +225,6 @@ Feature: the windows as a player would show them
   # mode would hide the tab bar and leave the hover nothing to touch). Play it with `-Filter '::workshop-1-dawn'`.
   Scenario: workshop-1-dawn, the tab bar she tidied waits for the day
     When I close all dialogs
-    And I hide the Architect tab "Furniture"
-    And I turn on the Unsorted tab
     And Nelim's Pickle Tools: the eclipse of the map is ended
     And I set the hour to 6
     And I set the weather to "Clear"
@@ -254,8 +252,9 @@ Feature: the windows as a player would show them
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And I hide the Architect tab "Furniture"
+    And I turn on the Unsorted tab
     And I open the Architect menu with no tab selected
-    And Nelim's Pickle Tools: I hover over the tooltip containing "Unsorted"
     And Nelim's Pickle Tools: time is paused for the capture
     And I take a screenshot "workshop 1, the dawn"
     And Nelim's Pickle Tools: the decor is removed

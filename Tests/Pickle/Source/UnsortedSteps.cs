@@ -85,6 +85,7 @@ namespace ArchitectStudio.PickleSteps
         [When("I open the Architect menu with no tab selected")]
         public async Task OpenArchitectBarOnly(PickleContext ctx)
         {
+            UnsortedRuntime.OnVisibilityChanged();
             Find.MainTabsRoot.SetCurrentTab(MainButtonDefOf.Architect, false);
             await ctx.WaitFrames(10);
 
