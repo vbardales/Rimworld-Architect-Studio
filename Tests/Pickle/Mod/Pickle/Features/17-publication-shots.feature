@@ -36,23 +36,23 @@
 #   own listing ticket before scenes 2 to 4. The DepMap of this suite holds the hair mod (Roo's HD Hairstyles), Hat Hair Control and VEFA since 2026-11-05; it once lacked the
 #   (the three were added to `wsl-deps.sanctuary.map` before the first scene ticket).
 #
-# 1 "workshop-1-dawn" (OPENING, MEDIUM-WIDE): place `house` door, framed by `I frame the cell (192, 110) at zoom 10` (54 px per cell: door (186, 105)
-#   lands at screen (636, 810), torches (582 / 690, 864), pot (528, 864), Shogun (636, 918); estimate from the arithmetic, checked on the first capture),
-#   6 h, Clear, game time: 30 ticks of setup, then a walk of about 25 ticks, then paused. The capture is CROPPED to the lower-left half (x 0-960, y 540-1080)
-#   for the gallery: the tab grid is then about 21 percent of the width, the pawns about 54 px. Revised 2026-11-06 after r10 (passed, capture judged on
-#   paper: pawns 36 px, door at bottom centre) and an Opus director pass; it is the only wide-ish frame of the series with scene 2 (zoom 13), the river is out of frame.
-#   Subject: the colony wakes and its menu is already tidy; says: "the tab bar she tidied waits for the day". Menu: Better Architect Menu's grid (two columns,
-#   bottom-left, about 200 x 340 px of 1920 x 1080, no tooltips), no tab open, Furniture greyed (`I hide the Architect tab "Furniture"`), Unsorted listed as the last
-#   row (`I turn on the Unsorted tab`). Not lit: no hover step exists (NPT, 2026-11-06), so Unsorted is NOT shown lit; the subtitle names both changes
-#   ("Furniture hidden, Unsorted added") and is kept under about 80 px so it does not cover the Unsorted row. The crop's right edge cuts the "Wildlife" button: accepted.
+# 1 "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (191, 105) at zoom 7` (77 px per cell: door (186, 105) lands at about
+#   screen (560, 560), torches (498 / 652, 640), Shogun (560, 717); estimates, checked on the first capture), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
+#   Directed 2026-11-06 after the owner refused r10 ("without a subtitle it does not tell me at all what to look at": whole house, tiny pawns, tiny grid). The subject is
+#   now an OPEN menu: `I show the Architect menu on the tab "Structure"` puts a row of building icons about 900 px wide along the bottom (seen in
+#   `Evidence/building-tabs-r1`, Structure: Cancel, Deconstruct, Smooth walls, Wall, Door, Fence...) above the tab grid, and the greyed Furniture row is read next to it.
+#   Capture CROPPED to x 0-1280, y 360-1080 (16:9): the building row and the grid fill the bottom, Nelim and the door the middle.
+#   Subject: her build bar, tidied: the building row is the thing to read, Furniture is greyed beside it (`I hide the Architect tab "Furniture"`), Unsorted is listed
+#   (`I turn on the Unsorted tab`); says: "the tab bar she tidied waits for the day". Not lit: no hover step exists (NPT, 2026-11-06); the subtitle names what was hidden
+#   ("Furniture hidden, Unsorted added"). Scene 3 opens the Unsorted tab, so this shot keeps Structure.
 #   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Roo_Royal_LongHD (canon
-#   under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by Hat Hair Control (3760821540, in `wsl-deps.sanctuary.map` line 54), no bun, no ponytail; own face, MouthSmile, LidCheerful.
-#   Instant: she has just stepped out of the house and checks the daylily; obtained: she starts at (186, 106) and is forced to walk to (184, 103) (steps in the
-#   scenario, to change at the next refile), `I let about 25 ticks pass`, then the pause; the door reads open while she stands on its cell (N to adjust on the first run).
+#   under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by Hat Hair Control (3760821540, `wsl-deps.sanctuary.map` line 54), no bun, no ponytail; own face, MouthSmile, LidCheerful.
+#   Instant: she has just stepped out of the house and goes to check the daylily; obtained: `stands at (186, 106)`, then `is forced to walk to (184, 103)` and `I let 25 ticks pass`,
+#   then the pause; the door reads open while she crosses its cell (N to adjust on the first run).
 #   Shogun lies at (186, 103) facing South (front view), wearing only Apparel_leatherdogcollar (dark brown `#3B2F2F`, validated by the owner 2026-11-06, ticket 47a9).
 #   Decor (removed after): two TorchLamp lit by the door (6 h light), PlantPot + Plant_Daylily fully grown at (184, 104). Both pawns asserted in the camera view before the capture.
-#   Risk 1: the smile is barely readable at 54 px; accepted (written, not a malus). Risk 2: j stays marginal at 268 px (labels about 4 px): the shape of the grid and the greyed row carry it.
-#   Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts and one first-run check of the door.
+#   Risk 1: the open panel may cover Nelim or shift the camera; plan: the in-view asserts, one first-run look. Risk 2: the smile is barely readable at 77 px; accepted (written, not a malus).
+#   Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts. Risk 4: `Furniture` may stay clickable-looking, only greyed; that is the mod's real look.
 # 2 "workshop-2-morning-list" (MEDIUM): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
 #   Subject: the menu on a group of buildings; says: "she builds from a list she made herself". Menu open on her group, dropdown
 #   on the side the build site is not.
@@ -248,7 +248,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
     And Nelim's Pickle Tools: the animal "Shogun" lies at (186, 103) facing South
-    And Nelim's Pickle Tools: "Nelim" stands at (186, 105) facing South
+    And Nelim's Pickle Tools: "Nelim" stands at (186, 106) facing South
     And Nelim's Pickle Tools: I let 30 ticks pass
     And Nelim's Pickle Tools: the colonist bar is hidden
     And Nelim's Pickle Tools: the learning helper is hidden
@@ -261,8 +261,10 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And I hide the Architect tab "Furniture"
     And I turn on the Unsorted tab
-    And I open the Architect menu with no tab selected
-    And Nelim's Pickle Tools: I frame the cell (190, 112) at zoom 15
+    And I show the Architect menu on the tab "Structure"
+    And Nelim's Pickle Tools: I frame the cell (191, 105) at zoom 7
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (184, 103)
+    And Nelim's Pickle Tools: I let 25 ticks pass
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
