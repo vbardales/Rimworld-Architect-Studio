@@ -55,5 +55,6 @@ lordfelix.HatHairControl 3760821540
 Dress.Cinderella 3627646170
 homebrew.fairycoreapparel2 3812924898
 KRJS.JoseonCostume1 3043633660
-# Collar of the animals in the gallery (Apparel_leatherdogcollar), 2026-11-06.
+# Collar of the animals in the gallery (Apparel_leatherdogcollar), 2026-11-06. Needs its framework (ticket 369d: "Could not find type AnimalGear.AnimalApparelDefExtension", Shogun had no apparel tracker).
+Ingendum.AnimalApparelFramework 3513825850
 nelim.animalapparelcollarsandkit path:AnimalApparelCollarsAndKitRenew/Mod
