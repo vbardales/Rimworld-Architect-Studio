@@ -39,13 +39,19 @@
 # 1 "workshop-1-dawn" (OPENING, WIDE): place `house` (190, 115, zoom 15), 6 h, Clear, game time: none beyond setup (60 ticks).
 #   Subject: the colony wakes and its menu is already tidy; says: "the tab bar she tidied waits for the day". Menu: tab
 #   bar only, no tab open, Furniture hidden (set by `I hide the Architect tab "Furniture"`), Unsorted on, the Unsorted
-#   button hovered so it reads lit; the subtitle names what was hidden.
+#   button lit by the pointer; the subtitle names what was hidden. Played 2026-11-06 (r6, r7): the menu is Better Architect Menu's grid
+#   (two columns, bottom-left, about 200 x 340 px of 1920 x 1080, NO tooltips), so the hover is `I move the mouse to (50, 975)`
+#   (Unsorted button, last row; position read on the capture, not yet seen lit); Furniture reads greyed once hidden.
 #   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Roo_Royal_LongHD (canon
 #   under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by the hat-hair mod of the Sanctuary map, no bun, no ponytail. Instant: the door has just opened, she stands on
 #   the threshold tile facing South; obtained: a move order to the door cell, paused when the door reads open. Shogun beside
 #   her facing South (front view), wearing only Apparel_leatherdogcollar (NSB rule, `CATALOGUE-ANIMAUX.md`). Decor (removed after): two TorchLamp lit by the door (6 h light, glow checked before), PlantPot
 #   + Plant_Daylily fully grown. Composition: house centred, door at lower right, river left, menu bar bottom-left.
-#   Risk: pawns a few pixels tall; plan: they are never the subject of the thumbnail, the tab grid and the torch glow are.
+#   Risk 1: pawns a few pixels tall; plan: they are never the subject of the thumbnail, the tab grid and the torch glow are.
+#   Risk 2 (r7): the grid is about 10 percent of the width, so criterion j stays weak at 268 px; plan: crop the capture to the lower-left
+#   half (grid about 20 percent of the width) and keep the door, the torches and Nelim in that half. Risk 3 (r7): neither Nelim nor Shogun
+#   showed in the frame (cause not found: not verified whether the camera, the stands steps or screenshot mode hid them); plan: ask NPT for a step
+#   asserting a named pawn is inside the camera view, and add it before the screenshot.
 # 2 "workshop-2-morning-list" (MEDIUM): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
 #   Subject: the menu on a group of buildings; says: "she builds from a list she made herself". Menu open on her group, dropdown
 #   on the side the build site is not.
