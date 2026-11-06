@@ -261,6 +261,7 @@ Feature: the windows as a player would show them
     And I hide the Architect tab "Furniture"
     And I turn on the Unsorted tab
     And I open the Architect menu with no tab selected
+    And Nelim's Pickle Tools: I frame the cell (190, 112) at zoom 15
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
