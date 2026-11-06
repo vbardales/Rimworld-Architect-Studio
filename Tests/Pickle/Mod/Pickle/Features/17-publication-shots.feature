@@ -33,25 +33,26 @@
 #   (not verified against the Architect bar or screenshot mode: needs a ticket); smile: `"Nelim" mouth is "MouthSmile"` and
 #   `"Nelim" lids are "LidCheerful"` exist, `LidCheerful` in the Sanctuary map (VEFA) not verified: run `face state is logged`.
 #   Building defNames: ticket d056 (PickleTools, 2026-10-18) ended exit 3 with no evidence, so no listing exists; ArS files its
-#   own listing ticket before scenes 2 to 4. The DepMap of this suite still lacks the hair mod (Roo's HD Hairstyles), the
-#   hat-hair mod and VEFA: added to `wsl-deps.sanctuary.map` (or a copy) before the first scene ticket.
+#   own listing ticket before scenes 2 to 4. The DepMap of this suite holds the hair mod (Roo's HD Hairstyles), Hat Hair Control and VEFA since 2026-11-05; it once lacked the
+#   (the three were added to `wsl-deps.sanctuary.map` before the first scene ticket).
 #
-# 1 "workshop-1-dawn" (OPENING, WIDE): place `house` (190, 115, zoom 15), 6 h, Clear, game time: none beyond setup (60 ticks).
-#   Subject: the colony wakes and its menu is already tidy; says: "the tab bar she tidied waits for the day". Menu: tab
-#   bar only, no tab open, Furniture hidden (set by `I hide the Architect tab "Furniture"`), Unsorted on, the Unsorted
-#   button lit by the pointer; the subtitle names what was hidden. Played 2026-11-06 (r6, r7): the menu is Better Architect Menu's grid
-#   (two columns, bottom-left, about 200 x 340 px of 1920 x 1080, NO tooltips). `I move the mouse to` only checks the point and does not hover
-#   (NPT, 2026-11-06), so no lit button for now: the subtitle names what was hidden, Unsorted reads as a tab. Pawns checked by `is in the camera view` (NPT 23c9b54, not played).
+# 1 "workshop-1-dawn" (OPENING, MEDIUM-WIDE): place `house` door, framed by `I frame the cell (192, 110) at zoom 10` (54 px per cell: door (186, 105)
+#   lands at screen (636, 810), torches (582 / 690, 864), pot (528, 864), Shogun (636, 918); estimate from the arithmetic, checked on the first capture),
+#   6 h, Clear, game time: 30 ticks of setup, then a walk of about 25 ticks, then paused. The capture is CROPPED to the lower-left half (x 0-960, y 540-1080)
+#   for the gallery: the tab grid is then about 21 percent of the width, the pawns about 54 px. Revised 2026-11-06 after r10 (passed, capture judged on
+#   paper: pawns 36 px, door at bottom centre) and an Opus director pass; it is the only wide-ish frame of the series with scene 2 (zoom 13), the river is out of frame.
+#   Subject: the colony wakes and its menu is already tidy; says: "the tab bar she tidied waits for the day". Menu: Better Architect Menu's grid (two columns,
+#   bottom-left, about 200 x 340 px of 1920 x 1080, no tooltips), no tab open, Furniture greyed (`I hide the Architect tab "Furniture"`), Unsorted listed as the last
+#   row (`I turn on the Unsorted tab`). Not lit: no hover step exists (NPT, 2026-11-06), so Unsorted is NOT shown lit; the subtitle names both changes
+#   ("Furniture hidden, Unsorted added") and is kept under about 80 px so it does not cover the Unsorted row. The crop's right edge cuts the "Wildlife" button: accepted.
 #   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Roo_Royal_LongHD (canon
-#   under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by the hat-hair mod of the Sanctuary map, no bun, no ponytail. Instant: the door has just opened, she stands on
-#   the threshold tile facing South; obtained: a move order to the door cell, paused when the door reads open. Shogun beside
-#   her facing South (front view), wearing only Apparel_leatherdogcollar (NSB rule, `CATALOGUE-ANIMAUX.md`). Decor (removed after): two TorchLamp lit by the door (6 h light, glow checked before), PlantPot
-#   + Plant_Daylily fully grown. Composition: house centred, door at lower right, river left, menu bar bottom-left.
-#   Risk 1: pawns a few pixels tall; plan: they are never the subject of the thumbnail, the tab grid and the torch glow are.
-#   Risk 2 (r7): the grid is about 10 percent of the width, so criterion j stays weak at 268 px; plan: crop the capture to the lower-left
-#   half (grid about 20 percent of the width) and keep the door, the torches and Nelim in that half. Risk 3 (r7): neither Nelim nor Shogun
-#   showed in the frame (cause not found: not verified whether the camera, the stands steps or screenshot mode hid them); plan: ask NPT for a step
-#   asserting a named pawn is inside the camera view, and add it before the screenshot.
+#   under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by Hat Hair Control (3760821540, in `wsl-deps.sanctuary.map` line 54), no bun, no ponytail; own face, MouthSmile, LidCheerful.
+#   Instant: she has just stepped out of the house and checks the daylily; obtained: she starts at (186, 106) and is forced to walk to (184, 103) (steps in the
+#   scenario, to change at the next refile), `I let about 25 ticks pass`, then the pause; the door reads open while she stands on its cell (N to adjust on the first run).
+#   Shogun lies at (186, 103) facing South (front view), wearing only Apparel_leatherdogcollar (dark brown `#3B2F2F`, validated by the owner 2026-11-06, ticket 47a9).
+#   Decor (removed after): two TorchLamp lit by the door (6 h light), PlantPot + Plant_Daylily fully grown at (184, 104). Both pawns asserted in the camera view before the capture.
+#   Risk 1: the smile is barely readable at 54 px; accepted (written, not a malus). Risk 2: j stays marginal at 268 px (labels about 4 px): the shape of the grid and the greyed row carry it.
+#   Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts and one first-run check of the door.
 # 2 "workshop-2-morning-list" (MEDIUM): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
 #   Subject: the menu on a group of buildings; says: "she builds from a list she made herself". Menu open on her group, dropdown
 #   on the side the build site is not.
