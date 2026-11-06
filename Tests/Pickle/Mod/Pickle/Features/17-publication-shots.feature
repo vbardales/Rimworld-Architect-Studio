@@ -254,6 +254,7 @@ Feature: the windows as a player would show them
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And I open the Architect menu with no tab selected
     And Nelim's Pickle Tools: I hover over the tooltip containing "Unsorted"
     And Nelim's Pickle Tools: time is paused for the capture
     And I take a screenshot "workshop 1, the dawn"

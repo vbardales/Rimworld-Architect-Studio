@@ -81,6 +81,19 @@ namespace ArchitectStudio.PickleSteps
             await ctx.WaitFrames(10);
         }
 
+        /// <summary>Opens the Architect tab as a player sees it after clicking it: the tab bar, no tab selected.</summary>
+        [When("I open the Architect menu with no tab selected")]
+        public async Task OpenArchitectBarOnly(PickleContext ctx)
+        {
+            Find.MainTabsRoot.SetCurrentTab(MainButtonDefOf.Architect, false);
+            await ctx.WaitFrames(10);
+
+            var window = MainButtonDefOf.Architect.TabWindow as MainTabWindow_Architect;
+            ctx.Require(window != null, "the Architect tab window is not open");
+            window.selectedDesPanel = null;
+            await ctx.WaitFrames(10);
+        }
+
         [Then("the Architect menu has no Unsorted tab")]
         public void NoTab(PickleContext ctx)
         {
