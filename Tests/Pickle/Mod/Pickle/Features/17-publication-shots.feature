@@ -40,8 +40,8 @@
 #   Subject: the colony wakes and its menu is already tidy; says: "the tab bar she tidied waits for the day". Menu: tab
 #   bar only, no tab open, Furniture hidden (set by `I hide the Architect tab "Furniture"`), Unsorted on, the Unsorted
 #   button lit by the pointer; the subtitle names what was hidden. Played 2026-11-06 (r6, r7): the menu is Better Architect Menu's grid
-#   (two columns, bottom-left, about 200 x 340 px of 1920 x 1080, NO tooltips), so the hover is `I move the mouse to (50, 975)`
-#   (Unsorted button, last row; position read on the capture, not yet seen lit); Furniture reads greyed once hidden.
+#   (two columns, bottom-left, about 200 x 340 px of 1920 x 1080, NO tooltips). `I move the mouse to` only checks the point and does not hover
+#   (NPT, 2026-11-06), so no lit button for now: the subtitle names what was hidden, Unsorted reads as a tab. Pawns checked by `is in the camera view` (NPT 23c9b54, not played).
 #   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Roo_Royal_LongHD (canon
 #   under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by the hat-hair mod of the Sanctuary map, no bun, no ponytail. Instant: the door has just opened, she stands on
 #   the threshold tile facing South; obtained: a move order to the door cell, paused when the door reads open. Shogun beside
@@ -261,7 +261,8 @@ Feature: the windows as a player would show them
     And I hide the Architect tab "Furniture"
     And I turn on the Unsorted tab
     And I open the Architect menu with no tab selected
-    And Nelim's Pickle Tools: I move the mouse to (50, 975)
+    And Nelim's Pickle Tools: "Nelim" is in the camera view
+    And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
     And I take a screenshot "workshop 1, the dawn"
     And Nelim's Pickle Tools: the decor is removed
