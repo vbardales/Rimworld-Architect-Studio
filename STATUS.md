@@ -97,6 +97,7 @@ Tribe read: 2026-11-07 (`VALIDE.md` Nelim, Shogun and Yuki sections, `NELIM-PROF
 | Shogun (labrador, in the save) | 1, 2, 4 | Apparel_leatherdogcollar dark brown `#3B2F2F` (validated 2026-11-06, ticket 47a9) | 2026-11-07 (VALIDE.md) | none |
 | Yuki (husky, in the save, Soren's) | 3 | Apparel_leatherdogcollar dyed fuchsia `#D1008F` (validated 2026-11-06) | 2026-11-07 (VALIDE.md) | none |
 
+Recheck 2026-11-07 15:07 (/sync-nsb, incremental): NSB commits after a92547d are ac34b0a and c40e82f (14:30-14:32), only `AVANCEMENT.md`, `VALIDE.md` and `URSULE-PROFIL.md` (Ottawa, Ursule, Wrille, ACG animals): none ours; nothing updated, dates in the tables stay. Still open and deliberate: the four NSB mods are not in `wsl-deps.sanctuary.map` yet (adding them changes the staged mod set of the passed scene 1 r11: done after the owner's verdict on the capture, not at each sync).
 
 | Included animals (rule 5) | Shot(s) |
 |---|---|
