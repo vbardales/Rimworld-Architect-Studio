@@ -36,12 +36,12 @@
 #   own listing ticket before scenes 2 to 4. The DepMap of this suite holds the hair mod (Roo's HD Hairstyles), Hat Hair Control and VEFA since 2026-11-05; it once lacked the
 #   (the three were added to `wsl-deps.sanctuary.map` before the first scene ticket).
 #
-# 1 "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (191, 105) at zoom 7` (77 px per cell: door (186, 105) lands at about
-#   screen (560, 560), torches (498 / 652, 640), Shogun (560, 717); estimates, checked on the first capture), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
+# 1 "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (193, 108) at zoom 7` (77 px per cell, r13 recomposition 2026-11-07: Nelim sits low-left beside the menu; door (186, 105) lands at about
+#   screen (406, 771), torches (344 / 498, 848), Shogun (406, 925); estimates, checked on the first capture), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
 #   Directed 2026-11-06 after the owner refused r10 ("without a subtitle it does not tell me at all what to look at": whole house, tiny pawns, tiny grid). The subject is
 #   now an OPEN menu: `I show the Architect menu on the tab "Structure"` puts a row of building icons about 900 px wide along the bottom (seen in
 #   `Evidence/building-tabs-r1`, Structure: Cancel, Deconstruct, Smooth walls, Wall, Door, Fence...) above the tab grid, and the greyed Furniture row is read next to it.
-#   Capture CROPPED to x 0-1280, y 360-1080 (16:9): the building row and the grid fill the bottom, Nelim and the door the middle.
+#   Capture CROPPED (r13) to x 0-1000, y 640-1080: the empty dark panel of the open menu (y 430-700) is cut out, the category grid with greyed Furniture and Unsorted, the building row and Nelim fill the frame; two PlantPot + Plant_Rose at (189, 104) and (190, 104) added so the ground is not bare.
 #   Subject: her build bar, tidied: the building row is the thing to read, Furniture is greyed beside it (`I hide the Architect tab "Furniture"`), Unsorted is listed
 #   (`I turn on the Unsorted tab`); says: "the tab bar she tidied waits for the day". Not lit: no hover step exists (NPT, 2026-11-06); the subtitle names what was hidden
 #   ("Furniture hidden, Unsorted added"). Scene 3 opens the Unsorted tab, so this shot keeps Structure.
@@ -243,6 +243,8 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (187, 104)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (187, 104) is lit
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (184, 104)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Rose" fully grown at (189, 104)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Rose" fully grown at (190, 104)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
@@ -262,7 +264,7 @@ Feature: the windows as a player would show them
     And I hide the Architect tab "Furniture"
     And I turn on the Unsorted tab
     And I show the Architect menu on the tab "Structure"
-    And Nelim's Pickle Tools: I frame the cell (191, 105) at zoom 7
+    And Nelim's Pickle Tools: I frame the cell (193, 108) at zoom 7
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (184, 103)
     And Nelim's Pickle Tools: I let 25 ticks pass
     And Nelim's Pickle Tools: "Nelim" is in the camera view
