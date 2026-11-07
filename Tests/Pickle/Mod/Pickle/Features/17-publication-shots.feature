@@ -49,7 +49,7 @@
 #   under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by Hat Hair Control (3760821540, `wsl-deps.sanctuary.map` line 54), no bun, no ponytail; own face, MouthSmile, LidCheerful.
 #   Instant: she has just stepped out of the house and goes to check the daylily; obtained: `stands at (186, 106)`, then `is forced to walk to (184, 103)` and `I let 25 ticks pass`,
 #   then the pause; the door reads open while she crosses its cell (N to adjust on the first run).
-#   Shogun lies at (186, 103) facing South (front view), wearing only Apparel_leatherdogcollar (dark brown `#3B2F2F`, validated by the owner 2026-11-06, ticket 47a9).
+#   Shogun stands awake at (186, 103) facing South (front view; r11 had him lying in the sleep pose, rated adequacy 3.5, redone as r12), wearing only Apparel_leatherdogcollar (dark brown `#3B2F2F`, validated by the owner 2026-11-06, ticket 47a9).
 #   Decor (removed after): two TorchLamp lit by the door (6 h light), PlantPot + Plant_Daylily fully grown at (184, 104). Both pawns asserted in the camera view before the capture.
 #   Risk 1: the open panel may cover Nelim or shift the camera; plan: the in-view asserts, one first-run look. Risk 2: the smile is barely readable at 77 px; accepted (written, not a malus).
 #   Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts. Risk 4: `Furniture` may stay clickable-looking, only greyed; that is the mod's real look.
@@ -247,7 +247,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
-    And Nelim's Pickle Tools: the animal "Shogun" lies at (186, 103) facing South
+    And Nelim's Pickle Tools: the animal "Shogun" stands at (186, 103) facing South
     And Nelim's Pickle Tools: "Nelim" stands at (186, 106) facing South
     And Nelim's Pickle Tools: I let 30 ticks pass
     And Nelim's Pickle Tools: the colonist bar is hidden
