@@ -41,7 +41,8 @@
 #   Directed 2026-11-06 after the owner refused r10 ("without a subtitle it does not tell me at all what to look at": whole house, tiny pawns, tiny grid). The subject is
 #   now an OPEN menu: `I show the Architect menu on the tab "Structure"` puts a row of building icons about 900 px wide along the bottom (seen in
 #   `Evidence/building-tabs-r1`, Structure: Cancel, Deconstruct, Smooth walls, Wall, Door, Fence...) above the tab grid, and the greyed Furniture row is read next to it.
-#   Capture CROPPED (r13) to x 0-1000, y 640-1080: the empty dark panel of the open menu (y 430-700) is cut out, the category grid with greyed Furniture and Unsorted, the building row and Nelim fill the frame; two PlantPot + Plant_Rose at (189, 104) and (190, 104) added so the ground is not bare.
+#   r14 (2026-11-08, own rating of r13: image 3.5, adequacy 3.5, decoration 3.5, REDO): crop moved to x 0-760, y 560-1080 (the r13 crop cut Nelim's head and feet; menu now 26 percent of the width); ground decor added in frame: PlantPot + Plant_Daylily at (188, 103) and a lit Brazier at (190, 103), so the soil below the wall is no longer bare.
+#   Capture CROPPED (r13) to x 0-1000, y 640-1080 (superseded by the r14 crop above): the empty dark panel of the open menu (y 430-700) is cut out, the category grid with greyed Furniture and Unsorted, the building row and Nelim fill the frame; two PlantPot + Plant_Rose at (189, 104) and (190, 104) added so the ground is not bare.
 #   Subject: her build bar, tidied: the building row is the thing to read, Furniture is greyed beside it (`I hide the Architect tab "Furniture"`), Unsorted is listed
 #   (`I turn on the Unsorted tab`); says: "the tab bar she tidied waits for the day". Not lit: no hover step exists (NPT, 2026-11-06); the subtitle names what was hidden
 #   ("Furniture hidden, Unsorted added"). Scene 3 opens the Unsorted tab, so this shot keeps Structure.
@@ -245,6 +246,9 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (184, 104)
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Rose" fully grown at (189, 104)
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Rose" fully grown at (190, 104)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (188, 103)
+    And Nelim's Pickle Tools: I place the decor "Brazier" at (190, 103)
+    And Nelim's Pickle Tools: the decor "Brazier" at (190, 103) is lit
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
