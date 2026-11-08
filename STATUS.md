@@ -46,7 +46,7 @@ remaining:
   - closed on 2026-10-09: Basic Dropdowns row added to the comment register (`WORKSHOP_COMMENTS.md`, protocols repository, `30d160b`); gallery image `5-parent-row.jpg` accepted and uploaded by the owner; delete confirmation of a group the player made captured in French (`full-1007/delete-confirm-fr`), wording as reviewed. Moves to `docs/runs/` at the next cleanup
 session:      local_6311d8c7-188f-47af-a57a-a7f48ce77a84
 updated:      2026-10-15, workflow_stage `code[1.2.0]` (reopened from dormant for Bone's request; feature/hide-tab merged into main, CHANGELOG [Unreleased] written; Pickle 24 and 22 refiled as 3957 and 92c5)
-protocols_read_sha: f0219f10b948804b3bfd2586c5fca74bf45c3805
+protocols_read_sha: 8d6b6f97a356aeb9ca76f689c5e23f2b6ba79dc7
 ---
 # Architect Studio: status
 
