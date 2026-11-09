@@ -38,6 +38,8 @@
 #
 # 1 "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (193, 108) at zoom 7` (77 px per cell, r13 recomposition 2026-11-07: Nelim sits low-left beside the menu; door (186, 105) lands at about
 #   screen (406, 771), torches (344 / 498, 848), Shogun (406, 925); estimates, checked on the first capture), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
+#   r15 (2026-11-09, after r14 rated REDO: adequacy 3.5, full daylight at 6 h): `the light of the map is dimmed to at most 0.6` (NPT step of 2026-11-08, compiled not played) makes the dawn read, the lit torches and brazier glow against it;
+#   the smile is set (MouthSmile, LidCheerful) but the face is a few pixels wide at zoom 7: the plan does not claim it readable, the line says only that she is content.
 #   Directed 2026-11-06 after the owner refused r10 ("without a subtitle it does not tell me at all what to look at": whole house, tiny pawns, tiny grid). The subject is
 #   now an OPEN menu: `I show the Architect menu on the tab "Structure"` puts a row of building icons about 900 px wide along the bottom (seen in
 #   `Evidence/building-tabs-r1`, Structure: Cancel, Deconstruct, Smooth walls, Wall, Door, Fence...) above the tab grid, and the greyed Furniture row is read next to it.
@@ -268,6 +270,7 @@ Feature: the windows as a player would show them
     And I hide the Architect tab "Furniture"
     And I turn on the Unsorted tab
     And I show the Architect menu on the tab "Structure"
+    And Nelim's Pickle Tools: the light of the map is dimmed to at most 0.6
     And Nelim's Pickle Tools: I frame the cell (193, 108) at zoom 7
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (184, 103)
     And Nelim's Pickle Tools: I let 25 ticks pass
