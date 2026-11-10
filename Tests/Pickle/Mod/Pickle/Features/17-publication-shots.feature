@@ -270,10 +270,12 @@ Feature: the windows as a player would show them
     And I hide the Architect tab "Furniture"
     And I turn on the Unsorted tab
     And I show the Architect menu on the tab "Structure"
+    And Nelim's Pickle Tools: the light of the map is logged
     And Nelim's Pickle Tools: the light of the map is dimmed to at most 0.35
     And Nelim's Pickle Tools: I frame the cell (193, 108) at zoom 7
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (184, 103)
     And Nelim's Pickle Tools: I let 25 ticks pass
+    And Nelim's Pickle Tools: the light of the map is logged
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
