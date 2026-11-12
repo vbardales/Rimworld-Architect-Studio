@@ -36,7 +36,7 @@
 #   own listing ticket before scenes 2 to 4. The DepMap of this suite holds the hair mod (Roo's HD Hairstyles), Hat Hair Control and VEFA since 2026-11-05; it once lacked the
 #   (the three were added to `wsl-deps.sanctuary.map` before the first scene ticket).
 #
-# 1 "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (188, 104) at zoom 5` (77 px per cell, r13 recomposition 2026-11-07: Nelim sits low-left beside the menu; door (186, 105) lands at about
+# 1 "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (190, 106) at zoom 5` (77 px per cell, r13 recomposition 2026-11-07: Nelim sits low-left beside the menu; door (186, 105) lands at about
 #   screen (406, 771), torches (344 / 498, 848), Shogun (406, 925); estimates, checked on the first capture), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
 #   r16 (2026-11-09, r15 rated REDO: dim 0.6 left the capture in daylight, PiT: the step caps cell glow only, 0.3 to 0.4 for a dawn look): `the light of the map is dimmed to at most 0.35`; r15: `the light of the map is dimmed to at most 0.6` (NPT step of 2026-11-08, compiled not played) makes the dawn read, the lit torches and brazier glow against it;
 #   the smile is set (MouthSmile, LidCheerful) but the face is a few pixels wide at zoom 7: the plan does not claim it readable, the line says only that she is content.
@@ -273,7 +273,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the light of the map is logged
     And Nelim's Pickle Tools: the sun glow of the map is held at 0.55
     And Nelim's Pickle Tools: the light of the map is logged
-    And Nelim's Pickle Tools: I frame the cell (188, 104) at zoom 5
+    And Nelim's Pickle Tools: I frame the cell (190, 106) at zoom 5
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (184, 103)
     And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the light of the map is refreshed
