@@ -52,3 +52,6 @@ Art/.render/
 # Pickle runs arrive in Inbox/ and failures wait in Parked/: local, never versioned (AGENTS.md, Test evidence).
 Tests/Pickle/Inbox/
 Tests/Pickle/Parked/
+
+# Windows folder icon file (PUBLISHING.md): stays on disk, never versioned.
+desktop.ini
