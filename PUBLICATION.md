@@ -121,7 +121,7 @@ One line of English burned into the bottom of each staged scene (`GALLERY.md`, "
   Categories Dropdowns (now Basic Dropdowns), Float Sub-Menus, Searchable Menus, plus the base game and the five expansions for order.
 - **No expansion is required.** The one branch on an expansion is `ModsConfig.AnomalyActive` in
   `Source/Runtime/Patches/ResearchLockedVisibility.cs`, guarded, for the research-locked option. There is no
-  `LoadFolders.xml`. Supported version: 1.6.
+  `LoadFolders.xml`. Supported versions: 1.6 and 1.7.
 
 ## Content boxes
 

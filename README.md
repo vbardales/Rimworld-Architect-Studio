@@ -1,6 +1,6 @@
 # Architect Studio
 
-A RimWorld 1.6 mod that organises the Architect menu from inside the game, without restarting.
+A RimWorld mod that organises the Architect menu from inside the game, without restarting.
 
 - **Dropdown groups**: create a group, put buildings into it, order its members, and force a
   category on the whole group so its members follow.
