@@ -83,7 +83,7 @@
   <ArchitectStudio.EditCategory.NoColor>Aucune</ArchitectStudio.EditCategory.NoColor>
   <ArchitectStudio.EditCategory.Icon>Icône</ArchitectStudio.EditCategory.Icon>
   <ArchitectStudio.EditCategory.DefaultIcon>Icône par défaut</ArchitectStudio.EditCategory.DefaultIcon>
-  <ArchitectStudio.EditCategory.NoArchitectIcons>Architect Icons n&apos;est pas chargé : le choix d&apos;icône est indisponible.</ArchitectStudio.EditCategory.NoArchitectIcons>
+  <ArchitectStudio.EditCategory.NoArchitectIcons>Architect Icons (Icônes pour le menu architecte) n&apos;est pas chargé : le choix d&apos;icône est indisponible.</ArchitectStudio.EditCategory.NoArchitectIcons>
   <ArchitectStudio.EditCategory.ResetThis>Tout réinitialiser</ArchitectStudio.EditCategory.ResetThis>
 
   <ArchitectStudio.Categories.New>Nouvelle catégorie…</ArchitectStudio.Categories.New>
@@ -93,7 +93,7 @@
   <ArchitectStudio.EditCategory.Delete>Supprimer cette catégorie</ArchitectStudio.EditCategory.Delete>
   <ArchitectStudio.EditCategory.ConfirmDelete>Supprimer la catégorie « {0} » ? Ses bâtiments retourneront dans leur catégorie d&apos;origine.</ArchitectStudio.EditCategory.ConfirmDelete>
 
-  <ArchitectStudio.Categories.NoNesting>Sans Better Architect Menu, les sous-catégories n&apos;existent pas : la catégorie est créée au premier niveau.</ArchitectStudio.Categories.NoNesting>
+  <ArchitectStudio.Categories.NoNesting>Sans Better Architect Menu (Meilleur menu architecte), les sous-catégories n&apos;existent pas : la catégorie est créée au premier niveau.</ArchitectStudio.Categories.NoNesting>
 
   <ArchitectStudio.Settings.Integrations>Intégrations détectées</ArchitectStudio.Settings.Integrations>
   <ArchitectStudio.Settings.Detected>détecté</ArchitectStudio.Settings.Detected>
