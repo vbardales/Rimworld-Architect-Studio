@@ -306,6 +306,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
     And Nelim's Pickle Tools: the animal "Shogun" lies at (154, 96) facing South
+    And Nelim's Pickle Tools: I place a blueprint of "Wall" at (153, 99)
     And Nelim's Pickle Tools: "Nelim" stands at (157, 97) facing South
     And Nelim's Pickle Tools: I let 30 ticks pass
     And Nelim's Pickle Tools: the colonist bar is hidden
@@ -317,12 +318,11 @@ Feature: the windows as a player would show them
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And Nelim's Pickle Tools: the game is advanced by 240 ticks
     And I show the Architect menu on the category of the group "Her favourites"
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
     And Nelim's Pickle Tools: I frame the cell (155, 97) at zoom 13
-    And Nelim's Pickle Tools: "Nelim" is forced to walk to (155, 98)
-    And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
