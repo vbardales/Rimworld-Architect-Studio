@@ -71,7 +71,7 @@ Series (k): one story, variety wide / medium / close, opening and closing sharin
 
 **Still true of product:** Pickle at `v6` takes clicks at widget, so 150% scenario holds without fork (PR 23 closed, step and scenario in RimWorks PR 42); `Mod/desktop.ini` no longer shipped (untracked 2026-10-01); settings page lists three detected integrations, Searchable Menus and Basic Dropdowns have no detection, named on Workshop page only.
 ## Ecosystem
-Ecosystem: PENDING. `ECOSYSTEM?` sent to PiI 2026-11-13 (old local scan of 2026-11-12 no longer counts, it only read downloaded mods). Copy PiI's one-line answer here when it lands; detail in `docs/inventory/ecosystem-steam/ArchitectStudio.md`.
+Ecosystem: scan done by PiI 2026-11-13 (`docs/inventory/ecosystem-steam/ArchitectStudio.md`, ee12d50). No duplicate by defNames. Same need by function: Better Architect Menu 3563882422, Architect Menu Optimizer 3697920753, Flexible Architect Menu 3828757217 (1.7 only); also Davai's Sorted Categories 3419053173, Better Architect Menu Tweaks 3571749771 and Plus 3585549772 (add-ons). Owner judges what the drag organiser adds. Translations: none found.
 
 ## NSB
 Sync 2026-11-07 (/sync-nsb, re-run after the Audit fix 2f5aad1: git tracks NSB as lowercase `docs/`, the earlier 2026-11-06 rechecks saw no change when there were about 40 commits; those recheck lines are replaced). Rules of the owner (2026-11-05): everything in NSB is free (places, colonists, domestic animals); a colonist or domestic animal outside NSB needs the owner's express validation before the shotlist counts on it; a colonist's properties change only with express validation; every outfit is free (the shotlist says which and why).
