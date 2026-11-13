@@ -283,3 +283,141 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: time is paused for the capture
     And I take a screenshot "workshop 1, the dawn"
     And Nelim's Pickle Tools: the decor is removed
+
+  # Gallery scene 2 of 1.2.0, "workshop-2-morning-list" (written 2026-11-13 from the building listing of ticket d87f: the listing holds NO
+  # Nelim-mod building, so the group is made of vanilla defNames marked N, buildable without research). Frame and cells are proposals,
+  # NOT verified in game. No step puts a blueprint down for a colonist to build (asked of NPT), so for now she walks to the site, paused mid-stride.
+  # Play it with `-Filter '::workshop-2-morning-list'`.
+  Scenario: workshop-2-morning-list, she builds from a list she made herself
+    When I close all dialogs
+    And I create the group "Her favourites"
+    And I add "Armchair" to the group "Her favourites"
+    And I add "Couch" to the group "Her favourites"
+    And I add "DiningChair" to the group "Her favourites"
+    And I close all dialogs
+    And Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 10
+    And I set the weather to "Clear"
+    And Nelim's Sanctuary: I am at the sanctuary "statue-garden"
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown near (153, 97)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
+    And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
+    And Nelim's Pickle Tools: the animal "Shogun" lies at (154, 96) facing South
+    And Nelim's Pickle Tools: "Nelim" stands at (157, 97) facing South
+    And Nelim's Pickle Tools: I let 30 ticks pass
+    And Nelim's Pickle Tools: the colonist bar is hidden
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: the resource readout is hidden
+    And Nelim's Pickle Tools: the alerts are hidden
+    And Nelim's Pickle Tools: the selection brackets are hidden
+    And Nelim's Pickle Tools: the item and name labels are hidden
+    And Nelim's Sanctuary: Nelim has her own face
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And I show the Architect menu on the category of the group "Her favourites"
+    And I open the dropdown of the group "Her favourites" in the Architect menu
+    And the Architect designator is disarmed
+    And Nelim's Pickle Tools: I frame the cell (155, 97) at zoom 13
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (155, 98)
+    And Nelim's Pickle Tools: I let 10 ticks pass
+    And Nelim's Pickle Tools: "Nelim" is in the camera view
+    And Nelim's Pickle Tools: "Shogun" is in the camera view
+    And Nelim's Pickle Tools: time is paused for the capture
+    And I take a screenshot "workshop 2, the morning list"
+    And Nelim's Pickle Tools: the decor is removed
+
+  # Gallery scene 3 of 1.2.0, "workshop-3-evening-shelf" (written 2026-11-13). Orphans: the twelve vanilla buildings of image 6 switched off
+  # (no Nelim-mod building in the listing). Cells are proposals, NOT verified; the hut Dresser cell is a guess, the first run lists the free cells.
+  # Play it with `-Filter '::workshop-3-evening-shelf'`.
+  Scenario: workshop-3-evening-shelf, nothing she owns gets lost
+    Given the building "Stool" has its default Architect designator switched off
+    And the building "DiningChair" has its default Architect designator switched off
+    And the building "EndTable" has its default Architect designator switched off
+    And the building "Dresser" has its default Architect designator switched off
+    And the building "Couch" has its default Architect designator switched off
+    And the building "Armchair" has its default Architect designator switched off
+    And the building "PlantPot" has its default Architect designator switched off
+    And the building "Bedroll" has its default Architect designator switched off
+    And the building "SleepingSpot" has its default Architect designator switched off
+    And the building "Table2x2c" has its default Architect designator switched off
+    And the building "Table1x2c" has its default Architect designator switched off
+    And the building "Bookcase" has its default Architect designator switched off
+    When I turn on the Unsorted tab
+    And I close all dialogs
+    And Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 18
+    And I set the weather to "Clear"
+    And Nelim's Sanctuary: I am at the sanctuary "hut"
+    And Nelim's Pickle Tools: the free standable cells of the area from (137, 68) to (146, 76) are listed
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" near (140, 74)
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" near (143, 74)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Rose" fully grown near (139, 74)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Robe" dyed rgb (110, 50, 120)
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
+    And Nelim's Pickle Tools: the animal "Yuki" is dressed in "Apparel_leatherdogcollar"
+    And Nelim's Pickle Tools: the "Apparel_leatherdogcollar" worn by "Yuki" is dyed rgb (209, 0, 143)
+    And Nelim's Pickle Tools: the animal "Yuki" stands at (139, 75) facing South
+    And Nelim's Pickle Tools: "Nelim" stands at (142, 74) facing South
+    And Nelim's Pickle Tools: I let 30 ticks pass
+    And Nelim's Pickle Tools: the colonist bar is hidden
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: the resource readout is hidden
+    And Nelim's Pickle Tools: the alerts are hidden
+    And Nelim's Pickle Tools: the selection brackets are hidden
+    And Nelim's Pickle Tools: the item and name labels are hidden
+    And Nelim's Sanctuary: Nelim has her own face
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And I show the Architect menu on the Unsorted tab
+    And the Architect designator is disarmed
+    And Nelim's Pickle Tools: I frame the cell (141, 72) at zoom 9
+    And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "Cloth" to (141, 71)
+    And Nelim's Pickle Tools: I let 10 ticks pass
+    And Nelim's Pickle Tools: "Nelim" is in the camera view
+    And Nelim's Pickle Tools: "Yuki" is in the camera view
+    And Nelim's Pickle Tools: time is paused for the capture
+    And I take a screenshot "workshop 3, the evening shelf"
+    And Nelim's Pickle Tools: the decor is removed
+
+  # Gallery scene 4 of 1.2.0, "workshop-4-night-fire" (written 2026-11-13). Sleeping spot: AnimalSleepingSpot (1x1, N, Core Furniture in the listing).
+  # Cells are proposals, NOT verified. Play it with `-Filter '::workshop-4-night-fire'`.
+  Scenario: workshop-4-night-fire, the day ends, the list stays hers
+    When I close all dialogs
+    And I relabel the category "Structure" as "Her walls"
+    And I colour the category "Structure" with palette colour 4
+    And Nelim's Pickle Tools: the eclipse of the map is ended
+    And I set the hour to 21
+    And I set the weather to "Clear"
+    And Nelim's Sanctuary: I am at the sanctuary "dining-nook"
+    And Nelim's Pickle Tools: the free standable cells of the area from (172, 104) to (181, 112) are listed
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" near (174, 106)
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" near (178, 106)
+    And Nelim's Pickle Tools: I place the decor "AnimalSleepingSpot" near (179, 110)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Robe" dyed rgb (110, 50, 120)
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
+    And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
+    And Nelim's Pickle Tools: the animal "Shogun" lies at (179, 110) facing South
+    And Nelim's Pickle Tools: "Nelim" stands at (176, 108) facing South
+    And Nelim's Pickle Tools: I let 60 ticks pass
+    And Nelim's Pickle Tools: the colonist bar is hidden
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: the resource readout is hidden
+    And Nelim's Pickle Tools: the alerts are hidden
+    And Nelim's Pickle Tools: the selection brackets are hidden
+    And Nelim's Pickle Tools: the item and name labels are hidden
+    And Nelim's Sanctuary: Nelim has her own face
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And I show the Architect menu on the tab "Structure"
+    And the Architect designator is disarmed
+    And Nelim's Pickle Tools: I frame the cell (176, 108) at zoom 3.7
+    And Nelim's Pickle Tools: "Nelim" carries the item "MealSimple"
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (175, 108)
+    And Nelim's Pickle Tools: I let 10 ticks pass
+    And Nelim's Pickle Tools: "Nelim" is in the camera view
+    And Nelim's Pickle Tools: "Shogun" is in the camera view
+    And Nelim's Pickle Tools: time is paused for the capture
+    And I take a screenshot "workshop 4, the night fire"
+    And Nelim's Pickle Tools: the decor is removed
