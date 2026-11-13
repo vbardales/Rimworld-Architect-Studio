@@ -11,7 +11,7 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ### Changed
 
-- Declared for RimWorld 1.7 as well as 1.6. The same build loads and passes its scenarios on 1.7 (tested in English).
+- Declared compatible with RimWorld 1.7 as well as 1.6. The same build loads and passes its scenarios on 1.7 (tested in English).
 
 ## [1.1.0] - 2026-10-14
 
