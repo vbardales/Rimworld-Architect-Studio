@@ -289,11 +289,12 @@ Feature: the windows as a player would show them
   # NOT verified in game. No step puts a blueprint down for a colonist to build (asked of NPT), so for now she walks to the site, paused mid-stride.
   # Play it with `-Filter '::workshop-2-morning-list'`.
   Scenario: workshop-2-morning-list, she builds from a list she made herself
+    Given four buildings "A", "B", "C" and "D" from one category, in no group, that the player can already build
     When I close all dialogs
     And I create the group "Her favourites"
-    And I add "Armchair" to the group "Her favourites"
-    And I add "Couch" to the group "Her favourites"
-    And I add "DiningChair" to the group "Her favourites"
+    And I add "A" to the group "Her favourites"
+    And I add "B" to the group "Her favourites"
+    And I add "C" to the group "Her favourites"
     And I close all dialogs
     And Nelim's Pickle Tools: the eclipse of the map is ended
     And I set the hour to 10
@@ -399,7 +400,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
     And Nelim's Pickle Tools: the animal "Shogun" lies at (179, 110) facing South
-    And Nelim's Pickle Tools: "Nelim" stands at (176, 108) facing South
+    And Nelim's Pickle Tools: "Nelim" stands at (178, 107) facing South
     And Nelim's Pickle Tools: I let 60 ticks pass
     And Nelim's Pickle Tools: the colonist bar is hidden
     And Nelim's Pickle Tools: the learning helper is hidden
@@ -414,7 +415,7 @@ Feature: the windows as a player would show them
     And the Architect designator is disarmed
     And Nelim's Pickle Tools: I frame the cell (176, 108) at zoom 3.7
     And Nelim's Pickle Tools: "Nelim" carries the item "MealSimple"
-    And Nelim's Pickle Tools: "Nelim" is forced to walk to (175, 108)
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (178, 109)
     And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
