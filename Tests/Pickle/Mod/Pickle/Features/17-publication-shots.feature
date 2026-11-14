@@ -293,7 +293,7 @@ Feature: the windows as a player would show them
     And I create the group "Her favourites"
     And I add "TorchLamp" to the group "Her favourites"
     And I add "PlantPot" to the group "Her favourites"
-    And I add "WallTorchLamp" to the group "Her favourites"
+    And I add "TorchWallLamp" to the group "Her favourites"
     And I close all dialogs
     And Nelim's Pickle Tools: the eclipse of the map is ended
     And I set the hour to 10
