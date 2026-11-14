@@ -289,12 +289,11 @@ Feature: the windows as a player would show them
   # NOT verified in game. No step puts a blueprint down for a colonist to build (asked of NPT), so for now she walks to the site, paused mid-stride.
   # Play it with `-Filter '::workshop-2-morning-list'`.
   Scenario: workshop-2-morning-list, she builds from a list she made herself
-    Given four buildings "A", "B", "C" and "D" from one category, in no group, that the player can already build
-    When I close all dialogs
+    Given I close all dialogs
     And I create the group "Her favourites"
-    And I add "A" to the group "Her favourites"
-    And I add "B" to the group "Her favourites"
-    And I add "C" to the group "Her favourites"
+    And I add "TorchLamp" to the group "Her favourites"
+    And I add "PlantPot" to the group "Her favourites"
+    And I add "WallTorchLamp" to the group "Her favourites"
     And I close all dialogs
     And Nelim's Pickle Tools: the eclipse of the map is ended
     And I set the hour to 10
@@ -322,7 +321,7 @@ Feature: the windows as a player would show them
     And I show the Architect menu on the category of the group "Her favourites"
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the cell (155, 97) at zoom 13
+    And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 8
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
