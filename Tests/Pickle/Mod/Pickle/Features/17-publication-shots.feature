@@ -286,7 +286,8 @@ Feature: the windows as a player would show them
 
   # Gallery scene 2 of 1.2.0, "workshop-2-morning-list": the group "Her favourites" holds three real vanilla defNames (TorchLamp, PlantPot, TorchWallLamp).
   # Nelim builds a Wall blueprint at (153, 99) (NPT c6deb77 step, untested), caught at work (30 ticks, then paused: a long advance finishes the wall).
-  # The group button reads "Plant pot..." (first member): its tooltip, hovered with the NPT gizmo step, carries the group name. The dropdown opens at the
+  # The group button is a vanilla Designator_Dropdown (reads "Plant pot...", first member): its tooltip never carries the group name (r11: no tooltip drawn), so the image
+  # says the three buildings of her list, no name. The dropdown opens at the
   # pointer; r9 showed it covers whatever sits at screen centre, so the frame (156, 98) at zoom 5 puts the wall and Nelim 3 cells west of it.
   # Play it with `-Filter '::workshop-2-morning-list'`.
   Scenario: workshop-2-morning-list, she builds from a list she made herself
@@ -319,7 +320,6 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And Nelim's Pickle Tools: the game is advanced by 30 ticks
     And I show the Architect menu on the category of the group "Her favourites"
-    And Nelim's Pickle Tools: I hover over the gizmo labelled "Plant pot"
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
     And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 5
