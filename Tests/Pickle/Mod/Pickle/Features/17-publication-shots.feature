@@ -285,7 +285,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the decor is removed
 
   # Gallery scene 2 of 1.2.0, "workshop-2-morning-list": the group "Her favourites" holds three real vanilla defNames (TorchLamp, PlantPot, TorchWallLamp).
-  # Nelim builds a Wall blueprint at (153, 99) (NPT c6deb77 step, untested), caught at work (30 ticks, then paused: a long advance finishes the wall).
+  # r13: Shogun lies at (153, 98) facing South, which blocks the cell south of the wall: the NPT step then puts Nelim north of it (first free cell, south first), facing the camera. Nelim builds a Wall blueprint at (153, 99) (NPT c6deb77 step), caught at work (30 ticks, then paused: a long advance finishes the wall).
   # The group button is a vanilla Designator_Dropdown (reads "Plant pot...", first member): its tooltip never carries the group name (r11: no tooltip drawn), so the image
   # says the three buildings of her list, no name. The dropdown opens at the
   # pointer; r9 showed it covers whatever sits at screen centre, so the frame (156, 98) at zoom 5 puts the wall and Nelim 3 cells west of it.
@@ -306,7 +306,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
-    And Nelim's Pickle Tools: the animal "Shogun" lies at (154, 96) facing South
+    And Nelim's Pickle Tools: the animal "Shogun" lies at (153, 98) facing South
     And Nelim's Pickle Tools: I place a blueprint of "Wall" at (153, 99)
     And Nelim's Pickle Tools: "Nelim" builds the blueprint at (153, 99)
     And Nelim's Pickle Tools: the colonist bar is hidden
