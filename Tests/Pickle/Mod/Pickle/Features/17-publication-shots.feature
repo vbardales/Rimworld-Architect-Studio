@@ -286,8 +286,8 @@ Feature: the windows as a player would show them
 
   # Gallery scene 2 of 1.2.0, "workshop-2-morning-list" (written 2026-11-13 from the building listing of ticket d87f: the listing holds NO
   # Nelim-mod building, so the group is made of three real vanilla defNames: TorchLamp, PlantPot, TorchWallLamp). A Wall blueprint is placed
-  # at (153, 99). The dropdown (FloatMenu) opens at screen centre and covers the cells around the frame centre (r5: it hid Nelim at (157, 97)
-  # with frame (156, 98)), so the frame is (159, 98): Nelim sits two cells left of the menu.
+  # at (153, 99). r6 (green) rated REDO: group name unreadable, subject small. r7: the tooltip of the group (its name) is hovered before the
+  # dropdown opens, and the frame is (156, 98) at zoom 5 (nearer). The tooltip may vanish when the dropdown opens: the capture decides.
   # Play it with `-Filter '::workshop-2-morning-list'`.
   Scenario: workshop-2-morning-list, she builds from a list she made herself
     Given I close all dialogs
@@ -320,9 +320,10 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And Nelim's Pickle Tools: the game is advanced by 240 ticks
     And I show the Architect menu on the category of the group "Her favourites"
+    And I hover over the tooltip of the custom group "Her favourites"
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the cell (159, 98) at zoom 8
+    And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 5
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
