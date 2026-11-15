@@ -287,7 +287,7 @@ Feature: the windows as a player would show them
   # Gallery scene 2 of 1.2.0, "workshop-2-morning-list" (written 2026-11-13 from the building listing of ticket d87f: the listing holds NO
   # Nelim-mod building, so the group is made of three real vanilla defNames: TorchLamp, PlantPot, TorchWallLamp). A Wall blueprint is placed
   # at (153, 99). r6 (green) rated REDO: subject small. r7 failed: the tooltip of the group is not registered while the Architect panel shows, so the group name
-  # cannot be shown (the button reads "Plant pot..."); the image says the three buildings of the list, no name. r8: frame (156, 98) at zoom 5, no hover.
+  # cannot be shown (the button reads "Plant pot..."); the image says the three buildings of the list, no name. r8 (green) REDO: the dropdown opens at screen centre and covered her face at frame (156, 98). r9: frame (154, 98) at zoom 5 puts her 3 cells right of the menu (~1280, 650 on screen), no hover.
   # Play it with `-Filter '::workshop-2-morning-list'`.
   Scenario: workshop-2-morning-list, she builds from a list she made herself
     Given I close all dialogs
@@ -322,7 +322,7 @@ Feature: the windows as a player would show them
     And I show the Architect menu on the category of the group "Her favourites"
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 5
+    And Nelim's Pickle Tools: I frame the cell (154, 98) at zoom 5
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
