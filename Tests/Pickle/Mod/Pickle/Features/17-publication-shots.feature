@@ -284,10 +284,10 @@ Feature: the windows as a player would show them
     And I take a screenshot "workshop 1, the dawn"
     And Nelim's Pickle Tools: the decor is removed
 
-  # Gallery scene 2 of 1.2.0, "workshop-2-morning-list" (written 2026-11-13 from the building listing of ticket d87f: the listing holds NO
-  # Nelim-mod building, so the group is made of three real vanilla defNames: TorchLamp, PlantPot, TorchWallLamp). A Wall blueprint is placed
-  # at (153, 99). r6 (green) rated REDO: subject small. r7 failed: the tooltip of the group is not registered while the Architect panel shows, so the group name
-  # cannot be shown (the button reads "Plant pot..."); the image says the three buildings of the list, no name. r8 (green) REDO: the dropdown opens at screen centre and covered her face at frame (156, 98). r9: frame (154, 98) at zoom 5 puts her 3 cells right of the menu (~1280, 650 on screen), no hover.
+  # Gallery scene 2 of 1.2.0, "workshop-2-morning-list": the group "Her favourites" holds three real vanilla defNames (TorchLamp, PlantPot, TorchWallLamp).
+  # Nelim builds a Wall blueprint at (153, 99) (NPT c6deb77 step, untested), caught at work (30 ticks, then paused: a long advance finishes the wall).
+  # The group button reads "Plant pot..." (first member): its tooltip, hovered with the NPT gizmo step, carries the group name. The dropdown opens at the
+  # pointer; r9 showed it covers whatever sits at screen centre, so the frame (156, 98) at zoom 5 puts the wall and Nelim 3 cells west of it.
   # Play it with `-Filter '::workshop-2-morning-list'`.
   Scenario: workshop-2-morning-list, she builds from a list she made herself
     Given I close all dialogs
@@ -307,8 +307,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
     And Nelim's Pickle Tools: the animal "Shogun" lies at (154, 96) facing South
     And Nelim's Pickle Tools: I place a blueprint of "Wall" at (153, 99)
-    And Nelim's Pickle Tools: "Nelim" stands at (157, 97) facing South
-    And Nelim's Pickle Tools: I let 30 ticks pass
+    And Nelim's Pickle Tools: "Nelim" builds the blueprint at (153, 99)
     And Nelim's Pickle Tools: the colonist bar is hidden
     And Nelim's Pickle Tools: the learning helper is hidden
     And Nelim's Pickle Tools: the resource readout is hidden
@@ -318,11 +317,12 @@ Feature: the windows as a player would show them
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
-    And Nelim's Pickle Tools: the game is advanced by 240 ticks
+    And Nelim's Pickle Tools: the game is advanced by 30 ticks
     And I show the Architect menu on the category of the group "Her favourites"
+    And Nelim's Pickle Tools: I hover over the gizmo labelled "Plant pot"
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the cell (154, 98) at zoom 5
+    And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 5
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
