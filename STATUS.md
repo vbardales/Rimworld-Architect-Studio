@@ -21,6 +21,7 @@ tested_on:    2026-10-14
 tested_1_7:   yes  # ticket 5a0d, 2026-10-17, 14 of 14 on 1.7 net10.0 (p17-small-en/); English only (1.7 install has no French pack), Preview redone with badge 1.7 in the same commit
 workshop:     3792784018
 remaining:
+  - 2026-11-15 ticket `95b6` (r11) RED: hover finds the gizmo but no tooltip is drawn in 4 s. Cause (read in Source): the Architect group button is a vanilla Designator_Dropdown, its tooltip never holds the group name (the "Group you created" tooltip belongs to the group editor rows, Dialog_DropdownGroups.cs:475). Hover step dropped (commit 854b011), the image shows the three buildings, no name. Evidence r11 deleted, ticket `1528` FILED (r12, evidence Tests/Pickle/Inbox/workshop-2-r12). NPT hover step not needed for this scene.
   - 2026-11-15 NPT fixed the hover (ef888f1: gizmo recorded twice made the tag ambiguous). Ticket `95b6` FILED (r11, same scenario, evidence Tests/Pickle/Inbox/workshop-2-r11).
   - 2026-11-15 ticket `1a65` (r10) RED 0 of 1: builds step OK; `I hover over the gizmo labelled "Plant pot"` fails (tag `gizmo:Plant pot......` not found while listed: key/lookup mismatch in NPT HoverSteps). Reported to NPT (local_5c111699), evidence r10 deleted. Scene 2 waits for the NPT fix, then refile r11.
   - 2026-11-15 NPT delivered c6deb77 (builds the blueprint; hover over the gizmo labelled, HoverSteps, both untested in game). Scene 2 rewritten (commit 3e5818b), ticket `1a65` FILED (r10, evidence Tests/Pickle/Inbox/workshop-2-r10). Steps read: NPT c6deb77 read for these two steps only.
