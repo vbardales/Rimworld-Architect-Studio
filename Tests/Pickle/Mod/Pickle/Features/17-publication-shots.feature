@@ -56,16 +56,13 @@
 #   Decor (removed after): two TorchLamp lit by the door (6 h light), PlantPot + Plant_Daylily fully grown at (184, 104). Both pawns asserted in the camera view before the capture.
 #   Risk 1: the open panel may cover Nelim or shift the camera; plan: the in-view asserts, one first-run look. Risk 2: the smile is barely readable at 77 px; accepted (written, not a malus).
 #   Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts. Risk 4: `Furniture` may stay clickable-looking, only greyed; that is the mod's real look.
-# 2 "workshop-2-morning-list" (MEDIUM): place `statue-garden` (155, 97, zoom 13), 10 h, Clear, weather steady.
-#   Subject: the menu on a group of buildings; says: "she builds from a list she made herself". Menu open on her group, dropdown
-#   on the side the build site is not.
-#   Nelim: same outfit as scene 1 (same morning). Instant: she has just placed one building of the group from the dropdown and
-#   starts work on its frame; action: the Construct job on that frame, tool-less mid-motion, paused two seconds after start.
-#   Shogun lies facing South to her left (no sitting pose exists for animals), Apparel_leatherdogcollar. Decor: PlantPot + Plant_Daylily fully grown, the
-#   blueprint frame of one building from the group. Two buildings of two Nelim mods in the group (defNames only from the
-#   `d056` listing marked N, buildable without research). Composition: Nelim off-centre right, menu bottom bar full width, statues
-#   behind, light from the south. Risk: a defName does not resolve or needs research; plan: take defNames only from the listing,
-#   the step fails with the list.
+# 2 "workshop-2-morning-list" (MEDIUM): place `statue-garden`, frame (156, 98) at zoom 5 (the dropdown covers what sits at screen centre, so the wall and Nelim stand 3 cells west of it), 10 h, Clear, weather steady, 30 ticks of work then paused (a long advance finishes the wall).
+#   Subject: the menu on a group she made herself, "Her favourites" (TorchLamp, PlantPot, TorchWallLamp, all buildable at once), its dropdown open on the side away from the site; the group name is not drawn by the game
+#   (r11: the button reads "Plant pot..."), so the image says the three buildings of her own list, in the same bar where the wall she is building comes from. Says: "she builds from a short list of her own".
+#   Nelim: same outfit as scene 1 (same morning). Instant: she has just placed a Wall blueprint at (153, 99) and builds it (NPT step), caught 30 ticks in, north of the wall and facing the camera (Shogun blocks the south cell), smile written (MouthSmile, LidCheerful).
+#   Shogun lies at (153, 98) facing East, in profile (series rule: front in 1, profile in 2), Apparel_leatherdogcollar. Decor (removed after): PlantPot + Plant_Daylily fully grown at (153, 97), a lit TorchLamp at (152, 100) beside the wall so the dropdown icons match objects on the ground, statues behind.
+#   Composition: Nelim and the wall left of centre, dropdown at the right, bottom bar full width, light from the south; crop 800 x 450 (series). Risk: the free cell for the lamp differs from the guess; plan: `near` picks the nearest free cell, the in-view asserts stay.
+
 # 3 "workshop-3-evening-shelf" (MEDIUM): place `hut` (141, 72, zoom 9), 18 h, Clear (dusk), the lit lamps warm the porch.
 #   Subject: the Unsorted tab with the buildings no other tab offers; says: "nothing she owns gets lost".
 #   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair Roo_HD_Hair_Highpony (canon, no hat so a ponytail is allowed), own face then the smile (MouthSmile + LidCheerful). She changed after
@@ -292,7 +289,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the decor is removed
 
   # Gallery scene 2 of 1.2.0, "workshop-2-morning-list": the group "Her favourites" holds three real vanilla defNames (TorchLamp, PlantPot, TorchWallLamp).
-  # r13: Shogun lies at (153, 98) facing South, which blocks the cell south of the wall: the NPT step then puts Nelim north of it (first free cell, south first), facing the camera. Nelim builds a Wall blueprint at (153, 99) (NPT c6deb77 step), caught at work (30 ticks, then paused: a long advance finishes the wall).
+  # r13: Shogun lies at (153, 98) facing East, which blocks the cell south of the wall: the NPT step then puts Nelim north of it (first free cell, south first), facing the camera. Nelim builds a Wall blueprint at (153, 99) (NPT c6deb77 step), caught at work (30 ticks, then paused: a long advance finishes the wall).
   # The group button is a vanilla Designator_Dropdown (reads "Plant pot...", first member): its tooltip never carries the group name (r11: no tooltip drawn), so the image
   # says the three buildings of her list, no name. The dropdown opens at the
   # pointer; r9 showed it covers whatever sits at screen centre, so the frame (156, 98) at zoom 5 puts the wall and Nelim 3 cells west of it.
