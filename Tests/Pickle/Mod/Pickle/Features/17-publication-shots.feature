@@ -70,7 +70,7 @@
 #   Subject: the Unsorted tab with the buildings no other tab offers; says: "nothing she owns gets lost".
 #   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair Roo_HD_Hair_Highpony (canon, no hat so a ponytail is allowed), own face then the smile (MouthSmile + LidCheerful). She changed after
 #   the day's work (the scene sets the outfit with the wears step; the story says so). Instant: she has just come in from
-#   work; action: a haul job carrying a bolt of Cloth to the Dresser of the hut, paused mid-walk. Yuki the husky lies on the
+#   work; action (Opus pass 2026-11-16, replaces Cloth to the Dresser): a Dresser BLUEPRINT stands inside the hut and she hauls a WoodLog to it, paused mid-walk (the reason is readable, the gesture differs from scene 2). Yuki the husky lies on the
 #   porch facing the camera, Apparel_leatherdogcollar dyed fuchsia (NSB YUKI-PROFIL, her visual marker, 2026-11-05). Decor (removed after): two TorchLamp lit, PlantPot + Plant_Rose fully grown. Orphans: the twelve
 #   vanilla buildings switched off in the scenario below plus one building of a Nelim mod, its row first and recoloured so it
 #   reads in the thumbnail. Composition: hut at left, Nelim at the door, river behind on the left, menu full width.
@@ -90,6 +90,13 @@
 #   wardrobes behind, light from the two torches. Decor (removed after): the two TorchLamp, the sleeping spot, MealSimple.
 #   Risk: the sleeping spot defName, and Shogun waking; plan: read the defName in the listing, spawn him asleep and frame
 #   with no tick between. An eat job would need a step from NPT (Ticket Manager); not required.
+#   Opus pass 2026-11-16 (director, applied): tight crop on the teal tab and Nelim; Shogun asleep with his back to the camera (`facing North`); the profile smile
+#   `the Beauty2 mouth vertical offset is {float}` (NPT b6dec3e) stays OPTIONAL, not played.
+#
+# SERIES RULES (Opus pass 2026-11-16, applied to the plan, scenarios follow): all four crops are 800 x 450; the Architect menu sits in the same screen corner in every scene;
+# animal orientation varies (Shogun front in 1, profile in 2, Yuki front in 3, Shogun asleep back to the camera in 4); each ground shows the result of the previous scene
+# (the wall of 2 stands near the hut of 3 as a trace of the day). Scene 1: crop about 800 x 450 around the building row and Nelim (criterion j); a blueprint line by the house
+# only if a step exists, else the crop alone. Scene 2: frame (156, 98) zoom 5 kept, crop 800 x 450, a lit TorchLamp beside the wall so the dropdown icons match objects on the ground.
 @review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.camerazoom @requires:nelim.pickletools.colonistrace @requires:nelim.pickletools.hoversteps @requires:nelim.pickletools.stagedecor
 Feature: the windows as a player would show them
 
@@ -307,6 +314,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
     And Nelim's Pickle Tools: the animal "Shogun" lies at (153, 98) facing South
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" near (152, 100)
     And Nelim's Pickle Tools: I place a blueprint of "Wall" at (153, 99)
     And Nelim's Pickle Tools: "Nelim" builds the blueprint at (153, 99)
     And Nelim's Pickle Tools: the colonist bar is hidden
@@ -374,7 +382,8 @@ Feature: the windows as a player would show them
     And I show the Architect menu on the Unsorted tab
     And the Architect designator is disarmed
     And Nelim's Pickle Tools: I frame the cell (141, 72) at zoom 9
-    And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "Cloth" to (141, 71)
+    And Nelim's Pickle Tools: I place a blueprint of "Dresser" at (141, 71)
+    And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "WoodLog" to (141, 71)
     And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Yuki" is in the camera view
@@ -399,7 +408,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Robe" dyed rgb (110, 50, 120)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
-    And Nelim's Pickle Tools: the animal "Shogun" lies at (179, 110) facing South
+    And Nelim's Pickle Tools: the animal "Shogun" lies at (179, 110) facing North
     And Nelim's Pickle Tools: "Nelim" stands at (178, 107) facing South
     And Nelim's Pickle Tools: I let 60 ticks pass
     And Nelim's Pickle Tools: the colonist bar is hidden
