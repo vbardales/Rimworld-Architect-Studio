@@ -56,6 +56,9 @@
 #   Decor (removed after): two TorchLamp lit by the door (6 h light), PlantPot + Plant_Daylily fully grown at (184, 104). Both pawns asserted in the camera view before the capture.
 #   Risk 1: the open panel may cover Nelim or shift the camera; plan: the in-view asserts, one first-run look. Risk 2: the smile is barely readable at 77 px; accepted (written, not a malus).
 #   Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts. Risk 4: `Furniture` may stay clickable-looking, only greyed; that is the mod's real look.
+# 1 CURRENT (aligned with the scenario, 2026-11-17; supersedes the crop and instant lines above where they differ): frame (190, 106) at zoom 5, sun glow held at 0.55 (dawn), she is forced to walk to (184, 103) for 10 ticks then the game is paused;
+#   crop 800 x 450 around the building row of the Structure tab and Nelim (series rule, criterion j), menu in the series corner; no blueprint by the house (no step needed). Scenario stable since r21 (TM: do not refile scene 1 unless the plan changes).
+
 # 2 "workshop-2-morning-list" (MEDIUM): place `statue-garden`, frame (156, 98) at zoom 5 (the dropdown covers what sits at screen centre, so the wall and Nelim stand 3 cells west of it), 10 h, Clear, weather steady, 30 ticks of work then paused (a long advance finishes the wall).
 #   Subject: the menu on a group she made herself, "Her favourites" (TorchLamp, PlantPot, TorchWallLamp, all buildable at once), its dropdown open on the side away from the site; the group name is not drawn by the game
 #   (r11: the button reads "Plant pot..."), so the image says the three buildings of her own list, in the same bar where the wall she is building comes from. Says: "she builds from a short list of her own".
@@ -72,6 +75,9 @@
 #   vanilla buildings switched off in the scenario below plus one building of a Nelim mod, its row first and recoloured so it
 #   reads in the thumbnail. Composition: hut at left, Nelim at the door, river behind on the left, menu full width.
 #   Risk: the husky leaves the frame or faces away; plan: spawn at its cell, `facing South`, frame then capture with no tick between.
+# 3 CURRENT (aligned with the scenario, 2026-11-17): orphans = the twelve vanilla buildings switched off in the scenario (the building listing d87f found NO Nelim-mod building in the map, so no recoloured Nelim-mod row is claimed);
+#   the Unsorted tab lists them, the Dresser blueprint at (141, 71) and the WoodLog haul carry the story; Yuki faces South at (139, 75); crop 800 x 450, menu in the series corner.
+
 # 4 "workshop-4-night-fire" (CLOSING, CLOSE): place `dining-nook` (176, 108, zoom 3.7), 21 h, Clear (roof on, night inside), game
 #   time: 60 ticks of setup, then paused one second after she leaves the table. The same two TorchLamp as scene 1, lit, one each
 #   side of the table, are the light of the frame; the room braziers add warmth from the east.
