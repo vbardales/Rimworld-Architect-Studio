@@ -422,13 +422,13 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the selection brackets are hidden
     And Nelim's Pickle Tools: the item and name labels are hidden
     And Nelim's Sanctuary: Nelim has her own face
-    And Nelim's Pickle Tools: "Nelim" face kit is "smile"
-    And Nelim's Pickle Tools: "Nelim" face is held neutral
     And I show the Architect menu on the tab "Structure"
     And the Architect designator is disarmed
     And Nelim's Pickle Tools: I frame the cell (176, 108) at zoom 3.7
     And Nelim's Pickle Tools: "Nelim" carries the item "MealSimple"
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (178, 109)
+    And Nelim's Pickle Tools: "Nelim" face kit is "smile"
+    And Nelim's Pickle Tools: "Nelim" face is held neutral
     And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
