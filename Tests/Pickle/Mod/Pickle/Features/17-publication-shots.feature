@@ -311,6 +311,8 @@ Feature: the windows as a player would show them
     And I set the hour to 10
     And I set the weather to "Clear"
     And Nelim's Sanctuary: I am at the sanctuary "statue-garden"
+    # r15: the r14 capture showed a squirrel, a flamingo, a heron, a donkey and a crow beside Shogun; the frame (156, 98) at zoom 5 spans about x 143-169, z 91-105, cleared before Shogun is placed.
+    And Nelim's Pickle Tools: the animals are removed from the area from (142, 90) to (170, 106)
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown near (153, 97)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
