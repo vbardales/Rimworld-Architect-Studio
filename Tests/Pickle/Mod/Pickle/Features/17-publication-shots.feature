@@ -313,6 +313,9 @@ Feature: the windows as a player would show them
     And Nelim's Sanctuary: I am at the sanctuary "statue-garden"
     # r15: the r14 capture showed a squirrel, a flamingo, a heron, a donkey and a crow beside Shogun; the frame (156, 98) at zoom 5 spans about x 143-169, z 91-105, cleared before Shogun is placed.
     And Nelim's Pickle Tools: the animals are removed from the area from (142, 90) to (170, 106)
+    # r16: r15 still showed grey statues and a hen statue (the place `statue-garden` is a garden of statues) crowding the frame. PiT: hide them for the run with the NPT things steps (SaB owns the place list, no new place). The defNames are unknown, so the things within 12 cells are listed once (log `[things-near]`) and the artificial buildings within 10 cells of (153, 98) are hidden before the decor is placed; read the capture for what else went (bed, torches, walls).
+    And Nelim's Pickle Tools: the things within 12 cells of (153, 98) are listed
+    And Nelim's Pickle Tools: the artificial buildings within 10 cells of (153, 98) are hidden
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown near (153, 97)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
