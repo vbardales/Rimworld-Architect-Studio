@@ -422,8 +422,8 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the selection brackets are hidden
     And Nelim's Pickle Tools: the item and name labels are hidden
     And Nelim's Sanctuary: Nelim has her own face
-    And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
-    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And Nelim's Pickle Tools: "Nelim" face kit is "smile"
+    And Nelim's Pickle Tools: "Nelim" face is held neutral
     And I show the Architect menu on the tab "Structure"
     And the Architect designator is disarmed
     And Nelim's Pickle Tools: I frame the cell (176, 108) at zoom 3.7
