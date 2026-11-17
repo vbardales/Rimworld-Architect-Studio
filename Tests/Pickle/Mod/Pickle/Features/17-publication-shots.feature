@@ -388,6 +388,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: I place a blueprint of "Dresser" at (141, 71)
     And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "WoodLog" to (141, 71)
     And Nelim's Pickle Tools: I let 10 ticks pass
+    And Nelim's Pickle Tools: the animal "Yuki" stands at (139, 75) facing South
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Yuki" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
