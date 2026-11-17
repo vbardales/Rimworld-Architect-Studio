@@ -429,7 +429,9 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (178, 109)
     And Nelim's Pickle Tools: "Nelim" face kit is "smile"
     And Nelim's Pickle Tools: "Nelim" face is held neutral
+    And Nelim's Pickle Tools: "Nelim" face state is logged
     And Nelim's Pickle Tools: I let 10 ticks pass
+    And Nelim's Pickle Tools: "Nelim" face state is logged
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
