@@ -37,13 +37,10 @@
 #   (the three were added to `wsl-deps.sanctuary.map` before the first scene ticket).
 #
 #   1. "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (190, 106) at zoom 5` (77 px per cell; r13 recomposition 2026-11-07 put Nelim low-left beside the menu, its screen estimates are superseded by the CURRENT line below), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
-#         r16 (2026-11-09, r15 rated REDO: dim 0.6 left the capture in daylight, PiT: the step caps cell glow only, 0.3 to 0.4 for a dawn look): `the light of the map is dimmed to at most 0.35`; r15: `the light of the map is dimmed to at most 0.6` (NPT step of 2026-11-08, compiled not played) makes the dawn read, the lit torches and brazier glow against it;
 #         the smile is set (MouthSmile, LidCheerful) but the face is a few pixels wide at zoom 7: the plan does not claim it readable, the line says only that she is content.
 #         Directed 2026-11-06 after the owner refused r10 ("without a subtitle it does not tell me at all what to look at": whole house, tiny pawns, tiny grid). The subject is
 #         now an OPEN menu: `I show the Architect menu on the tab "Structure"` puts a row of building icons about 900 px wide along the bottom (seen in
 #         `Evidence/building-tabs-r1`, Structure: Cancel, Deconstruct, Smooth walls, Wall, Door, Fence...) above the tab grid, and the greyed Furniture row is read next to it.
-#         r14 (2026-11-08, own rating of r13: image 3.5, adequacy 3.5, decoration 3.5, REDO): crop moved to x 0-760, y 560-1080 (the r13 crop cut Nelim's head and feet; menu now 26 percent of the width); ground decor added in frame: PlantPot + Plant_Daylily at (188, 103) and a lit Brazier at (190, 103), so the soil below the wall is no longer bare.
-#         Capture CROPPED (r13) to x 0-1000, y 640-1080 (superseded by the r14 crop above): the empty dark panel of the open menu (y 430-700) is cut out, the category grid with greyed Furniture and Unsorted, the building row and Nelim fill the frame; two PlantPot + Plant_Rose at (189, 104) and (190, 104) added so the ground is not bare.
 #         Subject: her build bar, tidied: the building row is the thing to read, Furniture is greyed beside it (`I hide the Architect tab "Furniture"`), Unsorted is listed
 #         (`I turn on the Unsorted tab`); says: "the tab bar she tidied waits for the day". Not lit: no hover step exists (NPT, 2026-11-06); the subtitle names what was hidden
 #         ("Furniture hidden, Unsorted added"). Scene 3 opens the Unsorted tab, so this shot keeps Structure.
@@ -61,8 +58,8 @@
 #   2. "workshop-2-morning-list" (MEDIUM): place `statue-garden`, frame (156, 98) at zoom 5 (the dropdown covers what sits at screen centre, so the wall and Nelim stand 3 cells west of it), 10 h, Clear, weather steady, 30 ticks of work then paused (a long advance finishes the wall).
 #         Subject: the menu on a group she made herself, "Her favourites" (TorchLamp, PlantPot, TorchWallLamp, all buildable at once), its dropdown open on the side away from the site; the group name is not drawn by the game
 #         (r11: the button reads "Plant pot..."), so the image says the three buildings of her own list, in the same bar where the wall she is building comes from. Says: "she builds from a short list of her own".
-#         Nelim: same outfit as scene 1 (same morning). Instant: she has just placed a Wall blueprint at (153, 99) and builds it (NPT step), caught 30 ticks in, north of the wall and facing the camera (Shogun blocks the south cell), smile written (MouthSmile, LidCheerful).
-#         Shogun lies at (153, 98) facing East, in profile (series rule: front in 1, profile in 2), Apparel_leatherdogcollar. Decor (removed after): PlantPot + Plant_Daylily fully grown at (153, 97), a lit TorchLamp at (152, 100) beside the wall so the dropdown icons match objects on the ground, statues behind.
+#         Nelim: same outfit as scene 1 (same morning). Instant: she has just placed a Wall blueprint at (153, 99) and builds it (NPT step), caught 30 ticks in, beside the wall at (154, 99), seen in profile (r19 and r20 logs: the builds step puts her east of the wall, Shogun blocks the south cell), smile written (MouthSmile, LidCheerful).
+#         Shogun lies at (153, 98) facing West, in profile (series rule: front in 1, profile in 2; r20 turned him from East to West so the collar reads and the body clears the wall), Apparel_leatherdogcollar. Decor (removed after): PlantPot + Plant_Daylily fully grown at (151, 97) (moved west in r19 so Shogun no longer lies on it), a lit TorchLamp at (152, 100) beside the wall so the dropdown icons match objects on the ground, statues behind.
 #         Composition: Nelim and the wall left of centre, dropdown at the right, bottom bar full width, light from the south; crop 800 x 450 (series). Risk: the free cell for the lamp differs from the guess; plan: `near` picks the nearest free cell, the in-view asserts stay.
 
 #   3. "workshop-3-evening-shelf" (MEDIUM): place `hut` (141, 72, zoom 9), 18 h, Clear (dusk), the lit lamps warm the porch.
@@ -87,7 +84,7 @@
 #         own face (`Nelim has her own face`) then the mouth overridden to MouthSmile (tired, content: the day is done; the canon
 #         MouthLipsSmirk and the step's MouthSmirkSmile read as a smirk, which the scene does not want). Instant: she has just taken her meal from the table and walks to the chair;
 #         action: she carries a MealSimple (carries-the-item step) on a move order to the chair cell, paused mid-walk, no eat job
-#         needed. Shogun (Apparel_leatherdogcollar) asleep on an animal sleeping spot (defName to confirm in the building listing) at lower right, facing South,
+#         needed. Shogun (Apparel_leatherdogcollar) asleep on an animal sleeping spot (defName to confirm in the building listing) at lower right, facing North (Opus pass 2026-11-16),
 #         sleep marks shown. Composition: close, table in the foreground with a bowl, Nelim off-centre left, Shogun lower right,
 #         wardrobes behind, light from the two torches. Decor (removed after): the two TorchLamp, the sleeping spot, MealSimple.
 #         Risk: the sleeping spot defName, and Shogun waking; plan: read the defName in the listing, spawn him asleep and frame
