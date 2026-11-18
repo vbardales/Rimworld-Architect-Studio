@@ -94,7 +94,7 @@ remaining:
   - gallery 1.2.0 open (2026-10-18): scenes 4 and 6 (menu over a staged corner) wait for NPT's building listing (ticket `20261018-012247-481-d056`, step `the building options are listed`, PickleTools c532fcf) before any ticket; ticket `eaf8` (image 2) waits; new step `I show the Architect menu on the tab {string}` (CategorySteps.cs) and feature `26-building-catalogue.feature` (14 tab photos for NPT's sheet) pushed in a4c40de/3928dc8, declared to NPT by message 2026-10-18, CONFIRMED by NPT 2026-10-18 (inscribed in `Elsewhere/ArchitectStudio.md`, unprefixed, `CategorySteps.cs` ShowArchitectOnTab, PickleTools 3ab8885, INVENTORY.md regenerated, -Check passes; NPT files the 14 photographs after its utility item catalogue ticket `6e69`, DLCs staged), not played; NPT is also to send tab names beyond the 13 once its listing ran; shots 4 and 6 lines are in the header of `17-publication-shots.feature`, wait for `CATALOGUE-BUILDINGS.md` to name the Nelim-mod building defNames, then write the two scenarios and file one ticket
 session:      local_e26a2436-5964-40f7-b0e2-60eef65cdee8
 updated:      2026-11-16, replay-audit: workflow_stage `writeShotlist[1.2.0]` (first open 9.0). Earlier: 2026-10-15, workflow_stage `code[1.2.0]` (reopened from dormant for Bone's request; feature/hide-tab merged into main, CHANGELOG [Unreleased] written; Pickle 24 and 22 refiled as 3957 and 92c5)
-protocols_read_sha: 92a681dcd1f94dbf91341382f486dd23ed4ef44d
+protocols_read_sha: f8fee9ce3e84db4584ec0256dddb91ff50a3b435
 ---
 # Architect Studio: status
 
