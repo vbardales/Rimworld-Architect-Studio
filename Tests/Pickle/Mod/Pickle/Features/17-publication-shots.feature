@@ -338,7 +338,8 @@ Feature: the windows as a player would show them
     And I show the Architect menu on the category of the group "Her favourites"
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 5
+    # r17: r16 was clean of statues but j stayed weak at 268 px (Nelim and the dropdown text small); only change: zoom 5 to 7 (wall and Nelim about 4 cells west of the frame centre stay clear of the dropdown).
+    And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 7
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
