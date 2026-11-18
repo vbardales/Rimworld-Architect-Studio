@@ -36,65 +36,64 @@
 #   own listing ticket before scenes 2 to 4. The DepMap of this suite holds the hair mod (Roo's HD Hairstyles), Hat Hair Control and VEFA since 2026-11-05; it once lacked the
 #   (the three were added to `wsl-deps.sanctuary.map` before the first scene ticket).
 #
-# 1 "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (190, 106) at zoom 5` (77 px per cell, r13 recomposition 2026-11-07: Nelim sits low-left beside the menu; door (186, 105) lands at about
-#   screen (406, 771), torches (344 / 498, 848), Shogun (406, 925); estimates, checked on the first capture), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
-#   r16 (2026-11-09, r15 rated REDO: dim 0.6 left the capture in daylight, PiT: the step caps cell glow only, 0.3 to 0.4 for a dawn look): `the light of the map is dimmed to at most 0.35`; r15: `the light of the map is dimmed to at most 0.6` (NPT step of 2026-11-08, compiled not played) makes the dawn read, the lit torches and brazier glow against it;
-#   the smile is set (MouthSmile, LidCheerful) but the face is a few pixels wide at zoom 7: the plan does not claim it readable, the line says only that she is content.
-#   Directed 2026-11-06 after the owner refused r10 ("without a subtitle it does not tell me at all what to look at": whole house, tiny pawns, tiny grid). The subject is
-#   now an OPEN menu: `I show the Architect menu on the tab "Structure"` puts a row of building icons about 900 px wide along the bottom (seen in
-#   `Evidence/building-tabs-r1`, Structure: Cancel, Deconstruct, Smooth walls, Wall, Door, Fence...) above the tab grid, and the greyed Furniture row is read next to it.
-#   r14 (2026-11-08, own rating of r13: image 3.5, adequacy 3.5, decoration 3.5, REDO): crop moved to x 0-760, y 560-1080 (the r13 crop cut Nelim's head and feet; menu now 26 percent of the width); ground decor added in frame: PlantPot + Plant_Daylily at (188, 103) and a lit Brazier at (190, 103), so the soil below the wall is no longer bare.
-#   Capture CROPPED (r13) to x 0-1000, y 640-1080 (superseded by the r14 crop above): the empty dark panel of the open menu (y 430-700) is cut out, the category grid with greyed Furniture and Unsorted, the building row and Nelim fill the frame; two PlantPot + Plant_Rose at (189, 104) and (190, 104) added so the ground is not bare.
-#   Subject: her build bar, tidied: the building row is the thing to read, Furniture is greyed beside it (`I hide the Architect tab "Furniture"`), Unsorted is listed
-#   (`I turn on the Unsorted tab`); says: "the tab bar she tidied waits for the day". Not lit: no hover step exists (NPT, 2026-11-06); the subtitle names what was hidden
-#   ("Furniture hidden, Unsorted added"). Scene 3 opens the Unsorted tab, so this shot keeps Structure.
-#   Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Roo_Royal_LongHD (canon
-#   under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by Hat Hair Control (3760821540, `wsl-deps.sanctuary.map` line 54), no bun, no ponytail; own face, MouthSmile, LidCheerful.
-#   Instant: she has just stepped out of the house and goes to check the daylily; obtained: `stands at (186, 106)`, then `is forced to walk to (184, 103)` and `I let 25 ticks pass`,
-#   then the pause; the door reads open while she crosses its cell (N to adjust on the first run).
-#   Shogun stands awake at (186, 103) facing South (front view; r11 had him lying in the sleep pose, rated adequacy 3.5, redone as r12), wearing only Apparel_leatherdogcollar (dark brown `#3B2F2F`, validated by the owner 2026-11-06, ticket 47a9).
-#   Decor (removed after): two TorchLamp lit by the door (6 h light), PlantPot + Plant_Daylily fully grown at (184, 104). Both pawns asserted in the camera view before the capture.
-#   Risk 1: the open panel may cover Nelim or shift the camera; plan: the in-view asserts, one first-run look. Risk 2: the smile is barely readable at 77 px; accepted (written, not a malus).
-#   Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts. Risk 4: `Furniture` may stay clickable-looking, only greyed; that is the mod's real look.
-# 1 CURRENT (aligned with the scenario, 2026-11-17; supersedes the crop and instant lines above where they differ): frame (190, 106) at zoom 5, sun glow held at 0.55 (dawn), she is forced to walk to (184, 103) for 10 ticks then the game is paused;
-#   crop 800 x 450 around the building row of the Structure tab and Nelim (series rule, criterion j), menu in the series corner; no blueprint by the house (no step needed). Scenario stable since r21 (TM: do not refile scene 1 unless the plan changes).
+#   1. "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (190, 106) at zoom 5` (77 px per cell; r13 recomposition 2026-11-07 put Nelim low-left beside the menu, its screen estimates are superseded by the CURRENT line below), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
+#         r16 (2026-11-09, r15 rated REDO: dim 0.6 left the capture in daylight, PiT: the step caps cell glow only, 0.3 to 0.4 for a dawn look): `the light of the map is dimmed to at most 0.35`; r15: `the light of the map is dimmed to at most 0.6` (NPT step of 2026-11-08, compiled not played) makes the dawn read, the lit torches and brazier glow against it;
+#         the smile is set (MouthSmile, LidCheerful) but the face is a few pixels wide at zoom 7: the plan does not claim it readable, the line says only that she is content.
+#         Directed 2026-11-06 after the owner refused r10 ("without a subtitle it does not tell me at all what to look at": whole house, tiny pawns, tiny grid). The subject is
+#         now an OPEN menu: `I show the Architect menu on the tab "Structure"` puts a row of building icons about 900 px wide along the bottom (seen in
+#         `Evidence/building-tabs-r1`, Structure: Cancel, Deconstruct, Smooth walls, Wall, Door, Fence...) above the tab grid, and the greyed Furniture row is read next to it.
+#         r14 (2026-11-08, own rating of r13: image 3.5, adequacy 3.5, decoration 3.5, REDO): crop moved to x 0-760, y 560-1080 (the r13 crop cut Nelim's head and feet; menu now 26 percent of the width); ground decor added in frame: PlantPot + Plant_Daylily at (188, 103) and a lit Brazier at (190, 103), so the soil below the wall is no longer bare.
+#         Capture CROPPED (r13) to x 0-1000, y 640-1080 (superseded by the r14 crop above): the empty dark panel of the open menu (y 430-700) is cut out, the category grid with greyed Furniture and Unsorted, the building row and Nelim fill the frame; two PlantPot + Plant_Rose at (189, 104) and (190, 104) added so the ground is not bare.
+#         Subject: her build bar, tidied: the building row is the thing to read, Furniture is greyed beside it (`I hide the Architect tab "Furniture"`), Unsorted is listed
+#         (`I turn on the Unsorted tab`); says: "the tab bar she tidied waits for the day". Not lit: no hover step exists (NPT, 2026-11-06); the subtitle names what was hidden
+#         ("Furniture hidden, Unsorted added"). Scene 3 opens the Unsorted tab, so this shot keeps Structure.
+#         Nelim: Apparel_CollarShirt dyed ochre (200, 140, 50), Apparel_Headwrap dyed teal (40, 120, 130), hairstyle Roo_Royal_LongHD (canon
+#         under closed headwear, `NELIM-PROFIL.md`) shown under the headwrap by Hat Hair Control (3760821540, `wsl-deps.sanctuary.map` line 54), no bun, no ponytail; own face, MouthSmile, LidCheerful.
+#         Instant: she has just stepped out of the house and goes to check the daylily; obtained: `stands at (186, 106)`, then `is forced to walk to (184, 103)` and `I let 25 ticks pass`,
+#         then the pause; the door reads open while she crosses its cell (N to adjust on the first run).
+#         Shogun stands awake at (186, 103) facing South (front view; r11 had him lying in the sleep pose, rated adequacy 3.5, redone as r12), wearing only Apparel_leatherdogcollar (dark brown `#3B2F2F`, validated by the owner 2026-11-06, ticket 47a9).
+#         Decor (removed after): two TorchLamp lit by the door (6 h light), PlantPot + Plant_Daylily fully grown at (184, 104). Both pawns asserted in the camera view before the capture.
+#         Risk 1: the open panel may cover Nelim or shift the camera; plan: the in-view asserts, one first-run look. Risk 2: the smile is barely readable at 77 px; accepted (written, not a malus).
+#         Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts. Risk 4: `Furniture` may stay clickable-looking, only greyed; that is the mod's real look.
+#         1 CURRENT (aligned with the scenario, 2026-11-17; supersedes the crop and instant lines above where they differ): frame (190, 106) at zoom 5, sun glow held at 0.55 (dawn), she is forced to walk to (184, 103) for 10 ticks then the game is paused;
+#         crop 800 x 450 around the building row of the Structure tab and Nelim (series rule, criterion j), menu in the series corner; no blueprint by the house (no step needed). Scenario stable since r21 (TM: do not refile scene 1 unless the plan changes).
 
-# 2 "workshop-2-morning-list" (MEDIUM): place `statue-garden`, frame (156, 98) at zoom 5 (the dropdown covers what sits at screen centre, so the wall and Nelim stand 3 cells west of it), 10 h, Clear, weather steady, 30 ticks of work then paused (a long advance finishes the wall).
-#   Subject: the menu on a group she made herself, "Her favourites" (TorchLamp, PlantPot, TorchWallLamp, all buildable at once), its dropdown open on the side away from the site; the group name is not drawn by the game
-#   (r11: the button reads "Plant pot..."), so the image says the three buildings of her own list, in the same bar where the wall she is building comes from. Says: "she builds from a short list of her own".
-#   Nelim: same outfit as scene 1 (same morning). Instant: she has just placed a Wall blueprint at (153, 99) and builds it (NPT step), caught 30 ticks in, north of the wall and facing the camera (Shogun blocks the south cell), smile written (MouthSmile, LidCheerful).
-#   Shogun lies at (153, 98) facing East, in profile (series rule: front in 1, profile in 2), Apparel_leatherdogcollar. Decor (removed after): PlantPot + Plant_Daylily fully grown at (153, 97), a lit TorchLamp at (152, 100) beside the wall so the dropdown icons match objects on the ground, statues behind.
-#   Composition: Nelim and the wall left of centre, dropdown at the right, bottom bar full width, light from the south; crop 800 x 450 (series). Risk: the free cell for the lamp differs from the guess; plan: `near` picks the nearest free cell, the in-view asserts stay.
+#   2. "workshop-2-morning-list" (MEDIUM): place `statue-garden`, frame (156, 98) at zoom 5 (the dropdown covers what sits at screen centre, so the wall and Nelim stand 3 cells west of it), 10 h, Clear, weather steady, 30 ticks of work then paused (a long advance finishes the wall).
+#         Subject: the menu on a group she made herself, "Her favourites" (TorchLamp, PlantPot, TorchWallLamp, all buildable at once), its dropdown open on the side away from the site; the group name is not drawn by the game
+#         (r11: the button reads "Plant pot..."), so the image says the three buildings of her own list, in the same bar where the wall she is building comes from. Says: "she builds from a short list of her own".
+#         Nelim: same outfit as scene 1 (same morning). Instant: she has just placed a Wall blueprint at (153, 99) and builds it (NPT step), caught 30 ticks in, north of the wall and facing the camera (Shogun blocks the south cell), smile written (MouthSmile, LidCheerful).
+#         Shogun lies at (153, 98) facing East, in profile (series rule: front in 1, profile in 2), Apparel_leatherdogcollar. Decor (removed after): PlantPot + Plant_Daylily fully grown at (153, 97), a lit TorchLamp at (152, 100) beside the wall so the dropdown icons match objects on the ground, statues behind.
+#         Composition: Nelim and the wall left of centre, dropdown at the right, bottom bar full width, light from the south; crop 800 x 450 (series). Risk: the free cell for the lamp differs from the guess; plan: `near` picks the nearest free cell, the in-view asserts stay.
 
-# 3 "workshop-3-evening-shelf" (MEDIUM): place `hut` (141, 72, zoom 9), 18 h, Clear (dusk), the lit lamps warm the porch.
-#   Subject: the Unsorted tab with the buildings no other tab offers; says: "nothing she owns gets lost".
-#   Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair Roo_HD_Hair_Highpony (canon, no hat so a ponytail is allowed), own face then the smile (MouthSmile + LidCheerful). She changed after
-#   the day's work (the scene sets the outfit with the wears step; the story says so). Instant: she has just come in from
-#   work; action (Opus pass 2026-11-16, replaces Cloth to the Dresser): a Dresser BLUEPRINT stands inside the hut and she hauls a WoodLog to it, paused mid-walk (the reason is readable, the gesture differs from scene 2). Yuki the husky lies on the
-#   porch facing the camera, Apparel_leatherdogcollar dyed fuchsia (NSB YUKI-PROFIL, her visual marker, 2026-11-05). Decor (removed after): two TorchLamp lit, PlantPot + Plant_Rose fully grown. Orphans: the twelve
-#   vanilla buildings switched off in the scenario below plus one building of a Nelim mod, its row first and recoloured so it
-#   reads in the thumbnail. Composition: hut at left, Nelim at the door, river behind on the left, menu full width.
-#   Risk: the husky leaves the frame or faces away; plan: spawn at its cell, `facing South`, frame then capture with no tick between.
-# 3 CURRENT (aligned with the scenario, 2026-11-17): orphans = the twelve vanilla buildings switched off in the scenario (the building listing d87f found NO Nelim-mod building in the map, so no recoloured Nelim-mod row is claimed);
-#   the Unsorted tab lists them, the Dresser blueprint at (141, 71) and the WoodLog haul carry the story; Yuki faces South at (139, 75); crop 800 x 450, menu in the series corner.
+#   3. "workshop-3-evening-shelf" (MEDIUM): place `hut` (141, 72, zoom 9), 18 h, Clear (dusk), the lit lamps warm the porch.
+#         Subject: the Unsorted tab with the buildings no other tab offers; says: "nothing she owns gets lost".
+#         Nelim: Apparel_Robe dyed plum (110, 50, 120), Apparel_Corset kept, hair Roo_HD_Hair_Highpony (canon, no hat so a ponytail is allowed), own face then the smile (MouthSmile + LidCheerful). She changed after
+#         the day's work (the scene sets the outfit with the wears step; the story says so). Instant: she has just come in from
+#         work; action (Opus pass 2026-11-16, replaces Cloth to the Dresser): a Dresser BLUEPRINT stands inside the hut and she hauls a WoodLog to it, paused mid-walk (the reason is readable, the gesture differs from scene 2). Yuki the husky lies on the
+#         porch facing the camera, Apparel_leatherdogcollar dyed fuchsia (NSB YUKI-PROFIL, her visual marker, 2026-11-05). Decor (removed after): two TorchLamp lit, PlantPot + Plant_Rose fully grown. Orphans: the twelve
+#         vanilla buildings switched off in the scenario below plus one building of a Nelim mod, its row first and recoloured so it
+#         reads in the thumbnail. Composition: hut at left, Nelim at the door, river behind on the left, menu full width.
+#         Risk: the husky leaves the frame or faces away; plan: spawn at its cell, `facing South`, frame then capture with no tick between.
+#         3 CURRENT (aligned with the scenario, 2026-11-17): orphans = the twelve vanilla buildings switched off in the scenario (the building listing d87f found NO Nelim-mod building in the map, so no recoloured Nelim-mod row is claimed);
+#         the Unsorted tab lists them, the Dresser blueprint at (141, 71) and the WoodLog haul carry the story; Yuki faces South at (139, 75); crop 800 x 450, menu in the series corner.
 
-# 4 "workshop-4-night-fire" (CLOSING, CLOSE): place `dining-nook` (176, 108, zoom 3.7), 21 h, Clear (roof on, night inside), game
-#   time: 60 ticks of setup, then paused one second after she leaves the table. The same two TorchLamp as scene 1, lit, one each
-#   side of the table, are the light of the frame; the room braziers add warmth from the east.
-#   Subject: the last feature, her own categories; says: "the day ends, the list stays hers". Menu open on the category
-#   "Structure" relabelled and recoloured in teal (`I relabel the category "Structure" as "Her walls"` and
-#   `I colour the category "Structure" with palette colour N`, N the teal one of the palette).
-#   Nelim: Apparel_Robe dyed plum (110, 50, 120) + Apparel_Corset as in scene 3 (continuity, same evening), hair Roo_HD_Hair_Highpony,
-#   own face (`Nelim has her own face`) then the mouth overridden to MouthSmile (tired, content: the day is done; the canon
-#   MouthLipsSmirk and the step's MouthSmirkSmile read as a smirk, which the scene does not want). Instant: she has just taken her meal from the table and walks to the chair;
-#   action: she carries a MealSimple (carries-the-item step) on a move order to the chair cell, paused mid-walk, no eat job
-#   needed. Shogun (Apparel_leatherdogcollar) asleep on an animal sleeping spot (defName to confirm in the building listing) at lower right, facing South,
-#   sleep marks shown. Composition: close, table in the foreground with a bowl, Nelim off-centre left, Shogun lower right,
-#   wardrobes behind, light from the two torches. Decor (removed after): the two TorchLamp, the sleeping spot, MealSimple.
-#   Risk: the sleeping spot defName, and Shogun waking; plan: read the defName in the listing, spawn him asleep and frame
-#   with no tick between. An eat job would need a step from NPT (Ticket Manager); not required.
-#   Opus pass 2026-11-16 (director, applied): tight crop on the teal tab and Nelim; Shogun asleep with his back to the camera (`facing North`); the profile smile
-#   `the Beauty2 mouth vertical offset is {float}` (NPT b6dec3e) stays OPTIONAL, not played.
+#   4. "workshop-4-night-fire" (CLOSING, CLOSE): place `dining-nook` (176, 108, zoom 3.7), 21 h, Clear (roof on, night inside), game
+#         time: 60 ticks of setup, then paused one second after she leaves the table. The same two TorchLamp as scene 1, lit, one each
+#         side of the table, are the light of the frame; the room braziers add warmth from the east.
+#         Subject: the last feature, her own categories; says: "the day ends, the list stays hers". Menu open on the category
+#         "Structure" relabelled and recoloured in teal (`I relabel the category "Structure" as "Her walls"` and
+#         `I colour the category "Structure" with palette colour N`, N the teal one of the palette).
+#         Nelim: Apparel_Robe dyed plum (110, 50, 120) + Apparel_Corset as in scene 3 (continuity, same evening), hair Roo_HD_Hair_Highpony,
+#         own face (`Nelim has her own face`) then the mouth overridden to MouthSmile (tired, content: the day is done; the canon
+#         MouthLipsSmirk and the step's MouthSmirkSmile read as a smirk, which the scene does not want). Instant: she has just taken her meal from the table and walks to the chair;
+#         action: she carries a MealSimple (carries-the-item step) on a move order to the chair cell, paused mid-walk, no eat job
+#         needed. Shogun (Apparel_leatherdogcollar) asleep on an animal sleeping spot (defName to confirm in the building listing) at lower right, facing South,
+#         sleep marks shown. Composition: close, table in the foreground with a bowl, Nelim off-centre left, Shogun lower right,
+#         wardrobes behind, light from the two torches. Decor (removed after): the two TorchLamp, the sleeping spot, MealSimple.
+#         Risk: the sleeping spot defName, and Shogun waking; plan: read the defName in the listing, spawn him asleep and frame
+#         with no tick between. An eat job would need a step from NPT (Ticket Manager); not required.
+#         Opus pass 2026-11-16 (director, applied): tight crop on the teal tab and Nelim; Shogun asleep with his back to the camera (`facing North`); the profile smile
+#         `the Beauty2 mouth vertical offset is {float}` (NPT b6dec3e) stays OPTIONAL, not played.
 #
 # SERIES RULES (Opus pass 2026-11-16, applied to the plan, scenarios follow): all four crops are 800 x 450; the Architect menu sits in the same screen corner in every scene;
 # animal orientation varies (Shogun front in 1, profile in 2, Yuki front in 3, Shogun asleep back to the camera in 4); each ground shows the result of the previous scene
@@ -110,7 +109,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: all filth is cleaned
     And Nelim's Sanctuary: the animals are removed from the sanctuary "exhibition-zone"
 
-  Scenario: the group editor with a group of its own, filled
+  Scenario: interface: the group editor with a group of its own, filled
     Given four buildings "A", "B", "C" and "D" from one category, in no group
     When I create the group "Monolith machines"
     And I add "A" to the group "Monolith machines"
@@ -126,7 +125,7 @@ Feature: the windows as a player would show them
     And I take a screenshot "group editor, a filled group"
     And Nelim's Pickle Tools: screenshot mode is disabled
 
-  Scenario: the category editor over the map
+  Scenario: interface: the category editor over the map
     When I close all dialogs
     And I open the category editor
     And I wait 30 ticks
@@ -155,7 +154,7 @@ Feature: the windows as a player would show them
 
   # The result, not the tool: the Architect menu with the group as one button, its dropdown open.
   # A menu is shown for what it is, so nothing is staged beyond the group the scenario builds itself.
-  Scenario: the Architect menu with the group as one button, its dropdown open
+  Scenario: interface: the Architect menu with the group as one button, its dropdown open
     Given four buildings "A", "B", "C" and "D" from one category, in no group, that the player can already build
     When I create the group "Workshop favourites"
     And I add "A" to the group "Workshop favourites"
@@ -175,7 +174,7 @@ Feature: the windows as a player would show them
   # menu on the Unsorted tab, its bottom bar full of furniture no other tab offers (twelve vanilla buildings are switched
   # off for the length of the scenario to be the orphans a modded colony collects). Says: nothing stays out of reach.
   # A menu is shown for what it is: no colonists or decor staged. Needs `wsl-deps.sanctuary.map` and the setting turned on.
-  Scenario: the Architect menu on the Unsorted tab, buildings no other tab offers
+  Scenario: interface: the Architect menu on the Unsorted tab, buildings no other tab offers
     Given the building "Stool" has its default Architect designator switched off
     And the building "DiningChair" has its default Architect designator switched off
     And the building "EndTable" has its default Architect designator switched off
@@ -201,7 +200,7 @@ Feature: the windows as a player would show them
   # from its own appearance window. Needs both integrations, hence `wsl-deps.sanctuary-bam.map`; play it with
   # `-Filter '::the appearance window of a tab moved under another'`.
   @requires:ferny.betterarchitect @requires:com.bymarcin.architecticons
-  Scenario: the appearance window of a tab moved under another
+  Scenario: interface: the appearance window of a tab moved under another
     When I close all dialogs
     And I move the category "Joy" under the parent "Structure"
     And I open the appearance window of the category "Joy"
@@ -221,7 +220,7 @@ Feature: the windows as a player would show them
   # shows in the list a player opens first. Play it with `-Filter '::the category editor with a hidden tab'`.
   # Orders and Zone hold no building, so the editor greys them too (count 0): they are sent to the end of the list and
   # the window is shortened so they scroll out of frame, leaving "Furniture (Hidden)" the only greyed row in view.
-  Scenario: the category editor with a hidden tab
+  Scenario: interface: the category editor with a hidden tab
     When I close all dialogs
     And I hide the Architect tab "Furniture"
     And I move the category "Orders" to the end of its siblings
