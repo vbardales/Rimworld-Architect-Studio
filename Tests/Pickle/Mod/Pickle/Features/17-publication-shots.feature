@@ -321,7 +321,8 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
-    And Nelim's Pickle Tools: the animal "Shogun" lies at (153, 98) facing South
+    # r18: r17 showed Shogun lying head down with the body over the Wall blueprint (alpaca-like); only change: facing East (the director plan), same cell (153, 98) so the south cell stays blocked.
+    And Nelim's Pickle Tools: the animal "Shogun" lies at (153, 98) facing East
     And Nelim's Pickle Tools: I place the decor "TorchLamp" near (152, 100)
     And Nelim's Pickle Tools: I place a blueprint of "Wall" at (153, 99)
     And Nelim's Pickle Tools: "Nelim" builds the blueprint at (153, 99)
