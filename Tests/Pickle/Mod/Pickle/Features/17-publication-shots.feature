@@ -316,6 +316,9 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown near (151, 97)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
+    # r22: r21 rated image 4 / adequacy 3.5 (props read, Nelim plain); only change: the builder apparel (Cat, 2026-11-18, layers read in XML): VAE_Apparel_Apron (Middle layer, over the CollarShirt) and VAE_Handwear_Gloves (Middle, Hands). Vanilla Apparel Expanded 1814987817 is in the map. Hair stays visible (no Overhead piece).
+    And Nelim's Pickle Tools: "Nelim" wears "VAE_Apparel_Apron"
+    And Nelim's Pickle Tools: "Nelim" wears "VAE_Handwear_Gloves"
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
     # r18: r17 showed Shogun lying head down with the body over the Wall blueprint (alpaca-like); only change: facing East (the director plan), same cell (153, 98) so the south cell stays blocked.
