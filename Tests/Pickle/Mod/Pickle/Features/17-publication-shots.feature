@@ -59,7 +59,7 @@
 #         Subject: the menu on a group she made herself, "Her favourites" (TorchLamp, PlantPot, TorchWallLamp, all buildable at once), its dropdown open on the side away from the site; the group name is not drawn by the game
 #         (r11: the button reads "Plant pot..."), so the image says the three buildings of her own list, in the same bar where the wall she is building comes from. Says: "she builds from a short list of her own".
 #         Nelim: same outfit as scene 1 (same morning). Instant: she has just placed a Wall blueprint at (153, 99) and builds it (NPT step), caught 30 ticks in, beside the wall at (154, 99), seen in profile (r19 and r20 logs: the builds step puts her east of the wall, Shogun blocks the south cell), smile written (MouthSmile, LidCheerful).
-#         Shogun lies at (153, 98) facing West, in profile (series rule: front in 1, profile in 2; r20 turned him from East to West so the collar reads and the body clears the wall), Apparel_leatherdogcollar. Decor (removed after): PlantPot + Plant_Daylily fully grown at (151, 97) (moved west in r19 so Shogun no longer lies on it), a lit TorchLamp at (152, 100) beside the wall so the dropdown icons match objects on the ground, statues behind.
+#         Shogun lies at (153, 98) facing West, in profile (series rule: front in 1, profile in 2; r20 turned him from East to West so the collar reads and the body clears the wall), Apparel_leatherdogcollar. Decor (removed after): PlantPot + Plant_Daylily fully grown at (151, 97) (moved west in r19 so Shogun no longer lies on it), a lit TorchLamp at (152, 100) beside the wall, a FermentingBarrel near (150, 100), a Stool near (150, 98) and a ShelfSmall near (152, 96) so the ground round the site is not bare (r21, vanilla, Cat) so the dropdown icons match objects on the ground, statues behind.
 #         Composition: Nelim and the wall left of centre, dropdown at the right, bottom bar full width, light from the south; crop 800 x 450 (series). Risk: the free cell for the lamp differs from the guess; plan: `near` picks the nearest free cell, the in-view asserts stay.
 
 #   3. "workshop-3-evening-shelf" (MEDIUM): place `hut` (141, 72, zoom 9), 18 h, Clear (dusk), the lit lamps warm the porch.
@@ -322,6 +322,10 @@ Feature: the windows as a player would show them
     # r20: r19 still read alpaca-like (long neck, head down, facing East); only change: facing West (head toward the pot, profile mirrored), same cell (153, 98) so the south cell stays blocked.
     And Nelim's Pickle Tools: the animal "Shogun" lies at (153, 98) facing West
     And Nelim's Pickle Tools: I place the decor "TorchLamp" near (152, 100)
+    # r21: r20 rated image 4 / adequacy 3.5, the ground round the site is bare; only change: three vanilla props (Cat, 2026-11-18, defNames read in XML) west of the wall, clear of Shogun (153, 98), the south cell and Nelim (154, 99): a materials barrel, a stool, a small shelf.
+    And Nelim's Pickle Tools: I place the decor "FermentingBarrel" near (150, 100)
+    And Nelim's Pickle Tools: I place the decor "Stool" near (150, 98)
+    And Nelim's Pickle Tools: I place the decor "ShelfSmall" near (152, 96)
     And Nelim's Pickle Tools: I place a blueprint of "Wall" at (153, 99)
     And Nelim's Pickle Tools: "Nelim" builds the blueprint at (153, 99)
     And Nelim's Pickle Tools: the colonist bar is hidden
