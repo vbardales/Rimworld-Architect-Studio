@@ -330,7 +330,8 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: I place the decor "Stool" near (150, 98)
     And Nelim's Pickle Tools: I place the decor "ShelfSmall" near (152, 96)
     And Nelim's Pickle Tools: I place a blueprint of "Wall" at (153, 99)
-    And Nelim's Pickle Tools: "Nelim" builds the blueprint at (153, 99)
+    # r24: r23 rated image 3.5 / adequacy 3.5, Nelim always east of the wall seen from behind in profile; only change: PiT step (StageDecor 0cd003f3) builds from the chosen cell (153, 100), north of the wall, so she faces South, toward the camera, face visible. (153, 100) must stay free: TorchLamp is at (152, 100), no other pawn there.
+    And Nelim's Pickle Tools: "Nelim" builds the blueprint at (153, 99) standing at (153, 100)
     And Nelim's Pickle Tools: the colonist bar is hidden
     And Nelim's Pickle Tools: the learning helper is hidden
     And Nelim's Pickle Tools: the resource readout is hidden
