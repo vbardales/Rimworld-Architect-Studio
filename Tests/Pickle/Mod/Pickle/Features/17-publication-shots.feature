@@ -316,7 +316,8 @@ Feature: the windows as a player would show them
     # r16: r15 still showed grey statues and a hen statue (the place `statue-garden` is a garden of statues) crowding the frame. PiT: hide them for the run with the NPT things steps (SaB owns the place list, no new place). The defNames are unknown, so the things within 12 cells are listed once (log `[things-near]`) and the artificial buildings within 10 cells of (153, 98) are hidden before the decor is placed; read the capture for what else went (bed, torches, walls).
     And Nelim's Pickle Tools: the things within 12 cells of (153, 98) are listed
     And Nelim's Pickle Tools: the artificial buildings within 10 cells of (153, 98) are hidden
-    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown near (153, 97)
+    # r19: r18 had Shogun clear of the blueprint but lying on the flower pot (alpaca-like); only change: the pot moves from (153, 97) to (151, 97), west of Shogun.
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown near (151, 97)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_CollarShirt" dyed rgb (200, 140, 50)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Headwrap" dyed rgb (40, 120, 130)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_Royal_LongHD"
