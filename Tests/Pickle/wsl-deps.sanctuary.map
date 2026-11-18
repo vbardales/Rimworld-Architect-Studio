@@ -58,3 +58,7 @@ KRJS.JoseonCostume1 3043633660
 # Collar of the animals in the gallery (Apparel_leatherdogcollar), 2026-11-06. Needs its framework (ticket 369d: "Could not find type AnimalGear.AnimalApparelDefExtension", Shogun had no apparel tracker).
 Ingendum.AnimalApparelFramework 3513825850
 nelim.animalapparelcollarsandkit path:AnimalApparelCollarsAndKitRenew/Mod
+# Vanilla Apparel Expanded for scene 2 (VAE_Apparel_Apron, VAE_Handwear_Gloves), 2026-11-19. Needs Harmony and VFE Core (VAE About.xml); the checker refused r22 without this line. brrainz.harmony 2009463077 OskarPotocki.VanillaFactionsExpanded.Core 2023507013 VanillaExpanded.VAPPE 1814987817
+brrainz.harmony 2009463077
+OskarPotocki.VanillaFactionsExpanded.Core 2023507013
+VanillaExpanded.VAPPE 1814987817
