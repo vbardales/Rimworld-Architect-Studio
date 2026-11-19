@@ -375,22 +375,14 @@ Feature: the windows as a player would show them
   # Play it with `-Filter '::workshop-3-evening-shelf'`.
   Scenario: workshop-3-evening-shelf, nothing she owns gets lost
     Given Nelim's Pickle Tools: the interface scale is 200 percent
-    And the building "Stool" has its default Architect designator switched off
-    And the building "DiningChair" has its default Architect designator switched off
-    And the building "EndTable" has its default Architect designator switched off
     And the building "Dresser" has its default Architect designator switched off
-    And the building "Couch" has its default Architect designator switched off
-    And the building "Armchair" has its default Architect designator switched off
     And the building "PlantPot" has its default Architect designator switched off
-    And the building "Bedroll" has its default Architect designator switched off
-    And the building "SleepingSpot" has its default Architect designator switched off
-    And the building "Table2x2c" has its default Architect designator switched off
-    And the building "Table1x2c" has its default Architect designator switched off
     And the building "Bookcase" has its default Architect designator switched off
+    # r7 (score-gallery REDO of r6: 7 of 12 icons fit the 1280 crop at 200 percent, unreadable at 268 px): three orphans only, so the whole bar is in frame.
     # r5: those 12 switch-offs make the buildings ORPHANS of Unsorted (they are what the tab shows); the tab also listed about 30 Ideology and Odyssey items that filled 5 rows at 200 percent and hid every pawn. NPT step 1204594e limits the tab to the 12 (nothing else is shown).
     # r6: the tab does not exist before it is turned on (r5 failed: no Architect tab 'AS_Unsorted'), so the limit comes after.
     When I turn on the Unsorted tab
-    And Nelim's Pickle Tools: the architect tab "AS_Unsorted" shows only the defs "Stool, DiningChair, EndTable, Dresser, Couch, Armchair, PlantPot, Bedroll, SleepingSpot, Table2x2c, Table1x2c, Bookcase"
+    And Nelim's Pickle Tools: the architect tab "AS_Unsorted" shows only the defs "Dresser, PlantPot, Bookcase"
     And I close all dialogs
     And Nelim's Pickle Tools: the eclipse of the map is ended
     And I set the hour to 18
@@ -419,7 +411,8 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And I show the Architect menu on the Unsorted tab
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the cell (141, 74) at zoom 9
+    # r7: zoom 9 to 11 so Yuki (collar) and the Dresser blueprint read larger; at 9 the blueprint was not visible and the collar was about 12 px.
+    And Nelim's Pickle Tools: I frame the cell (141, 74) at zoom 11
     And Nelim's Pickle Tools: I place a blueprint of "Dresser" at (141, 73)
     And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "WoodLog" to (141, 73)
     And Nelim's Pickle Tools: I let 10 ticks pass
