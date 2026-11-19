@@ -14,7 +14,7 @@ Under the **MIT** licence, by **fernyrepos** (author: ferny; C#: Taranchuk, Stre
 - [Better Architect Menu](https://github.com/fernyrepos/Better-Architect-Menu) - used to identify
   its own display caches and its nesting extension, which Architect Studio talks to by reflection.
 
-The full text of their licence is reproduced in `LICENSE-fernyrepos.txt`
+The full text of their licence is reproduced in `LICENSE-fernyrepos.txt`, shipped next to this file (`Mod/LICENSE-fernyrepos.txt` in the repository, MIT asks for it to travel with the files)
 (MIT License, Copyright (c) 2025 fernyrepos).
 
 **Category Manager** (Moriarty) was consulted to compare icon-selection approaches. Nothing was
