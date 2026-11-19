@@ -9,7 +9,7 @@ repo:         Rimworld-Architect-Studio
 remote:       https://github.com/vbardales/Rimworld-Architect-Studio.git
 visibility:   public
 detached:     yes
-workflow_stage: writeShotlist[1.2.0]
+workflow_stage: shootGallery[1.2.0]
 licence:      original
 licence_at:   LICENSE (MIT, copyright 2026 Nelim); Mod/LICENSE-fernyrepos.txt (MIT, copyright 2025 fernyrepos; moved from the repo root 2026-11-19, root is a closed list)
 dependencies: declared
