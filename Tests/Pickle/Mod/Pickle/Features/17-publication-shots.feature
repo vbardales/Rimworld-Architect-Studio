@@ -105,7 +105,7 @@
 # 1 CURRENT 2026-11-19: frame (188, 105) at zoom 7 (108 px per cell), Nelim walks to (184, 103) (screen about x 528, y 756), Shogun at (186, 103) facing South (about x 744, y 756), torches (185, 104) and (187, 104) in frame; Structure row open, Furniture greyed in the category column. Subject sentence (g): "dawn at her door, her Architect bar open on walls with Furniture greyed"; the subtitle stays "The tab bar she tidied waits for the day."
 # 2 CURRENT 2026-11-19: frame (156, 100) at zoom 7, Nelim (153, 100) at screen about x 636, y 540 facing South, wall blueprint (153, 99), the dropdown of "Her favourites" opens at the pointer from x 960 and stays right of her. Subject sentence (g): "she builds a wall while her favourites button lists three buildings (Plant pot, Torch lamp, Wall torch lamp), a torch and a pot already on the ground".
 # 3 CURRENT 2026-11-19: frame (141, 74) at zoom 9 (139 px per cell), Nelim (142, 74) at about y 540, Yuki (139, 75) facing South at about x 682, y 401, Dresser blueprint at (141, 73), WoodLog haul to it; the Unsorted rows (13 icons) wrap in three rows at 200 percent and fill y about 640 to 1010, so no pawn stands below y 640. Subject sentence (g): "her Unsorted tab lists thirteen buildings no other tab offers, and she hauls a log to the Dresser blueprint from it"; Yuki's fuchsia collar reads at full size only (not claimed at 268 px, written, no malus).
-# 4 CURRENT 2026-11-19: frame (176, 108) at zoom 3.7 kept, Nelim (178, 107) walks to (178, 109), about x 1074, y 654, Shogun asleep (179, 110) back to the camera, about x 1131, y 711; the category column shows the teal "Her walls" label at the left of the Structure row. Subject sentence (g): "night in the hearth hall, her own teal category Her walls on the bar, she carries her meal to the chair".
+# 4 CURRENT 2026-11-19: frame (176, 105) at zoom 3.7, Nelim (177, 106) walks to (178, 108), Shogun asleep (179, 108) back to the camera (r8: (179, 110) was outside the view); the category column shows the teal "Her walls" label at the left of the Structure row. Subject sentence (g): "night in the hearth hall, her own teal category Her walls on the bar, she carries her meal to the chair".
 # Scene 1: crop about 800 x 450 around the building row and Nelim (criterion j, SUPERSEDED by the crop above); a blueprint line by the house
 # only if a step exists, else the crop alone. Scene 2: frame (156, 98) zoom 5 kept, crop 800 x 450, a lit TorchLamp beside the wall so the dropdown icons match objects on the ground.
 @review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.camerazoom @requires:nelim.pickletools.colonistrace @requires:nelim.pickletools.hoversteps @requires:nelim.pickletools.stagedecor
@@ -439,12 +439,12 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the free standable cells of the area from (172, 104) to (181, 112) are listed
     And Nelim's Pickle Tools: I place the decor "TorchLamp" near (174, 106)
     And Nelim's Pickle Tools: I place the decor "TorchLamp" near (178, 106)
-    And Nelim's Pickle Tools: I place the decor "AnimalSleepingSpot" near (179, 110)
+    And Nelim's Pickle Tools: I place the decor "AnimalSleepingSpot" near (179, 108)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Robe" dyed rgb (110, 50, 120)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
     And Nelim's Pickle Tools: the animal "Shogun" is dressed in "Apparel_leatherdogcollar"
-    And Nelim's Pickle Tools: the animal "Shogun" lies at (179, 110) facing North
-    And Nelim's Pickle Tools: "Nelim" stands at (178, 107) facing South
+    And Nelim's Pickle Tools: the animal "Shogun" lies at (179, 108) facing North
+    And Nelim's Pickle Tools: "Nelim" stands at (177, 106) facing South
     And Nelim's Pickle Tools: I let 60 ticks pass
     And Nelim's Pickle Tools: the colonist bar is hidden
     And Nelim's Pickle Tools: the learning helper is hidden
@@ -456,9 +456,10 @@ Feature: the windows as a player would show them
     And I show the Architect menu on the tab "Structure"
     And the Architect designator is disarmed
     # r7: at 200 percent the two menu rows hid her face (y 590 up); the centre goes south to (176, 105) so she (z 107) stands two cells above it, y about 426. The first try went north (176, 112) and dropped her out of the view.
+    # r8: ticket fa9b put Shogun at (179, 110), the top edge of the view (cells 168-184 x 100-110): drawn above the picture. Shogun and the sleeping spot move to (179, 108), Nelim starts (177, 106) and walks to (178, 108), all in view above the menu.
     And Nelim's Pickle Tools: I frame the cell (176, 105) at zoom 3.7
     And Nelim's Pickle Tools: "Nelim" carries the item "MealSimple"
-    And Nelim's Pickle Tools: "Nelim" is forced to walk to (178, 109)
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (178, 108)
     And Nelim's Pickle Tools: "Nelim" face kit is "smile"
     And Nelim's Pickle Tools: "Nelim" face is held neutral
     And Nelim's Pickle Tools: "Nelim" face state is logged
