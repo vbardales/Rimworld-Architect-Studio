@@ -362,7 +362,8 @@ Feature: the windows as a player would show them
     # r17: r16 was clean of statues but j stayed weak at 268 px (Nelim and the dropdown text small); only change: zoom 5 to 7 (wall and Nelim about 4 cells west of the frame centre stay clear of the dropdown).
     # r25: at 200 percent the menu hid her face (rows from y 478); frame two cells SOUTH of her (north is up, so the centre going south lifts her on screen). r24 of this line went north by mistake.
     # r25 (scene 2): ticket fa9b passed but Shogun (153, 98) fell behind the menu; only change: centre (156, 98) to (156, 97) lifts the site one cell on screen.
-    And Nelim's Pickle Tools: I frame the cell (156, 97) at zoom 7
+    # r26 (scene 2): ticket 321e passed but Shogun (153, 98) still sat behind the dropdown (tail only); only change: centre (156, 97) to (156, 95). Scene 4 in 321e showed Shogun asleep with Z marks (good) but the label read Structure, not Her walls: scenes 2 and 4 run as two tickets from now on (r9 5eb0 alone showed Her walls).
+    And Nelim's Pickle Tools: I frame the cell (156, 95) at zoom 7
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
