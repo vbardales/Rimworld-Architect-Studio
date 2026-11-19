@@ -388,8 +388,9 @@ Feature: the windows as a player would show them
     And the building "Table1x2c" has its default Architect designator switched off
     And the building "Bookcase" has its default Architect designator switched off
     # r5: those 12 switch-offs make the buildings ORPHANS of Unsorted (they are what the tab shows); the tab also listed about 30 Ideology and Odyssey items that filled 5 rows at 200 percent and hid every pawn. NPT step 1204594e limits the tab to the 12 (nothing else is shown).
-    And Nelim's Pickle Tools: the architect tab "AS_Unsorted" shows only the defs "Stool, DiningChair, EndTable, Dresser, Couch, Armchair, PlantPot, Bedroll, SleepingSpot, Table2x2c, Table1x2c, Bookcase"
+    # r6: the tab does not exist before it is turned on (r5 failed: no Architect tab 'AS_Unsorted'), so the limit comes after.
     When I turn on the Unsorted tab
+    And Nelim's Pickle Tools: the architect tab "AS_Unsorted" shows only the defs "Stool, DiningChair, EndTable, Dresser, Couch, Armchair, PlantPot, Bedroll, SleepingSpot, Table2x2c, Table1x2c, Bookcase"
     And I close all dialogs
     And Nelim's Pickle Tools: the eclipse of the map is ended
     And I set the hour to 18
