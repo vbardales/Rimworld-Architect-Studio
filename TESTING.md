@@ -350,7 +350,7 @@ Repeat in English and French at 100% and 150% UI scale.
   settings survive new process.
 
 Feature 19 uses shared `PickleTools/RimmsqolSteps` companion to drive RIMMSQOL's settings instance and
-capture integration. Results per revision one line each in `docs/runs/`.
+capture integration. Results per revision one line each in `Docs/runs/pickle.md`.
 
 ## Automated validation commands
 
@@ -363,7 +363,7 @@ dotnet build Source/ArchitectStudio.csproj -c Release --no-restore
 
 On fresh checkout, omit `--no-restore` for first build to restore NuGet dependencies.
 Expected: 989 static checks pass, Release build zero warnings and errors (counts change with
-validator; last run in `docs/runs/`). Script checks every shipped XML, metadata, translation keys and placeholders, C# literal
+validator; last run in `Docs/runs/pickle.md`). Script checks every shipped XML, metadata, translation keys and placeholders, C# literal
 translation references, keybinding and its injected label, distribution notices/content.
 Throws on first failure, exits unsuccessfully. Static validator does not execute
 C# runtime or prove in-game scenarios above. Separate local behavioral suite (37 checks)
