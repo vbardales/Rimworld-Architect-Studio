@@ -13,7 +13,7 @@
 # Story: one working day of Nelim in her Sanctuary, the Architect menu being what keeps her colony's buildings in order.
 # Who: Nelim (protagonist) with her dogs Shogun (in all four scenes) and Yuki (scene 3). Where: house door, statue garden,
 # tea hut, hearth hall. Which day: one working day; she works off screen between 10 h and 18 h (the gap is part of the story).
-# Rhythm: 6 h, 10 h, 18 h, 21 h, each set with `I set the hour`. Variety: wide (1), medium (2, 3), close (4). The windows
+# Rhythm: 6 h, 10 h, 18 h, 21 h, each set with `I set the hour`. Variety (2026-11-19, from the zooms 7, 7, 9, 3.7): medium (1, 2), close (3), wide (4). The windows
 # (group editor, category editor, settings, appearance window) are interface shots on `window-backdrop-for-height`,
 # cropped, no subtitle, not staged, not scored. The menu stays what it is, the map behind it lives. Echo: the opening and
 # the closing share the same door and the same two lit torches (1 outside, 4 from inside).
@@ -36,7 +36,7 @@
 #   own listing ticket before scenes 2 to 4. The DepMap of this suite holds the hair mod (Roo's HD Hairstyles), Hat Hair Control and VEFA since 2026-11-05; it once lacked the
 #   (the three were added to `wsl-deps.sanctuary.map` before the first scene ticket).
 #
-#   1. "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (190, 106) at zoom 5` (77 px per cell; r13 recomposition 2026-11-07 put Nelim low-left beside the menu, its screen estimates are superseded by the CURRENT line below), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
+#   1. "workshop-1-dawn" (OPENING, MEDIUM): place `house` door, framed by `I frame the cell (188, 105) at zoom 7` (108 px per cell; r13 recomposition 2026-11-07 put Nelim low-left beside the menu, its screen estimates are superseded by the CURRENT line below), 6 h, Clear, 30 ticks of setup, a walk of 25 ticks, then paused.
 #         the smile is set (MouthSmile, LidCheerful) but the face is a few pixels wide at zoom 7: the plan does not claim it readable, the line says only that she is content.
 #         Directed 2026-11-06 after the owner refused r10 ("without a subtitle it does not tell me at all what to look at": whole house, tiny pawns, tiny grid). The subject is
 #         now an OPEN menu: `I show the Architect menu on the tab "Structure"` puts a row of building icons about 900 px wide along the bottom (seen in
@@ -52,7 +52,7 @@
 #         Decor (removed after): two TorchLamp lit by the door (6 h light), PlantPot + Plant_Daylily fully grown at (184, 104). Both pawns asserted in the camera view before the capture.
 #         Risk 1: the open panel may cover Nelim or shift the camera; plan: the in-view asserts, one first-run look. Risk 2: the smile is barely readable at 77 px; accepted (written, not a malus).
 #         Risk 3: the walk may drop her out of frame or leave the door shut; plan: the in-view asserts. Risk 4: `Furniture` may stay clickable-looking, only greyed; that is the mod's real look.
-#         1 CURRENT (aligned with the scenario, 2026-11-17; supersedes the crop and instant lines above where they differ): frame (190, 106) at zoom 5, sun glow held at 0.55 (dawn), she is forced to walk to (184, 103) for 10 ticks then the game is paused;
+#         1 CURRENT (aligned with the scenario, 2026-11-17; supersedes the crop and instant lines above where they differ): frame (188, 105) at zoom 7, sun glow held at 0.55 (dawn), she is forced to walk to (184, 103) for 10 ticks then the game is paused;
 #         crop 800 x 450 around the building row of the Structure tab and Nelim (series rule, criterion j), menu in the series corner; no blueprint by the house (no step needed). Scenario stable since r21 (TM: do not refile scene 1 unless the plan changes).
 
 #   2. "workshop-2-morning-list" (MEDIUM): place `statue-garden`, frame (156, 98) at zoom 5 (the dropdown covers what sits at screen centre, so the wall and Nelim stand 3 cells west of it), 10 h, Clear, weather steady, 30 ticks of work then paused (a long advance finishes the wall).
@@ -72,7 +72,7 @@
 #         reads in the thumbnail. Composition: hut at left, Nelim at the door, river behind on the left, menu full width.
 #         Risk: the husky leaves the frame or faces away; plan: spawn at its cell, `facing South`, frame then capture with no tick between.
 #         3 CURRENT (aligned with the scenario, 2026-11-17): orphans = the twelve vanilla buildings switched off in the scenario (the building listing d87f found NO Nelim-mod building in the map, so no recoloured Nelim-mod row is claimed);
-#         the Unsorted tab lists them, the Dresser blueprint at (141, 71) and the WoodLog haul carry the story; Yuki faces South at (139, 75); crop 800 x 450, menu in the series corner.
+#         the Unsorted tab lists them, the Dresser blueprint at (141, 73) and the WoodLog haul carry the story; Yuki faces South at (139, 75); crop 800 x 450, menu in the series corner.
 
 #   4. "workshop-4-night-fire" (CLOSING, CLOSE): place `dining-nook` (176, 108, zoom 3.7), 21 h, Clear (roof on, night inside), game
 #         time: 60 ticks of setup, then paused one second after she leaves the table. The same two TorchLamp as scene 1, lit, one each
@@ -94,7 +94,19 @@
 #
 # SERIES RULES (Opus pass 2026-11-16, applied to the plan, scenarios follow): all four crops are 800 x 450; the Architect menu sits in the same screen corner in every scene;
 # animal orientation varies (Shogun front in 1, profile in 2, Yuki front in 3, Shogun asleep back to the camera in 4); each ground shows the result of the previous scene
-# (the wall of 2 stands near the hut of 3 as a trace of the day). Scene 1: crop about 800 x 450 around the building row and Nelim (criterion j); a blueprint line by the house
+# (the wall of 2 stands near the hut of 3 as a trace of the day).
+# RECOMPOSITION 2026-11-19 (score-gallery on the four clean originals: all REDO, criterion j weak at 268 px on every scene, the menu read as a dark block; replaces the crop and zoom lines above where they differ):
+#   - interface scale: every scenario starts with `Nelim's Pickle Tools: the interface scale is 200 percent` (NPT step, sets Prefs.UIScale for the length of the scenario and puts it back), so the building icons are 128 px and the category labels about 28 px
+#     instead of 64 and 14 px. The game world is not scaled, only the menu and the bar.
+#   - crop: 1280 x 720 from x 0, y 360 (the bottom-left two thirds of the 1920 x 1080 capture), the same in all four scenes, so the menu stays in the same corner. At 268 px wide that crop scales by 0.21: a menu icon reads about 27 px, a dropdown icon about 20 px,
+#     the category column about 84 px wide (labels are shapes, not text, at that size; the subtitle names them). The subject of j is the menu icon row plus the greyed or relabelled category beside it.
+#   - placement: the building row of the bar occupies y about 830 to 1010 at 200 percent (estimate, measured at the first run); each pawn and animal stands above it, at y about 400 to 780 of the capture, and left of x 1280.
+#   - after the first run, `score-gallery` shrinks the CROP to 268 px and reads j on it; a weak j is redone, not offered.
+# 1 CURRENT 2026-11-19: frame (188, 105) at zoom 7 (108 px per cell), Nelim walks to (184, 103) (screen about x 528, y 756), Shogun at (186, 103) facing South (about x 744, y 756), torches (185, 104) and (187, 104) in frame; Structure row open, Furniture greyed in the category column. Subject sentence (g): "dawn at her door, her Architect bar open on walls with Furniture greyed"; the subtitle stays "The tab bar she tidied waits for the day."
+# 2 CURRENT 2026-11-19: frame (156, 100) at zoom 7, Nelim (153, 100) at screen about x 636, y 540 facing South, wall blueprint (153, 99), the dropdown of "Her favourites" opens at the pointer from x 960 and stays right of her. Subject sentence (g): "she builds a wall while her favourites button lists three buildings (Plant pot, Torch lamp, Wall torch lamp), a torch and a pot already on the ground".
+# 3 CURRENT 2026-11-19: frame (141, 74) at zoom 9 (139 px per cell), Nelim (142, 74) at about y 540, Yuki (139, 75) facing South at about x 682, y 401, Dresser blueprint at (141, 73), WoodLog haul to it; the Unsorted rows (13 icons) wrap in three rows at 200 percent and fill y about 640 to 1010, so no pawn stands below y 640. Subject sentence (g): "her Unsorted tab lists thirteen buildings no other tab offers, and she hauls a log to the Dresser blueprint from it"; Yuki's fuchsia collar reads at full size only (not claimed at 268 px, written, no malus).
+# 4 CURRENT 2026-11-19: frame (176, 108) at zoom 3.7 kept, Nelim (178, 107) walks to (178, 109), about x 1074, y 654, Shogun asleep (179, 110) back to the camera, about x 1131, y 711; the category column shows the teal "Her walls" label at the left of the Structure row. Subject sentence (g): "night in the hearth hall, her own teal category Her walls on the bar, she carries her meal to the chair".
+# Scene 1: crop about 800 x 450 around the building row and Nelim (criterion j, SUPERSEDED by the crop above); a blueprint line by the house
 # only if a step exists, else the crop alone. Scene 2: frame (156, 98) zoom 5 kept, crop 800 x 450, a lit TorchLamp beside the wall so the dropdown icons match objects on the ground.
 @review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.camerazoom @requires:nelim.pickletools.colonistrace @requires:nelim.pickletools.hoversteps @requires:nelim.pickletools.stagedecor
 Feature: the windows as a player would show them
@@ -240,6 +252,7 @@ Feature: the windows as a player would show them
   # pot (184, 104); the first run lists the free cells. The tab bar is kept, the other interface is hidden by its own steps (screenshot
   # mode would hide the tab bar and leave the hover nothing to touch). Play it with `-Filter '::workshop-1-dawn'`.
   Scenario: workshop-1-dawn, the tab bar she tidied waits for the day
+    Given Nelim's Pickle Tools: the interface scale is 200 percent
     When I close all dialogs
     And Nelim's Pickle Tools: the eclipse of the map is ended
     And I set the hour to 6
@@ -279,7 +292,7 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the light of the map is logged
     And Nelim's Pickle Tools: the sun glow of the map is held at 0.55
     And Nelim's Pickle Tools: the light of the map is logged
-    And Nelim's Pickle Tools: I frame the cell (190, 106) at zoom 5
+    And Nelim's Pickle Tools: I frame the cell (188, 105) at zoom 7
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (184, 103)
     And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the light of the map is refreshed
@@ -297,7 +310,8 @@ Feature: the windows as a player would show them
   # pointer; r9 showed it covers whatever sits at screen centre, so the frame (156, 98) at zoom 5 puts the wall and Nelim 3 cells west of it.
   # Play it with `-Filter '::workshop-2-morning-list'`.
   Scenario: workshop-2-morning-list, she builds from a list she made herself
-    Given I close all dialogs
+    Given Nelim's Pickle Tools: the interface scale is 200 percent
+    And I close all dialogs
     And I create the group "Her favourites"
     And I add "TorchLamp" to the group "Her favourites"
     And I add "PlantPot" to the group "Her favourites"
@@ -346,7 +360,7 @@ Feature: the windows as a player would show them
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
     # r17: r16 was clean of statues but j stayed weak at 268 px (Nelim and the dropdown text small); only change: zoom 5 to 7 (wall and Nelim about 4 cells west of the frame centre stay clear of the dropdown).
-    And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 7
+    And Nelim's Pickle Tools: I frame the cell (156, 100) at zoom 7
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
@@ -357,7 +371,8 @@ Feature: the windows as a player would show them
   # (no Nelim-mod building in the listing). Cells are proposals, NOT verified; the hut Dresser cell is a guess, the first run lists the free cells.
   # Play it with `-Filter '::workshop-3-evening-shelf'`.
   Scenario: workshop-3-evening-shelf, nothing she owns gets lost
-    Given the building "Stool" has its default Architect designator switched off
+    Given Nelim's Pickle Tools: the interface scale is 200 percent
+    And the building "Stool" has its default Architect designator switched off
     And the building "DiningChair" has its default Architect designator switched off
     And the building "EndTable" has its default Architect designator switched off
     And the building "Dresser" has its default Architect designator switched off
@@ -398,9 +413,9 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And I show the Architect menu on the Unsorted tab
     And the Architect designator is disarmed
-    And Nelim's Pickle Tools: I frame the cell (141, 72) at zoom 9
-    And Nelim's Pickle Tools: I place a blueprint of "Dresser" at (141, 71)
-    And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "WoodLog" to (141, 71)
+    And Nelim's Pickle Tools: I frame the cell (141, 74) at zoom 9
+    And Nelim's Pickle Tools: I place a blueprint of "Dresser" at (141, 73)
+    And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "WoodLog" to (141, 73)
     And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the animal "Yuki" stands at (139, 75) facing South
     And Nelim's Pickle Tools: "Nelim" is in the camera view
@@ -412,6 +427,7 @@ Feature: the windows as a player would show them
   # Gallery scene 4 of 1.2.0, "workshop-4-night-fire" (written 2026-11-13). Sleeping spot: AnimalSleepingSpot (1x1, N, Core Furniture in the listing).
   # Cells are proposals, NOT verified. Play it with `-Filter '::workshop-4-night-fire'`.
   Scenario: workshop-4-night-fire, the day ends, the list stays hers
+    Given Nelim's Pickle Tools: the interface scale is 200 percent
     When I close all dialogs
     And I relabel the category "Structure" as "Her walls"
     And I colour the category "Structure" with palette colour 4
