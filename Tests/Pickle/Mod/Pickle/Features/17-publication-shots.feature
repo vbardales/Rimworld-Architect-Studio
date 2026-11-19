@@ -378,7 +378,8 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: the free standable cells of the area from (137, 68) to (146, 76) are listed
     And Nelim's Pickle Tools: I place the decor "TorchLamp" near (140, 74)
     And Nelim's Pickle Tools: I place the decor "TorchLamp" near (143, 74)
-    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Rose" fully grown near (139, 74)
+    # r4: r3 rated image 3.5 / adequacy 3.5, Yuki collar hidden behind the flower pot; only change: the PlantPot moves from (139, 74) to near (137, 74), west of Yuki (139, 75), so the fuchsia collar reads.
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Rose" fully grown near (137, 74)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Robe" dyed rgb (110, 50, 120)
     And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
     And Nelim's Pickle Tools: the animal "Yuki" is dressed in "Apparel_leatherdogcollar"
