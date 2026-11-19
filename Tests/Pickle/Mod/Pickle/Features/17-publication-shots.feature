@@ -412,10 +412,10 @@ Feature: the windows as a player would show them
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And I show the Architect menu on the Unsorted tab
     And the Architect designator is disarmed
-    # r8: zoom 11 to 14 centred on (140, 74) so Yuki and her collar read larger (r7 at 11: collar unreadable); the Dresser blueprint never drew at (141, 73) in r6 or r7 (Dresser is probably research-locked), so the blueprint is a Bedroll at (143, 73) (cell unverified).
+    # r8: zoom 11 to 14 centred on (140, 74) so Yuki and her collar read larger (r7 at 11: collar unreadable); the Dresser blueprint never drew at (141, 73) in r6 or r7 (Dresser is probably research-locked), so the blueprint is a Bedroll at (144, 72) (r8 at (143, 73) failed: "Space already occupied", the 1x2 bedroll reaches the TorchLamp at (143, 74); (144, 72) and (144, 73) are in the free-cells list).
     And Nelim's Pickle Tools: I frame the cell (140, 74) at zoom 14
-    And Nelim's Pickle Tools: I place a blueprint of "Bedroll" at (143, 73)
-    And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "WoodLog" to (143, 73)
+    And Nelim's Pickle Tools: I place a blueprint of "Bedroll" at (144, 72)
+    And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "WoodLog" to (144, 72)
     And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the animal "Yuki" stands at (139, 75) facing South
     And Nelim's Pickle Tools: "Nelim" is in the camera view
