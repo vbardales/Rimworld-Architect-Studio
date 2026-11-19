@@ -30,7 +30,7 @@ remaining:
   - Open with others: the Workshop replies to Bone and Ali50 (followUp 1.1.0 item).
 session:      local_e26a2436-5964-40f7-b0e2-60eef65cdee8
 updated:      2026-11-16, replay-audit: workflow_stage `writeShotlist[1.2.0]` (first open 9.0). Earlier: 2026-10-15, workflow_stage `code[1.2.0]` (reopened from dormant for Bone's request; feature/hide-tab merged into main, CHANGELOG [Unreleased] written; Pickle 24 and 22 refiled as 3957 and 92c5)
-protocols_read_sha: c79e1ec95055d0de4462221cfd7d551ec0ffae3e
+protocols_read_sha: f970908e7a364ca2da288b622f3fd828d2e28e45
 ---
 # Architect Studio: status
 
