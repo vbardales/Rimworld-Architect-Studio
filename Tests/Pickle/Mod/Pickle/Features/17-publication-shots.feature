@@ -360,8 +360,8 @@ Feature: the windows as a player would show them
     And I open the dropdown of the group "Her favourites" in the Architect menu
     And the Architect designator is disarmed
     # r17: r16 was clean of statues but j stayed weak at 268 px (Nelim and the dropdown text small); only change: zoom 5 to 7 (wall and Nelim about 4 cells west of the frame centre stay clear of the dropdown).
-    # r25: at 200 percent the menu hid her face (rows from y 478); frame two cells north so she stands above it.
-    And Nelim's Pickle Tools: I frame the cell (156, 102) at zoom 7
+    # r25: at 200 percent the menu hid her face (rows from y 478); frame two cells SOUTH of her (north is up, so the centre going south lifts her on screen). r24 of this line went north by mistake.
+    And Nelim's Pickle Tools: I frame the cell (156, 98) at zoom 7
     And Nelim's Pickle Tools: "Nelim" is in the camera view
     And Nelim's Pickle Tools: "Shogun" is in the camera view
     And Nelim's Pickle Tools: time is paused for the capture
@@ -455,8 +455,8 @@ Feature: the windows as a player would show them
     And Nelim's Sanctuary: Nelim has her own face
     And I show the Architect menu on the tab "Structure"
     And the Architect designator is disarmed
-    # r7: at 200 percent the two menu rows hid her face (y 590 up); frame four cells north so she stands above them.
-    And Nelim's Pickle Tools: I frame the cell (176, 112) at zoom 3.7
+    # r7: at 200 percent the two menu rows hid her face (y 590 up); the centre goes south to (176, 105) so she (z 107) stands two cells above it, y about 426. The first try went north (176, 112) and dropped her out of the view.
+    And Nelim's Pickle Tools: I frame the cell (176, 105) at zoom 3.7
     And Nelim's Pickle Tools: "Nelim" carries the item "MealSimple"
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (178, 109)
     And Nelim's Pickle Tools: "Nelim" face kit is "smile"
