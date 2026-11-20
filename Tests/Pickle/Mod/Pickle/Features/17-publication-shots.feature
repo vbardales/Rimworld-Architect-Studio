@@ -414,7 +414,8 @@ Feature: the windows as a player would show them
     And the Architect designator is disarmed
     # r8: zoom 11 to 14 centred on (140, 74) so Yuki and her collar read larger (r7 at 11: collar unreadable); the Dresser blueprint never drew at (141, 73) in r6 or r7 (Dresser is probably research-locked), so the blueprint is a Bedroll at (144, 72) (r8 at (143, 73) failed: "Space already occupied", the 1x2 bedroll reaches the TorchLamp at (143, 74); (144, 72) and (144, 73) are in the free-cells list).
     # r10 (score-gallery REDO of r9 `f56f`: green, but at zoom 14 the whole hut shows and the pawns are tiny, collar unreadable, no haul readable; zoom 14 was the wrong direction, a LOWER number is closer (scene 4 uses 3.7); only change: centre (140, 74) to (142, 74) and zoom 14 to 8 so Nelim, her hauled log and Yuki fill the frame; the two blue blobs on the floor are not explained, check them on the new capture).
-    And Nelim's Pickle Tools: I frame the cell (142, 74) at zoom 8
+    # r11 (score-gallery REDO of r10 `9350`: green, notes image 3.5, understanding 3.5, decoration 3.5, adequacy 3; Dresser only a drawer at the right edge, Yuki about 40 px, two blue blobs on the floor at about (136, 73) and (144, 78) by the 67 px per cell of zoom 8, cause unknown; only change: centre (142, 74) to (141, 74) and zoom 8 to 6, 89 px per cell, so Yuki and her collar grow, the hut Dresser at the right edge comes in, and both blobs fall outside (west of the panel edge, south behind the designator row).
+    And Nelim's Pickle Tools: I frame the cell (141, 74) at zoom 6
     And Nelim's Pickle Tools: I place a blueprint of "Bedroll" at (144, 72)
     And Nelim's Pickle Tools: "Nelim" is forced to haul 1 of the item "WoodLog" to (144, 72)
     And Nelim's Pickle Tools: I let 10 ticks pass
