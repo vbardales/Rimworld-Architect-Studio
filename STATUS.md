@@ -107,7 +107,7 @@ Date 2026-11-22 (replay-audit found the section absent). Revision: texts last ch
 
 **6.f** `TRANSLATION_REVIEW.md` regenerated at 31469b1 (uncommitted at the time of writing, committed with this section).
 
-**6.g Reviewer.** Pending: `/review-translation` (ChatGPT) first, then Virginie. No reviewer, date or corrections yet. `translation_fr` is `partial` until her review is recorded here.
+**6.g Reviewer.** ChatGPT round 1, 2026-11-22, page 1 of 1: no proper noun to decide; one correction applied (`ShowUnsortedTip`: "à l'Architecte" became "au menu Architecte"), 0 rejected; round recorded, a second round is owed (a round with a change is not final). Virginie's review pending, no date or corrections yet. `translation_fr` is `partial` until her review is recorded here.
 
 **6.h Fields.** `localization: complete`, `translation_en: complete`, `translation_fr: partial` (French review pending). In-game checks (raw keys, fallback text, clipping of long French labels in the 150 and 200 percent menus) `unverified` until `playTests`.
 
