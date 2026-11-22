@@ -12,3 +12,4 @@
 - aace feature 03, avec-revues, on 9f7991a: 3 of 3 passed, Azure lane.
 - 4c1b reviews 04b and 16 (avec-revues): 5 of 5 passed, Azure lane; screenshots read, no clipping, accents ok.
 - 7aa7 minimal English all but 17 (pt-minimal-en): 156 passed, 52 skipped (@requires, mods not loaded), 0 failed of 208, Hetzner lane (Pickle 6.7.5); parked for 8.f.
+- b266 minimal French (pt-minimal-fr-2, sans-facultatifs, filter without Pickle samples): 44 passed, 48 skipped, 0 failed of 92, Azure lane, 2026-11-23; same outcome per scenario as 7aa7; dcb5 failures were Pickle own samples.
