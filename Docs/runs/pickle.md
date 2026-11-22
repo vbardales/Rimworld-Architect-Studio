@@ -10,3 +10,4 @@
 - 1693 BAM, avec-facultatifs (08, 10, 11): 15 of 15 passed, Hetzner lane.
 - 99b5 hover, avec-infobulles (18, 23): 13 of 13 passed, Azure lane.
 - aace feature 03, avec-revues, on 9f7991a: 3 of 3 passed, Azure lane.
+- 4c1b reviews 04b and 16 (avec-revues): 5 of 5 passed, Azure lane; screenshots read, no clipping, accents ok.
