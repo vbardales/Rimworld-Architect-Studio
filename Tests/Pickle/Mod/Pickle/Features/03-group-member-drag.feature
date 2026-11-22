@@ -6,7 +6,8 @@
 Feature: dragging a group member
 
   Background:
-    Given four buildings "A", "B", "C" and "D" from one category, in no group
+    Given the save "test-colony" is loaded
+    And four buildings "A", "B", "C" and "D" from one category, in no group
     When I create the group "Seats"
     And I add "A" to the group "Seats"
     And I add "B" to the group "Seats"
